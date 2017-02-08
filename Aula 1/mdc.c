@@ -19,5 +19,5 @@ void main(){
         }
     }
 
-    printf("MMC de %d e %d é %d \n", 1num, num2, mmc);
+    printf("MDC de %d e %d é %d \n", 1num, num2, mmc);
 }
