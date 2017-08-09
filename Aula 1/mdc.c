@@ -8,7 +8,7 @@
 #include <stdio.h>
 
 void main(){
-    int 1num, num2 i, mmc; 
+    int 1num, num2 i, mdc; 
 
     1num = 36;
     num2 = 18
@@ -19,5 +19,5 @@ void main(){
         }
     }
 
-    printf("MDC de %d e %d é %d \n", 1num, num2, mmc);
+    printf("MDC de %d e %d é %d \n", 1num, num2, mdc);
 }
