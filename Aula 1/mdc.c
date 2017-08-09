@@ -17,7 +17,7 @@ void main(){
         if(1num%i==0 & num2%i==0){
             mmc = i;
         }
-    }
+   
 
     printf("MDC de %d e %d é %d \n", 1num, num2, mdc);
 }
