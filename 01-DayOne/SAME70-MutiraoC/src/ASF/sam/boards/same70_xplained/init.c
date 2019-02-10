@@ -383,9 +383,13 @@ void board_init(void)
 	_setup_memory_region();
 #endif
 
-#ifdef CONF_BOARD_ENABLE_CACHE
+
 	/* Enabling the Cache */
+#ifdef CONF_BOARD_ENABLE_ICACHE
 	SCB_EnableICache(); 
+#endif
+
+#ifdef CONF_BOARD_ENABLE_DCACHE
 	SCB_EnableDCache();
 #endif
 

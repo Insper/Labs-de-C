@@ -33,8 +33,12 @@
 #define IMG_HEIGHT 320u // pxs
 #define IMG_WIDTH  320u // pxs
 
-#define PAD_HEIGHT 512u // pxs
-#define PAD_WIDTH  512u // pxs
+#define PAD_HEIGHT 128u // pxs
+#define PAD_WIDTH  128u // pxs
+
+#define PARTE1
+//#define PARTE2
+//#define PARTE3
 
 /************************************************************************/
 /* VAR globais                                                          */
@@ -42,7 +46,7 @@
 
 // Espaco de memoria reservado para armazenar a imagem pos processamento
 ili9488_color_t imgOutProcess[IMG_WIDTH][IMG_HEIGHT];
-float32_t buffer[1024], sub_buffer[1024];
+float32_t buffer[256], sub_buffer[256];
 
 // Variavel global alterada para o valor 1 (pela interrupcao) toda vez
 // que o botao SW0  é pressionado, uma vez servido o request deve-se
@@ -70,42 +74,45 @@ int process_pixel(int level) {
  *  in  : imgH  , altura da imagem em pxs
  */
 uint32_t imageProcess(ili9488_color_t imgIn[IMG_WIDTH][IMG_HEIGHT], ili9488_color_t imgOut[IMG_WIDTH][IMG_HEIGHT], int imgW, int imgH){
-	uint32_t timeUs;
 	int i, j, val;
 
 	// inicializa contagem do tempo de processamento
-	tic();
+	uint32_t t0 = tic();
 
-	// IGOR
-
-	for(j=1;j<imgW-1;j++){
-		for(i=1;i<imgH-1;i++){
+// RAFAEL / IGOR
+#ifdef PARTE1
+  for(j=1;j<imgW-1;j++) {
+		for(i=1;i<imgH-1;i++) {
 			val = (int) imgIn[i][j] * 4 - imgIn[i-1][j] - imgIn[i+1][j] - imgIn[i][j-1] - imgIn[i][j+1];
 			imgOut[i][j] = abs(val);
 		}
-	}
+   }
+#endif 
 
-	// HASHI
-	/*
+// HASHI
+#ifdef PARTE2
 	float32_t *padded = offset(IMG_WIDTH, IMG_HEIGHT);
 	pad(imgIn, IMG_WIDTH, IMG_HEIGHT, padded, PAD_WIDTH, PAD_HEIGHT);
-	blur(padded, PAD_WIDTH, PAD_HEIGHT, buffer, sub_buffer, 1);
+	blur(padded, PAD_WIDTH, PAD_HEIGHT, buffer, sub_buffer, 0);
 	unpad(padded, PAD_WIDTH, PAD_HEIGHT, imgOut, IMG_WIDTH, IMG_HEIGHT);
-	*/
-	// MUTIRAO
-	/*
+#endif
+
+// MUTIRAO	
+#ifdef PARTE3
 	for(int y = 0; y < IMG_HEIGHT; y++) {
 		for(int x = 0; x < IMG_HEIGHT; x++) {
 			imgOut[y][x] = process_pixel(imgIn[y][x]);
 		}
 	}
-	*/
-	// retorna tempo de processamento em microsegundos us.
-	timeUs = toc();
-	return(timeUs);
+#endif
+
+	return(toc(t0));
 }
 
-// Funcao principal chamada na inicalizacao do uC.
+/************************************************************************/
+/*                                                                      */
+/************************************************************************/
+
 int main(void){
 
 	uint32_t time;            // variavel para armazenar tempo de processamento

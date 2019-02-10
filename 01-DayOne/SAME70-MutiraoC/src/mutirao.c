@@ -35,14 +35,28 @@ static void Button1_Handler(uint32_t id, uint32_t mask)
 /* funcs                                                                 */
 /************************************************************************/
 
+uint32_t tic(void)
+{
+    printf("%d \n" , rtt_read_timer_value(RTT));
+    return (rtt_read_timer_value(RTT));
+}
 
-void tic(void)
+uint32_t toc(uint32_t t0)
+{
+  uint32_t tick, time;
+  tick = rtt_read_timer_value(RTT);
+  time = (int) (1000*((float) (tick - t0)) / 32768.0); //validado! resultado em ms
+  return(time);
+}
+
+// contagem com TC, tem o problema que estoura
+void TCtic(void)
 {
 	tc_start(TC0, 1);
 } 
 
-
-uint32_t toc(void)
+// contagem com TC, tem o problema que estoura
+uint32_t TCtoc(void)
 {
 	uint32_t tick, time;
 	tick = tc_read_cv(TC0, 1);
@@ -60,12 +74,28 @@ void TC1_init(uint32_t freq){
     uint32_t ul_div;
     uint32_t ul_tcclks = 1;
     uint32_t ul_sysclk = sysclk_get_cpu_hz();
-	uint32_t ul_perclk = sysclk_get_peripheral_hz();
+	  uint32_t ul_perclk = sysclk_get_peripheral_hz();
         
     /* Configura o PMC */
     pmc_enable_periph_clk(ID_TC1);    
-	tc_init(TC0, 1, TC_CMR_TCCLKS_TIMER_CLOCK5);
+	  tc_init(TC0, 1, TC_CMR_TCCLKS_TIMER_CLOCK5);
 }	                              
+
+/**
+ * \brief RTT configuration function.
+ *
+ * Configure the RTT to generate a one second tick, which triggers the RTTINC
+ * interrupt.
+ */
+static void RTT_init(void)
+{
+	uint32_t ul_previous_time;
+
+	/* Configure RTT for a 1 second tick interrupt */
+  pmc_enable_periph_clk(ID_RTT);
+	rtt_sel_source(RTT, false);
+	rtt_init(RTT, 1);
+}
 
 /**
  * \brief Configure UART console.
@@ -155,7 +185,8 @@ void initBoardMutirao(){
 		LED_init(0);
 		configure_console();
 		LCD_init();
-		TC1_init(0);
+		//TC1_init(0);
+    RTT_init();
 				
 		/* Enable SDRAMC peripheral clock */
 		pmc_enable_periph_clk(ID_SDRAMC);
@@ -163,7 +194,9 @@ void initBoardMutirao(){
 		/* Complete SDRAM configuration */
 		sdramc_init((sdramc_memory_dev_t *)&SDRAM_ISSI_IS42S16100E,	sysclk_get_cpu_hz());
 		sdram_enable_unaligned_support();
+#ifdef CONF_BOARD_ENABLE_DCACHE
 		SCB_CleanInvalidateDCache();
+#endif
 
 		/* delay para evitar primeira interrupcao do botao 
 			que acontece quando é ativado*/
@@ -199,7 +232,7 @@ void imgShow(ili9488_color_t image[320][320], uint32_t time){
 	if(time > 0){
 		ili9488_set_foreground_color(COLOR_CONVERT(COLOR_TOMATO));
 		char str[128];
-		sprintf(str,"Processado em : %d us", time);
+		sprintf(str,"Processado em: %d ms", time);
 		ili9488_draw_string(5, 410, str);
 	}
 

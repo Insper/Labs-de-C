@@ -13,25 +13,9 @@ float32_t *offset(int width, int height) {
 void pad(ili9488_color_t image[320][320], int img_width, int img_height, float32_t *padded, int pad_width, int pad_height) {
 	int x, y;
 
-	for(y = 0; y < img_height; y++) {
-		for(x = 0; x < img_width; x++) {
-			*padded = image[y][x];
-			padded++;
-			*padded = 0;
-			padded++;
-		}
-
-		for(; x < pad_width; x++) {
-			*padded = 0;
-			padded++;
-			*padded = 0;
-			padded++;
-		}
-	}
-
-	for(; y < pad_height; y++) {
+	for(y = 0; y < pad_height; y++) {
 		for(x = 0; x < pad_width; x++) {
-			*padded = 0;
+			*padded = image[y+32][x+96];
 			padded++;
 			*padded = 0;
 			padded++;
@@ -40,7 +24,7 @@ void pad(ili9488_color_t image[320][320], int img_width, int img_height, float32
 }
 
 
-void copy_row_to_buffer(float32_t *padded, int width, int height, int y, float32_t buffer[1024]) {
+void copy_row_to_buffer(float32_t *padded, int width, int height, int y, float32_t buffer[256]) {
 	padded += y * width * 2;
 
 	for(int x = 0; x < width * 2; x++) {
@@ -49,7 +33,7 @@ void copy_row_to_buffer(float32_t *padded, int width, int height, int y, float32
 	}
 }
 
-void copy_buffer_to_row(float32_t buffer[1024], float32_t *padded, int width, int height, int y) {
+void copy_buffer_to_row(float32_t buffer[256], float32_t *padded, int width, int height, int y) {
 	padded += y * width * 2;
 
 	for(int x = 0; x < width * 2; x++) {
@@ -58,7 +42,7 @@ void copy_buffer_to_row(float32_t buffer[1024], float32_t *padded, int width, in
 	}
 }
 
-void copy_col_to_buffer(float32_t *padded, int width, int height, int x, float32_t buffer[1024]) {
+void copy_col_to_buffer(float32_t *padded, int width, int height, int x, float32_t buffer[256]) {
 	padded += x * 2;
 
 	for(int y = 0; y < height * 2; y += 2) {
@@ -68,7 +52,7 @@ void copy_col_to_buffer(float32_t *padded, int width, int height, int x, float32
 	}
 }
 
-void copy_buffer_to_col(float32_t buffer[1024], float32_t *padded, int width, int height, int x) {
+void copy_buffer_to_col(float32_t buffer[256], float32_t *padded, int width, int height, int x) {
 	padded += x * 2;
 
 	for(int y = 0; y < height * 2; y += 2) {
@@ -78,19 +62,37 @@ void copy_buffer_to_col(float32_t buffer[1024], float32_t *padded, int width, in
 	}
 }
 
-void dft(float32_t x[1024], float32_t X[1024], int N, int sign) {
+float32_t truncate(float32_t angle) {
+	float32_t q = angle / (2 * PI);
+	angle -= ((int) q) * (2 * PI);
+	//if(angle < 0) {
+	//	return 2 * PI - angle;
+	//}
+	//return angle;
+	return 2 * PI - angle;
+}
+
+float32_t mut_sin(float32_t angle) {
+	return arm_sin_f32(truncate(angle));
+}
+
+float32_t mut_cos(float32_t angle) {
+	return arm_cos_f32(truncate(angle));
+}
+
+void dft(float32_t x[256], float32_t X[256], int N, int sign) {
 	for(int k = 0; k < N; k++) {
-		float A = 0;
-		float B = 0;
+		float32_t A = 0;
+		float32_t B = 0;
 
 		for(int n = 0; n < N; n++) {
-			float a = x[2 * n];
-			float b = x[2 * n + 1];
+			float32_t a = x[2 * n];
+			float32_t b = x[2 * n + 1];
 
-			float t = sign * (2 * PI * k * n) / N;
+			float32_t t = truncate(sign * (2 * PI * k * n) / N);
 
-			float s = sin(t);
-			float c = cos(t);
+			float32_t s = mut_sin(t);
+			float32_t c = mut_cos(t);
 
 			A += b * s + a * c;
 			B += b * c - a * s;
@@ -105,11 +107,11 @@ void dft(float32_t x[1024], float32_t X[1024], int N, int sign) {
 	}
 }
 
-void dft_forward(float32_t buffer[1024], float32_t sub_buffer[1024], int length) {
+void dft_forward(float32_t buffer[256], float32_t sub_buffer[256], int length) {
 	dft(buffer, sub_buffer, length, 1);
 }
 
-void dft_inverse(float32_t buffer[1024], float32_t sub_buffer[1024], int length) {
+void dft_inverse(float32_t buffer[256], float32_t sub_buffer[256], int length) {
 	dft(buffer, sub_buffer, length, -1);
 
 	for(int i = 0; i < length * 2; i++) {
@@ -117,15 +119,15 @@ void dft_inverse(float32_t buffer[1024], float32_t sub_buffer[1024], int length)
 	}
 }
 
-void fft_forward(float32_t buffer[1024], float32_t sub_buffer[1024], int length) {
-	arm_cfft_f32(&arm_cfft_sR_f32_len512, buffer, 0, 1);
+void fft_forward(float32_t buffer[256], float32_t sub_buffer[256], int length) {
+	arm_cfft_f32(&arm_cfft_sR_f32_len128, buffer, 0, 1);
 }
 
-void fft_inverse(float32_t buffer[1024], float32_t sub_buffer[1024], int length) {
-	arm_cfft_f32(&arm_cfft_sR_f32_len512, buffer, 1, 1);
+void fft_inverse(float32_t buffer[256], float32_t sub_buffer[256], int length) {
+	arm_cfft_f32(&arm_cfft_sR_f32_len128, buffer, 1, 1);
 }
 
-void blur(float32_t *padded, int width, int height, float32_t buffer[1024], float32_t sub_buffer[1024], int fast) {
+void blur(float32_t *padded, int width, int height, float32_t buffer[256], float32_t sub_buffer[256], int fast) {
 	int x, y;
 
 	// forward transform
@@ -168,7 +170,7 @@ void blur(float32_t *padded, int width, int height, float32_t buffer[1024], floa
 
 			float d = dy * dy + dx * dx;
 
-			float g = 1 - exp(d / variance);
+			float g = exp(d / variance);
 
 			*temp *= g;
 			temp++;
@@ -206,13 +208,10 @@ void blur(float32_t *padded, int width, int height, float32_t buffer[1024], floa
 void unpad(float32_t *padded, int pad_width, int pad_height, ili9488_color_t image[320][320], int img_width, int img_height) {
 	int x, y;
 
-	int delta = 2 * (pad_width - img_width);
-
-	for(y = 0; y < img_height; y++) {
-		for(x = 0; x < img_width; x++) {
-			image[y][x] = min(max(0, (int) round(*padded)), 255);
+	for(y = 0; y < pad_height; y++) {
+		for(x = 0; x < pad_width; x++) {
+			image[y+32][x+96] = min(max(0, (int) round(*padded)), 255);
 			padded += 2;
 		}
-		padded += delta;
 	}
 }

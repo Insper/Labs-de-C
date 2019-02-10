@@ -41,7 +41,8 @@
 #define CONF_BOARD_H_INCLUDED
 
 /* Enable ICache and DCache */
-#define CONF_BOARD_ENABLE_CACHE
+#define CONF_BOARD_ENABLE_DCACHE
+//#define CONF_BOARD_ENABLE_ICACHE
 
 #define CONF_BOARD_UART_CONSOLE
 
