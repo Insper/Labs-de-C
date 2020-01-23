@@ -1,0 +1,79 @@
+site_name: 5s - Mutirao C - Insper Comp
+theme:
+  feature:
+    tabs: true
+  name: 'material'
+  palette:
+      primary: 'white'
+      accent: 'pink'
+  logo:
+      icon: 'developer_board'
+  font:
+    text: Roboto
+    code: Roboto Mono
+
+docs_dir: docs-src
+site_dir: docs
+
+copyright: 'Copyright &copy; 2020 / Marcelo Hashimoto, Igor Montagner, Rafael Corsi, Eduardo Marossi'
+
+repo_name: 'Insper/mutiraoC'
+repo_url: 'https://github.com/insper/mutiraoC'
+edit_uri: 'https://github.com/Insper/mutiraoC/edit/master/docs-src/'
+
+nav:
+- Home: index.md
+#- Sobre-Curso.md
+#- Sobre-Ferramental.md
+- 'Day one':
+    - 'Embarcados':
+        - 'Parte 1': 'day1-embarcados.md'
+        - 'Parte 2': 'day1-embarcados-parte2.md'
+    - 'Sys HW/SW': 'day1-sysHwSw.pdf'
+    - 'Desafios': 'day1-desafios.pdf'
+- 'Labs': 
+    - 'Lab1.md'
+    - 'Lab2.md'
+
+#- Labs:
+#    - 'Lab 1 - IOs':
+#- Avaliações:
+#    - 'AV0 Simulado': 'AV-0-Simulado.md'
+#- Util:
+#    - 'Util-Documentos.md'
+
+# Extensions
+extra_javascript:
+  - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
+markdown_extensions:
+  - markdown.extensions.attr_list
+  - markdown.extensions.admonition
+  - markdown.extensions.codehilite:
+      guess_lang: false
+  - markdown.extensions.def_list
+  - markdown.extensions.footnotes
+  - markdown.extensions.meta
+  - markdown.extensions.toc:
+      permalink: true
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: squidfunk
+      repo: mkdocs-material
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+plugins:
+    - search
