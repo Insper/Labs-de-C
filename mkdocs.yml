@@ -31,8 +31,8 @@ nav:
         - 'Embarcados':
             - 'Parte 1': 'day1-embarcados.md'
             - 'Parte 2': 'day1-embarcados-parte2.md'
-        - 'Sys HW/SW': 'day1-sysHwSw.pdf'
-        - 'Desafios': 'day1-desafios.pdf'
+        - 'Sys HW/SW': https://github.com/Insper/Labs-de-C/blob/master/day-one/day1-sysHwSw.pdf 
+        - 'Desafios': https://github.com/Insper/Labs-de-C/blob/master/day-one/day1-desafios.pdf
     - 'Lab1.md'
     - 'Lab2.md'
     - 'Lab3.md'
