@@ -1,4 +1,4 @@
-# Lab2 - Praticando
+# Lab 2 - Praticando
 
 Agora que praticamos um pouco no papel (de novo, habilidade fundamental para
 qualquer programador), vamos voltar ao computador, mas em um ambiente mais geral

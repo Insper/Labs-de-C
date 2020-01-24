@@ -1,4 +1,4 @@
-site_name: 5s - Mutirao C - Insper Comp
+site_name: 5s - Labs de C - Insper Comp.
 theme:
   feature:
     tabs: true
@@ -17,24 +17,27 @@ site_dir: docs
 
 copyright: 'Copyright &copy; 2020 / Marcelo Hashimoto, Igor Montagner, Rafael Corsi, Eduardo Marossi'
 
-repo_name: 'Insper/mutiraoC'
-repo_url: 'https://github.com/insper/mutiraoC'
-edit_uri: 'https://github.com/Insper/mutiraoC/edit/master/docs-src/'
+repo_name: 'Insper/Labs-de-C'
+repo_url: 'https://github.com/Insper'
+edit_url: 'https://github.com/Insper/Labs-de-C/edit/master/docs-src/'
 
 nav:
 - Home: index.md
 #- Sobre-Curso.md
 #- Sobre-Ferramental.md
-- 'Day one':
-    - 'Embarcados':
-        - 'Parte 1': 'day1-embarcados.md'
-        - 'Parte 2': 'day1-embarcados-parte2.md'
-    - 'Sys HW/SW': 'day1-sysHwSw.pdf'
-    - 'Desafios': 'day1-desafios.pdf'
-- 'Labs': 
+- 'Mutirão':
+    - 'mutirao.md'
+    - 'Super Aula':
+        - 'Embarcados':
+            - 'Parte 1': 'day1-embarcados.md'
+            - 'Parte 2': 'day1-embarcados-parte2.md'
+        - 'Sys HW/SW': 'day1-sysHwSw.pdf'
+        - 'Desafios': 'day1-desafios.pdf'
     - 'Lab1.md'
     - 'Lab2.md'
-
+    - 'Lab3.md'
+    - 'Lab4.md'
+#- Labs:
 #- Labs:
 #    - 'Lab 1 - IOs':
 #- Avaliações:
