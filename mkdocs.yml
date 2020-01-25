@@ -1,5 +1,6 @@
 site_name: 5s - Labs de C - Insper Comp.
 theme:
+  language: 'pt'
   feature:
     tabs: true
   name: 'material'
@@ -7,7 +8,7 @@ theme:
       primary: 'white'
       accent: 'pink'
   logo:
-      icon: 'developer_board'
+      icon: 'code'
   font:
     text: Roboto
     code: Roboto Mono
