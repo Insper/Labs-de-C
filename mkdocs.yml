@@ -49,6 +49,7 @@ nav:
 # Extensions
 extra_javascript:
   - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
+  - 'translate_admonitions.js'
 markdown_extensions:
   - markdown.extensions.attr_list
   - markdown.extensions.admonition
