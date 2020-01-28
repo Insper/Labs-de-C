@@ -21,10 +21,13 @@
 -->
 
 <!-- Application header -->
+<script>
+    window.site_url = "{{ config.site_url }}";
+</script>
 
 <div class="md-printing-header">
-  <img class="cabecalho" src="{{config.site_url}}/css/cabecalho.png">
-  <img class="logo" src="{{config.site_url}}/css/logo.png">
+  <img class="cabecalho" src="{{config.site_url}}css/cabecalho.png">
+  <img class="logo" src="{{config.site_url}}css/logo.png">
 
   <div class="frontmatter">
     <div class="materia"> {{ config.extra.materia }} </div>
