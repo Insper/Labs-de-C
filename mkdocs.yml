@@ -19,6 +19,8 @@ site_dir: docs
 
 copyright: 'Copyright &copy; 2020 / Marcelo Hashimoto, Igor Montagner, Rafael Corsi, Eduardo Marossi'
 
+site_url: https://insper.github.io/Labs-de-C/
+
 repo_name: 'Insper/Labs-de-C'
 repo_url: 'https://github.com/Insper'
 edit_url: 'https://github.com/Insper/Labs-de-C/edit/master/docs-src/'
