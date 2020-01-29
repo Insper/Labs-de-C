@@ -60,9 +60,6 @@ processamento. Yay!
 
 Vejamos o contexto no qual essa função está sendo chamada.
 
-!!!note 
-    NEWPAGE????????????????????????????????????????????
-
 ~~~{.c}
     #ifdef PARTE3
         for(int y = 0; y < IMG_HEIGHT; y++) {
@@ -94,13 +91,13 @@ Para todos os exercícios deste handout, sigam por favor as regras abaixo.
    programa funcionando e validar o código. Não avance no guia até fazer isso,
    para termos certeza que você está passando por todo o processo.
 
-!!! question
+!!! example 
     O valor de um pixel é um número inteiro entre `0` e `255`. Quanto mais alto
     o valor, mais claro é o pixel. Sabendo disso, altere `process_pixel` para
     *negativizar* a imagem, ou seja, transformar pixels claros em escuros e
     vice-versa.
 
-!!! question
+!!! example
     Agora altere `process_pixel` para *escurecer* a imagem: cada pixel deve
     ficar com a metade de sua luminosidade original.
 
@@ -122,7 +119,7 @@ Antes do próximo exercício, uma dica! A sintaxe de `if/else` em C, para variar
 
 Sabendo disso...
 
-!!! question
+!!! example
     Altere `process_pixel` para receber um segundo parâmetro, também inteiro, e
     *limiarizar* a imagem:
 
@@ -136,13 +133,13 @@ Sabendo disso...
     para evitar erros de compilação. Passe `127` como o segundo parâmetro da
     chamada.
 
-!!! question
+!!! example
     Altere `process_pixel` para manipular o *brilho* da imagem: use o segundo
     parâmetro, adicionado no exercício anterior, como um valor que é *somado* ao
     pixel. Faça vários testes, passando múltiplos valores como o segundo
     parâmetro da chamada.
 
-!!! question
+!!! example
     Altere `process_pixel` para manipular o *contraste* da imagem: use o segundo
     parâmetro como um valor que *multiplica* o pixel. Novamente, faça vários
     testes, passando múltiplos valores como o segundo parâmetro da chamada.
@@ -153,13 +150,17 @@ básica de funções. Agora vamos sair do Atmel!
 
 ## Exercícios Intermediários
 
+!!! warning ""
+    Lembrete: Para cada questão, validar a resposta com um dos professores antes de
+    continuar para a próxima.
+
 Aliás, não apenas do Atmel... vamos sair do *computador* por alguns instantes e
 fazer os próximos exercícios no papel. É muito importante que, pelo menos nesse
 começo, você não fique excessivamente dependente do computador e da IDE. Saiba
 fazer pelo menos o básico sozinho, pois isso faz muita diferença na
 produtividade.
 
-!!! question
+!!! question short
     Como esperado, a sintaxe de `while` em C também é como em Java. Sabendo
     disso, considere o código abaixo, que calcula a soma dos números de `1` a
     `10`.
@@ -175,42 +176,30 @@ produtividade.
         }
     ~~~
 
-    Ou melhor, que *deveria* calcular a soma dos números de `1` a `10`. Qual é o
-    problema com esse código?
+    Ou melhor, que *deveria* calcular a soma dos números de `1` a `10`.
+    
+    1. Qual é o problema com esse código?
+    
+    1. Reescreva o código, evitando os três problemas acima.
 
-!!! warning
-    Não continuem antes de validar suas respostas com um dos
-    professores. Esse tipo de exercício será avaliado ao longo do semestre.
+    ??? note "Solução" 
 
-!!!note 
-    NEWPAGE????????????????????????????????????????????
+        Podemos identificar no código os três problemas abaixo.
 
-Podemos identificar no código os três problemas abaixo.
+        1. A variável `s` não é inicializada. Em Java, o valor padrão de uma variável
+          `int` é `0`, mas em C essa garantia não existe! De fato, uma variável em C é
+          inicializada com *lixo de memória*, ou seja, um valor baseado nos *bits* que
+          já estavam escritos no pedaço de memória que foi reservado para a variável.
+          Esses bits são totalmente imprevisíveis!
 
-1. A variável `s` não é inicializada. Em Java, o valor padrão de uma variável
-   `int` é `0`, mas em C essa garantia não existe! De fato, uma variável em C é
-   inicializada com *lixo de memória*, ou seja, um valor baseado nos *bits* que
-   já estavam escritos no pedaço de memória que foi reservado para a variável.
-   Esses bits são totalmente imprevisíveis!
+        2. Se a condição do `while` é `i < 10`, então o último valor de `i` somado a `s`
+          é `9` e não `10`. A soma está incompleta!
 
-2. Se a condição do `while` é `i < 10`, então o último valor de `i` somado a `s`
-   é `9` e não `10`. A soma está incompleta!
+        3. A variável `i` deveria ter sido inicializada com o valor `1`. A rigor, esse
+          problema não torna o código *incorreto*, pois a soma de `0` é inócua, mas
+          torna o código *ineficiente*, pois uma iteração é desperdiçada.
 
-3. A variável `i` deveria ter sido inicializada com o valor `1`. A rigor, esse
-   problema não torna o código *incorreto*, pois a soma de `0` é inócua, mas
-   torna o código *ineficiente*, pois uma iteração é desperdiçada.
-
-!!! question
-    Reescreva o código, evitando os três problemas acima.
-
-!!! warning 
-    Não continuem antes de validar suas respostas com um dos
-    professores. Esse tipo de exercício será avaliado ao longo do semestre.
-
-!!!note 
-    NEWPAGE????????????????????????????????????????????
-
-!!! question 
+!!! question short
     Considere agora o código abaixo, que deveria calcular a *metade* da soma dos
     números de `1` a `10`.
 
@@ -226,72 +215,66 @@ Podemos identificar no código os três problemas abaixo.
       }
     ~~~
 
-    Qual é o problema com esse código?
+    1. Qual é o problema com esse código?
 
-!!! warning 
-    Não continuem antes de validar suas respostas com um dos
-    professores. Esse tipo de exercício será avaliado ao longo do semestre.
+    ??? note "Solução"
+        Quando os dois parâmetros do operador `/` são inteiros, o resultado também é um
+        inteiro. Se a divisão não for exata, *a parte fracionária é truncada*. Isso
+        significa que o que deveria ser a soma de `0.5`, `1`, `1.5`, `2`, `2.5`, etc. é
+        na verdade a soma de `0`, `1`, `1`, `2`, `2`, etc.
 
-!!!note 
-    NEWPAGE????????????????????????????????????????????
+        Para resolver isso, precisamos primeiramente declarar `s` como `double`,
+        permitindo a essa variável representar números reais... adivinhem... como em
+        Java.
 
-Quando os dois parâmetros do operador `/` são inteiros, o resultado também é um
-inteiro. Se a divisão não for exata, *a parte fracionária é truncada*. Isso
-significa que o que deveria ser a soma de `0.5`, `1`, `1.5`, `2`, `2.5`, etc. é
-na verdade a soma de `0`, `1`, `1`, `2`, `2`, etc.
+        ~~~{.c}
+            double s = 0;
+            int i;
 
-Para resolver isso, precisamos primeiramente declarar `s` como `double`,
-permitindo a essa variável representar números reais... adivinhem... como em
-Java.
+            i = 1;
+            while(i <= 10) {
+                s += i / 2;
 
-~~~{.c}
-    double s = 0;
-    int i;
+                i++;
+            }
+        ~~~
 
-    i = 1;
-    while(i <= 10) {
-        s += i / 2;
+        Mas isso não é suficiente! Não adianta `s` poder armazenar reais se o que ela
+        recebe de `/` são inteiros. Precisamos também garantir que `/` devolve um real,
+        e isso acontece se pelo menos um dos dois números envolvidos na divisão é
+        reconhecido como real.
 
-        i++;
-    }
-~~~
+        Existem duas maneiras simples de conseguir esse reconhecimento. O primeiro é
+        simplesmente substituir `2` por `2.0`. A existência de uma parte fracionária,
+        mesmo sendo zero, simboliza que o número é real.
 
-Mas isso não é suficiente! Não adianta `s` poder armazenar reais se o que ela
-recebe de `/` são inteiros. Precisamos também garantir que `/` devolve um real,
-e isso acontece se pelo menos um dos dois números envolvidos na divisão é
-reconhecido como real.
+        ~~~{.c}
+            double s = 0;
+            int i;
 
-Existem duas maneiras simples de conseguir esse reconhecimento. O primeiro é
-simplesmente substituir `2` por `2.0`. A existência de uma parte fracionária,
-mesmo sendo zero, simboliza que o número é real.
+            i = 1;
+            while(i <= 10) {
+                s += i / 2.0;
 
-~~~{.c}
-    double s = 0;
-    int i;
+                i++;
+            }
+        ~~~
 
-    i = 1;
-    while(i <= 10) {
-        s += i / 2.0;
+        O segundo é fazer um *casting* de `i` para `double` antes da divisão. Lembram do
+        conceito de casting? Significa pedir para o programa interpretar uma variável
+        como sendo de certo tipo.
 
-        i++;
-    }
-~~~
+        ~~~{.c}
+            double s = 0;
+            int i;
 
-O segundo é fazer um *casting* de `i` para `double` antes da divisão. Lembram do
-conceito de casting? Significa pedir para o programa interpretar uma variável
-como sendo de certo tipo.
+            i = 1;
+            while(i <= 10) {
+                s += (double) i / 2;
 
-~~~{.c}
-    double s = 0;
-    int i;
+                i++;
+            }
+        ~~~
 
-    i = 1;
-    while(i <= 10) {
-        s += (double) i / 2;
-
-        i++;
-    }
-~~~
-
-Note que um casting de `int` para `double` é praticamente inócuo, mas no casting
-de `double` para `int` perde-se a informação fracionária.
+        Note que um casting de `int` para `double` é praticamente inócuo, mas no casting
+        de `double` para `int` perde-se a informação fracionária.

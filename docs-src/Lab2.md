@@ -102,7 +102,7 @@ tipo do valor. A letra `d` (de "decimal") representa `int`, enquanto as letras
 
 Antes de apresentar outros conceitos, vamos praticar um pouco no ambiente.
 
-!!! question
+!!! example
     ```c
     int s;
     int i;
@@ -121,7 +121,7 @@ Antes de apresentar outros conceitos, vamos praticar um pouco no ambiente.
     Rode o código corrigido no ambiente online, e faça ele imprimir o resultado
     com `printf()`
 
-!!! question
+!!! example
     ```c
     int s = 0;
     int i;
@@ -171,9 +171,6 @@ Preparados para um exemplo mais avançado? O próximo mostra de uma só vez:
 
 * implementação e chamada de uma função própria.
 
-!!!note 
-    NEWPAGE????????????????????????????????????????????
-
 ~~~{.c}
     #include <stdio.h>
     #include <math.h>
@@ -217,10 +214,10 @@ verdade, não foi um acidente...
     Qual é o problema no código acima? A dica já está dada: para ser resolvido,
     precisamos usar `PI`...
 
-!!! question
+!!! example
     Resolva o problema!
 
-!!! warning
+!!! warning ""
     Não continue antes de validar suas respostas com um dos
     professores. Esse tipo de exercício será avaliado ao longo do semestre.
 
@@ -230,16 +227,16 @@ verdade, não foi um acidente...
 Mesmo que não dê tempo de fazer esses exercícios em sala, é muito importante
 que você os faça até quarta para desenferrujar programação e praticar C.
 
-!!! question
+!!! example
     Escreva uma função que recebe um inteiro e devolve o *módulo* desse inteiro.
 
-!!! question
+!!! example
     Escreva uma função que recebe quatro inteiros, representando as coordenadas
     de dois pontos no plano cartesiano, e devolve a *distância de Manhattan*
     (pesquise) entre esses pontos. Vocês já fiazeram esse exercício em
     *Desenvolvimento Colaborativo Ágil*.
 
-!!! question
+!!! example
     Escreva uma função que recebe um inteiro *n* e, para cada inteiro *i* entre
     *1* e *n*, imprime uma string conforme a seguinte regra:
 
@@ -253,7 +250,7 @@ que você os faça até quarta para desenferrujar programação e praticar C.
 
     Escreva duas versões: uma usando `while`s e outra usando `for`s.
 
-!!! question
+!!! example
     Escreva uma função que recebe um inteiro *n* e imprime uma "arvorezinha"
     conforme a regra abaixo.
     
