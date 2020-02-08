@@ -1,11 +1,13 @@
 # Lab 1 - Conceitos Básicos
 
-!!! note 
+!!! note
     Por favor, façam esta atividade **em dupla**.
 
 !!! note
-    Esse laboratório deve ser realizado com a mesma infra do day-one: AtmelStudio, kit de desenvolvimento de embarcados e LCD.
-    
+
+    Esse laboratório deve ser realizado com a mesma infra do day-one:
+    AtmelStudio, kit de desenvolvimento de embarcados e LCD.
+
 ## Introdução
 
 Não é fácil prever o quanto a linguagem C será uma novidade para vocês. Por um
@@ -91,7 +93,7 @@ Para todos os exercícios deste handout, sigam por favor as regras abaixo.
    programa funcionando e validar o código. Não avance no guia até fazer isso,
    para termos certeza que você está passando por todo o processo.
 
-!!! example 
+!!! example
     O valor de um pixel é um número inteiro entre `0` e `255`. Quanto mais alto
     o valor, mais claro é o pixel. Sabendo disso, altere `process_pixel` para
     *negativizar* a imagem, ou seja, transformar pixels claros em escuros e
@@ -177,12 +179,12 @@ produtividade.
     ~~~
 
     Ou melhor, que *deveria* calcular a soma dos números de `1` a `10`.
-    
+
     1. Qual é o problema com esse código?
-    
+
     1. Reescreva o código, evitando os três problemas acima.
 
-    ??? note "Solução" 
+    ??? note "Solução"
 
         Podemos identificar no código os três problemas abaixo.
 
