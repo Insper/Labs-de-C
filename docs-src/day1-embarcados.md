@@ -46,9 +46,10 @@ Conectar o USB do programador no computador:
  
 ### AtmelStudio
  
-Abra o projeto exemplo (`SAME70-MutiraoC`) localizado no repositório do mutirão
+Abra o projeto exemplo (`SAME70-MutiraoC`) localizado no repositório do 'Labs-de-C':
 
-- `http://github.com/insper/MutiraoC/01-DayOne/SAEM70-MutiraoC`
+- https://github.com/Insper/Labs-de-C/tree/master/day-one/SAME70-MutiraoC
+
 
 O projeto irá abrir na IDE do AtmelStudio como imagem a seguir:
     
