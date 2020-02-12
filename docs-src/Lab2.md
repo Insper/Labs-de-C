@@ -9,9 +9,11 @@ para terça e na primeira aula de quarta, mas por enquanto vamos usar um mais
 simples, que não exige instalação.
 
 !!! note ""
-    Entre no site `https://www.onlinegdb.com/online_c_compiler`.
+    Entre no site https://www.onlinegdb.com/online_c_compiler.
     Como mencionado, esse ambiente é muito simples: vamos apenas
     digitar o código e rodá-lo através do botão verde "Run".
+    
+    - Se o site estiver lento, tente esse outro: https://repl.it/
 
 !!! warning
     Nesse exercício não é necessário esperar a validação de um professor.
@@ -91,8 +93,8 @@ tipo do valor. A letra `d` (de "decimal") representa `int`, enquanto as letras
     #include <stdio.h>
 
     int main() {
-        double n = 1;
-        double m = 2;
+        double n = 1.2;
+        double m = 2.1;
 
         printf("Hello World: %lf, %lf", n, m);
 
@@ -236,6 +238,33 @@ que você os faça até quarta para desenferrujar programação e praticar C.
     (pesquise) entre esses pontos. Vocês já fiazeram esse exercício em
     *Desenvolvimento Colaborativo Ágil*.
 
+ Assim como o `for` padrão do Java, o `for` do C não funciona como o `for` do Python.
+Na verdade, é apenas um "açúcar sintático" que facilita a escrita de loops:
+
+~~~{.c}
+    for(i = 0; i < 10; i++) {
+        instrução
+        instrução
+        ...
+    }
+~~~
+
+equivale a
+
+~~~{.c}
+    i = 0;
+    while(i < 10) {
+        instrução
+        instrução
+        ...
+        i++;
+    }
+~~~
+
+Em Java existe o *enhanced for*, que é mais parecido com o `for` do Python, mas
+não existe uma equivalência disso em C. Bem-vindos ao baixo nível! Não temos
+bolo, mas temos os ingredientes para você fazer um bolo.
+
 !!! example
     Escreva uma função que recebe um inteiro *n* e, para cada inteiro *i* entre
     *1* e *n*, imprime uma string conforme a seguinte regra:
@@ -275,32 +304,3 @@ que você os faça até quarta para desenferrujar programação e praticar C.
     ```
     e assim em diante para *n = 4, 5, 6...*.
 
-## Apêndice
-
-O `for` não foi abordado neste guia, mas será usado nas próximas aulas. Assim
-como o `for` padrão do Java, o `for` do C não funciona como o `for` do Python.
-Na verdade, é apenas um "açúcar sintático" que facilita a escrita de loops:
-
-~~~{.c}
-    for(i = 0; i < 10; i++) {
-        instrução
-        instrução
-        ...
-    }
-~~~
-
-equivale a
-
-~~~{.c}
-    i = 0;
-    while(i < 10) {
-        instrução
-        instrução
-        ...
-        i++;
-    }
-~~~
-
-Em Java existe o *enhanced for*, que é mais parecido com o `for` do Python, mas
-não existe uma equivalência disso em C. Bem-vindos ao baixo nível! Não temos
-bolo, mas temos os ingredientes para você fazer um bolo.
