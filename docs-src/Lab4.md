@@ -50,18 +50,18 @@ scanf("%ld", &vetor[0]);
 
 
 !!! question long 
-    O código acima está no arquivo */code/lab4/erro_comum1.c*. Compile e execute ele. Os resultados foram os esperados? Se não, você consegue explicar por que eles foram diferentes?
+    O código acima está no arquivo `/Lab4/erro_comum1.c`. Compile e execute ele. Os resultados foram os esperados? Se não, você consegue explicar por que eles foram diferentes?
 
+??? note "Resposta"
+    Como podemos ver, o código compila, mas seu comportamento é indefinido por duas razões:
 
-Como podemos ver, o código compila, mas seu comportamento é indefinido por duas razões:
-
-1. O vetor não é inicializado com 0 quando é criado. 
-1. A posição `vetor[5]` não é válida e pode resultar na leitura de dados inválidos da memória.
+    1. O vetor não é inicializado com 0 quando é criado. 
+    1. A posição `vetor[5]` não é válida e pode resultar na leitura de dados inválidos da memória.
 
 !!! tip
     Diferentemente de outras linguagens, *C* não verifica os índices automaticamente nem inicializa o elementos do vetor com 0. Além disto, não é possível obter o tamanho de um vetor a partir de seu nome.
 
-Um ponto importante é que o sistema de tipos não permite a conversão/passagem de vetores do mesmo tipo mas de tamanhos diferentes. Assim, a função abaixo não aceitaria como argumento a variável `double arr[4]`, pois só aceita vetores de tamanho 3.
+Um ponto importante é que o sistema de tipos não permite a conversão/passagem de vetores do mesmo tipo, mas com tamanhos diferentes. Assim, a função abaixo não aceitaria como argumento a variável `double arr[4]`, pois só aceita vetores de tamanho 3.
 
 ~~~{.c}
 double soma(double arr[3]) {
@@ -80,7 +80,7 @@ double soma(double arr[], int n);
 ~~~
 
 !!! example 
-    Trabalharemos com o arquivo `code/lab4/soma.c`. Abra-o e implemente, no local indicado, a função `soma` com a assinatura acima. Lembre-se que em *C* arrays não conhecem seu tamanho, então é de sua responsabilidade acessar somente elementos válidos e checar se o vetor não está vazio (ou seja, `n < 1`)
+    Trabalharemos com o arquivo `Lab4/soma.c`. Abra-o e implemente, no local indicado, a função `soma` com a assinatura acima. Lembre-se que em *C* arrays não conhecem seu tamanho, então é de sua responsabilidade acessar somente elementos válidos e checar se o vetor não está vazio (ou seja, `n < 1`)
  
  
 !!! question short
@@ -92,7 +92,10 @@ double soma(double arr[], int n);
 
 Como visto na expositiva, strings são arrays de caracteres sendo que o último elemento da string contém um caractere `'\0'`. Logo, uma string declarada como `char str[100]` pode guardar strings de **até 99** caracteres (mais 1 para o `'\0'`). Se a string tiver comprimento menor o restante das posições simplesmente não é utilizado.
 
-![String é um vetor de `char` terminado em `'\0'`.](imgs/day4-arrays/mem-str.png)
+![String é um vetor de `char` terminado em `'\0'`.](imgs/Lab4/mem-str.svg)
+
+!!! note
+    Em C podemos usar: `\0`, `NULL`, e `0` para representar a mesma coisa!
 
 !!! tip 
     Uma *string* em *C* nada mais é do que um *array* do tipo `char` cujo último elemento é um `\0`. 
@@ -117,8 +120,11 @@ printf("hello %s\n", str);
 Já a leitura de strings é feita usando a função *fgets*, que recebe um array de `char` com tamanho `n` e lê até `n-1` caracteres de um arquivo ou do terminal. *fgets* para quando encher o vetor ou quando encontrar uma quebra de linha `\n`. No exemplo abaixo, `stdin` (*Standard Input*) representa o terminal. 
 
 ~~~{.c}
-char str[10];
-fgets(str, 10, stdin); // precisamos passar o tamanho máximo + 1 da nossa string. 
+#define STRING_LEN 10          // Tamanho da string 0..9
+
+char str[STRING_LEN];
+fgets(str, STRING_LEN, stdin); // precisamos passar o tamanho máximo
+                               // + 1 da nossa string. 
 ~~~
 
 !!! question short
