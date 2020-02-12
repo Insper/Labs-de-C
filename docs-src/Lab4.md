@@ -231,7 +231,7 @@ W H
 .........
 ~~~
 
-Ou seja, primeiro lemos uma linha com a string "P2", depois dois inteiros `w` e `h` representando a largura e a altura da imagem, depois o valor 255. Então lemos `w * h` valores representando os pixels da imagem. Disponibilizamos várias imagens de exemplo na pasta *exemplos*. Vocês podem abrí-las com qualquer editor de texto para ver seu conteúdo. 
+Ou seja, primeiro lemos uma linha com a string "P2", depois dois inteiros `w` e `h` representando a largura e a altura da imagem, depois o valor 255. Então lemos `w * h` valores representando os pixels da imagem. Disponibilizamos várias imagens de exemplo na pasta [/Lab4/exemplos](https://github.com/Insper/Labs-de-C/tree/master/Lab4/exemplos). Vocês podem abrí-las com qualquer editor de texto para ver seu conteúdo. 
 
 !!! warning 
     Nas tarefas abaixo estamos supondo que você usa `<` para passar o conteúdo das imagens exemplo para seu programa no terminal e `>` para salvar o resultado do terminal em uma nova imagem *pgm*.
