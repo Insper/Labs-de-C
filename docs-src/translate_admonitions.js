@@ -1,5 +1,5 @@
 let en_pt = {
-    "Note": "Aviso",
+    "Note": "Nota",
     "Tip": "Dica",
     "Question": "Pergunta",
     "Warning": "Cuidado",

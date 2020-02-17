@@ -43,13 +43,10 @@ nav:
     - 'Lab4.md'
     - 'Lab5.md'
     - 'Lab6.md'
-#- Labs:
-#- Labs:
-#    - 'Lab 1 - IOs':
-#- Avaliações:
-#    - 'AV0 Simulado': 'AV-0-Simulado.md'
-#- Util:
-#    - 'Util-Documentos.md'
+    - 'Avaliação exemplo': 'https://github.com/Insper/Labs-de-C/raw/master/SimuladoAvalia%C3%A7%C3%A3o.pdf'
+
+- Labs:
+    - 'Lab7.md'
 
 # Extensions
 extra_javascript:

@@ -11,7 +11,7 @@ Vamos neste roteiro revisar os conceitos dos dois roteiros anteriores fazendo mo
 !!! example
     Modifique sua função `le_imagem` que carrega o conteúdo de uma imagem do terminal e escreve em uma estrutura `imagem`. Quais parâmetros sua função recebe?
     
-!!example  
+!!! example  
     Modifique sua função `escreve_imagem` para receber um tipo `imagem`. Você deve usar apontadores nesta função?
     
 !!! example
