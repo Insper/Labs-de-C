@@ -2,7 +2,7 @@ let en_pt = {
     "Note": "Nota",
     "Tip": "Dica",
     "Question": "Pergunta",
-    "Warning": "Cuidado",
+    "Warning": "Atenção",
     "Example": "Tarefa"
 };
 

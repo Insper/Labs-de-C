@@ -1,7 +1,7 @@
 # Lab 7 - Manipulando bits
 
-!!! note
-    Esse lab. considera o GCC como compilador.
+!!! warning
+    Esse lab deve ser realizado no Linux.
 
 Na linguagem `C` a menor unidade de armazenamento existente é a do `char`, que possui 8 bits. Mesmo sendo considerada de 'baixo nível' não possuímos uma maneira 'built-in' na linguagem de armazenar e/ou processar um único `bit`. Alguns compiladores para sistemas embarcados fornecem um tipo bit, porém isso é exclusivo dessas plataformas.
 
@@ -32,7 +32,29 @@ A manipulação de bits é muito importante quando utilizamos a linguagem para: 
 3. usar máscaras de bits para sets bits específicos em um inteiro 32 bits
 4. usar máscaras de bits para checar se bits específicos estão ligados
 
-## Rodando o lab
+## Começando
 
-Você deverá modificar o arquivo 
+O lab está localizado na pasta: `code/07-bits-1/` e contém os seguintes arquivos:
 
+- `exercicios.c`: Arquivo em C que deve ser editado
+- `Makefile`: Arquivo de configuração e execução do lab
+
+O lab possui teste unitário para as funções que deverão ser desenvolvidas, para
+executar os testes basta abrir o terminal na pasta e executar o comando `make`.
+
+```bash
+cd code/07-bits-1/
+make
+```
+
+Você deve implementar as funções de forma sequencial, sendo a primeira a que aparece no começo do arquivo `exercicio.c`. Leia os comentários do código para entender. 
+
+!!! tip 
+    Teste o código para cada função feita, não deixe acumular.
+
+## Submetendo
+
+Ao terminal o lab você deve dar um `push` no seu repositório.
+
+!!! warning
+    Todos os testes devem estar passando para considerar a entrega concluída.
