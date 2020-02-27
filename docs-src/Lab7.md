@@ -25,44 +25,14 @@ Na linguagem `C` a menor unidade de armazenamento existente é a do `char`, que 
     
     > fonte: http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.dui0491c/Babfcgfc.html
 
-A manipulação de bits é muito importante quando utilizamos a linguagem para: interagir com o hardware; verificar e manipular tipos; otimizações. Por exemplo, imagine uma função que recebe um `unsigned int` que possui um pixel codificado no formato `RGB` (8 bits de Vermelho (R), 8 bits de Verde (G) e 8 bits de Azul (B)) e deseja retornar um `unsigned char` (8 bits) que possui apenas o valor correspondente da cor Verde.
+A manipulação de bits é muito importante quando utilizamos a linguagem para: interagir com o hardware; verificar e manipular tipos; otimizações. Os objetivos deste lab são
 
+1. obter familiaridade com as operações bitwise em *C*
+2. aplicá-las para resolver problemas envolvendo múltiplas operações
+3. usar máscaras de bits para sets bits específicos em um inteiro 32 bits
+4. usar máscaras de bits para checar se bits específicos estão ligados
 
-```c
-unsigned char get_green(unsigned int px)
-```
+## Rodando o lab
 
-Conforme demonstrado na figura a seguir:
+Você deverá modificar o arquivo 
 
-![](imgs/Lab7/get_red.svg){width=500}
-
-Como realizar isso em C? O segredo será manipular os bits de entrada deslocandoos para direita 16 bits:
-
-![](imgs/Lab7/get_red2.svg){width=400}
-
-No deslocamento (`shift`) os bits que 'saem' são descartados e os que 'entram' para formar a nova palavrão são sempre `0`. No exemplo anterior estamos visualizando o deslocamento de blocos de 8 bits, porém em C só conseguimos mover blocos de `1 bit`. Para isso, iremos usar o operador `>>` que possui a esquerda a palavra que será deslocada e a direita a quantidade de bits que serão movidos. 
-
-Utilizando o conceito de shift, a função `get_red` possui a seguinte implementação:
-
-```c
-unsigned char get_green(unsigned int px){
-    return(px >> 16);
-}
-```
-
-> Para evitar warnings de type cast seria necessário usar: `return((unsigned char) (px >> 16))`, mas optamos pode deixar o exemplo na forma mais simples.`
-
-## Operadores binário (Bitwise)
-
-Em C possuímos os seguintes operadores binários:
-
-!!! note ""
-     Considerar para os exemplos a seguir:
-    
-     - A = `0011 1100`
-     - B = `0000 1101` 
-
-| Operador | Descrição                                               | Exemplo                           |
-|----------|---------------------------------------------------------|-----------------------------------|
-| `&`      | Realiza a operação `AND` bit a bit                      | `A & B` :arrow_right: `0000 1100` |
-| `|`        | Realiza a operação `OR` bit a bit                        | `A | B` :arrow_right: `0011 1101`      |
