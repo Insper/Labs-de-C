@@ -110,7 +110,7 @@ int bgr_to_rgb(unsigned int bgr) {
 int main() {
 
     printf("blue\n=======================\n");
-    assert(blue(0)==0);
+    assert(blue(0)==2);
     assertEquals("preto",   blue(0x00000000), 0);
     assertEquals("branco",  blue(0x00FFFFFF), 0xFF);
     assertEquals("amarelo", blue(0x0000FFFF), 0xFF);
