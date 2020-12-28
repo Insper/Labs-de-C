@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <assert.h>
 
 int com_erro = 0;
 
@@ -34,10 +35,11 @@ int com_erro = 0;
    o comportamento de alguma delas veja seus testes.
 */
 
-/* As funções abaixo devem extrair os bits correspondente a cada
-   cor do inteiro 32 bits e retornar este valor.
-
-   Para exemplos veja os testes na função main.
+/*
+ * As funções abaixo devem extrair os bits correspondente a cada
+ *  cor do inteiro 32 bits e retornar este valor.
+ *
+ *  Para exemplos veja os testes na função main.
 */
 
 unsigned char blue(int rgb) {
@@ -108,6 +110,7 @@ int bgr_to_rgb(unsigned int bgr) {
 int main() {
 
     printf("blue\n=======================\n");
+    assert(blue(0)==0);
     assertEquals("preto",   blue(0x00000000), 0);
     assertEquals("branco",  blue(0x00FFFFFF), 0xFF);
     assertEquals("amarelo", blue(0x0000FFFF), 0xFF);
