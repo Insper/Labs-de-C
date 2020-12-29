@@ -1,16 +1,7 @@
 #include <stdio.h>
+#include "teste.h"
 
 int com_erro = 0;
-
-# define assertEquals(str, a, b) { \
-            if ((a) == (b)) { \
-                printf("\033[38;5;2mPASS: \033[38;5;15m%s\n", str); \
-            } else { \
-                printf("\033[38;5;1mFAIL: \033[38;5;15m%s  ", str); \
-                printf("Obtido: %08X / Esperado: %08X \n", a, b); \
-                com_erro = -1; \
-            } \
-        }
 
 /* Os exercícios abaixo codificam uma cor em um inteiro de 32 bits.
    Veja o exemplo abaixo.
@@ -108,7 +99,7 @@ int bgr_to_rgb(unsigned int bgr) {
 
 int main() {
 
-    printf("blue\n=======================\n");
+    printf("\n\nblue\n=======================\n");
     assertEquals("preto",   blue(0x00000000), 0);
     assertEquals("branco",  blue(0x00FFFFFF), 0xFF);
     assertEquals("amarelo", blue(0x0000FFFF), 0xFF);
@@ -146,6 +137,8 @@ int main() {
 
     int_to_rgb(0x0000FFFF, &r, &g, &b);
     assertEquals("amarelo", r == 0 && g == 255 && b == 255, 1);
+
+    int x;
 
     int_to_rgb(0x00FFFF00, &r, &g, &b);
     assertEquals("laranja", r == 255 && g == 255 && b == 0, 1);

@@ -1,4 +1,4 @@
-name: C/C++ CI
+name: C tests
 
 on:
   push:
@@ -15,4 +15,4 @@ jobs:
     - uses: actions/checkout@v2
     
     - name: test-7
-      run: make -C code
+      run: make -C code/07-bits/ run
