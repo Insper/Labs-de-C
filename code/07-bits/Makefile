@@ -2,9 +2,7 @@ SHELL = /bin/bash
 TARGET = exercicios
 INFRA_DIR := ../infra/
 
-CPPCHECK := 0
-
-all: log astyle cppcheck run
+all: log astyle-check cpp-check run
 
 run: $(TARGET)
 	@./$(TARGET); exit "$$?"
@@ -16,13 +14,13 @@ $(TARGET): exercicios.o
 
 log:
 	@git add exercicios.c > /dev/null
-	@git commit -m "Tentativa de resolução: lab 7." > /dev/null
+	@git commit -m "Tentativa de resolução: " $(basename $(PWD)) > /dev/null
 
-cppcheck:
+cpp-check:
 	$(INFRA_DIR)check-cppcheck.sh .
 
-astyle: $(wildcard *.c)
-	@astyle --style=java $<
+astyle-check: $(wildcard *.c)
+	$(INFRA_DIR)check-astyle.sh $^
 
 clean:
 	rm -f $(TARGET) *.a *.o *~

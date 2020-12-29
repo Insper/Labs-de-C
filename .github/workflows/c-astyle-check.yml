@@ -1,4 +1,4 @@
-name: Cppcheck
+name: astyle
 
 on:
   push:
@@ -13,6 +13,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    
+
+    - name: Install dep
+      run: sudo apt install astyle
+
     - name: test-7
-      run: make -C code/07-bits/ cppcheck
+      run: make -C code/07-bits/ astyle-check

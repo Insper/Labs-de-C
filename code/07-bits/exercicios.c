@@ -32,7 +32,8 @@ int com_erro = 0;
  *  Para exemplos veja os testes na função main.
 */
 
-unsigned char blue(int rgb) {
+unsigned char blue(int rgb)
+{
     return 0;
 }
 
