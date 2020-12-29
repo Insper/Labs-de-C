@@ -4,7 +4,7 @@ INFRA_DIR := ../infra/
 
 CPPCHECK := 0
 
-all: log run
+all: log astyle cppcheck run
 
 run: $(TARGET)
 	@./$(TARGET); exit "$$?"
@@ -20,6 +20,9 @@ log:
 
 cppcheck:
 	$(INFRA_DIR)check-cppcheck.sh .
+
+astyle: $(wildcard *.c)
+	@astyle --style=java $<
 
 clean:
 	rm -f $(TARGET) *.a *.o *~
