@@ -33,15 +33,15 @@ int com_erro = 0;
 */
 
 unsigned char blue(int rgb) {
-  return 0;
+    return 0;
 }
 
 unsigned char green(int rgb) {
-  return 0;
+    return 0;
 }
 
 unsigned char red(int rgb) {
-  return 0;
+    return 0;
 }
 
 /* ------------------------------------ */
@@ -52,7 +52,7 @@ unsigned char red(int rgb) {
 */
 
 int rgb_to_int(unsigned char r, unsigned char g, unsigned char b) {
-  return 0;
+    return 0;
 }
 
 /*
@@ -72,11 +72,11 @@ void int_to_rgb(int rgb, unsigned char *r, unsigned char *g, unsigned char *b) {
 */
 
 int zera_vermelho(int rgb) {
-  return 0;
+    return 0;
 }
 
 int verde_255(int rgb) {
-  return 0;
+    return 0;
 }
 
 /*
@@ -90,7 +90,7 @@ int verde_255(int rgb) {
 */
 
 int bgr_to_rgb(unsigned int bgr) {
-  return 0;
+    return 0;
 }
 
 /* ------------------------------------ */
