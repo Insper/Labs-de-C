@@ -1,33 +1,58 @@
 # Lab 1 - Conceitos Básicos
 
-!!! note
-    Por favor, façam esta atividade **em dupla**.
+| Pasta                | Arquivo  |
+|----------------------|----------|
+| `code/01-intro` | `main.c` |
 
-!!! note
+!!! info "Infra"
+    - Linux
+    - `sudo apt install build-essential`
 
-    Esse laboratório deve ser realizado com a mesma infra do day-one:
-    AtmelStudio, kit de desenvolvimento de embarcados e LCD.
-
-## Introdução
+!!! tip "Testando"
+    No terminal do Linux dentro da pasta `code/01-intro` execute o comando: `make`, se tudo der certo, o programa carrega a imagem: `deepak-kumar-rX9uFci3pfY-unsplash.pgm` e gera a imagem `image-out.pgm`.
 
 Não é fácil prever o quanto a linguagem C será uma novidade para vocês. Por um
 lado, a sintaxe é muito parecida com Java. Por outro lado, existem diferenças
 importantes e vocês estão longe de Java há mais ou menos meio semestre...
 
-Vamos começar com a revisão de alguns conceitos bem básicos. Procure, mais ou
-menos na metade do arquivo `main.c`, a função `process_pixel`.
+Vamos começar com a revisão de alguns conceitos bem básicos. De uma olhada no arquivo `main.c`:
 
-~~~{.c}
-    int process_pixel(int level) {
-        int new_level;
 
-        new_level = level;
+```c
+#include "stdio.h"
+#include "pgm.h"
 
-        return new_level;
+#define IMG_IN  "deepak-kumar-rX9uFci3pfY-unsplash.pgm"
+#define IMG_OUT "image-out.pgm"
+
+int process_pixel(int level) {
+	int new_level;
+
+	new_level = level;
+
+	return new_level;
+}
+
+int main(int argc, char *argv[]) {
+    PGMData image;
+    readPGM(IMG_IN, &image);
+
+    for (int x=0; x< image.row; x++){
+        for (int y=0; y<image.col; y++){
+            image.matrix[x][y] = process_pixel(image.matrix[x][y]);
+        }
     }
-~~~
 
-Essa função é trivial, mas no código já vemos vários conceitos importantes:
+    writePGM(IMG_OUT, &image);
+}
+```
+
+
+Note que existem duas funções: `main` e `process_pixel`, a primeira é a função 
+que será sempre executada primeiro, a `process_pixel` é executada para cada
+pixel da imagem de entrada (o gatinho).
+
+Neste lab iremos praticar e modificar a função `process_pixel`. Essa função é trivial, mas no código já vemos vários conceitos importantes:
 
 * as instruções terminam em ponto-e-vírgula, como em Java;
 
@@ -63,13 +88,11 @@ processamento. Yay!
 Vejamos o contexto no qual essa função está sendo chamada.
 
 ~~~{.c}
-    #ifdef PARTE3
-        for(int y = 0; y < IMG_HEIGHT; y++) {
-            for(int x = 0; x < IMG_HEIGHT; x++) {
-                imgOut[y][x] = process_pixel(imgIn[y][x]);
-            }
+ for (int x=0; x< image.row; x++){
+        for (int y=0; y<image.col; y++){
+            image.matrix[x][y] = process_pixel(image.matrix[x][y]);
         }
-    #endif
+    }
 ~~~
 
 Hoje vocês não precisam saber todos os detalhes desse código (isso acontecerá na
@@ -153,8 +176,7 @@ básica de funções. Agora vamos sair do Atmel!
 ## Exercícios Intermediários
 
 !!! warning ""
-    Lembrete: Para cada questão, validar a resposta com um dos professores antes de
-    continuar para a próxima.
+    Lembrete: Para cada questão, validar a resposta com a imagem referência antes de continuar
 
 Aliás, não apenas do Atmel... vamos sair do *computador* por alguns instantes e
 fazer os próximos exercícios no papel. É muito importante que, pelo menos nesse
