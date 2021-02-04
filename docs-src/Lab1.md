@@ -171,14 +171,14 @@ Sabendo disso...
 
 Nesses exercícios preliminares, vocês já usaram os operadores aritméticos
 básicos (`+`, `-`, `/`, `*`), execução condicional (`if/else`) e a estrutura
-básica de funções. Agora vamos sair do Atmel!
+básica de funções. 
 
 ## Exercícios Intermediários
 
 !!! warning ""
     Lembrete: Para cada questão, validar a resposta com a imagem referência antes de continuar
 
-Aliás, não apenas do Atmel... vamos sair do *computador* por alguns instantes e
+Vamos sair do *computador* por alguns instantes e
 fazer os próximos exercícios no papel. É muito importante que, pelo menos nesse
 começo, você não fique excessivamente dependente do computador e da IDE. Saiba
 fazer pelo menos o básico sozinho, pois isso faz muita diferença na

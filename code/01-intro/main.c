@@ -5,22 +5,17 @@
  *    - introcuao a C
  */
 
-#include "stdio.h"
+#include <stdio.h>
 #include "pgm.h"
+#include "../macros_correcoes.h"
 
 #define IMG_IN  "deepak-kumar-rX9uFci3pfY-unsplash.pgm"
 #define IMG_OUT "image-out.pgm"
+#include SOLUTIONFILE
 
-int process_pixel(int level) {
-	int new_level;
-
-	new_level = level;
-
-	return new_level;
-}
 
 int main(int argc, char *argv[]) {
-    printf("Lab 1 Multirao C \n");
+    printf("Lab 1 Multirao C: %s \n", SOLUTIONFILE);
     printf("Valide o resultado do programa analisando a imagem gerada: %s\n", IMG_OUT);
     PGMData image;
     readPGM(IMG_IN, &image);
@@ -33,4 +28,8 @@ int main(int argc, char *argv[]) {
 
     writePGM(IMG_OUT, &image);
     printf(".... .... \nImagem processada com sucesso.\n");
+
+
+
+    #include "../telemetry.c"
 }
