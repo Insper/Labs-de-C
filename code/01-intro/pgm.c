@@ -2,7 +2,8 @@
 
 #include "pgm.h"
 
-int **allocate_dynamic_matrix(int row, int col)
+
+static int **allocate_dynamic_matrix(int row, int col)
 {
     int **ret_val;
     int i;
@@ -24,7 +25,7 @@ int **allocate_dynamic_matrix(int row, int col)
     return ret_val;
 }
 
-void deallocate_dynamic_matrix(int **matrix, int row)
+static void deallocate_dynamic_matrix(int **matrix, int row)
 {
     int i;
 
@@ -34,7 +35,7 @@ void deallocate_dynamic_matrix(int **matrix, int row)
     free(matrix);
 }
 
-void SkipComments(FILE *fp)
+static void SkipComments(FILE *fp)
 {
     int ch;
     char line[100];

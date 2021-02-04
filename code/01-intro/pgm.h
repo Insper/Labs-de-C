@@ -18,8 +18,5 @@ typedef struct _PGMData {
 
 PGMData* readPGM(const char *file_name, PGMData *data);
 void writePGM(const char *filename, const PGMData *data);
-static int **allocate_dynamic_matrix(int row, int col);
-static void deallocate_dynamic_matrix(int **matrix, int row);
-static void SkipComments(FILE *fp);
 
 #endif // __PGM_H_
