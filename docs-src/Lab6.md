@@ -1,7 +1,14 @@
 # Lab 6 - juntando tudo
 
+| Pasta            | Arquivo  |
+|------------------|----------|
+| `code/06-juntando` | `soma.c` |
+
 !!! info
     Este roteiro não apresenta nenhum conceito novo. Vocês podem fazê-lo apenas com o que já foi apresentado nos roteiros anteriores. Se você está precisando consultar materiais extras é um sinal de que sua solução é complicada demais. 
+
+!!! warning
+    Este lab é uma continuação do que vocês já fizeram no Lab5! Façam uma cópia dele para a pasta `Lab6`
 
 Vamos neste roteiro revisar os conceitos dos dois roteiros anteriores fazendo modificações para tornar seu programa mais legível e organizado. 
 

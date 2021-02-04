@@ -1,5 +1,9 @@
 # Lab 5 - Ponteiros e `structs`
 
+| Pasta                       | Arquivo  |
+|-----------------------------|----------|
+| `code/05-ponteiros-structs` | `main.c` |
+
 
 !!! info
     Por favor, façam esta atividade em dupla e lembrem das regras.

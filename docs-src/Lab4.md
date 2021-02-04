@@ -1,5 +1,11 @@
 # Lab 4 - Arrays, Strings e Matrizes
 
+| Pasta            | Arquivo  |
+|------------------|----------|
+| `code/04-arrays` | `soma.c` |
+
+Ontem fizemos atividades de programação em C e a parte
+
 Na última aula trabalhamos com conceitos básicos de  *C* e com tipos de dados simples (inteiros e números fracionários). Hoje veremos as primeiras estruturas complexas em *C*: vetores, matrizes e strings. 
 
 ## Arrays em *C*

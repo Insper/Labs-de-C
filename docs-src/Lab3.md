@@ -1,5 +1,9 @@
 # Lab 3 - Compilação usando GCC
 
+| Pasta         | Arquivo    |
+|---------------|------------|
+| `code/03-gcc` | `printf.c` |
+
 Ontem fizemos atividades de programação em C e a parte
 de compilar e executar um programa ficou escondida de vocês, pois não era o objetivo da atividade (quando executavam no terminal o `make`). 
 
