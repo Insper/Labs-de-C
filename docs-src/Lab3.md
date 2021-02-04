@@ -1,9 +1,15 @@
 # Lab 3 - Compilação usando GCC
 
-Ontem fizemos atividades usando um compilador online. Apesar de ser prático, o ambiente online é muito limitado e não é adequado para as atividades do 5 semestre. Esta leitura visa familiarizá-lo com as ferramentas de compilação de código em *C* usando o compilador *gcc*. O ambiente recomendado para a atividade é o **Ubuntu 18.04 LTS**. Outras configurações são possíveis, mas não daremos suporte a elas. 
+Ontem fizemos atividades de programação em C e a parte
+de compilar e executar um programa ficou escondida de vocês, pois não era o objetivo da atividade (quando executavam no terminal o `make`). 
+
+Esta leitura visa familiarizá-lo com as ferramentas de compilação de código em *C* usando o compilador *gcc*. O ambiente recomendado para a atividade é o **Ubuntu 20.04 LTS**. Outras configurações são possíveis, mas não daremos suporte a elas. 
 
 !!! tip
     Memorizar os comandos usados é muito mais fácil de você digitá-los no terminal ao invés de copiar e colar.
+
+!!! info
+    Makefile é uma ferramenta muito utilizada que automatiza a compilação de programas em C, ela é utilizada por exemplo no kernel do linux e em muitos outros programas. Por enquanto não iremos mexer com o make, mais para o final do semestre teremos algumas atividades disso.
 
 ## Instalação local das ferramentas dos cursos
 
@@ -19,13 +25,13 @@ Verifique que tudo funcionou rodando o seguinte comando
 $ gcc --version
 ```
 
-Se você recebeu uma mensagem indicando que está usando a versão `7.4` então tudo está funcionando corretamente. 
+Se você recebeu uma mensagem indicando que está usando a versão `9.3` então tudo está funcionando corretamente. 
 
 ```
-    gcc-7 (Ubuntu 7.4.0-29ubuntu1) 7.3.0
-    Copyright (C) 2017 Free Software Foundation, Inc.
-    This is free software; see the source for copying conditions.  There is NO
-    warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE
+gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0
+Copyright (C) 2019 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 ```
 
 !!! warning 
@@ -34,7 +40,7 @@ Se você recebeu uma mensagem indicando que está usando a versão `7.4` então 
 Praticamente qualquer editor de texto ou IDE suporta colorização para *C*, porém recomendamos utilizar alguma
 ferramenta que também corrija erros de sintaxe. Editores como Visual Studio Code (com plugin para C/C++ e Make) e Eclipse CDT são boas escolhas por serem multi-plataforma e suficientemente completos. Eles também ajudarão muito no começo por indicarem erros simples de sintaxe como esquecer de um `;` ou usar `scanf` sem o `&`.
 
-Após o mutirão as atividades de *Computação Embarcada* serão feitas em Windows usando Atmel Studio. Desafios de programação e Sistemas de Hardware e Software continuarão usando Ubuntu Linux. 
+Após o mutirão as atividades de *Computação Embarcada* serão feitas em Windows usando Microchip Studio. Desafios de programação e Sistemas de Hardware e Software continuarão usando Ubuntu Linux. 
 
 
 ## O quê é "compilar" um código
@@ -89,6 +95,5 @@ O programa `prog` será executado como se o conteúdo do arquivo *arquivo_entrad
 
 !!! example
     Podemos combinar o redirecionamento de entrada e saída no mesmo comando. Teste esta funcionalidade usando o programa da tarefa 3. 
-
 
 
