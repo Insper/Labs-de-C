@@ -1,24 +1,13 @@
 # Lab 2 - Praticando
 
+| Pasta                | Arquivo  |
+|----------------------|----------|
+| `code/02-praticando` | `main.c` |
+
 Agora que praticamos um pouco no papel (de novo, habilidade fundamental para
-qualquer programador), vamos voltar ao computador, mas em um ambiente mais geral
-que o Atmel.
+qualquer programador), vamos voltar ao computador mais tarde.
 
-Na verdade, o verdadeiro ambiente será apresentado na leitura que passaremos
-para terça e na primeira aula de quarta, mas por enquanto vamos usar um mais
-simples, que não exige instalação.
-
-!!! note ""
-    Entre no site https://www.onlinegdb.com/online_c_compiler.
-    Como mencionado, esse ambiente é muito simples: vamos apenas
-    digitar o código e rodá-lo através do botão verde "Run".
-    
-    - Se o site estiver lento, tente esse outro: https://repl.it/
-
-!!! warning
-    Nesse exercício não é necessário esperar a validação de um professor.
-
-Vamos começar analisando o código que já vem pronto no ambiente.
+Vamos começar analisando o código disponível na pasta `code/02-praticando/main.c`
 
 ~~~{.c}
     #include <stdio.h>
@@ -29,6 +18,11 @@ Vamos começar analisando o código que já vem pronto no ambiente.
         return 0;
     }
 ~~~
+
+!!! tip
+    - Abra o arquivo  `main.c` no seu editor de códigos preferidos
+    - Abra um terminal na pasta `code/02-praticando/`
+    - Para compilar e executar o programa execute no terminal: `make`
 
 Novamente, temos um código curto mas com vários conceitos importantes:
 
@@ -102,7 +96,7 @@ tipo do valor. A letra `d` (de "decimal") representa `int`, enquanto as letras
     }
 ~~~
 
-Antes de apresentar outros conceitos, vamos praticar um pouco no ambiente.
+Antes de apresentar outros conceitos, vamos praticar um pouco.
 
 !!! example
     ```c
@@ -119,9 +113,7 @@ Antes de apresentar outros conceitos, vamos praticar um pouco no ambiente.
     - Esse código **errado** já apareceu no laboratório anterior. Ele deveria
     calcular a soma de `1` a `10`. 
 
-
-    Rode o código corrigido no ambiente online, e faça ele imprimir o resultado
-    com `printf()`
+    Rode o código corrigido e faça ele imprimir o resultado com `printf()`
 
 !!! example
     ```c
@@ -137,7 +129,7 @@ Antes de apresentar outros conceitos, vamos praticar um pouco no ambiente.
     - Esse código **errado** já apareceu no laboratório anterior. Ele deveria calcular a
     *metade* da soma dos númereos de `1` a `10`
     
-    Rode o código corrigido no ambiente online, e faça ele imprimir o resultado
+    Rode o código corrigido e faça ele imprimir o resultado correto
     
 Vamos agora finalmente escrever um programa com interação de usuário!
 
@@ -175,7 +167,7 @@ Preparados para um exemplo mais avançado? O próximo mostra de uma só vez:
 
 ~~~{.c}
     #include <stdio.h>
-    #include <math.h>
+    #include <math.h>    /* <---- precisa incluir!!! */
 
     #define PI 3.141592
 
