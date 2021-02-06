@@ -1,7 +1,7 @@
 # Lab 1 - Conceitos Básicos
 
-| Pasta                | Arquivo  |
-|----------------------|----------|
+| Pasta           | Arquivo  |
+|-----------------|----------|
 | `code/01-intro` | `main.c` |
 
 !!! info "Infra"
