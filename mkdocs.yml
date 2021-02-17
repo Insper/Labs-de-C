@@ -27,7 +27,7 @@ nav:
 #- Sobre-Curso.md
 #- Sobre-Ferramental.md
 - 'Mutirão':
-    - 'mutirao.md'
+    - 'about-mutirao.md'
     - 'Super Aula':
         - 'Embarcados':
             - 'Parte 1': 'day1-embarcados.md'
@@ -40,7 +40,6 @@ nav:
     - 'Lab4.md'
     - 'Lab5.md'
     - 'Lab6.md'
-    - 'Avaliação exemplo': 'https://github.com/Insper/Labs-de-C/raw/master/SimuladoAvalia%C3%A7%C3%A3o.pdf'
 
 - Labs:
     - 'Lab7.md'
