@@ -194,14 +194,16 @@ Agora vejam como o exemplo abaixo é interessante.
 !!! question short
     Qual é a saída desse exemplo? Pense na regra de ouro.
 
+    ??? note "Resposta"
+        A saída é `10`, pois a linha `*p = 10`, pela regra de ouro, pode ser lida como
+        "variável apontada por `p` recebe `10`". E qual é a variável apontada por `p`?
+
+
 
 !!! warning
     Não vá para a próxima página antes de validar suas respostas com um dos
     professores.
 
-??? note "Resposta"
-    A saída é `10`, pois a linha `*p = 10`, pela regra de ouro, pode ser lida como
-    "variável apontada por `p` recebe `10`". E qual é a variável apontada por `p`?
 
 De fato, podemos usar `*p` como sinônimo de `v` ao longo do código.
 

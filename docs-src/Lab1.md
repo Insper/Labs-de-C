@@ -103,7 +103,7 @@ partir desse valor original.
 Como acabamos de ver que a função simplesmente devolve o mesmo valor, então a
 imagem permanece inalterada. Vamos fazer algo mais interessante?
 
-## Exercícios Preliminares
+## Exercícios Básicos
 
 Para todos os exercícios deste handout, sigam por favor as regras abaixo.
 
@@ -115,6 +115,11 @@ Para todos os exercícios deste handout, sigam por favor as regras abaixo.
 2. Ao terminar um exercício, chame um dos professores para testemunhar o
    programa funcionando e validar o código. Não avance no guia até fazer isso,
    para termos certeza que você está passando por todo o processo.
+
+
+!!! warning ""
+    Lembrete: Para cada questão, validar a resposta com a imagem referência antes de continuar
+
 
 !!! example
     O valor de um pixel é um número inteiro entre `0` e `255`. Quanto mais alto
@@ -171,14 +176,11 @@ Sabendo disso...
 
 Nesses exercícios preliminares, vocês já usaram os operadores aritméticos
 básicos (`+`, `-`, `/`, `*`), execução condicional (`if/else`) e a estrutura
-básica de funções. Agora vamos sair do Atmel!
+básica de funções.
 
 ## Exercícios Intermediários
 
-!!! warning ""
-    Lembrete: Para cada questão, validar a resposta com a imagem referência antes de continuar
-
-Aliás, não apenas do Atmel... vamos sair do *computador* por alguns instantes e
+Vamos sair do *computador* por alguns instantes e
 fazer os próximos exercícios no papel. É muito importante que, pelo menos nesse
 começo, você não fique excessivamente dependente do computador e da IDE. Saiba
 fazer pelo menos o básico sozinho, pois isso faz muita diferença na
