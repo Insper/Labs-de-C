@@ -132,17 +132,25 @@ Para todos os exercícios deste handout, sigam por favor as regras abaixo.
     o valor, mais claro é o pixel. Sabendo disso, altere `process_pixel` para
     *negativizar* a imagem, ou seja, transformar pixels claros em escuros e
     vice-versa.
+    
+    | Solução correta                          |
+    |------------------------------------------|
+    | ![](lab1-solucao/tarefa1.png){width=250} |
+    
 
 !!! tip "Testando"
     No terminal do Linux dentro da pasta `code/01-intro` execute o comando: `make`, se tudo der certo, o programa carrega a imagem: `deepak-kumar-rX9uFci3pfY-unsplash.pgm` e gera a imagem `image-out.pgm`.
     
     ==Você deve abrir a imagem `image-out.pgm` para ver o resultado.==
 
-
 !!! example
     Agora altere `process_pixel` para *escurecer* a imagem: cada pixel deve
     ficar com a metade de sua luminosidade original.
-
+    
+    | Solução correta                          |
+    |------------------------------------------|
+    | ![](lab1-solucao/tarefa2.png){width=250} |
+    
 Antes do próximo exercício, uma dica! A sintaxe de `if/else` em C, para variar,
 é como em Java. Ou seja:
 
@@ -174,18 +182,37 @@ Sabendo disso...
     Não esqueça de alterar o trecho de código em que `process_pixel` é chamada,
     para evitar erros de compilação. Passe `127` como o segundo parâmetro da
     chamada.
-
+    
+    | Solução correta                          |
+    |------------------------------------------|
+    | ![](lab1-solucao/tarefa3.png){width=250} |
+    
 !!! example
     Altere `process_pixel` para manipular o *brilho* da imagem: use o segundo
     parâmetro, adicionado no exercício anterior, como um valor que é *somado* ao
     pixel. Faça vários testes, passando múltiplos valores como o segundo
     parâmetro da chamada.
+ 
+    !!! info ""
+        Usando o valor 127 no segundo argumento.
+ 
+    | Solução correta                         |  Solução errada  |
+    |------------------------------------------|---|    
+    | ![](lab1-solucao/tarefa4-127-correto.png){width=250}  |  ![](lab1-solucao/tarefa4-127-errado.png){width=250}  | 
+    
 
 !!! example
     Altere `process_pixel` para manipular o *contraste* da imagem: use o segundo
     parâmetro como um valor que *multiplica* o pixel. Novamente, faça vários
     testes, passando múltiplos valores como o segundo parâmetro da chamada.
-
+    
+    !!! info ""
+        Usando o valor 5 no segundo argumento.
+    
+    | Solução correta                         |  Solução errada  |
+    |------------------------------------------|---|    
+    | ![](lab1-solucao/tarefa5-5-correto.png){width=250}  |  ![](lab1-solucao/tarefa5-5-errado.png){width=250}  | 
+    
 Nesses exercícios preliminares, vocês já usaram os operadores aritméticos
 básicos (`+`, `-`, `/`, `*`), execução condicional (`if/else`) e a estrutura
 básica de funções. Agora vamos sair do Atmel!
