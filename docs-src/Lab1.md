@@ -4,12 +4,18 @@
 |-----------------|----------|
 | `code/01-intro` | `main.c` |
 
+Para começar você deve clonar o repositório `https://github.com/Insper/Labs-de-C/`.
+
 !!! info "Infra"
-    - Linux
+    Os laboratórios do mutirão foram planejados para funcionar 
+    no Linux, e você deve ter executado:
+        
     - `sudo apt install build-essential`
 
 !!! tip "Testando"
     No terminal do Linux dentro da pasta `code/01-intro` execute o comando: `make`, se tudo der certo, o programa carrega a imagem: `deepak-kumar-rX9uFci3pfY-unsplash.pgm` e gera a imagem `image-out.pgm`.
+
+## Começando
 
 Não é fácil prever o quanto a linguagem C será uma novidade para vocês. Por um
 lado, a sintaxe é muito parecida com Java. Por outro lado, existem diferenças
@@ -17,6 +23,12 @@ importantes e vocês estão longe de Java há mais ou menos meio semestre...
 
 Vamos começar com a revisão de alguns conceitos bem básicos. De uma olhada no arquivo `main.c`:
 
+!!! info
+    - Você pode abrir o arquivo no editor de código que preferir, indicamos abrir no
+    vscode. 
+    
+    - Será necessário um terminal para executar o comando `make`, você pode usar o 
+    terminal do próprio vscode, ou do linux.
 
 ```c
 #include "stdio.h"
@@ -46,7 +58,6 @@ int main(int argc, char *argv[]) {
     writePGM(IMG_OUT, &image);
 }
 ```
-
 
 Note que existem duas funções: `main` e `process_pixel`, a primeira é a função 
 que será sempre executada primeiro, a `process_pixel` é executada para cada
@@ -121,6 +132,12 @@ Para todos os exercícios deste handout, sigam por favor as regras abaixo.
     o valor, mais claro é o pixel. Sabendo disso, altere `process_pixel` para
     *negativizar* a imagem, ou seja, transformar pixels claros em escuros e
     vice-versa.
+
+!!! tip "Testando"
+    No terminal do Linux dentro da pasta `code/01-intro` execute o comando: `make`, se tudo der certo, o programa carrega a imagem: `deepak-kumar-rX9uFci3pfY-unsplash.pgm` e gera a imagem `image-out.pgm`.
+    
+    ==Você deve abrir a imagem `image-out.pgm` para ver o resultado.==
+
 
 !!! example
     Agora altere `process_pixel` para *escurecer* a imagem: cada pixel deve
