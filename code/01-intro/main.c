@@ -11,6 +11,9 @@
 
 #define IMG_IN  "deepak-kumar-rX9uFci3pfY-unsplash.pgm"
 #define IMG_OUT "image-out.pgm"
+
+#define LABNUM "lab1-"
+
 #include SOLUTIONFILE
 
 
