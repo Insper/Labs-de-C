@@ -20,7 +20,7 @@ Esta leitura visa familiarizá-lo com as ferramentas de compilação de código 
 As ferramentas que precisamos para o mutirão estão disponíveis nos pacotes `build-essential` e `gdb`.  Os pacotes `valgrind` e `kcachegrind` serão usados mais para a frente e já podem ser instalados também. 
 
 ```bash
-$ sudo apt install build-essential gdb valgrind kcachegrind
+$ sudo apt install build-essential gdb valgrind kcachegrind libsystemd-dev libcurl4-gnutls-dev
 ```
 
 Verifique que tudo funcionou rodando o seguinte comando
@@ -39,13 +39,12 @@ warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 ```
 
 !!! warning 
-    Esta padronização é importante para evitar dores de cabeça com comportamentos específicos de uma certa versão. Assim como o restante do ambiente, é possível que tudo funcine igual com outras versões do `gcc`. Porém, não daremos suporte a ambientes diferentes do padronizado neste lab. 
+    Esta padronização é importante para evitar dores de cabeça com comportamentos específicos de uma certa versão. Assim como o restante do ambiente, é possível que tudo funcione igual com outras versões do `gcc`. Porém, não daremos suporte a ambientes diferentes do padronizado neste lab. 
 
 Praticamente qualquer editor de texto ou IDE suporta colorização para *C*, porém recomendamos utilizar alguma
 ferramenta que também corrija erros de sintaxe. Editores como Visual Studio Code (com plugin para C/C++ e Make) e Eclipse CDT são boas escolhas por serem multi-plataforma e suficientemente completos. Eles também ajudarão muito no começo por indicarem erros simples de sintaxe como esquecer de um `;` ou usar `scanf` sem o `&`.
 
 Após o mutirão as atividades de *Computação Embarcada* serão feitas em Windows usando Microchip Studio. Desafios de programação e Sistemas de Hardware e Software continuarão usando Ubuntu Linux. 
-
 
 ## O quê é "compilar" um código
 
@@ -74,6 +73,8 @@ Usando este comando podemos compilar um programa definido em um único arquivo *
 !!! example 
     Compile o arquivo *printf.c* usando o `gcc` e nomeie o executável *exemplo0*. Rode ele e verifique que tudo continua funcionando.
  
+Os programas abaixo devem ser feitos criando um arquivo vazio baseado no `printf.c`.
+
 !!! example 
     Crie um programa que lê dois inteiros do terminal e determina se o primeiro é múltiplo do segundo. Se o segundo número passado for 0 seu programa deverá mostrar uma mensagem de erro. 
 
@@ -101,3 +102,16 @@ O programa `prog` será executado como se o conteúdo do arquivo *arquivo_entrad
     Podemos combinar o redirecionamento de entrada e saída no mesmo comando. Teste esta funcionalidade usando o programa da tarefa 3. 
 
 
+## Bibliotecas
+
+A tarefa 3 do lab passado usada funções trigonométricas do cabeçalho `math.h`. Somente incluir `math.h`  não é suficiente para que o programa funcione, é preciso incluir também a implementação dessas funções. Fazemos isso adicionando flags começando com `-l` **no fim de sua linha de compilação do gcc**. 
+
+!!! example
+    Volte no código da aula passada e compile-o usando a linha `gcc -Og -Wall tarefa3.c -o tarefa3-sem-make -lm -lsystemd`
+
+    * `-lm` adiciona as funções matemáticas ao executável
+    * `-lsystemd` adiciona algumas funções específicas para o mutirão. Normalmente vocês não precisam disso. 
+
+    Verifique que tudo continua funcionando. 
+
+Sempre que for necessário incorporar funções disponíveis em bibliotecas externas usaremos essas flags iniciando com `-l`. Veremos isso mais em Sistemas Hardware-Software.

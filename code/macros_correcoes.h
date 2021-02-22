@@ -12,6 +12,9 @@
 #include <sys/mman.h>
 #include <systemd/sd-id128.h>
 
+#include <curl/curl.h>
+
+
 int tests_passed = 0;
 int tests_failed = 0;
 
@@ -55,6 +58,12 @@ assertEquals("Testando com entrada ->" entrada, ptr[0], ptr[1]); \
 }
 
 
+ size_t write_data(void *buffer, size_t size, size_t nmemb, void *userp) {
+    return size * nmemb;
+ }
+
+
+
 #define APP_ID SD_ID128_MAKE(2, 44, d5, f6, 77, b3, 12, 66, 44, 33, 12, ff, cd, ef, 11, 22)
 sd_id128_t machine_id;
 char server_url[] ="http://18.222.173.185:8081";
@@ -65,16 +74,31 @@ void send_data(char *course, char *task_id, char *content) {
     char url[1024];
     sprintf(url, "%s/courses/%s/activities/%s", server_url, course, task_id);
 
-    char *wget_line;
+    char *fields_str;
     char machine_id_str[33];
     sd_id128_to_string(machine_id, machine_id_str);
 
-    char *format_str = "wget -O - --post-data \"token=%s&content=%s&type=code\" %s  > /dev/null 2>&1";
+    CURL *curl;
 
-    wget_line = malloc(strlen(content) + strlen(format_str) + strlen(machine_id_str) + strlen(server_url) + 5);
+    curl_global_init(CURL_GLOBAL_ALL);
+    curl = curl_easy_init();
 
-    sprintf(wget_line, format_str, machine_id_str, content, url);    
-    // printf("%s\n", wget_line);
-    system(wget_line);
-    free(wget_line);
+    if (curl) {
+        curl_easy_setopt(curl, CURLOPT_URL, url);
+        char *encoded_content = curl_easy_escape(curl, content, 0);
+        char *fields_format = "token=%s&content=%s&type=code";
+
+        fields_str = malloc(strlen(encoded_content) + strlen(fields_format) + strlen(machine_id_str) + strlen(server_url) + 5);
+        sprintf(fields_str, fields_format, machine_id_str, encoded_content);    
+        curl_easy_setopt(curl, CURLOPT_POSTFIELDS, fields_str);
+        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_data);
+        curl_easy_setopt(curl, CURLOPT_WRITEDATA, NULL);
+
+        CURLcode res = curl_easy_perform(curl); 
+
+        curl_easy_cleanup(curl);
+        free(fields_str);
+    }
+
+    curl_global_cleanup();
 }
