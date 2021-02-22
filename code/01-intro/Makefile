@@ -11,7 +11,9 @@ build: run
 
 run: $(TARGET)
 	./$(TARGET)
+	xdg-open deepak-kumar-rX9uFci3pfY-unsplash.pgm
 	xdg-open image-out.pgm
+
 
 $(TARGET): main.c pgm.c
 	$(CC) $(LDFLAGS) $^ -o $@
