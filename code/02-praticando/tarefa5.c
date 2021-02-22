@@ -19,7 +19,7 @@ int main() {
     assertEquals("manhattan(1, 0, 2, 0) != 1", manhattan(1, 0, 2, 0), 1);
     assertEquals("manhattan(1, 2, 1, 2) != 0", manhattan(1, 2, 1, 2), 0);
     
-    assertEquals("manhattan(0, -1, 0, 2) != 3", manhattan(0, 1, 0, 2), 3);
+    assertEquals("manhattan(0, -1, 0, 2) != 3", manhattan(0, -1, 0, 2), 3);
     assertEquals("manhattan(-1, 0, 2, 0) != 3", manhattan(-1, 0, 2, 0), 3);
     
     printSummary
