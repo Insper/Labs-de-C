@@ -10,7 +10,7 @@ Para começar você deve clonar o repositório `https://github.com/Insper/Labs-d
     Os laboratórios do mutirão foram planejados para funcionar
     no Linux, e você deve ter executado:
 
-    - `sudo apt install build-essential`
+    - `sudo apt install build-essential libsystemd-dev`
 
 !!! tip "Testando"
     No terminal do Linux dentro da pasta `code/01-intro` execute o comando: `make`, se tudo der certo, o programa carrega a imagem: `deepak-kumar-rX9uFci3pfY-unsplash.pgm` e gera a imagem `image-out.pgm`.
@@ -37,6 +37,7 @@ Vamos começar com a revisão de alguns conceitos bem básicos. Dê uma olhada n
 #define IMG_IN  "deepak-kumar-rX9uFci3pfY-unsplash.pgm"
 #define IMG_OUT "image-out.pgm"
 
+// Esta função estará nos arquivos tarefaX.c
 int process_pixel(int level) {
 	int new_level;
 
@@ -131,6 +132,8 @@ Para todos os exercícios deste handout, sigam por favor as regras abaixo.
 !!! warning ""
     Lembrete: Para cada questão, validar a resposta com a imagem referência antes de continuar
 
+!!! warning
+    Os exercícios abaixo deverão ser feitos nos arquivos `tarefaX.c`
 
 !!! example
     O valor de um pixel é um número inteiro entre `0` e `255`. Quanto mais alto
@@ -188,11 +191,13 @@ Sabendo disso...
 
     Não esqueça de alterar o trecho de código em que `process_pixel` é chamada,
     para evitar erros de compilação. Passe `127` como o segundo parâmetro da
-    chamada.
+    chamada. **Aqui você precisará modificar `main.c` para passar esse argumento.**
 
     | Solução correta                          |
     |------------------------------------------|
     | ![](lab1-solucao/tarefa3.png){width=250} |
+
+    
 
 !!! example
     Altere `process_pixel` para manipular o *brilho* da imagem: use o segundo
@@ -201,7 +206,7 @@ Sabendo disso...
     parâmetro da chamada.
 
     !!! info ""
-        Usando o valor 127 no segundo argumento.
+        Usando o valor 127 no segundo argumento. **Aqui você precisará modificar `main.c` para passar esse argumento.**
 
     | Solução correta                         |  Solução errada  |
     |------------------------------------------|---|
@@ -214,7 +219,7 @@ Sabendo disso...
     testes, passando múltiplos valores como o segundo parâmetro da chamada.
 
     !!! info ""
-        Usando o valor 5 no segundo argumento.
+        Usando o valor 5 no segundo argumento. **Aqui você precisará modificar `main.c` para passar esse argumento.**
 
     | Solução correta                         |  Solução errada  |
     |------------------------------------------|---|
