@@ -144,9 +144,11 @@ Para todos os exercícios deste handout, sigam por favor as regras abaixo.
 
 
 !!! tip "Testando"
-    No terminal do Linux dentro da pasta `code/01-intro` execute o comando: `make`, se tudo der certo, o programa carrega a imagem: `deepak-kumar-rX9uFci3pfY-unsplash.pgm` e gera a imagem `image-out.pgm`.
+    No terminal do Linux dentro da pasta `code/01-intro` execute o comando: `make tarefa1`, se tudo der certo, o programa carrega a imagem: `deepak-kumar-rX9uFci3pfY-unsplash.pgm` e gera a imagem `image-out.pgm`.
 
     ==Você deve abrir a imagem `image-out.pgm` para ver o resultado.==
+
+    Faça isso também para as tarefas seguintes.
 
 !!! example
     Agora altere `process_pixel` para *escurecer* a imagem: cada pixel deve
