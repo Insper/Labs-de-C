@@ -5,7 +5,7 @@
 | `code/02-praticando` | `main.c` |
 
 Agora que praticamos um pouco no papel (de novo, habilidade fundamental para
-qualquer programador), vamos voltar ao computador mais tarde.
+qualquer programador), vamos voltar ao computador.
 
 Vamos começar analisando o código disponível na pasta `code/02-praticando/main.c`
 
@@ -109,9 +109,9 @@ Antes de apresentar outros conceitos, vamos praticar um pouco.
         i++;
     }
     ```
-    
+
     - Esse código **errado** já apareceu no laboratório anterior. Ele deveria
-    calcular a soma de `1` a `10`. 
+    calcular a soma de `1` a `10`.
 
     Rode o código corrigido e faça ele imprimir o resultado com `printf()`
 
@@ -128,9 +128,9 @@ Antes de apresentar outros conceitos, vamos praticar um pouco.
 
     - Esse código **errado** já apareceu no laboratório anterior. Ele deveria calcular a
     *metade* da soma dos númereos de `1` a `10`
-    
+
     Rode o código corrigido e faça ele imprimir o resultado correto
-    
+
 Vamos agora finalmente escrever um programa com interação de usuário!
 
 ~~~{.c}
@@ -274,7 +274,7 @@ bolo, mas temos os ingredientes para você fazer um bolo.
 !!! example
     Escreva uma função que recebe um inteiro *n* e imprime uma "arvorezinha"
     conforme a regra abaixo.
-    
+
     *n = 1*
     ```
          |

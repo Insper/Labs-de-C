@@ -4,8 +4,6 @@
 |------------------|----------|
 | `code/04-arrays` | `soma.c` |
 
-Ontem fizemos atividades de programação em C e a parte
-
 Na última aula trabalhamos com conceitos básicos de  *C* e com tipos de dados simples (inteiros e números fracionários). Hoje veremos as primeiras estruturas complexas em *C*: vetores, matrizes e strings. 
 
 ## Arrays em *C*
@@ -58,11 +56,11 @@ scanf("%ld", &vetor[0]);
 !!! question long 
     O código acima está no arquivo `/Lab4/erro_comum1.c`. Compile e execute ele. Os resultados foram os esperados? Se não, você consegue explicar por que eles foram diferentes?
 
-??? note "Resposta"
-    Como podemos ver, o código compila, mas seu comportamento é indefinido por duas razões:
+    ??? note "Resposta"
+        Como podemos ver, o código compila, mas seu comportamento é indefinido por duas razões:
 
-    1. O vetor não é inicializado com 0 quando é criado. 
-    1. A posição `vetor[5]` não é válida e pode resultar na leitura de dados inválidos da memória.
+        1. O vetor não é inicializado com 0 quando é criado. 
+        1. A posição `vetor[5]` não é válida e pode resultar na leitura de dados inválidos da memória.
 
 !!! tip
     Diferentemente de outras linguagens, *C* não verifica os índices automaticamente nem inicializa o elementos do vetor com 0. Além disto, não é possível obter o tamanho de um vetor a partir de seu nome.

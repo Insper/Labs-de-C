@@ -1,22 +1,34 @@
 # Lab 1 - Conceitos Básicos
 
-| Pasta                | Arquivo  |
-|----------------------|----------|
+| Pasta           | Arquivo  |
+|-----------------|----------|
 | `code/01-intro` | `main.c` |
 
+Para começar você deve clonar o repositório `https://github.com/Insper/Labs-de-C/`.
+
 !!! info "Infra"
-    - Linux
+    Os laboratórios do mutirão foram planejados para funcionar
+    no Linux, e você deve ter executado:
+
     - `sudo apt install build-essential`
 
 !!! tip "Testando"
     No terminal do Linux dentro da pasta `code/01-intro` execute o comando: `make`, se tudo der certo, o programa carrega a imagem: `deepak-kumar-rX9uFci3pfY-unsplash.pgm` e gera a imagem `image-out.pgm`.
 
+## Começando
+
 Não é fácil prever o quanto a linguagem C será uma novidade para vocês. Por um
 lado, a sintaxe é muito parecida com Java. Por outro lado, existem diferenças
 importantes e vocês estão longe de Java há mais ou menos meio semestre...
 
-Vamos começar com a revisão de alguns conceitos bem básicos. De uma olhada no arquivo `main.c`:
+Vamos começar com a revisão de alguns conceitos bem básicos. Dê uma olhada no arquivo `main.c`:
 
+!!! info
+    - Você pode abrir o arquivo no editor de código que preferir, indicamos abrir no
+    vscode.
+
+    - Será necessário um terminal para executar o comando `make`, você pode usar o
+    terminal do próprio vscode, ou do linux.
 
 ```c
 #include "stdio.h"
@@ -47,8 +59,7 @@ int main(int argc, char *argv[]) {
 }
 ```
 
-
-Note que existem duas funções: `main` e `process_pixel`, a primeira é a função 
+Note que existem duas funções: `main` e `process_pixel`, a primeira é a função
 que será sempre executada primeiro, a `process_pixel` é executada para cada
 pixel da imagem de entrada (o gatinho).
 
@@ -103,7 +114,7 @@ partir desse valor original.
 Como acabamos de ver que a função simplesmente devolve o mesmo valor, então a
 imagem permanece inalterada. Vamos fazer algo mais interessante?
 
-## Exercícios Preliminares
+## Exercícios Básicos
 
 Para todos os exercícios deste handout, sigam por favor as regras abaixo.
 
@@ -116,15 +127,34 @@ Para todos os exercícios deste handout, sigam por favor as regras abaixo.
    programa funcionando e validar o código. Não avance no guia até fazer isso,
    para termos certeza que você está passando por todo o processo.
 
+
+!!! warning ""
+    Lembrete: Para cada questão, validar a resposta com a imagem referência antes de continuar
+
+
 !!! example
     O valor de um pixel é um número inteiro entre `0` e `255`. Quanto mais alto
     o valor, mais claro é o pixel. Sabendo disso, altere `process_pixel` para
     *negativizar* a imagem, ou seja, transformar pixels claros em escuros e
     vice-versa.
 
+    | Solução correta                          |
+    |------------------------------------------|
+    | ![](lab1-solucao/tarefa1.png){width=250} |
+
+
+!!! tip "Testando"
+    No terminal do Linux dentro da pasta `code/01-intro` execute o comando: `make`, se tudo der certo, o programa carrega a imagem: `deepak-kumar-rX9uFci3pfY-unsplash.pgm` e gera a imagem `image-out.pgm`.
+
+    ==Você deve abrir a imagem `image-out.pgm` para ver o resultado.==
+
 !!! example
     Agora altere `process_pixel` para *escurecer* a imagem: cada pixel deve
     ficar com a metade de sua luminosidade original.
+
+    | Solução correta                          |
+    |------------------------------------------|
+    | ![](lab1-solucao/tarefa2.png){width=250} |
 
 Antes do próximo exercício, uma dica! A sintaxe de `if/else` em C, para variar,
 é como em Java. Ou seja:
@@ -158,31 +188,47 @@ Sabendo disso...
     para evitar erros de compilação. Passe `127` como o segundo parâmetro da
     chamada.
 
+    | Solução correta                          |
+    |------------------------------------------|
+    | ![](lab1-solucao/tarefa3.png){width=250} |
+
 !!! example
     Altere `process_pixel` para manipular o *brilho* da imagem: use o segundo
     parâmetro, adicionado no exercício anterior, como um valor que é *somado* ao
     pixel. Faça vários testes, passando múltiplos valores como o segundo
     parâmetro da chamada.
 
+    !!! info ""
+        Usando o valor 127 no segundo argumento.
+
+    | Solução correta                         |  Solução errada  |
+    |------------------------------------------|---|
+    | ![](lab1-solucao/tarefa4-127-correto.png){width=250}  |  ![](lab1-solucao/tarefa4-127-errado.png){width=250}  |
+
+
 !!! example
     Altere `process_pixel` para manipular o *contraste* da imagem: use o segundo
     parâmetro como um valor que *multiplica* o pixel. Novamente, faça vários
     testes, passando múltiplos valores como o segundo parâmetro da chamada.
 
+    !!! info ""
+        Usando o valor 5 no segundo argumento.
+
+    | Solução correta                         |  Solução errada  |
+    |------------------------------------------|---|
+    | ![](lab1-solucao/tarefa5-5-correto.png){width=250}  |  ![](lab1-solucao/tarefa5-5-errado.png){width=250}  |
+
 Nesses exercícios preliminares, vocês já usaram os operadores aritméticos
 básicos (`+`, `-`, `/`, `*`), execução condicional (`if/else`) e a estrutura
-básica de funções. 
+básica de funções.
 
 ## Exercícios Intermediários
 
-!!! warning ""
-    Lembrete: Para cada questão, validar a resposta com a imagem referência antes de continuar
-
-Vamos sair do *computador* por alguns instantes e
-fazer os próximos exercícios no papel. É muito importante que, pelo menos nesse
-começo, você não fique excessivamente dependente do computador e da IDE. Saiba
-fazer pelo menos o básico sozinho, pois isso faz muita diferença na
-produtividade.
+Vamos agora sair do `make` por alguns instantes e fazer os próximos exercícios
+"no papel", ou seja, sem ficar dependendo de rodar para ver se seu código faz
+sentido. É muito importante que, pelo menos nesse começo, você não fique
+excessivamente dependente do computador e da IDE. Saiba fazer pelo menos o
+básico sozinho, pois isso faz muita diferença na produtividade.
 
 !!! question short
     Como esperado, a sintaxe de `while` em C também é como em Java. Sabendo

@@ -2,7 +2,7 @@
 
 | Pasta            | Arquivo  |
 |------------------|----------|
-| `code/06-juntando` | `soma.c` |
+| `code/juntando-06` | `soma.c` |
 
 !!! info
     Este roteiro não apresenta nenhum conceito novo. Vocês podem fazê-lo apenas com o que já foi apresentado nos roteiros anteriores. Se você está precisando consultar materiais extras é um sinal de que sua solução é complicada demais. 
