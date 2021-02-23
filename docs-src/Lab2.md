@@ -99,7 +99,7 @@ tipo do valor. A letra `d` (de "decimal") representa `int`, enquanto as letras
 Antes de apresentar outros conceitos, vamos praticar um pouco.
 
 
-!!! important 
+!!! warning 
     Assim como no lab anterior, cada tarefa já tem um arquivo correspondente. Digite `make tarefaN` para compilar e rodar a tarefa `N`.
 
 !!! example

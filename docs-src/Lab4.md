@@ -1,9 +1,5 @@
 # Lab 4 - Arrays, Strings e Matrizes
 
-| Pasta            | Arquivo  |
-|------------------|----------|
-| `code/04-arrays` | `soma.c` |
-
 Na última aula trabalhamos com conceitos básicos de  *C* e com tipos de dados simples (inteiros e números fracionários). Hoje veremos as primeiras estruturas complexas em *C*: vetores, matrizes e strings. 
 
 ## Arrays em *C*
@@ -24,7 +20,7 @@ O acesso a elementos também é bastante simples:
 printf("%ld\n", A[3]);
 ~~~
 
-A linha acima imprime o primeira valor do vetor. O uso com `scanf` segue a mesma lógica dos tipos simples:
+A linha acima imprime o primeiro elemento do vetor. O uso com `scanf` segue a mesma lógica dos tipos simples:
 
 ~~~{.c}
 scanf("%ld", &vetor[0]);
@@ -54,7 +50,7 @@ scanf("%ld", &vetor[0]);
 
 
 !!! question long 
-    O código acima está no arquivo `/Lab4/erro_comum1.c`. Compile e execute ele. Os resultados foram os esperados? Se não, você consegue explicar por que eles foram diferentes?
+    O código acima está no arquivo `erro_comum1.c`. Compile e execute ele. Os resultados foram os esperados? Se não, você consegue explicar por que eles foram diferentes?
 
     ??? note "Resposta"
         Como podemos ver, o código compila, mas seu comportamento é indefinido por duas razões:
@@ -65,10 +61,19 @@ scanf("%ld", &vetor[0]);
 !!! tip
     Diferentemente de outras linguagens, *C* não verifica os índices automaticamente nem inicializa o elementos do vetor com 0. Além disto, não é possível obter o tamanho de um vetor a partir de seu nome.
 
+
+!!! example
+    Conserte o código acima. Você deverá ler as posições do vetor usando `scanf` em um `for` e depois consertar o `for` do exemplo acima para não acessar as posições indevidas. 
+
+    **Sim, seu programa deverá ter dois `for`, um para leitura usando `scanf` que você deverá criar e o outro é o do exemplo acima, que deverá ser consertado.**
+
+    Conserte o código acima no arquivo `tarefa1.c`. Compile e teste sua solução usando `make tarefa1`.
+
+
 Um ponto importante é que o sistema de tipos não permite a conversão/passagem de vetores do mesmo tipo, mas com tamanhos diferentes. Assim, a função abaixo não aceitaria como argumento a variável `double arr[4]`, pois só aceita vetores de tamanho 3.
 
 ~~~{.c}
-double soma(double arr[3]) {
+double soma_3doubles(double arr[3]) {
     double s = 0;
     for (int i = 0; i < 3; i++) {
         s += arr[i];
@@ -84,7 +89,7 @@ double soma(double arr[], int n);
 ~~~
 
 !!! example 
-    Trabalharemos com o arquivo `Lab4/soma.c`. Abra-o e implemente, no local indicado, a função `soma` com a assinatura acima. Lembre-se que em *C* arrays não conhecem seu tamanho, então é de sua responsabilidade acessar somente elementos válidos e checar se o vetor não está vazio (ou seja, `n < 1`)
+    Trabalharemos com o arquivo `tarefa2.c`. Abra-o e implemente, no local indicado, a função `soma` com a assinatura acima. Lembre-se que em *C* arrays não conhecem seu tamanho, então é de sua responsabilidade acessar somente elementos válidos e checar se o vetor não está vazio (ou seja, `n < 1`)
  
  
 !!! question short
@@ -134,16 +139,21 @@ fgets(str, STRING_LEN, stdin); // precisamos passar o tamanho máximo
 !!! question short
     Para iterar sobre todos os caracteres de uma string precisamos saber seu tamanho? Como podemos fazer isto? **Dica**: reveja a imagem e o exemplo de código do começo da seção.
 
+    ??? note "Solução"
+        O último caractere de uma string é sempre `'\0'`! Logo, podemos percorrer os caracteres até que um `'\0'` seja encontrado.
+
 !!! example 
-    Crie um programa, do zero, que
+    Crie uma função que
 
     1. declara uma string de tamanho máximo 100
     1. leia uma linha do terminal
     1. conte o número de vezes que a letra "a" aparece
-    1. mostre esse valor no terminal
+    1. retorne este valor.
+
+    Implemente no arquivo `tarefa3.c` e teste com `make tarefa3`
 
 !!! example 
-    Modifique o programa acima para contar também o número de vezes que o caractere "1" aparece na string recebida.
+    E se fosse necessário contar o número de caracteres "1"? Implemente no arquivo `tarefa4.c` e teste com `make tarefa4`
 
 
 ## Matrizes
@@ -169,6 +179,9 @@ Perceba que toda a primeira linha é armazenada (contendo 3 `long`s) antes do in
     * `mat[0][2]`
     * `mat[1][2]`
     * `mat[2][0]` 
+
+!!! warning
+    As próximas tarefas devem ser feitas a partir de um arquivo vazio e compiladas usando os conhecimentos que vocês obtiveram no [Lab 3](/Lab3).
 
 !!! example 
     Faça, do zero, um programa que lê uma matriz $5\times 4$ e imprime no terminal a soma de cada uma de suas colunas. 
