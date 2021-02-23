@@ -184,15 +184,6 @@ void soma_um(long arr[], long pos) {
 }
 ```
 
----- 
-
-# Atividade 1 - Arrays
-
-## Exercícios da primeira seção do Lab 4.
-
-## Tempo: 20 minutos
-
-
 ----
 
 # Strings
@@ -307,15 +298,6 @@ char *strcpy(char *dest, char *src);
 > **Dica**: usar strcmp ajuda?
 -->
 
----- 
-
-# Atividade 2 - Strings
-
-## Exercícios da segunda seção do Lab 4.
-
-## Tempo: 20 minutos
-
-
 ----
 
 # Matrizes
@@ -359,14 +341,6 @@ long mat[2][3];
 
 
 **É preciso conhecer a segunda dimensão para acessar os elementos!**
-
----- 
-
-# Atividade 3 - Matrizes
-
-## Exercícios da terceira seção do Lab 4.
-
-## Tempo: 20 minutos
 
 -----
 

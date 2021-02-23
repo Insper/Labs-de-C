@@ -94,8 +94,8 @@ void send_data(char *course, char *task_id, char *content) {
         curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_data);
         curl_easy_setopt(curl, CURLOPT_WRITEDATA, NULL);
 
-        CURLcode res = curl_easy_perform(curl); 
-
+        curl_easy_perform(curl); 
+        
         curl_easy_cleanup(curl);
         free(fields_str);
     }

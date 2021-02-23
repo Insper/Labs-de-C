@@ -108,7 +108,7 @@ Dizemos que um apontador `p` *aponta* para uma variável `v` se o endereço de `
 está armazenado em `p`. Visualmente, podemos representar isso da seguinte forma:
 
 <center>
-    <img src="../imgs/day5-pointers/apontador.png" width="200px">
+    <img src="/imgs/day5-pointers/apontador.png" width="200px">
 </center>
 
 Esta figura é uma representação visual de `p` apontar para `v`. Nesse caso, `v` é uma variável
@@ -201,7 +201,7 @@ Agora vejam como o exemplo abaixo é interessante.
 
 
 !!! warning
-    Não vá para a próxima página antes de validar suas respostas com um dos
+    Não vá para a próxima parte antes de validar suas respostas com um dos
     professores.
 
 
@@ -382,6 +382,8 @@ como em objetos Java.
     receber duas variáveis do tipo `ponto` em vez de receber quatro variáveis do
     tipo `int`.
 
+    Escreva sua solução em `tarefa3.c` e teste usando `make tarefa3`.
+
 
 !!! example
     Escreva um programa completo que:
@@ -471,6 +473,8 @@ Pare e respire de novo.
     não. Se os dois pontos são iguais, ela deve devolver `0` e não escrever nada
     no terceiro. Se os dois pontos são diferentes, ela deve devolver `1` e
     escrever o resultado no terceiro.
+
+    Escreva sua solução em `tarefa6.c` e teste usando `make tarefa6`.
 
 
 !!! warning
