@@ -202,6 +202,19 @@ Agora que já trabalhamos um pouco com *arrays*, *strings* e matrizes está na h
  
     Seu programa deverá calcular a média usando uma função `avg` escrita por você mesmo e pode supor que `n < 100`. Para facilitar seus testes, escreva dois arquivos de entrada e use `<` para rodar o programa. 
 
+    ==Atenção, em C não podemos fazer isso:==
+    ```c
+        int s; 
+        scanf("%d", &s);
+        long vec[s];
+    ```
+    
+    C não suporta alocar memória dinâmica para um vetor. Sugerimos
+    vocês criarem um vetor de uma tamanho maior que o usuário
+    possa querer usar. Existe uma solução, mas vamos ver mais
+    para frente (`malloc`).
+    
+    
 !!! example
     Modifique seu programa acima para que ele imprima também a variância do vetor. 
 
