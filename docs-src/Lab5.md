@@ -132,7 +132,7 @@ Vamos declarar o apontador `p` do exemplo acima.
     int *p;
 ~~~
 
-Por que estamos usando `int`? Porque apontadores em C *sabem o tipo da variável
+Por que estamos usando `int`? Porque apontadores em C *não sabem o tipo da variável
 para a qual apontam*, portanto esse tipo deve estar na declaração. Assim, a
 combinação de `int` seguido por `*` representa a declaração de um apontador para
 variável inteira.
