@@ -27,7 +27,7 @@ scanf("%ld", &vetor[0]);
 ~~~
 
 !!! question long 
-    Simule o código abaixo manualmente e escreva sua saída abaixo.
+    Simule o código abaixo manualmente e escreva sua saída em um papel!!
 
     ```c
     #include <stdio.h>
@@ -45,12 +45,10 @@ scanf("%ld", &vetor[0]);
         
         return 0;	
     }
-
     ```
 
-
 !!! question long 
-    O código acima está no arquivo `erro_comum1.c`. Compile e execute ele. Os resultados foram os esperados? Se não, você consegue explicar por que eles foram diferentes?
+    O código acima está no arquivo `tarefa1.c`. Compile e execute ele. Os resultados foram os esperados? Se não, você consegue explicar por que eles foram diferentes?
 
     ??? note "Resposta"
         Como podemos ver, o código compila, mas seu comportamento é indefinido por duas razões:
@@ -61,14 +59,12 @@ scanf("%ld", &vetor[0]);
 !!! tip
     Diferentemente de outras linguagens, *C* não verifica os índices automaticamente nem inicializa o elementos do vetor com 0. Além disto, não é possível obter o tamanho de um vetor a partir de seu nome.
 
-
 !!! example
     Conserte o código acima. Você deverá ler as posições do vetor usando `scanf` em um `for` e depois consertar o `for` do exemplo acima para não acessar as posições indevidas. 
 
     **Sim, seu programa deverá ter dois `for`, um para leitura usando `scanf` que você deverá criar e o outro é o do exemplo acima, que deverá ser consertado.**
 
     Conserte o código acima no arquivo `tarefa1.c`. Compile e teste sua solução usando `make tarefa1`.
-
 
 Um ponto importante é que o sistema de tipos não permite a conversão/passagem de vetores do mesmo tipo, mas com tamanhos diferentes. Assim, a função abaixo não aceitaria como argumento a variável `double arr[4]`, pois só aceita vetores de tamanho 3.
 
@@ -143,10 +139,9 @@ fgets(str, STRING_LEN, stdin); // precisamos passar o tamanho máximo
         O último caractere de uma string é sempre `'\0'`! Logo, podemos percorrer os caracteres até que um `'\0'` seja encontrado.
 
 !!! example 
-    Crie uma função que
+    Crie uma função que:
 
-    1. declara uma string de tamanho máximo 100
-    1. leia uma linha do terminal
+    1. recebe uma string de tamanho máximo 100
     1. conte o número de vezes que a letra "a" aparece
     1. retorne este valor.
 

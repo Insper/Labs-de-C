@@ -107,9 +107,7 @@ a esse símbolo.
 Dizemos que um apontador `p` *aponta* para uma variável `v` se o endereço de `v`
 está armazenado em `p`. Visualmente, podemos representar isso da seguinte forma:
 
-<center>
-    <img src="/imgs/day5-pointers/apontador.png" width="200px">
-</center>
+![](imgs/day5-pointers/apontador.png)
 
 Esta figura é uma representação visual de `p` apontar para `v`. Nesse caso, `v` é uma variável
 inteira cujo valor é `5` e `p` é um apontador cujo valor é o endereço de
