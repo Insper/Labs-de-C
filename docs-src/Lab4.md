@@ -91,8 +91,6 @@ double soma(double arr[], int n);
 !!! question short
     O arquivo usado acima contém vários testes na função `main`. Leia a função `main` e escreva abaixo a notação usada para inicializar um array com valores constantes. Como você inicializaria um vetor de `int` com os valores $0, 2, 3, 2, 5$?
 
-
-
 ## Strings
 
 Como visto na expositiva, strings são arrays de caracteres sendo que o último elemento da string contém um caractere `'\0'`. Logo, uma string declarada como `char str[100]` pode guardar strings de **até 99** caracteres (mais 1 para o `'\0'`). Se a string tiver comprimento menor o restante das posições simplesmente não é utilizado.
@@ -113,7 +111,6 @@ Como visto na expositiva, strings são arrays de caracteres sendo que o último 
 
 !!! question short
      Em *C*, qual a diferença entre `"a"` e `'a'`? 
-
 
 Para imprimir uma string no terminal basta usar o código `%s` na string de formatação do printf:
 
@@ -150,7 +147,6 @@ fgets(str, STRING_LEN, stdin); // precisamos passar o tamanho máximo
 !!! example 
     E se fosse necessário contar o número de caracteres "1"? Implemente no arquivo `tarefa4.c` e teste com `make tarefa4`
 
-
 ## Matrizes
 
 Como visto na expositiva, matrizes em *C* nada mais são que vetores colocados um após o outro.
@@ -184,8 +180,6 @@ Perceba que toda a primeira linha é armazenada (contendo 3 `long`s) antes do in
 !!! example 
     Modifique seu programa acima para, além das somas de cada coluna, imprimir também o índice da coluna de maior valor.
 
-
-
 ## Exercícios 
 
 Agora que já trabalhamos um pouco com *arrays*, *strings* e matrizes está na hora de praticar com exercícios mais complexos. Estes exercícios não são opcionais, sua realização é essencial para cumprir os objetivos do Mutirão. 
@@ -214,7 +208,6 @@ Agora que já trabalhamos um pouco com *arrays*, *strings* e matrizes está na h
     possa querer usar. Existe uma solução, mas vamos ver mais
     para frente (`malloc`).
     
-    
 !!! example
     Modifique seu programa acima para que ele imprima também a variância do vetor. 
 
@@ -238,12 +231,10 @@ Agora que já trabalhamos um pouco com *arrays*, *strings* e matrizes está na h
 
     Existem pelo menos dois problemas graves neste código. Você consegue identificá-los? 
 
-
 !!! example
     Faça, do zero, um programa que leia uma string (tamanho máximo 200) e crie uma nova string trocando toda letra por maiúsculas. Seu programa deverá imprimir a string original e sua versão em maiúsculas. Seu programa deve funcionar para strings contendo números, símbolos, espaços e letras maiúsculas e minúsculas. Consulte a tabela abaixo, se necessário. 
 
     ![Tabela ASCII com valores em decimal e hexa](http://www.asciichars.com/_site_media/ascii/ascii-chars-landscape.jpg)
-
 
 ### Matrizes
 
@@ -260,11 +251,44 @@ Ou seja, primeiro lemos uma linha com a string "P2", depois dois inteiros `w` e 
 
 !!! warning 
     Nas tarefas abaixo estamos supondo que você usa `<` para passar o conteúdo das imagens exemplo para seu programa no terminal e `>` para salvar o resultado do terminal em uma nova imagem *pgm*.
+    
+    Exemplo:
+    
+    ```bash
+    $ ./tarega9 < entrada1.pgm
+    ```
 
 Para as tarefas abaixo você pode supor que as imagens tem tamanho máximo $512\times 512$. Para deixar seu código mais limpo, defina duas constantes `MAXW` e `MAXH` para guardar estes valores. 
 
 !!! example
     Crie, do zero, um programa que lê o cabeçalho de uma imagem *pgm* (primeiras três linhas) passada no terminal e imprima as dimensões da imagem. Não se esqueça de ler também o número `255` na terceira linha.
+    
+    Dica, de como ler a primeira linha do arquivo de imagem:
+    
+    ```c
+    // arquivo tarefa9.c
+    // 
+    // 1. compilar tarefa9.c
+    // 2. executar com: ./tarefa9 < entrada1.pgm
+    #include <stdio.h>
+    
+    int main() {
+        char linha[100];
+        int var;
+        
+        // header
+        fgets(linha, 100, stdin);
+        printf(linha);
+
+        // W
+        scanf("%d", &var);
+        printf("W %d \n", var);
+
+        return 0;
+    }
+    ```
+    
+    Agora você pode continuar lendo na sequência com `fgets` ou `scanf`.
 
 !!! example
     Crie uma função `void le_imagem(int mat[MAXH][MAXW], int w, int h)` que lê os valores da matriz da imagem e os escreve em `mat`. 
