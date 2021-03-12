@@ -14,7 +14,7 @@ theme:
 docs_dir: docs-src
 site_dir: docs
 
-copyright: 'Copyright &copy; 2020 / Marcelo Hashimoto, Igor Montagner, Rafael Corsi, Eduardo Marossi'
+copyright: 'Copyright &copy; 2021 / Marcelo Hashimoto, Igor Montagner, Rafael Corsi, Eduardo Marossi'
 
 site_url: https://insper.github.io/Labs-de-C/
 
@@ -28,22 +28,17 @@ nav:
 #- Sobre-Ferramental.md
 - 'Mutirão':
     - 'about-mutirao.md'
-    #- 'Super Aula':
-    #    - 'Embarcados':
-    #        - 'Parte 1': 'day1-embarcados.md'
-    #        - 'Parte 2': 'day1-embarcados-parte2.md'
-    #    - 'Sys HW/SW': https://github.com/Insper/Labs-de-C/blob/master/day-one/day1-sysHwSw.pdf
-    #    - 'Desafios': https://github.com/Insper/Labs-de-C/blob/master/day-one/day1-desafios.pdf
     - 'Lab1.md'
     - 'Lab2.md'
     - 'Lab3.md'
     - 'Lab4.md'
     - 'Lab5.md'
     - 'Lab6.md'
-    #- 'Avaliação exemplo': 'https://github.com/Insper/Labs-de-C/raw/master/SimuladoAvalia%C3%A7%C3%A3o.pdf'
 
-- Labs:
-    - 'Lab7.md'
+- 'Labs':
+    - labs-extras/lab7.md
+    - labs-extras/lab8.md
+
 
 # Extensions
 extra_javascript:
