@@ -2,8 +2,10 @@
 
 - **Curso:** Engenharia Da Computação - Quinto Semestre
 - **Disciplinas:** Computação Embarcada/ Sistemas HW/SW e Desafios de Programação
+- **Professores:**
+    - Rafael Corsi/ Igor Montagner/ Marcelo Hasimoto/ Maciel Vidal
 - **Equipe:**
-    - Rafael Corsi/ Igor Montagner/ Marcelo Hasimoto/ Eduardo Marossi/ Marco Mello
+    - Eduardo Marossi/ Marco Mello/ Flavio Batista
     
 **© Todos os direitos reservados**
 

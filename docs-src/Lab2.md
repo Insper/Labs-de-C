@@ -98,11 +98,13 @@ tipo do valor. A letra `d` (de "decimal") representa `int`, enquanto as letras
 
 Antes de apresentar outros conceitos, vamos praticar um pouco.
 
-
 !!! warning 
     Assim como no lab anterior, cada tarefa já tem um arquivo correspondente. Digite `make tarefaN` para compilar e rodar a tarefa `N`.
 
-!!! example
+!!! question
+    
+    `02-praticando/tarefa1.c`
+
     ```c
     int s;
     int i;
@@ -114,12 +116,15 @@ Antes de apresentar outros conceitos, vamos praticar um pouco.
     }
     ```
 
-    - Esse código **errado** já apareceu no laboratório anterior. Ele deveria
+    > Esse código **errado** já apareceu no laboratório anterior. Ele deveria
     calcular a soma de `1` a `10`.
 
     Rode o código corrigido e faça ele imprimir o resultado com `printf()`
 
-!!! example
+!!! question
+
+    `02-praticando/tarefa2.c`
+    
     ```c
     int s = 0;
     int i;
@@ -130,10 +135,13 @@ Antes de apresentar outros conceitos, vamos praticar um pouco.
     }
     ```
 
-    - Esse código **errado** já apareceu no laboratório anterior. Ele deveria calcular a
+    > Esse código **errado** já apareceu no laboratório anterior. Ele deveria calcular a
     *metade* da soma dos númereos de `1` a `10`
 
     Rode o código corrigido e faça ele imprimir o resultado correto
+
+!!! progress
+    Continuar...
 
 Vamos agora finalmente escrever um programa com interação de usuário!
 
@@ -209,32 +217,42 @@ Por falar em `PI`, reparou que definimos a constante mas nunca a usamos? Na
 verdade, não foi um acidente...
 
 !!! question
-    Qual é o problema no código acima? A dica já está dada: para ser resolvido,
-    precisamos usar `PI`...
-
-!!! example
-    Resolva o problema!
+    `02-praticando/tarefa3.c`
+    
+    1. Qual é o problema no código acima? 
+    1. Corrija e valida a resposta
+    
+    ??? tip
+        A dica já está dada: para ser resolvido, precisamos usar `PI`...
 
 !!! warning ""
-    Não continue antes de validar suas respostas com um dos
-    professores. Esse tipo de exercício será avaliado ao longo do semestre.
-
+    Não continue antes de validar suas respostas.
+    
+!!! progress
+    Continuar...
 
 ## Exercícios Avançados
 
 Mesmo que não dê tempo de fazer esses exercícios em sala, é muito importante
 que você os faça até quarta para desenferrujar programação e praticar C.
 
-!!! example
+!!! question
+    `02-praticando/tarefa4.c`
+    
     Escreva uma função que recebe um inteiro e devolve o *módulo* desse inteiro.
 
-!!! example
+!!! question
+    `02-praticando/tarefa5.c`
+    
     Escreva uma função que recebe quatro inteiros, representando as coordenadas
     de dois pontos no plano cartesiano, e devolve a *distância de Manhattan*
     (pesquise) entre esses pontos. Vocês já fiazeram esse exercício em
     *Desenvolvimento Colaborativo Ágil*.
 
- Assim como o `for` padrão do Java, o `for` do C não funciona como o `for` do Python.
+!!! progress
+    Continuar...
+
+Assim como o `for` padrão do Java, o `for` do C não funciona como o `for` do Python.
 Na verdade, é apenas um "açúcar sintático" que facilita a escrita de loops:
 
 ~~~{.c}
@@ -261,7 +279,9 @@ Em Java existe o *enhanced for*, que é mais parecido com o `for` do Python, mas
 não existe uma equivalência disso em C. Bem-vindos ao baixo nível! Não temos
 bolo, mas temos os ingredientes para você fazer um bolo.
 
-!!! example
+!!! question
+    `02-praticando/tarefa6.c`
+
     Escreva uma função que recebe um inteiro *n* e, para cada inteiro *i* entre
     *1* e *n*, imprime uma string conforme a seguinte regra:
 
@@ -275,7 +295,9 @@ bolo, mas temos os ingredientes para você fazer um bolo.
 
     Escreva duas versões: uma usando `while`s e outra usando `for`s.
 
-!!! example
+!!! question
+    `02-praticando/tarefa7.c`
+
     Escreva uma função que recebe um inteiro *n* e imprime uma "arvorezinha"
     conforme a regra abaixo.
 

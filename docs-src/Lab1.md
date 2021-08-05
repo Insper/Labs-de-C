@@ -8,12 +8,17 @@ Para começar você deve clonar o repositório `https://github.com/Insper/Labs-d
 
 !!! info "Infra"
     Os laboratórios do mutirão foram planejados para funcionar
-    no Linux, e você deve ter executado:
+    no Linux, e você deve instalar os pacotes a seguir antes de começar o lab:
 
     - `sudo apt install build-essential libsystemd-dev`
 
 !!! tip "Testando"
     No terminal do Linux dentro da pasta `code/01-intro` execute o comando: `make`, se tudo der certo, o programa carrega a imagem: `deepak-kumar-rX9uFci3pfY-unsplash.pgm` e gera a imagem `image-out.pgm`.
+    
+    ==Verifique se a imagem foi gerada corretamente.==
+
+!!! progress
+    Continuar...
 
 ## Começando
 
@@ -100,11 +105,11 @@ processamento. Yay!
 Vejamos o contexto no qual essa função está sendo chamada.
 
 ~~~{.c}
- for (int x=0; x< image.row; x++){
-        for (int y=0; y<image.col; y++){
-            image.matrix[x][y] = process_pixel(image.matrix[x][y]);
-        }
+for (int x=0; x< image.row; x++) {
+    for (int y=0; y<image.col; y++) {
+        image.matrix[x][y] = process_pixel(image.matrix[x][y]);
     }
+}
 ~~~
 
 Hoje vocês não precisam saber todos os detalhes desse código (isso acontecerá na
@@ -115,11 +120,33 @@ partir desse valor original.
 Como acabamos de ver que a função simplesmente devolve o mesmo valor, então a
 imagem permanece inalterada. Vamos fazer algo mais interessante?
 
+!!! question choice
+    Qual a característica da variável `int new_level`?
+    
+    - [ ] Pode assumir valores entre 0 e 4.294.967.295
+    - [x] Pode assumir valores entre -2.147.483.648 e +2.147.483.648
+    - [ ] É um vetor de pixels
+
+    !!! details
+        Em C possúimos alguns tipos de varíaveis, como:
+        
+        | tipo          | alternativa  | range                            |
+        | -----         | ------------ | -----                            |
+        | char          | int8_t       | -128 .. 127 ou 0 .. 255          |
+        | unsigned char | uint8_t      | 0 .. 255                         |
+        | ==int==       | ==int32_t==  | ==-2.147.483.648 .. +2.147.483.648== |
+        | uint          | uint32_t     |       0 .. 4.294.967.295         |
+
+        Para mais informações acesse: https://www.tutorialspoint.com/cprogramming/c_data_types.htm
+        
+!!! progress
+    Continuar...
+
 ## Exercícios Básicos
 
 Para todos os exercícios deste handout, sigam por favor as regras abaixo.
 
-1. Todos os enunciados dizem "o que" a função deve fazer, mas não dizem "como"
+1. Todos os enunciados dizem **"o que"** a função deve fazer, mas não dizem **"como"**
    ela deve fazer. Essa restrição é proposital! Não pergunte "como", pois
    descobrir isso é justamente uma das habilidades que vocês precisam exercitar
    para as três disciplinas.
@@ -135,25 +162,25 @@ Para todos os exercícios deste handout, sigam por favor as regras abaixo.
 !!! warning
     Os exercícios abaixo deverão ser feitos nos arquivos `tarefaX.c`
 
-!!! example
+!!! question
     O valor de um pixel é um número inteiro entre `0` e `255`. Quanto mais alto
     o valor, mais claro é o pixel. Sabendo disso, altere `process_pixel` para
     *negativizar* a imagem, ou seja, transformar pixels claros em escuros e
     vice-versa.
+    
+    > Testando:
+    >
+    > No terminal do Linux dentro da pasta `code/01-intro` execute o comando: `make tarefa1`, se tudo der certo, o programa carrega a imagem: `deepak-kumar-rX9uFci3pfY-unsplash.pgm` e gera a imagem `image-out.pgm`.
+    >
+    >  ==Você deve abrir a imagem `image-out.pgm` para ver o resultado.==
+    >
+    > Faça isso também para as tarefas seguintes.
 
     | Solução correta                          |
     |------------------------------------------|
     | ![](lab1-solucao/tarefa1.png){width=250} |
 
-
-!!! tip "Testando"
-    No terminal do Linux dentro da pasta `code/01-intro` execute o comando: `make tarefa1`, se tudo der certo, o programa carrega a imagem: `deepak-kumar-rX9uFci3pfY-unsplash.pgm` e gera a imagem `image-out.pgm`.
-
-    ==Você deve abrir a imagem `image-out.pgm` para ver o resultado.==
-
-    Faça isso também para as tarefas seguintes.
-
-!!! example
+!!! question
     Agora altere `process_pixel` para *escurecer* a imagem: cada pixel deve
     ficar com a metade de sua luminosidade original.
 
@@ -179,7 +206,7 @@ Antes do próximo exercício, uma dica! A sintaxe de `if/else` em C, para variar
 
 Sabendo disso...
 
-!!! example
+!!! question
     Altere `process_pixel` para receber um segundo parâmetro, também inteiro, e
     *limiarizar* a imagem:
 
@@ -197,9 +224,7 @@ Sabendo disso...
     |------------------------------------------|
     | ![](lab1-solucao/tarefa3.png){width=250} |
 
-    
-
-!!! example
+!!! question
     Altere `process_pixel` para manipular o *brilho* da imagem: use o segundo
     parâmetro, adicionado no exercício anterior, como um valor que é *somado* ao
     pixel. Faça vários testes, passando múltiplos valores como o segundo
@@ -212,8 +237,7 @@ Sabendo disso...
     |------------------------------------------|---|
     | ![](lab1-solucao/tarefa4-127-correto.png){width=250}  |  ![](lab1-solucao/tarefa4-127-errado.png){width=250}  |
 
-
-!!! example
+!!! question
     Altere `process_pixel` para manipular o *contraste* da imagem: use o segundo
     parâmetro como um valor que *multiplica* o pixel. Novamente, faça vários
     testes, passando múltiplos valores como o segundo parâmetro da chamada.
@@ -228,6 +252,9 @@ Sabendo disso...
 Nesses exercícios preliminares, vocês já usaram os operadores aritméticos
 básicos (`+`, `-`, `/`, `*`), execução condicional (`if/else`) e a estrutura
 básica de funções.
+
+!!! progress
+    Continuar...
 
 ## Exercícios Intermediários
 
@@ -256,7 +283,6 @@ básico sozinho, pois isso faz muita diferença na produtividade.
     Ou melhor, que *deveria* calcular a soma dos números de `1` a `10`.
 
     1. Qual é o problema com esse código?
-
     1. Reescreva o código, evitando os três problemas acima.
 
     ??? note "Solução"

@@ -3,7 +3,7 @@ theme:
   language: 'pt'
   name: 'material'
   palette:
-      primary: 'white'
+      primary: 'black'
       accent: 'pink'
       icon: 'code'
   font:
@@ -35,18 +35,19 @@ nav:
     - 'Lab5.md'
     - 'Lab6.md'
 
-- 'Labs':
+- 'Labs extras':
     - labs-extras/lab7.md
     - labs-extras/lab8.md
-
-
 # Extensions
 extra_javascript:
-  - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
-  - 'translate_admonitions.js'
+  - https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.0.0/js-yaml.min.js
+  - js/markdown-enhancer.js
 
 extra_css:
   - css/printing.css
+
+plugins:
+  - git-revision-date-localized
 
 markdown_extensions:
   - markdown.extensions.attr_list
