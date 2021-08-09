@@ -70,15 +70,15 @@ Usando este comando podemos compilar um programa definido em um único arquivo *
 
 ![](imgs/Lab3/fluxo.svg){width=600px}
 
-!!! example 
-    Compile o arquivo *printf.c* usando o `gcc` e nomeie o executável *exemplo0*. Rode ele e verifique que tudo continua funcionando.
+!!! question 
+    Compile o arquivo `printf.c` usando o `gcc` e nomeie o executável *exemplo0*. Rode ele e verifique que tudo continua funcionando.
  
 Os programas abaixo devem ser feitos criando um arquivo vazio baseado no `printf.c`.
 
-!!! example 
-    Crie um programa que lê dois inteiros do terminal e determina se o primeiro é múltiplo do segundo. Se o segundo número passado for 0 seu programa deverá mostrar uma mensagem de erro. 
+!!! question 
+    Crie um programa (tem que criar um arquivo novo) que lê dois inteiros do terminal e determina se o primeiro é múltiplo do segundo. Se o segundo número passado for 0 seu programa deverá mostrar uma mensagem de erro. 
 
-!!! example 
+!!! question 
     Adapte seu programa acima para que ele receba vários pares de números e só pare de ser executado quando receber o par "0 0".
 
 ## Facilitando o uso da entrada e saída padrão
@@ -87,26 +87,24 @@ Para interagir com nossos programas precisamos digitar valores e strings no term
 
 ```bash
 $ ./prog < arquivo_entrada.txt
-
 ```
 
 O programa `prog` será executado como se o conteúdo do arquivo *arquivo_entrada.txt* tivesse sido digitado no terminal. Assim, podemos testar facilmente programas como o criado na Tarefa 3 acima sem precisar digitar sempre a mesma entrada. 
 
-!!! example
+!!! question
     Crie um arquivo de entrada para o programa da tarefa 3 e verifique que o resultado do programa é o mesmo que quando você digita manualmente os valores no terminal. 
 
-!!! example
+!!! question
     O mesmo vale para a saída, mas usando o caractere `>`. Capture a saída do programa da tarefa 3 para um arquivo de nome *saida3.txt*.
 
-!!! example
+!!! question
     Podemos combinar o redirecionamento de entrada e saída no mesmo comando. Teste esta funcionalidade usando o programa da tarefa 3. 
-
 
 ## Bibliotecas
 
 A tarefa 3 do lab passado usada funções trigonométricas do cabeçalho `math.h`. Somente incluir `math.h`  não é suficiente para que o programa funcione, é preciso incluir também a implementação dessas funções. Fazemos isso adicionando flags começando com `-l` **no fim de sua linha de compilação do gcc**. 
 
-!!! example
+!!! question
     Volte no código da aula passada e compile-o usando a linha `gcc -Og -Wall tarefa3.c -o tarefa3-sem-make -lm -lsystemd`
 
     * `-lm` adiciona as funções matemáticas ao executável
