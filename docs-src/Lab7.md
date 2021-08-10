@@ -22,15 +22,7 @@ void dec (void) {
 }
 ```
 
-!!! question quiz
-    
-    Em qual linha do código a seguir você deve declar a variável `glo` para que ela seja global? 
-    
-    - [x] Linha 2
-    - [ ] Linha 4
-    - [ ] Linha 7
-    - [ ] Linha 9
-    
+!!! question choice
     ```c linenums="1"
     #include <stdio.h>
 
@@ -46,7 +38,14 @@ void dec (void) {
         display();
     }
     ```
+
+    Em qual linha do código anterior você deve declar a variável `glo` para que ela seja global? 
     
+    - [x] Linha 2
+    - [ ] Linha 4
+    - [ ] Linha 7
+    - [ ] Linha 9
+
     !!! details
         Para uma variável ser glogal ela deve ser declarada fora de funcão, ==mas atencão!!== Você deve declarar a variável antes do seu uso, se não terá erro de compilacão. O exemplo a seguir não compilaria:
         
@@ -131,14 +130,7 @@ Notem que:
     !!! details
         Nesses casos a variável local tem preferência e a saída do programa seria: `2`.
 
-!!! question quiz
-    
-    A variável `temp` a seguir é:
-    
-    - [x] local da main.
-    - [ ] glo pois foi declarada na main.
-    - [ ] local da get_temp.
-    
+!!! question choice
     ```c
     void get_temp (int &temp) {
         _arduino_get_temp(temp);
@@ -149,7 +141,14 @@ Notem que:
         get_temp(temp)
     }
     ```
+   
+    A variável `temp` do código anterior é:
     
+    - [x] local da main.
+    - [ ] glo pois foi declarada na main.
+    - [ ] local da get_temp.
+
+ 
     !!! details
         Em C o `main` é uma funcão como qualquer outra! Uma variável declarada dentro dela é visível apenas para a funcão main, a não ser que seja passada como referência como no exemplo anterior. 
         
