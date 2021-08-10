@@ -1,60 +1,176 @@
-# Lab 7 - Manipulando bits
+# Lab 7 - Escopo de variáveis
 
-!!! warning
-    Esse lab deve ser realizado no Linux.
+- http://linguagemc.com.br/funcoes-e-escopo-de-variaveis/
 
-Na linguagem `C` a menor unidade de armazenamento existente é a do `char`, que possui 8 bits. Mesmo sendo considerada de 'baixo nível' não possuímos uma maneira 'built-in' na linguagem de armazenar e/ou processar um único `bit`. Alguns compiladores para sistemas embarcados fornecem um tipo bit, porém isso é exclusivo dessas plataformas.
+Em C possuímos três escopos distintos chamados de: **global**, **local** ou **parâmetros formais**, o escopo define as regras de utilização das variáveis de um programa: onde elas são criadas e destruídas e como elas podem ser modificadas (escrita/leitura).
 
-!!! note
-    No ARM possuímos os seguintes tipos definidos:
-    
-    | type              | Size in bits | natural alignment in bytes |
-    | ------------      | ------------ | -------------------------- |
-    | char              |            8 | 1   (byte-aligned)         |
-    | short             |           16 | 2   (halfword-aligned)     |
-    | int               |           32 | 4   (word-aligned)         |
-    | long              |           32 | 4   (word-aligned)         |
-    | long long         |           64 | 8   (doubleword-aligned)   |
-    | float             |           32 | 4   (word-aligned)         |
-    | double            |           64 | 8   (doubleword-aligned)   |
-    | long double       |           64 | 8   (doubleword-aligned)   |
-    | All pointers      |           32 | 4   (word-aligned)         |
-    | _Bool (C only[a]) |            8 | 1   (byte-aligned)         |
-     
-    [a] **stdbool.h can be used to define the bool macro in C**.
-    
-    > fonte: http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.dui0491c/Babfcgfc.html
+## Variáveis globais
 
-A manipulação de bits é muito importante quando utilizamos a linguagem para: interagir com o hardware; verificar e manipular tipos; otimizações. Os objetivos deste lab são
+Existem durante toda execução do programa e são acessíveis para todas as funções, para uma variável ser global, basta ser declarada fora de qualquer bloco de função. 
 
-1. obter familiaridade com as operações bitwise em *C*
-2. aplicá-las para resolver problemas envolvendo múltiplas operações
-3. usar máscaras de bits para sets bits específicos em um inteiro 32 bits
-4. usar máscaras de bits para checar se bits específicos estão ligados
+No exemplo a seguir iremos criar uma variável global `g_counter` do tipo inteiro e a modificar em duas funções diferentes.
 
-## Começando
+```c
+int g_counter;
 
-O lab está localizado na pasta: `code/07-bits-1/` e contém os seguintes arquivos:
+void inc (void) {
+    g_counter++;
+}
 
-- `exercicios.c`: Arquivo em C que deve ser editado
-- `Makefile`: Arquivo de configuração e execução do lab
-
-O lab possui teste unitário para as funções que deverão ser desenvolvidas, para
-executar os testes basta abrir o terminal na pasta e executar o comando `make`.
-
-```bash
-cd code/07-bits-1/
-make
+void dec (void) {
+    g_counter--;
+}
 ```
 
-Você deve implementar as funções de forma sequencial, sendo a primeira a que aparece no começo do arquivo `exercicio.c`. Leia os comentários do código para entender. 
+!!! question quiz
+    
+    Em qual linha do código a seguir você deve declar a variável `glo` para que ela seja global? 
+    
+    - [x] Linha 2
+    - [ ] Linha 4
+    - [ ] Linha 7
+    - [ ] Linha 9
+    
+    ```c linenums="1"
+    #include <stdio.h>
 
-!!! tip 
-    Teste o código para cada função feita, não deixe acumular.
+    void display() {
+    
+        printf("%d\n", glo);
+    }
 
-## Submetendo
+    int main() {
+    
+        display();
+        glo = 10;
+        display();
+    }
+    ```
+    
+    !!! details
+        Para uma variável ser glogal ela deve ser declarada fora de funcão, ==mas atencão!!== Você deve declarar a variável antes do seu uso, se não terá erro de compilacão. O exemplo a seguir não compilaria:
+        
+        ```c linenums="1" hl_lines="6"
+        /* --- Exemplo incorreto --- */
+        #include <stdio.h>
 
-Ao terminal o lab você deve dar um `push` no seu repositório.
+        void display() {
+            /* glo é utilizado antes de ser declarado */
+            printf("%d\n", glo);
+        }
 
+        /* --- ERRADO! --- */
+        int glo = 10;
+
+        int main() {
+
+            display();
+            glo = 10;
+            display();
+        }
+        ```
+
+!!! info
+    Trabalhar com variáveis globais em C não é tarefa fácil, a coisa fica complicada quando o programa a ser separado em vários arquivos `.c` e `.h`. Nesses casos talvez você precise usar o *keyword* [extern](https://en.wikipedia.org/wiki/External_variable).
+    
 !!! warning
-    Todos os testes devem estar passando para considerar a entrega concluída.
+    Evite usar variáveis globais! Elas são difíceis de gerenciar. O exemplo anterior pode ser reescrito para:
+    
+    ```c
+    void inc (int counter) {
+        counter++;
+    }
+
+    void dec (int counter) {
+        counter--;
+    }
+    ```
+
+## Variáveis locais
+
+São as variáveis declaradas dentro das funções, e que são alocadas quando a função é chamada e a região de memória liberada quando a função retorna. 
+
+- As variáveis locais não podem ser modificadas por outras funções !!!
+
+No exemplo a seguir iremos declarar duas variáveis locais, em duas funções distintas:
+
+```c
+int foo (void) {
+    int var0 = 2;
+    return a;
+}
+
+int bar (void) {
+    int var1 = 3
+    return a;
+}
+```
+
+Notem que:
+
+- `var0` é apenas visível para a função `foo`
+- `var1` é apenas visível para a função `bar`
+- As variáveis só são criadas quando a função é chamada.
+
+!!! question short
+    Qual saída esperada do programa a seguir?
+    
+    ```c
+    int counter = 5;
+    
+    void foo (void) {
+        int counter = 2;
+        printf("%d", counter);
+    }
+    
+    void main (void) {
+        foo();
+    }
+    ```
+    
+    !!! details
+        Nesses casos a variável local tem preferência e a saída do programa seria: `2`.
+
+!!! question quiz
+    
+    A variável `temp` a seguir é:
+    
+    - [x] local da main.
+    - [ ] glo pois foi declarada na main.
+    - [ ] local da get_temp.
+    
+    ```c
+    void get_temp (int &temp) {
+        _arduino_get_temp(temp);
+    }
+    
+    void main (void) {
+        int *temp;
+        get_temp(temp)
+    }
+    ```
+    
+    !!! details
+        Em C o `main` é uma funcão como qualquer outra! Uma variável declarada dentro dela é visível apenas para a funcão main, a não ser que seja passada como referência como no exemplo anterior. 
+        
+        Mas a variável continua sendo local da funcão main.
+
+## Parâmetros formais
+
+São tratados como variáveis locais e possuem precedência sobre as variáveis globais. Como demonstrado no exemplo a seguir:
+
+```c
+int counter = 5;
+
+int foo (int counter) {
+    return counter;
+}
+
+void main (void) {
+    int tmp = foo(2);
+    printf("%d", tmp);
+}
+```
+
+!!! note ""
+    A saída do programa anterior é ==2==.
