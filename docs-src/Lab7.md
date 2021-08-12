@@ -6,7 +6,7 @@ Em C possuímos três escopos distintos chamados de: **global**, **local** ou **
 
 ## Variáveis globais
 
-Existem durante toda execução do programa e são acessíveis para todas as funções, para uma variável ser global, basta ser declarada fora de qualquer bloco de função.
+Existem durante toda a execução do programa e são acessíveis para todas as funções. Para uma variável ser global, basta ser declarada fora de qualquer bloco de função.
 
 No exemplo a seguir iremos criar uma variável global `g_counter` do tipo inteiro e a modificar em duas funções diferentes.
 
@@ -70,7 +70,7 @@ void dec (void) {
         ```
 
 !!! info
-    Trabalhar com variáveis globais em C não é tarefa fácil, a coisa fica complicada quando o programa a ser separado em vários arquivos `.c` e `.h`. Nesses casos talvez você precise usar o *keyword* [extern](https://en.wikipedia.org/wiki/External_variable).
+    Trabalhar com variáveis globais em C não é tarefa fácil e pode ser particularmente complicado quando o programa é separado em vários arquivos `.c` e `.h`. Nesses casos talvez você precise usar o *keyword* [extern](https://en.wikipedia.org/wiki/External_variable).
 
 !!! warning
     Evite usar variáveis globais! Elas são difíceis de gerenciar. O exemplo anterior pode ser reescrito para:
