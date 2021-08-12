@@ -14,7 +14,7 @@ Para começar você deve clonar o repositório `https://github.com/Insper/Labs-d
 
 !!! tip "Testando"
     No terminal do Linux dentro da pasta `code/01-intro` execute o comando: `make`, se tudo der certo, o programa carrega a imagem: `deepak-kumar-rX9uFci3pfY-unsplash.pgm` e gera a imagem `image-out.pgm`.
-    
+
     ==Verifique se a imagem foi gerada corretamente.==
 
 !!! progress
@@ -122,14 +122,14 @@ imagem permanece inalterada. Vamos fazer algo mais interessante?
 
 !!! question choice
     Qual a característica da variável `int new_level`?
-    
+
     - [ ] Pode assumir valores entre 0 e 4.294.967.295
     - [x] Pode assumir valores entre -2.147.483.648 e +2.147.483.648
     - [ ] É um vetor de pixels
 
     !!! details
         Em C possúimos alguns tipos de varíaveis, como:
-        
+
         | tipo          | alternativa  | range                            |
         | -----         | ------------ | -----                            |
         | char          | int8_t       | -128 .. 127 ou 0 .. 255          |
@@ -138,7 +138,7 @@ imagem permanece inalterada. Vamos fazer algo mais interessante?
         | uint          | uint32_t     |       0 .. 4.294.967.295         |
 
         Para mais informações acesse: https://www.tutorialspoint.com/cprogramming/c_data_types.htm
-        
+
 !!! progress
     Continuar...
 
@@ -167,7 +167,7 @@ Para todos os exercícios deste handout, sigam por favor as regras abaixo.
     o valor, mais claro é o pixel. Sabendo disso, altere `process_pixel` para
     *negativizar* a imagem, ou seja, transformar pixels claros em escuros e
     vice-versa.
-    
+
     > Testando:
     >
     > No terminal do Linux dentro da pasta `code/01-intro` execute o comando: `make tarefa1`, se tudo der certo, o programa carrega a imagem: `deepak-kumar-rX9uFci3pfY-unsplash.pgm` e gera a imagem `image-out.pgm`.

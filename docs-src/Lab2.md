@@ -98,11 +98,11 @@ tipo do valor. A letra `d` (de "decimal") representa `int`, enquanto as letras
 
 Antes de apresentar outros conceitos, vamos praticar um pouco.
 
-!!! warning 
+!!! warning
     Assim como no lab anterior, cada tarefa já tem um arquivo correspondente. Digite `make tarefaN` para compilar e rodar a tarefa `N`.
 
 !!! question
-    
+
     `02-praticando/tarefa1.c`
 
     ```c
@@ -124,7 +124,7 @@ Antes de apresentar outros conceitos, vamos praticar um pouco.
 !!! question
 
     `02-praticando/tarefa2.c`
-    
+
     ```c
     int s = 0;
     int i;
@@ -218,16 +218,16 @@ verdade, não foi um acidente...
 
 !!! question
     `02-praticando/tarefa3.c`
-    
-    1. Qual é o problema no código acima? 
+
+    1. Qual é o problema no código acima?
     1. Corrija e valida a resposta
-    
+
     ??? tip
         A dica já está dada: para ser resolvido, precisamos usar `PI`...
 
 !!! warning ""
     Não continue antes de validar suas respostas.
-    
+
 !!! progress
     Continuar...
 
@@ -238,12 +238,12 @@ que você os faça até quarta para desenferrujar programação e praticar C.
 
 !!! question
     `02-praticando/tarefa4.c`
-    
+
     Escreva uma função que recebe um inteiro e devolve o *módulo* desse inteiro.
 
 !!! question
     `02-praticando/tarefa5.c`
-    
+
     Escreva uma função que recebe quatro inteiros, representando as coordenadas
     de dois pontos no plano cartesiano, e devolve a *distância de Manhattan*
     (pesquise) entre esses pontos. Vocês já fiazeram esse exercício em

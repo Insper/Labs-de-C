@@ -5,27 +5,27 @@
 | `code/juntando-06` | `soma.c` |
 
 !!! info
-    Este roteiro não apresenta nenhum conceito novo. Vocês podem fazê-lo apenas com o que já foi apresentado nos roteiros anteriores. Se você está precisando consultar materiais extras é um sinal de que sua solução é complicada demais. 
+    Este roteiro não apresenta nenhum conceito novo. Vocês podem fazê-lo apenas com o que já foi apresentado nos roteiros anteriores. Se você está precisando consultar materiais extras é um sinal de que sua solução é complicada demais.
 
 !!! warning
     Este lab é uma continuação do que vocês já fizeram no Lab5! Façam uma cópia dele para a pasta `Lab6`
 
-Vamos neste roteiro revisar os conceitos dos dois roteiros anteriores fazendo modificações para tornar seu programa mais legível e organizado. 
+Vamos neste roteiro revisar os conceitos dos dois roteiros anteriores fazendo modificações para tornar seu programa mais legível e organizado.
 
 !!! example
-    Crie uma estrurura `imagem` para guardar largura, altura e a matriz da imagem. Você pode supor que ela tem tamanho máximo $640\times 480$. 
-    
+    Crie uma estrurura `imagem` para guardar largura, altura e a matriz da imagem. Você pode supor que ela tem tamanho máximo $640\times 480$.
+
 !!! example
     Modifique sua função `le_imagem` que carrega o conteúdo de uma imagem do terminal e escreve em uma estrutura `imagem`. Quais parâmetros sua função recebe?
-    
-!!! example  
+
+!!! example
     Modifique sua função `escreve_imagem` para receber um tipo `imagem`. Você deve usar apontadores nesta função?
-    
+
 !!! example
     Modifique sua função `limiar` para receber um tipo `imagem`. Você deve usar apontadores nesta função?
 
-!!! warning 
-    Valide sua implementação com os professores antes de seguir. 
+!!! warning
+    Valide sua implementação com os professores antes de seguir.
 
 ## Exercícios avançados
 
@@ -36,9 +36,9 @@ Vamos neste roteiro revisar os conceitos dos dois roteiros anteriores fazendo mo
     **Borramento**: crie uma função *blur* que faz o borramento de uma imagem. Ela deverá receber dois tipos `imagem`: um contendo a imagem original e um que receberá a imagem processada. Para borrar a imagem compute, para cada ponto, a média entre seu valor e o valor de seus vizinhos (incluindo diagonais).
 
 !!! example
-    **Detector de bordas**: você pode detectar bordas em uma imagem computando, para cada ponto, a diferença entre 4 vezes seu valor e o valor dos seus vizinhos. 
+    **Detector de bordas**: você pode detectar bordas em uma imagem computando, para cada ponto, a diferença entre 4 vezes seu valor e o valor dos seus vizinhos.
 
 !!! warning
-    Valide visualmente cada exercício antes de prosseguir. 
+    Valide visualmente cada exercício antes de prosseguir.
 
-    
+

@@ -6,7 +6,7 @@ Em C possuímos três escopos distintos chamados de: **global**, **local** ou **
 
 ## Variáveis globais
 
-Existem durante toda execução do programa e são acessíveis para todas as funções, para uma variável ser global, basta ser declarada fora de qualquer bloco de função. 
+Existem durante toda execução do programa e são acessíveis para todas as funções, para uma variável ser global, basta ser declarada fora de qualquer bloco de função.
 
 No exemplo a seguir iremos criar uma variável global `g_counter` do tipo inteiro e a modificar em duas funções diferentes.
 
@@ -27,20 +27,20 @@ void dec (void) {
     #include <stdio.h>
 
     void display() {
-    
+
         printf("%d\n", glo);
     }
 
     int main() {
-    
+
         display();
         glo = 10;
         display();
     }
     ```
 
-    Em qual linha do código anterior você deve declar a variável `glo` para que ela seja global? 
-    
+    Em qual linha do código anterior você deve declar a variável `glo` para que ela seja global?
+
     - [x] Linha 2
     - [ ] Linha 4
     - [ ] Linha 7
@@ -48,7 +48,7 @@ void dec (void) {
 
     !!! details
         Para uma variável ser glogal ela deve ser declarada fora de funcão, ==mas atencão!!== Você deve declarar a variável antes do seu uso, se não terá erro de compilacão. O exemplo a seguir não compilaria:
-        
+
         ```c linenums="1" hl_lines="6"
         /* --- Exemplo incorreto --- */
         #include <stdio.h>
@@ -71,10 +71,10 @@ void dec (void) {
 
 !!! info
     Trabalhar com variáveis globais em C não é tarefa fácil, a coisa fica complicada quando o programa a ser separado em vários arquivos `.c` e `.h`. Nesses casos talvez você precise usar o *keyword* [extern](https://en.wikipedia.org/wiki/External_variable).
-    
+
 !!! warning
     Evite usar variáveis globais! Elas são difíceis de gerenciar. O exemplo anterior pode ser reescrito para:
-    
+
     ```c
     void inc (int counter) {
         counter++;
@@ -87,7 +87,7 @@ void dec (void) {
 
 ## Variáveis locais
 
-São as variáveis declaradas dentro das funções, e que são alocadas quando a função é chamada e a região de memória liberada quando a função retorna. 
+São as variáveis declaradas dentro das funções, e que são alocadas quando a função é chamada e a região de memória liberada quando a função retorna.
 
 - As variáveis locais não podem ser modificadas por outras funções !!!
 
@@ -113,20 +113,20 @@ Notem que:
 
 !!! question short
     Qual saída esperada do programa a seguir?
-    
+
     ```c
     int counter = 5;
-    
+
     void foo (void) {
         int counter = 2;
         printf("%d", counter);
     }
-    
+
     void main (void) {
         foo();
     }
     ```
-    
+
     !!! details
         Nesses casos a variável local tem preferência e a saída do programa seria: `2`.
 
@@ -135,23 +135,23 @@ Notem que:
     void get_temp (int &temp) {
         _arduino_get_temp(temp);
     }
-    
+
     void main (void) {
         int *temp;
         get_temp(temp)
     }
     ```
-   
+
     A variável `temp` do código anterior é:
-    
+
     - [x] local da main.
     - [ ] glo pois foi declarada na main.
     - [ ] local da get_temp.
 
- 
+
     !!! details
-        Em C o `main` é uma funcão como qualquer outra! Uma variável declarada dentro dela é visível apenas para a funcão main, a não ser que seja passada como referência como no exemplo anterior. 
-        
+        Em C o `main` é uma funcão como qualquer outra! Uma variável declarada dentro dela é visível apenas para a funcão main, a não ser que seja passada como referência como no exemplo anterior.
+
         Mas a variável continua sendo local da funcão main.
 
 ## Parâmetros formais
