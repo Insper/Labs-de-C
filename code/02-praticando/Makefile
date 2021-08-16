@@ -12,31 +12,31 @@ main: main.c
 	./main
 
 tarefa1: tarefa1.c
-	gcc $(CFLAGS) tarefa1.c  -o tarefa1 -lsystemd -lcurl
+	gcc $(CFLAGS) tarefa1.c  -o tarefa1
 	./tarefa1
 
 tarefa2: tarefa2.c
-	gcc $(CFLAGS) tarefa2.c  -o tarefa2 -lsystemd -lcurl
+	gcc $(CFLAGS) tarefa2.c  -o tarefa2 
 	./tarefa2
 
 tarefa3: tarefa3.c
-	gcc $(CFLAGS) tarefa3.c  -o tarefa3 -lsystemd -lm -lcurl
+	gcc $(CFLAGS) tarefa3.c  -o tarefa3
 	./tarefa3
 
 tarefa4: tarefa4.c
-	gcc $(CFLAGS) tarefa4.c  -o tarefa4 -lsystemd -lcurl
+	gcc $(CFLAGS) tarefa4.c  -o tarefa4
 	./tarefa4
 
 tarefa5: tarefa5.c
-	gcc $(CFLAGS) tarefa5.c  -o tarefa5 -lsystemd -lcurl
+	gcc $(CFLAGS) tarefa5.c  -o tarefa5
 	./tarefa5
 
 tarefa6: tarefa6.c
-	gcc $(CFLAGS) tarefa6.c  -o tarefa6 -lsystemd -lcurl
+	gcc $(CFLAGS) tarefa6.c  -o tarefa6
 	./tarefa6
 
 tarefa7: tarefa7.c
-	gcc $(CFLAGS) tarefa7.c  -o tarefa7 -lsystemd -lcurl
+	gcc $(CFLAGS) tarefa7.c  -o tarefa7
 	./tarefa7
 
 clean:
