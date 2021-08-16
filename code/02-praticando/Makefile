@@ -20,7 +20,7 @@ tarefa2: tarefa2.c
 	./tarefa2
 
 tarefa3: tarefa3.c
-	gcc $(CFLAGS) tarefa3.c  -o tarefa3
+	gcc $(CFLAGS) tarefa3.c  -o tarefa3 -lm
 	./tarefa3
 
 tarefa4: tarefa4.c
