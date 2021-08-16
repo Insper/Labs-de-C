@@ -39,13 +39,14 @@ nav:
 - 'Labs extras':
     - labs-extras/lab7.md
     - labs-extras/lab8.md
+
 # Extensions
 extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.0.0/js-yaml.min.js
-  - js/markdown-enhancer.js
+  - https://cdn.jsdelivr.net/gh/insper-education/active-handout-plugins-js@main/package/plugin-bundle.js
 
 extra_css:
-  - css/printing.css
+  - css/devlife.css
 
 plugins:
   - git-revision-date-localized
@@ -80,5 +81,16 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
+
 plugins:
-    - search
+  - git-revision-date-localized
+
+extra:
+  ihandout_config:
+    counter:
+      - question
+      - tip
+      - exercise
+      - example
+    report:
+      url: https://devlife.insper-comp.com.br/api/offerings/1/exercises/
