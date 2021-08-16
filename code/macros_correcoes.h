@@ -12,8 +12,9 @@
 #include <sys/mman.h>
 #include <systemd/sd-id128.h>
 
+#ifdef TELEMETRIA
 #include <curl/curl.h>
-
+#endif
 
 int tests_passed = 0;
 int tests_failed = 0;
@@ -69,6 +70,7 @@ sd_id128_t machine_id;
 char server_url[] ="http://18.222.173.185:8081";
 
 void send_data(char *course, char *task_id, char *content) {
+#ifdef TELETRIA
     sd_id128_get_machine_app_specific(APP_ID, &machine_id);
     
     char url[1024];
@@ -101,4 +103,5 @@ void send_data(char *course, char *task_id, char *content) {
     }
 
     curl_global_cleanup();
+#endif
 }
