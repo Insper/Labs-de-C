@@ -14,6 +14,11 @@
 
 #ifdef TELEMETRIA
 #include <curl/curl.h>
+
+#define APP_ID SD_ID128_MAKE(2, 44, d5, f6, 77, b3, 12, 66, 44, 33, 12, ff, cd, ef, 11, 22)
+sd_id128_t machine_id;
+char server_url[] ="http://18.222.173.185:8081";
+
 #endif
 
 int tests_passed = 0;
@@ -64,10 +69,6 @@ assertEquals("Testando com entrada ->" entrada, ptr[0], ptr[1]); \
  }
 
 
-
-#define APP_ID SD_ID128_MAKE(2, 44, d5, f6, 77, b3, 12, 66, 44, 33, 12, ff, cd, ef, 11, 22)
-sd_id128_t machine_id;
-char server_url[] ="http://18.222.173.185:8081";
 
 void send_data(char *course, char *task_id, char *content) {
 #ifdef TELETRIA
