@@ -1,15 +1,16 @@
 site_name: 5s - Labs de C - Insper Comp.
+
 theme:
-  language: 'pt'
   name: 'material'
+  custom_dir: overrides
+  language: pt
   palette:
       primary: 'black'
       accent: 'pink'
       icon: 'code'
-  font:
-    text: Roboto
-    code: Roboto Mono
-    # custom_dir: 'custom_theme'
+  features:
+    - navigation.tabs
+    - header.autohide
 
 docs_dir: docs-src
 site_dir: docs
