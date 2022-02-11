@@ -26,14 +26,13 @@ Vamos começar analisando o código disponível na pasta `code/02-praticando/mai
 
 Novamente, temos um código curto mas com vários conceitos importantes:
 
-* a função `main` equivale ao método `main` em Java, ou seja, é a função
-  *principal*, chamada quando o programa é rodado;
+* a função `main` é a função *principal*, chamada quando o programa é rodado;
 
-* diferente de Java, no entanto, essa função é `int` em vez de `void`, pois
-  devolve um código que indica se o programa foi bem-sucedido ou não;
+* essa função é `int` em vez de `void`, pois devolve um código que indica se o
+  programa foi bem-sucedido ou não;
 
 * por enquanto, consideraremos apenas a devolução do código `0`, que indica que
-  o programa foi, sim,  bem-sucedido;
+  o programa foi, sim, bem-sucedido;
 
 * `#include` equivale ao `import` em Python e Java, ou seja, amplia o conjunto
   de funcionalidades que o programa pode usar;
@@ -246,8 +245,7 @@ que você os faça até quarta para desenferrujar programação e praticar C.
 
     Escreva uma função que recebe quatro inteiros, representando as coordenadas
     de dois pontos no plano cartesiano, e devolve a *distância de Manhattan*
-    (pesquise) entre esses pontos. Vocês já fiazeram esse exercício em
-    *Desenvolvimento Colaborativo Ágil*.
+    (pesquise) entre esses pontos.
 
 !!! progress
     Continuar...

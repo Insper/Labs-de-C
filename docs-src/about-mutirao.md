@@ -2,14 +2,14 @@
 
 O mutirão C é composto de laboratórios e uma avaliação. O cronograma a ser seguido na primeira semana de aula será:
 
-| Data | Dia     | Aula          | Formato              | Atividade             | Conceito                  |
-| ---- | ---     | ---           | -------              | ---------             | ---                       |
-| 16/8 | Segunda | Sistema HW/SW | Híbrido              | Apresentação e `Lab1` | Introdução a C            |
-|      |         | Embarcados    | Híbrido              | `Lab2`                | Introdução a C            |
-| 17/8 | Terça   |               | Lição de casa        | `Lab3`                | Compilação com GCC        |
-| 18/8 | Quarta  | Desafios      | Híbrido              | `Lab4`                | Array, Strings e Matrizes |
-|      |         | Embarcados    | Presencial 1/2 turma | `Lab5`                | Ponteiro e Structs        |
-| 19/8 | Quinta  | Embarcados    | Online 1/2 turma     | `Lab5`                |                           |
-|      |         | Sistema HW/SW | Online               | `Lab6`                | Praticando                |
-|      |         |               | Lição de casa        | `Lab7`                | Escopo de variáveis       |
-| 20/8 | Sexta   | Desafios      | Online               | `Avaliação`           | Prova individual          |
+| Data | Dia     | Aula          | Observações       | Atividade             | Conteúdo                  |
+| ---- | ---     | ---           | -------           | ---------             | ---                       |
+| 14/2 | Segunda | Sistema HW/SW |                   | Apresentação e `Lab1` | Conceitos básicos         |
+|      |         | Embarcados    |                   | `Lab2`                | Lógica de programação     |
+| 15/8 | Terça   |               | Estudo individual | `Lab3`                | Compilação com GCC        |
+| 16/8 | Quarta  | Desafios      |                   | `Lab4`                | Array, strings e matrizes |
+|      |         | Embarcados    | Metade da turma   | `Lab5`                | Ponteiros e structs       |
+| 17/8 | Quinta  | Embarcados    | Metade da turma   | `Lab5`                | Ponteiros e structs       |
+|      |         | Sistema HW/SW |                   | `Lab6`                | Prática                   |
+|      |         |               | Estudo individual | `Lab7`                | Escopo de variáveis       |
+| 18/8 | Sexta   | Desafios      |                   | `Avaliação`           | Prova                     |
