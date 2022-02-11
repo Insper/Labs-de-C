@@ -26,7 +26,7 @@ Não é fácil prever o quanto a linguagem C será uma novidade para vocês. Por
 lado, a sintaxe é muito parecida com Java. Por outro lado, existem diferenças
 importantes e vocês estão longe de Java há mais ou menos meio semestre...
 
-Vamos começar com a revisão de alguns conceitos bem básicos. Dê uma olhada no arquivo `main.c`:
+Vamos começar com a revisão de alguns conceitos bem básicos. Dê uma olhada no arquivo `main.c` (por simplicidade, omitimos algumas linhas):
 
 !!! info
     - Você pode abrir o arquivo no editor de código que preferir, indicamos abrir no
@@ -36,13 +36,15 @@ Vamos começar com a revisão de alguns conceitos bem básicos. Dê uma olhada n
     terminal do próprio vscode, ou do linux.
 
 ```c
-#include "stdio.h"
-#include "pgm.h"
-
 #define IMG_IN  "deepak-kumar-rX9uFci3pfY-unsplash.pgm"
 #define IMG_OUT "image-out.pgm"
 
-// Esta função estará nos arquivos tarefaX.c
+// Esta função NÃO está no main.c mas,
+// ela estará nos arquivos tarefaX.c.
+
+// Por enquanto, suponha que ela está
+// aqui para acompanhar a explicação.
+
 int process_pixel(int level) {
 	int new_level;
 
