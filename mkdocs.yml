@@ -1,13 +1,8 @@
 site_name: 5s - Labs de C - Insper Comp.
 
 theme:
-  name: 'material'
-  custom_dir: overrides
+  name: active-handout
   language: pt
-  palette:
-      primary: 'black'
-      accent: 'pink'
-      icon: 'code'
   features:
     - navigation.tabs
     - header.autohide
@@ -23,34 +18,36 @@ repo_name: 'Insper/Labs-de-C'
 repo_url: 'https://github.com/Insper/Labs-de-C/'
 edit_url: 'https://github.com/Insper/Labs-de-C/edit/master/docs-src/'
 
-nav:
-- Home: index.md
-#- Sobre-Curso.md
-#- Sobre-Ferramental.md
-- 'Mutirão':
-    - 'about-mutirao.md'
-    - 'Lab1.md'
-    - 'Lab2.md'
-    - 'Lab3.md'
-    - 'Lab4.md'
-    - 'Lab5.md'
-    - 'Lab6.md'
-    - 'Lab7.md'
-
-- 'Labs extras':
-    - labs-extras/lab7.md
-    - labs-extras/lab8.md
 
 # Extensions
 extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.0.0/js-yaml.min.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
   - https://cdn.jsdelivr.net/gh/insper-education/active-handout-plugins-js@main/package/plugin-bundle.js
 
-extra_css:
-  - css/devlife.css
+extra:
+  ihandout_config:
+    mount-point: /DevLife/
+    calendar: /DevLife/calendar.yml
+    counter:
+      - question
+      - tip
+      - exercise
+      - example
+    report:
+      api-base: https://devlife.insper-comp.com.br/api/offerings/1/
+      url: https://devlife.insper-comp.com.br/api/offerings/1/exercises/
 
 plugins:
-  - git-revision-date-localized
+  - git-revision-date-localized:
+      fallback_to_build_date: true
+  - dev-environment
+  - active-exercises:
+      offering_id: 1
+  - contributors
+  - search
+
 
 markdown_extensions:
   - markdown.extensions.attr_list
@@ -83,15 +80,20 @@ markdown_extensions:
       custom_checkbox: true
   - pymdownx.tilde
 
-plugins:
-  - git-revision-date-localized
-
-extra:
-  ihandout_config:
-    counter:
-      - question
-      - tip
-      - exercise
-      - example
-    report:
-      url: https://devlife.insper-comp.com.br/api/offerings/1/exercises/
+nav:
+- Home: index.md
+#- Sobre-Curso.md
+#- Sobre-Ferramental.md
+- 'Mutirão':
+    - 'about-mutirao.md'
+    - 'Lab1.md'
+    - 'Lab2.md'
+    - 'Lab3.md'
+    - 'Lab4.md'
+    - 'Lab5.md'
+    - 'Lab6.md'
+    - 'Lab7.md'
+#
+#- 'Labs extras':
+#    - labs-extras/lab7.md
+#    - labs-extras/lab8.md

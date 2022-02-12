@@ -29,7 +29,7 @@ de baixo nível.
 
 Para introduzir o primeiro deles, vamos começar com uma pergunta.
 
-!!! question medium
+!!! exercise texxt short
     Considerando o que vimos anteriormente sobre `scanf`, *passagem por valor* e
     *passagem por referência*, porque a chamada
 
@@ -39,9 +39,10 @@ Para introduzir o primeiro deles, vamos começar com uma pergunta.
 
     não funcionaria sem o `&`? Pode parecer estranho, mas você não precisa saber a
     definição de `&` para poder responder!
-
-!!! warning
-    Não vá para a próxima página antes de validar suas respostas com um dos professores.
+    
+    !!! answer
+        Não funcionaria! Precisamos indicar um endereço de memória para a função scanf armazenar o
+        valor lido.
 
 ## Endereços
 
@@ -107,7 +108,7 @@ a esse símbolo.
 Dizemos que um apontador `p` *aponta* para uma variável `v` se o endereço de `v`
 está armazenado em `p`. Visualmente, podemos representar isso da seguinte forma:
 
-![](imgs/day5-pointers/apontador.png)
+![](imgs/day5-pointers/apontador.png){width=300}
 
 Esta figura é uma representação visual de `p` apontar para `v`. Nesse caso, `v` é uma variável
 inteira cujo valor é `5` e `p` é um apontador cujo valor é o endereço de
@@ -152,23 +153,54 @@ figura.
 
 Esse código faz sentido para você? Vejamos se você está entendendo...
 
-!!! question short
+!!! exercise choice two-cols
     Adicionar `v = &5` ao exemplo acima seria válido?
 
-!!! question short
+    - [ ] Sim
+    - [x] Não
+
+    !!! answer
+
+
+!!! exercise choice two-cols
     Adicionar `v = p` ao exemplo acima seria válido?
 
-!!! question short
+    - [ ] Sim
+    - [X] Não
+
+    !!! answer
+
+!!! exercise choice two-cols
     Adicionar `v = &p` ao exemplo acima seria válido?
 
-!!! question short
+    - [ ] Sim
+    - [ ] Não
+
+    !!! answer
+
+!!! exercise choice two-cols
     Adicionar `p = 5` ao exemplo acima seria válido?
 
-!!! question short
+    - [ ] Sim
+    - [ ] Não
+
+    !!! answer
+
+!!! exercise choice two-cols
     Adicionar `p = &5` ao exemplo acima seria válido?
 
-!!! question short
+    - [ ] Sim
+    - [ ] Não
+
+    !!! answer
+
+!!! exercise choice two-cols
     Adicionar `p = v` ao exemplo acima seria válido?
+
+    - [ ] Sim
+    - [ ] Não
+
+    !!! answer
 
 
 !!! warning
@@ -189,10 +221,10 @@ Agora vejam como o exemplo abaixo é interessante.
     printf("%d", v);
 ~~~
 
-!!! question short
+!!! exercise text short
     Qual é a saída desse exemplo? Pense na regra de ouro.
 
-    ??? note "Resposta"
+    !!! answer
         A saída é `10`, pois a linha `*p = 10`, pela regra de ouro, pode ser lida como
         "variável apontada por `p` recebe `10`". E qual é a variável apontada por `p`?
 
@@ -219,6 +251,8 @@ Obviamente, esse uso só é válido a partir do momento em que `p` recebe o
 endereço de `v`. Antes de receber a primeira atribuição, `p` guarda lixo de
 memória, como qualquer variável.
 
+!!! progress
+    Conclua os exercícios antes de continuar.
 
 ## A Única Exceção
 
@@ -236,6 +270,9 @@ atribuição. Quem recebe o endereço de `v` é `p` e não a variável apontada 
 está com lixo de memória.
 
 Mas essa é a única exceção com a qual você precisa se preocupar!
+
+!!! progress
+    Conclua os exercícios antes de continuar.
 
 ## Aplicação de Apontadores
 
@@ -274,7 +311,7 @@ Repare que chamamos os parâmetros de `psum` e `psub` em vez de `sum` e `sub`.
 Não faria sentido chamar de `sum` e `sub`, pois eles não armazenam os resultados
 em si e sim os endereços das variáveis onde eles devem ser armazenados.
 
-!!! example
+!!! exercise
     Escreva um programa completo que:
 
     1. usa `scanf` para ler dois inteiros dados pelo usuário;
@@ -284,7 +321,7 @@ em si e sim os endereços das variáveis onde eles devem ser armazenados.
     3. usa `printf` para mostrar os dois resultados.
 
 
-!!! example
+!!! exercise
     Escreva um programa completo que:
 
     1. usa `scanf` para ler dois inteiros dados pelo usuário;
@@ -304,6 +341,8 @@ Endereços e apontadores são considerados conceitos particularmente difíceis d
 entender para quem está aprendendo C pela primeira vez. Mantenha sempre a regra
 de ouro em mente para auxiliar nesse processo.
 
+!!! progress
+    Conclua os exercícios antes de continuar.
 
 ## Structs
 
@@ -374,7 +413,7 @@ como em objetos Java.
     printf("%d", p.y);
 ~~~
 
-!!! example
+!!! exercise
     Reescreva a função de duas aulas atrás para calcular a *distância de Manhattan*
     entre dois pontos. Mas, agora que temos o struct acima, a função deve
     receber duas variáveis do tipo `ponto` em vez de receber quatro variáveis do
@@ -383,7 +422,7 @@ como em objetos Java.
     Escreva sua solução em `tarefa3.c` e teste usando `make tarefa3`.
 
 
-!!! example
+!!! exercise
     Escreva um programa completo que:
 
     1. usa `scanf` para ler quatro inteiros dados pelo usuário;
@@ -394,13 +433,16 @@ como em objetos Java.
     3. usa `printf` para mostrar o resultado.
 
 
-!!! example
+!!! exercise
     Refaça os dois exercícios anteriores, substituindo a distância de Manhattan
     pela distância *Euclidiana*. (pesquise)
 
 
 !!! warning
     Não continue antes de validar suas respostas com um dos professores.
+
+!!! progress
+    Conclua os exercícios antes de continuar.
 
 
 ## Apontadores para Structs
@@ -421,13 +463,17 @@ em *Desafios de Programação*, a sintaxe vira um pesadelo críptico.
 Pare. Respire. Não continue a ler até aceitar que o código acima faz sentido.
 Lembre da regra de ouro.
 
-!!! question short
+!!! exercise text short
     Por que `pp.x` não faria sentido no exemplo acima?
 
-!!! warning
-    Não vá para a próxima página antes de validar suas respostas com um dos
-    professores.
+    !!! answer
+        Pois pp é um ponteiro, e para acessaro valor que um ponteiro aponta
+        temos que usar o *. Caso contrário estaríamos alterando o para onde
+        o ponteiro aponta.
 
+!!! progress
+    Não continue antes de validar suas respostas com um dos
+    professores.
 
 Felizmente, os criadores do C perceberam que a sintaxe fica meio pesada nesse
 caso e adicionaram o operador "setinha" (`->`) para ajudar. Grosso modo, esse
@@ -446,15 +492,16 @@ pode ser substituído pelo trecho
     pp->y = 20;
 ~~~
 
-Pare e respire de novo.
+!!! progress
+    Pare e respire de novo.
 
-!!! question short
+!!! exercise text short
     Por que `p->x` não faria sentido no exemplo acima?
 
-!!! warning
-    Não continue antes de validar suas respostas com um dos professores.
+    !!! answer
+        Pois p não é um ponteiro de struct.
 
-!!! example
+!!! exercise
     Escreva uma função
 
     ~~~{.c}
@@ -473,8 +520,3 @@ Pare e respire de novo.
     escrever o resultado no terceiro.
 
     Escreva sua solução em `tarefa6.c` e teste usando `make tarefa6`.
-
-
-!!! warning
-    Não considerem terminado antes de validar suas respostas com um dos professores.
-

@@ -122,14 +122,14 @@ partir desse valor original.
 Como acabamos de ver que a função simplesmente devolve o mesmo valor, então a
 imagem permanece inalterada. Vamos fazer algo mais interessante?
 
-!!! question choice
+!!! exercise choice 
     Qual a característica da variável `int new_level`?
 
     - [ ] Pode assumir valores entre 0 e 4.294.967.295
     - [x] Pode assumir valores entre -2.147.483.648 e +2.147.483.648
     - [ ] É um vetor de pixels
 
-    !!! details
+    !!! answer
         Em C possúimos alguns tipos de varíaveis, como:
 
         | tipo          | alternativa  | range                            |
@@ -164,7 +164,7 @@ Para todos os exercícios deste handout, sigam por favor as regras abaixo.
 !!! warning
     Os exercícios abaixo deverão ser feitos nos arquivos `tarefaX.c`
 
-!!! question
+!!! exercise
     O valor de um pixel é um número inteiro entre `0` e `255`. Quanto mais alto
     o valor, mais claro é o pixel. Sabendo disso, altere `process_pixel` para
     *negativizar* a imagem, ou seja, transformar pixels claros em escuros e
@@ -182,7 +182,7 @@ Para todos os exercícios deste handout, sigam por favor as regras abaixo.
     |------------------------------------------|
     | ![](lab1-solucao/tarefa1.png){width=250} |
 
-!!! question
+!!! exercise
     Agora altere `process_pixel` para *escurecer* a imagem: cada pixel deve
     ficar com a metade de sua luminosidade original.
 
@@ -208,7 +208,7 @@ Antes do próximo exercício, uma dica! A sintaxe de `if/else` em C, para variar
 
 Sabendo disso...
 
-!!! question
+!!! exercise
     Altere `process_pixel` para receber um segundo parâmetro, também inteiro, e
     *limiarizar* a imagem:
 
@@ -226,7 +226,7 @@ Sabendo disso...
     |------------------------------------------|
     | ![](lab1-solucao/tarefa3.png){width=250} |
 
-!!! question
+!!! exercise
     Altere `process_pixel` para manipular o *brilho* da imagem: use o segundo
     parâmetro, adicionado no exercício anterior, como um valor que é *somado* ao
     pixel. Faça vários testes, passando múltiplos valores como o segundo
@@ -239,7 +239,7 @@ Sabendo disso...
     |------------------------------------------|---|
     | ![](lab1-solucao/tarefa4-127-correto.png){width=250}  |  ![](lab1-solucao/tarefa4-127-errado.png){width=250}  |
 
-!!! question
+!!! exercise
     Altere `process_pixel` para manipular o *contraste* da imagem: use o segundo
     parâmetro como um valor que *multiplica* o pixel. Novamente, faça vários
     testes, passando múltiplos valores como o segundo parâmetro da chamada.
@@ -266,7 +266,7 @@ sentido. É muito importante que, pelo menos nesse começo, você não fique
 excessivamente dependente do computador e da IDE. Saiba fazer pelo menos o
 básico sozinho, pois isso faz muita diferença na produtividade.
 
-!!! question short
+!!! exercise short
     Como esperado, a sintaxe de `while` em C também é como em Java. Sabendo
     disso, considere o código abaixo, que calcula a soma dos números de `1` a
     `10`.
@@ -304,7 +304,7 @@ básico sozinho, pois isso faz muita diferença na produtividade.
           problema não torna o código *incorreto*, pois a soma de `0` é inócua, mas
           torna o código *ineficiente*, pois uma iteração é desperdiçada.
 
-!!! question short
+!!! exercise short
     Considere agora o código abaixo, que deveria calcular a *metade* da soma dos
     números de `1` a `10`.
 

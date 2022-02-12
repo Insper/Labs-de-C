@@ -100,7 +100,7 @@ Antes de apresentar outros conceitos, vamos praticar um pouco.
 !!! warning
     Assim como no lab anterior, cada tarefa já tem um arquivo correspondente. Digite `make tarefaN` para compilar e rodar a tarefa `N`.
 
-!!! question
+!!! exercise
 
     `02-praticando/tarefa1.c`
 
@@ -120,7 +120,7 @@ Antes de apresentar outros conceitos, vamos praticar um pouco.
 
     Rode o código corrigido e faça ele imprimir o resultado com `printf()`
 
-!!! question
+!!! exercise
 
     `02-praticando/tarefa2.c`
 
@@ -215,7 +215,7 @@ código `PI = 5` causaria um erro.
 Por falar em `PI`, reparou que definimos a constante mas nunca a usamos? Na
 verdade, não foi um acidente...
 
-!!! question
+!!! exercise
     `02-praticando/tarefa3.c`
 
     1. Qual é o problema no código acima?
@@ -235,12 +235,12 @@ verdade, não foi um acidente...
 Mesmo que não dê tempo de fazer esses exercícios em sala, é muito importante
 que você os faça até quarta para desenferrujar programação e praticar C.
 
-!!! question
+!!! exercise 
     `02-praticando/tarefa4.c`
 
     Escreva uma função que recebe um inteiro e devolve o *módulo* desse inteiro.
 
-!!! question
+!!! exercise
     `02-praticando/tarefa5.c`
 
     Escreva uma função que recebe quatro inteiros, representando as coordenadas
@@ -277,7 +277,7 @@ Em Java existe o *enhanced for*, que é mais parecido com o `for` do Python, mas
 não existe uma equivalência disso em C. Bem-vindos ao baixo nível! Não temos
 bolo, mas temos os ingredientes para você fazer um bolo.
 
-!!! question
+!!! exercise
     `02-praticando/tarefa6.c`
 
     Escreva uma função que recebe um inteiro *n* e, para cada inteiro *i* entre
@@ -293,7 +293,7 @@ bolo, mas temos os ingredientes para você fazer um bolo.
 
     Escreva duas versões: uma usando `while`s e outra usando `for`s.
 
-!!! question
+!!! exercise
     `02-praticando/tarefa7.c`
 
     Escreva uma função que recebe um inteiro *n* e imprime uma "arvorezinha"

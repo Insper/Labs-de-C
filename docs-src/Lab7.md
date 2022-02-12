@@ -22,7 +22,7 @@ void dec (void) {
 }
 ```
 
-!!! question choice
+!!! exercise choice two-cols
     ```c linenums="1"
     #include <stdio.h>
 
@@ -46,7 +46,7 @@ void dec (void) {
     - [ ] Linha 7
     - [ ] Linha 9
 
-    !!! details
+    !!! answer
         Para uma variável ser glogal ela deve ser declarada fora de funcão, ==mas atencão!!== Você deve declarar a variável antes do seu uso, se não terá erro de compilacão. O exemplo a seguir não compilaria:
 
         ```c linenums="1" hl_lines="6"
@@ -111,7 +111,7 @@ Notem que:
 - `var1` é apenas visível para a função `bar`
 - As variáveis só são criadas quando a função é chamada.
 
-!!! question short
+!!! exercise text short
     Qual saída esperada do programa a seguir?
 
     ```c
@@ -127,10 +127,10 @@ Notem que:
     }
     ```
 
-    !!! details
+    !!! answer
         Nesses casos a variável local tem preferência e a saída do programa seria: `2`.
 
-!!! question choice
+!!! exercise choice
     ```c
     void get_temp (int &temp) {
         _arduino_get_temp(temp);
@@ -149,7 +149,7 @@ Notem que:
     - [ ] local da get_temp.
 
 
-    !!! details
+    !!! answer
         Em C o `main` é uma funcão como qualquer outra! Uma variável declarada dentro dela é visível apenas para a funcão main, a não ser que seja passada como referência como no exemplo anterior.
 
         Mas a variável continua sendo local da funcão main.
@@ -171,5 +171,5 @@ void main (void) {
 }
 ```
 
-!!! note ""
+!!! note
     A saída do programa anterior é ==2==.
