@@ -266,7 +266,7 @@ sentido. É muito importante que, pelo menos nesse começo, você não fique
 excessivamente dependente do computador e da IDE. Saiba fazer pelo menos o
 básico sozinho, pois isso faz muita diferença na produtividade.
 
-!!! exercise short
+!!! exercise text short
     Como esperado, a sintaxe de `while` em C também é como em Java. Sabendo
     disso, considere o código abaixo, que calcula a soma dos números de `1` a
     `10`.
@@ -287,7 +287,7 @@ básico sozinho, pois isso faz muita diferença na produtividade.
     1. Qual é o problema com esse código?
     1. Reescreva o código, evitando os três problemas acima.
 
-    ??? note "Solução"
+    !!! answer
 
         Podemos identificar no código os três problemas abaixo.
 
@@ -304,7 +304,7 @@ básico sozinho, pois isso faz muita diferença na produtividade.
           problema não torna o código *incorreto*, pois a soma de `0` é inócua, mas
           torna o código *ineficiente*, pois uma iteração é desperdiçada.
 
-!!! exercise short
+!!! exercise text short
     Considere agora o código abaixo, que deveria calcular a *metade* da soma dos
     números de `1` a `10`.
 
@@ -322,7 +322,7 @@ básico sozinho, pois isso faz muita diferença na produtividade.
 
     1. Qual é o problema com esse código?
 
-    ??? note "Solução"
+    !!! answer
         Quando os dois parâmetros do operador `/` são inteiros, o resultado também é um
         inteiro. Se a divisão não for exata, *a parte fracionária é truncada*. Isso
         significa que o que deveria ser a soma de `0.5`, `1`, `1.5`, `2`, `2.5`, etc. é
