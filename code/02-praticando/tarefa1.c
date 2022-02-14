@@ -3,11 +3,10 @@
 #define LABNUM "lab2-"
 #define SOLUTIONFILE "tarefa1.c"
 
-
 #include <stdio.h>
 
 int main() {
-    int s;
+    int s = 0;
     int i;
 
     i = 0;
@@ -18,10 +17,6 @@ int main() {
 
     // TODO: corrija o código acima e use printf para
     // mostrar a soma de 1 a 10
-
-
-    // Configurações do mutirão. Não mexer.
-    #include "../telemetry.c"
 
     return 0;
 }

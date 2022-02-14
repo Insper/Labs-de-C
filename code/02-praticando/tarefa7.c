@@ -3,16 +3,10 @@
 #define LABNUM "lab2-"
 #define SOLUTIONFILE "tarefa7.c"
 
-
 #include <stdio.h>
 
+// TODO implemente seu programa aqui
 int main() {
-    
-    // TODO implemente seu programa aqui
-
-
-    // Configurações do mutirão. Não mexer.
-    #include "../telemetry.c"
 
     return 0;
 }

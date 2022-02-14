@@ -3,7 +3,6 @@
 #define LABNUM "lab2-"
 #define SOLUTIONFILE "tarefa3.c"
 
-
 #include <stdio.h>
 #include <math.h>    /* <---- precisa incluir!!! */
 
@@ -20,10 +19,6 @@ int main() {
     scanf("%d", &angle);
 
     print_trigo(angle);
-
-
-    // Configurações do mutirão. Não mexer.
-    #include "../telemetry.c"
 
     return 0;
 }

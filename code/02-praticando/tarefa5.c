@@ -3,12 +3,14 @@
 #define LABNUM "lab2-"
 #define SOLUTIONFILE "tarefa5.c"
 
-
 #include <stdio.h>
 
 // TODO: declare função manhattan aqui. Veja abaixo como ela será usada
 
 
+
+
+// não mexer
 int main() {
     
     // assertEquals é uma função do mutirão que confere
@@ -23,9 +25,6 @@ int main() {
     assertEquals("manhattan(-1, 0, 2, 0) != 3", manhattan(-1, 0, 2, 0), 3);
     
     printSummary
-
-    // Configurações do mutirão. Não mexer.
-    #include "../telemetry.c"
 
     return 0;
 }

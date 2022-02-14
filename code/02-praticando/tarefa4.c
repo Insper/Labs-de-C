@@ -3,12 +3,15 @@
 #define LABNUM "lab2-"
 #define SOLUTIONFILE "tarefa4.c"
 
-
 #include <stdio.h>
 
 // TODO: declare função modulo aqui. Veja abaixo como ela será usada
 
 
+
+
+
+// não mexer...
 int main() {
     
     // assertEquals é uma função do mutirão que confere
@@ -21,9 +24,6 @@ int main() {
     assertEquals("mod(13) = 13", modulo(-13), 13);
 
     printSummary
-
-    // Configurações do mutirão. Não mexer.
-    #include "../telemetry.c"
 
     return 0;
 }
