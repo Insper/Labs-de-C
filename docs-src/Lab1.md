@@ -165,24 +165,34 @@ Para todos os exercícios deste handout, sigam por favor as regras abaixo.
     Os exercícios abaixo deverão ser feitos nos arquivos `tarefaX.c`
 
 !!! exercise
+
+    | file        | Testando |
+    |-------------|----------|
+    | `tarefa1.c` | `make tarefa1` |
+
     O valor de um pixel é um número inteiro entre `0` e `255`. Quanto mais alto
     o valor, mais claro é o pixel. Sabendo disso, altere `process_pixel` para
     *negativizar* a imagem, ou seja, transformar pixels claros em escuros e
     vice-versa.
 
-    > Testando:
-    >
-    > No terminal do Linux dentro da pasta `code/01-intro` execute o comando: `make tarefa1`, se tudo der certo, o programa carrega a imagem: `deepak-kumar-rX9uFci3pfY-unsplash.pgm` e gera a imagem `image-out.pgm`.
-    >
-    >  ==Você deve abrir a imagem `image-out.pgm` para ver o resultado.==
-    >
-    > Faça isso também para as tarefas seguintes.
+    estando:
+    
+    o terminal do Linux dentro da pasta `code/01-intro` execute o comando: `make tarefa1`, se tudo der certo, o programa carrega a imagem: `deepak-kumar-rX9uFci3pfY-unsplash.pgm` e gera a imagem `image-out.pgm`.
+    
+    ==Você deve abrir a imagem `image-out.pgm` para ver o resultado.==
+    
+    aça isso também para as tarefas seguintes.
 
     | Solução correta                          |
     |------------------------------------------|
     | ![](lab1-solucao/tarefa1.png){width=250} |
 
 !!! exercise
+
+    | file        | Testando |
+    |-------------|----------|
+    | `tarefa2.c` | `make tarefa2` |
+
     Agora altere `process_pixel` para *escurecer* a imagem: cada pixel deve
     ficar com a metade de sua luminosidade original.
 
@@ -209,6 +219,11 @@ Antes do próximo exercício, uma dica! A sintaxe de `if/else` em C, para variar
 Sabendo disso...
 
 !!! exercise
+
+    | file        | Testando |
+    |-------------|----------|
+    | `tarefa3.c` | `make tarefa3` |
+
     Altere `process_pixel` para receber um segundo parâmetro, também inteiro, e
     *limiarizar* a imagem:
 
@@ -227,6 +242,11 @@ Sabendo disso...
     | ![](lab1-solucao/tarefa3.png){width=250} |
 
 !!! exercise
+
+    | file        | Testando |
+    |-------------|----------|
+    | `tarefa4.c` | `make tarefa4` |
+
     Altere `process_pixel` para manipular o *brilho* da imagem: use o segundo
     parâmetro, adicionado no exercício anterior, como um valor que é *somado* ao
     pixel. Faça vários testes, passando múltiplos valores como o segundo
@@ -240,6 +260,11 @@ Sabendo disso...
     | ![](lab1-solucao/tarefa4-127-correto.png){width=250}  |  ![](lab1-solucao/tarefa4-127-errado.png){width=250}  |
 
 !!! exercise
+
+    | file        | Testando |
+    |-------------|----------|
+    | `tarefa5.c` | `make tarefa5` |
+
     Altere `process_pixel` para manipular o *contraste* da imagem: use o segundo
     parâmetro como um valor que *multiplica* o pixel. Novamente, faça vários
     testes, passando múltiplos valores como o segundo parâmetro da chamada.
