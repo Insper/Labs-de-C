@@ -233,9 +233,7 @@ Sabendo disso...
     * se o valor original do pixel for maior ou igual que esse segundo parâmetro,
       seu novo valor deve ser `255` (branco).
 
-    Não esqueça de alterar o trecho de código em que `process_pixel` é chamada,
-    para evitar erros de compilação. Passe `127` como o segundo parâmetro da
-    chamada. **Aqui você precisará modificar `main.c` para passar esse argumento.**
+    Para testar você vai precisar alterar o trecho de código em que `process_pixel` é chamada. Passe `127` como o segundo parâmetro da    chamada. Para isso **você precisará modificar o arquivo `main.c` para passar esse argumento.**
 
     | Solução correta                          |
     |------------------------------------------|
@@ -251,10 +249,7 @@ Sabendo disso...
     parâmetro, adicionado no exercício anterior, como um valor que é *somado* ao
     pixel. Faça vários testes, passando múltiplos valores como o segundo
     parâmetro da chamada.
-
-    !!! info ""
-        Usando o valor 127 no segundo argumento. **Aqui você precisará modificar `main.c` para passar esse argumento.**
-
+    
     | Solução correta                         |  Solução errada  |
     |------------------------------------------|---|
     | ![](lab1-solucao/tarefa4-127-correto.png){width=250}  |  ![](lab1-solucao/tarefa4-127-errado.png){width=250}  |
