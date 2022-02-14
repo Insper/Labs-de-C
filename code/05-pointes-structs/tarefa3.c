@@ -46,8 +46,5 @@ int main() {
     
     printSummary
 
-    // Configurações do mutirão. Não mexer.
-    #include "../telemetry.c"
-
     return 0;
 }

@@ -17,10 +17,7 @@ int main() {
     assertEquals("String \"aAa\"", conta_1("aAa"), 0)
     assertEquals("String \"1 1 s w 0 1\"", conta_1("1 1 s w 0 1"), 3);
 
-    
     printSummary
-
-    #include "../telemetry.c"
 
     return 0;
 }

@@ -19,8 +19,5 @@ int main(int argc, char *argv[]) {
 		printf("i: %d, vetor[i]: %ld\n", i, vetor[i]);
 	}
 
-    // Configurações do mutirão. Não mexer.
-    #include "../telemetry.c"
-	
-	return 0;	
+	return 0;
 }

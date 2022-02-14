@@ -23,7 +23,5 @@ int main() {
     
     printSummary
 
-    #include "../telemetry.c"
-
     return 0;
 }
