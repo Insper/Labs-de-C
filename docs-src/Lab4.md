@@ -49,7 +49,7 @@ scanf("%ld", &vetor[0]);
 
 !!! exercise text long
     O código acima está no arquivo `tarefa1.c`. Compile e execute ele. Os resultados foram os esperados? Se não, você consegue explicar por que eles foram diferentes?
-    
+
     !!! answer
         Como podemos ver, o código compila, mas seu comportamento é indefinido por duas razões:
 
@@ -90,13 +90,13 @@ double soma(double arr[], int n);
 
 !!! exercise text short
     O arquivo usado acima contém vários testes na função `main`. Leia a função `main` e escreva abaixo a notação usada para inicializar um array com valores constantes. Como você inicializaria um vetor de `int` com os valores $0, 2, 3, 2, 5$?
-    
+
     !!! answer
-    
+
         ```c
         int vec[] = {0, 2, 3, 2, 5};
         ```
-        
+
 !!! progress
     Conclua os exercícios antes de continuar.
 
@@ -194,13 +194,13 @@ Perceba que toda a primeira linha é armazenada (contendo 3 `long`s) antes do in
         v
 
         0: [0][0]
-        1: [0][1] 
+        1: [0][1]
         2: [0][2]  <---
-        3: [1][0] 
-        4: [1][1] 
+        3: [1][0]
+        4: [1][1]
         5: [1][2]  <---
         6: [2][0]  <---
-        7: [2][1] 
+        7: [2][1]
         8: [2][2]
         ```
 
@@ -208,7 +208,7 @@ Perceba que toda a primeira linha é armazenada (contendo 3 `long`s) antes do in
     As próximas tarefas devem ser feitas a partir de um arquivo vazio e compiladas usando os conhecimentos que vocês obtiveram no [Lab 3](/Lab3).
 
 !!! exercise
-    Faça, do zero, um programa que lê uma matriz $5\times 4$ e imprime no terminal a soma de cada uma de suas colunas.
+    Faça, do zero, um programa que lê uma matriz $5 \times 4$ e imprime no terminal a soma de cada uma de suas colunas.
 
 !!! exercise
     Modifique seu programa acima para, além das somas de cada coluna, imprimir também o índice da coluna de maior valor.
