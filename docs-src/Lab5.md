@@ -174,7 +174,7 @@ Esse código faz sentido para você? Vejamos se você está entendendo...
     Adicionar `v = &p` ao exemplo acima seria válido?
 
     - [ ] Sim
-    - [ ] Não
+    - [x] Não
 
     !!! answer
 
@@ -182,7 +182,7 @@ Esse código faz sentido para você? Vejamos se você está entendendo...
     Adicionar `p = 5` ao exemplo acima seria válido?
 
     - [ ] Sim
-    - [ ] Não
+    - [x] Não
 
     !!! answer
 
@@ -190,7 +190,7 @@ Esse código faz sentido para você? Vejamos se você está entendendo...
     Adicionar `p = &5` ao exemplo acima seria válido?
 
     - [ ] Sim
-    - [ ] Não
+    - [x] Não
 
     !!! answer
 
@@ -198,7 +198,7 @@ Esse código faz sentido para você? Vejamos se você está entendendo...
     Adicionar `p = v` ao exemplo acima seria válido?
 
     - [ ] Sim
-    - [ ] Não
+    - [x] Não
 
     !!! answer
 
