@@ -319,8 +319,8 @@ em si e sim os endereços das variáveis onde eles devem ser armazenados.
     2. usa `sum_sub` para calcular a soma e a subtração desses dois inteiros;
 
     3. usa `printf` para mostrar os dois resultados.
-
-
+        - **O printf deve ser realizado dentro na função main!**
+    
 !!! exercise
     Escreva um programa completo que:
 
@@ -331,7 +331,7 @@ em si e sim os endereços das variáveis onde eles devem ser armazenados.
      retângulo;
 
     3. usa `printf` para mostrar os dois resultados.
-
+        - **O printf deve ser realizado dentro na função main!**
 
 !!! warning
     Não continue antes de validar suas respostas com um dos professores.
@@ -431,7 +431,7 @@ como em objetos Java.
      cartesianos, usa a função anterior para calcular a distância de Manhattan;
 
     3. usa `printf` para mostrar o resultado.
-
+        - **O printf deve ser realizado dentro na função main!**
 
 !!! exercise
     Refaça os dois exercícios anteriores, substituindo a distância de Manhattan
