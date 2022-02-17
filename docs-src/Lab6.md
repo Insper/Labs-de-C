@@ -16,7 +16,7 @@
 Vamos neste roteiro revisar os conceitos dos dois roteiros anteriores fazendo modificações para tornar seu programa mais legível e organizado.
 
 !!! exercise
-    Crie uma estrurura `imagem` para guardar largura, altura e a matriz da imagem. Você pode supor que ela tem tamanho máximo $640\times 480$.
+    Crie uma estrurura `imagem` para guardar largura, altura e a matriz da imagem. Você pode supor que ela tem tamanho máximo $640 \times 480$.
 
 !!! exercise
     Modifique sua função `le_imagem` que carrega o conteúdo de uma imagem do terminal e escreve em uma estrutura `imagem`. Quais parâmetros sua função recebe?
