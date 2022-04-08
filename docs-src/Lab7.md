@@ -76,12 +76,12 @@ void dec (void) {
     Evite usar variáveis globais! Elas são difíceis de gerenciar. O exemplo anterior pode ser reescrito para:
 
     ```c
-    void inc (int counter) {
-        counter++;
+    void inc (int *counter) {
+        (*counter)++;
     }
 
-    void dec (int counter) {
-        counter--;
+    void dec (int *counter) {
+        (*counter)--;
     }
     ```
 
