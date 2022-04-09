@@ -172,7 +172,6 @@ long mat[10][3];
 printf("%d", mat[0][2]); /* acessa linha 0, coluna 3 */
 
 scanf("%d", &mat[1][1]); // armazena inteiro digitado na posição 1,5
-
 ```
 
 ![Representação de matriz de inteiros na memória](imgs/day4-arrays/mem-mat.png)
@@ -216,8 +215,6 @@ Perceba que toda a primeira linha é armazenada (contendo 3 `long`s) antes do in
 ## Exercícios
 
 Agora que já trabalhamos um pouco com *arrays*, *strings* e matrizes está na hora de praticar com exercícios mais complexos. Estes exercícios não são opcionais, sua realização é essencial para cumprir os objetivos do Mutirão.
-
-### Arrays
 
 !!! exercise
     Escreva, do zero, um programa que
