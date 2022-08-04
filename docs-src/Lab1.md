@@ -1,10 +1,10 @@
 # Lab 1 - Conceitos Básicos
 
+Para começar você deve clonar o repositório `https://github.com/Insper/Labs-de-C/`.
+
 | Pasta           | Arquivo  |
 |-----------------|----------|
 | `code/01-intro` | `main.c` |
-
-Para começar você deve clonar o repositório `https://github.com/Insper/Labs-de-C/`.
 
 !!! info "Infra"
     Os laboratórios do mutirão foram planejados para funcionar
@@ -14,6 +14,9 @@ Para começar você deve clonar o repositório `https://github.com/Insper/Labs-d
 
 !!! tip "Testando"
     No terminal do Linux dentro da pasta `code/01-intro` execute o comando: `make`, se tudo der certo, o programa carrega a imagem: `deepak-kumar-rX9uFci3pfY-unsplash.pgm` e gera a imagem `image-out.pgm`.
+
+    Se você estiver usando dual boot ou máquina virtual, a imagem `image-out.pgm` deve abrir automaticamente. Se isso não acontecer, procure a imagem na mesma pasta do código
+    e abra ela manualmente. Se, por algum incrível azar, seu sistema reconhece imagens PGM, use [este site](http://paulcuth.me.uk/netpbm-viewer/).
 
     ==Verifique se a imagem foi gerada corretamente.==
 
@@ -29,11 +32,11 @@ importantes e vocês estão longe de Java há mais ou menos meio semestre...
 Vamos começar com a revisão de alguns conceitos bem básicos. Dê uma olhada no arquivo `main.c` (por simplicidade, omitimos algumas linhas):
 
 !!! info
-    - Você pode abrir o arquivo no editor de código que preferir, indicamos abrir no
+    - Você pode abrir o arquivo no editor de código que preferir, mas indicamos abrir no
     vscode.
 
     - Será necessário um terminal para executar o comando `make`, você pode usar o
-    terminal do próprio vscode, ou do linux.
+    terminal do próprio vscode, ou do Linux.
 
 ```c
 #define IMG_IN  "deepak-kumar-rX9uFci3pfY-unsplash.pgm"
@@ -79,13 +82,13 @@ Neste lab iremos praticar e modificar a função `process_pixel`. Essa função 
   usada, como em Java;
 
 * valores e variáveis possuem *tipo*, pois C é uma linguagem com *tipagem
-  forte*, como Java;
+  mais forte*, como Java;
 
 * a declaração de uma variável segue a sintaxe `tipo nome`, como em Java;
 
 * `int` é o tipo que representa números inteiros, como em Java;
 
-* como tipagem forte significa que *tudo*, sem exceção, tem tipo, `int` também
+* como tipagem mais forte significa que *tudo*, sem exceção, tem tipo, `int` também
   aparece antes da declaração do parâmetro `level`, indicando que esse parâmetro
   é um número inteiro, e antes do próprio nome da função, indicando que
   `process_pixel` devolve um número inteiro;
@@ -122,7 +125,7 @@ partir desse valor original.
 Como acabamos de ver que a função simplesmente devolve o mesmo valor, então a
 imagem permanece inalterada. Vamos fazer algo mais interessante?
 
-!!! exercise choice 
+!!! exercise choice
     Qual a característica da variável `int new_level`?
 
     - [ ] Pode assumir valores entre 0 e 4.294.967.295
@@ -159,10 +162,11 @@ Para todos os exercícios deste handout, sigam por favor as regras abaixo.
 
 
 !!! warning ""
-    Lembrete: Para cada questão, validar a resposta com a imagem referência antes de continuar
+    Lembrete: Para cada questão, validar a resposta com a imagem referência antes de continuar.
+    Se ela não abrir automaticamente, abra manualmente.
 
 !!! warning
-    Os exercícios abaixo deverão ser feitos nos arquivos `tarefaX.c`
+    Os exercícios abaixo deverão ser feitos nos arquivos `tarefaX.c`.
 
 !!! exercise
 
@@ -175,13 +179,12 @@ Para todos os exercícios deste handout, sigam por favor as regras abaixo.
     *negativizar* a imagem, ou seja, transformar pixels claros em escuros e
     vice-versa.
 
-    estando:
-    
-    o terminal do Linux dentro da pasta `code/01-intro` execute o comando: `make tarefa1`, se tudo der certo, o programa carrega a imagem: `deepak-kumar-rX9uFci3pfY-unsplash.pgm` e gera a imagem `image-out.pgm`.
-    
+    Testando:
+    no terminal do Linux, dentro da pasta `code/01-intro`, execute o comando: `make tarefa1`, se tudo der certo, o programa carrega a imagem: `deepak-kumar-rX9uFci3pfY-unsplash.pgm` e gera a imagem `image-out.pgm`.
+
     ==Você deve abrir a imagem `image-out.pgm` para ver o resultado.==
-    
-    aça isso também para as tarefas seguintes.
+
+    Faça isso também para as tarefas seguintes.
 
     | Solução correta                          |
     |------------------------------------------|
@@ -208,8 +211,7 @@ Antes do próximo exercício, uma dica! A sintaxe de `if/else` em C, para variar
         instrução
         instrução
         ...
-    }
-    else {
+    } else {
         instrução
         instrução
         ...
@@ -233,7 +235,7 @@ Sabendo disso...
     * se o valor original do pixel for maior ou igual que esse segundo parâmetro,
       seu novo valor deve ser `255` (branco).
 
-    Para testar você vai precisar alterar o trecho de código em que `process_pixel` é chamada. Passe `127` como o segundo parâmetro da    chamada. Para isso **você precisará modificar o arquivo `main.c` para passar esse argumento.**
+    Para testar, você vai precisar alterar o trecho de código em que `process_pixel` é chamada. Passe `127` como o segundo parâmetro da    chamada. Para isso **você precisará modificar o arquivo `main.c` para passar esse argumento.**
 
     | Solução correta                          |
     |------------------------------------------|
@@ -249,7 +251,7 @@ Sabendo disso...
     parâmetro, adicionado no exercício anterior, como um valor que é *somado* ao
     pixel. Faça vários testes, passando múltiplos valores como o segundo
     parâmetro da chamada.
-    
+
     | Solução correta                         |  Solução errada  |
     |------------------------------------------|---|
     | ![](lab1-solucao/tarefa4-127-correto.png){width=250}  |  ![](lab1-solucao/tarefa4-127-errado.png){width=250}  |
@@ -263,9 +265,6 @@ Sabendo disso...
     Altere `process_pixel` para manipular o *contraste* da imagem: use o segundo
     parâmetro como um valor que *multiplica* o pixel. Novamente, faça vários
     testes, passando múltiplos valores como o segundo parâmetro da chamada.
-
-    !!! info ""
-        Usando o valor 5 no segundo argumento. **Aqui você precisará modificar `main.c` para passar esse argumento.**
 
     | Solução correta                         |  Solução errada  |
     |------------------------------------------|---|
@@ -283,7 +282,7 @@ básica de funções.
 Vamos agora sair do `make` por alguns instantes e fazer os próximos exercícios
 "no papel", ou seja, sem ficar dependendo de rodar para ver se seu código faz
 sentido. É muito importante que, pelo menos nesse começo, você não fique
-excessivamente dependente do computador e da IDE. Saiba fazer pelo menos o
+excessivamente dependente do computador e/ou da IDE. Saiba fazer pelo menos o
 básico sozinho, pois isso faz muita diferença na produtividade.
 
 !!! exercise text short
