@@ -2,7 +2,7 @@
 
 | Pasta                       | Arquivo  |
 |-----------------------------|----------|
-| `code/05-ponteiros-structs` | `main.c` |
+| `code/05-pointers-structs` | `main.c` |
 
 
 !!! info
@@ -39,10 +39,11 @@ Para introduzir o primeiro deles, vamos começar com uma pergunta.
 
     não funcionaria sem o `&`? Pode parecer estranho, mas você não precisa saber a
     definição de `&` para poder responder!
-    
+
     !!! answer
-        Não funcionaria! Precisamos indicar um endereço de memória para a função scanf armazenar o
-        valor lido.
+        Porque, sem `&`, estaríamos apenas passando uma cópia do valor de `n` para
+        `scanf`. Apenas com essa cópia de valor, `scanf` não tem como mudar o
+        conteúdo da variável `n`.
 
 ## Endereços
 
@@ -131,8 +132,8 @@ Vamos declarar o apontador `p` do exemplo acima.
     int *p;
 ~~~
 
-Por que estamos usando `int`? Porque apontadores em C *não sabem o tipo da variável
-para a qual apontam*, portanto esse tipo deve estar na declaração. Assim, a
+Por que estamos usando `int`? Porque apontadores em C *podem saber o tipo da variável
+para a qual apontam*. Portanto, esse tipo deve estar na declaração. Assim, a
 combinação de `int` seguido por `*` representa a declaração de um apontador para
 variável inteira.
 
@@ -160,7 +161,7 @@ Esse código faz sentido para você? Vejamos se você está entendendo...
     - [x] Não
 
     !!! answer
-
+        `5` é um valor, não uma variável. Não faz sentido pedir "endereço de `5`".
 
 !!! exercise choice two-cols
     Adicionar `v = p` ao exemplo acima seria válido?
@@ -169,6 +170,7 @@ Esse código faz sentido para você? Vejamos se você está entendendo...
     - [X] Não
 
     !!! answer
+        `v` guarda inteiros, então não podemos usá-la para guardar endereços
 
 !!! exercise choice two-cols
     Adicionar `v = &p` ao exemplo acima seria válido?
@@ -177,6 +179,7 @@ Esse código faz sentido para você? Vejamos se você está entendendo...
     - [x] Não
 
     !!! answer
+        `v` guarda inteiros, então não podemos usá-la para guardar endereços
 
 !!! exercise choice two-cols
     Adicionar `p = 5` ao exemplo acima seria válido?
@@ -185,6 +188,7 @@ Esse código faz sentido para você? Vejamos se você está entendendo...
     - [x] Não
 
     !!! answer
+        `p` guarda endereços, então não podemos usá-la para guardar inteiros
 
 !!! exercise choice two-cols
     Adicionar `p = &5` ao exemplo acima seria válido?
@@ -193,6 +197,7 @@ Esse código faz sentido para você? Vejamos se você está entendendo...
     - [x] Não
 
     !!! answer
+        `5` é um valor, não uma variável. Não faz sentido pedir "endereço de `5`".
 
 !!! exercise choice two-cols
     Adicionar `p = v` ao exemplo acima seria válido?
@@ -201,11 +206,10 @@ Esse código faz sentido para você? Vejamos se você está entendendo...
     - [x] Não
 
     !!! answer
-
+        `p` guarda endereços, então não podemos usá-la para guardar inteiros
 
 !!! warning
     Não continue antes de validar suas respostas com um dos professores.
-
 
 Agora vejam como o exemplo abaixo é interessante.
 
@@ -320,7 +324,7 @@ em si e sim os endereços das variáveis onde eles devem ser armazenados.
 
     3. usa `printf` para mostrar os dois resultados.
         - **O printf deve ser realizado dentro na função main!**
-    
+
 !!! exercise
     Escreva um programa completo que:
 
@@ -467,9 +471,9 @@ Lembre da regra de ouro.
     Por que `pp.x` não faria sentido no exemplo acima?
 
     !!! answer
-        Pois pp é um ponteiro, e para acessaro valor que um ponteiro aponta
-        temos que usar o *. Caso contrário estaríamos alterando o para onde
-        o ponteiro aponta.
+        Porque pp é um ponteiro, e, para acessar o valor da variável para a qual um ponteiro aponta,
+        temos que usar o *. A expressão pp.x significa "campo x de um endereço", o que não
+        faz sentido.
 
 !!! progress
     Não continue antes de validar suas respostas com um dos
@@ -496,10 +500,10 @@ pode ser substituído pelo trecho
     Pare e respire de novo.
 
 !!! exercise text short
-    Por que `p->x` não faria sentido no exemplo acima?
+    Por que `p->x` não faria sentido no exemplo do início da seção?
 
     !!! answer
-        Pois p não é um ponteiro de struct.
+        Porque p é um ponto, não um apontador para ponto.
 
 !!! exercise
     Escreva uma função
