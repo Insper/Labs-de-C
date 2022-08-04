@@ -57,7 +57,7 @@ scanf("%ld", &vetor[0]);
         1. A posição `vetor[5]` não é válida e pode resultar na leitura de dados inválidos da memória.
 
 !!! tip
-    Diferentemente de outras linguagens, *C* não verifica os índices automaticamente nem inicializa o elementos do vetor com 0. Além disto, não é possível obter o tamanho de um vetor a partir de seu nome.
+    Diferentemente de outras linguagens, *C* não verifica os índices automaticamente nem inicializa o elementos do vetor com 0. Além disto, nem sempre é possível obter o tamanho de um vetor a partir de seu nome.
 
 !!! exercise
     Conserte o código acima. Você deverá ler as posições do vetor usando `scanf` em um `for` e depois consertar o `for` do exemplo acima para não acessar as posições indevidas.
@@ -122,7 +122,7 @@ Como visto na expositiva, strings são arrays de caracteres sendo que o último 
      Em *C*, qual a diferença entre `"a"` e `'a'`?
 
     !!! answer
-        Em C aspas dupla `"a"` indica um vetor composto por: [`a`, NULL] e a aspas simples indica apenas um char.
+        Em C, aspas duplas `"a"` indicam um vetor composto por: [`a`, `\0`] e a aspas simples indicam apenas um char.
 
 Para imprimir uma string no terminal basta usar o código `%s` na string de formatação do printf:
 
@@ -164,7 +164,7 @@ fgets(str, STRING_LEN, stdin); // precisamos passar o tamanho máximo
 
 ## Matrizes
 
-Como visto na expositiva, matrizes em *C* nada mais são que vetores colocados um após o outro.
+Como visto na expositiva, matrizes em *C* nada mais são que "vetores de vetores", ou seja, vetores colocados um após o outro.
 
 ```c
 long mat[10][3];
@@ -207,36 +207,30 @@ Perceba que toda a primeira linha é armazenada (contendo 3 `long`s) antes do in
     As próximas tarefas devem ser feitas a partir de um arquivo vazio e compiladas usando os conhecimentos que vocês obtiveram no [Lab 3](/Lab3).
 
 !!! exercise
-    Faça, do zero, um programa que lê uma matriz $5 \times 4$ e imprime no terminal a soma de cada uma de suas colunas.
+    Faça, do zero, um programa que lê uma matriz 5x4 e imprime no terminal a soma de cada uma de suas colunas.
 
 !!! exercise
     Modifique seu programa acima para, além das somas de cada coluna, imprimir também o índice da coluna de maior valor.
 
 ## Exercícios
 
-Agora que já trabalhamos um pouco com *arrays*, *strings* e matrizes está na hora de praticar com exercícios mais complexos. Estes exercícios não são opcionais, sua realização é essencial para cumprir os objetivos do Mutirão.
+Agora que já trabalhamos um pouco com *arrays*, *strings* e matrizes está na hora de praticar com exercícios mais complexos. Estes exercícios não são opcionais: sua realização é essencial para cumprir os objetivos do Mutirão.
 
 !!! exercise
     Escreva, do zero, um programa que
 
     1. Leia um inteiro `n` do terminal (número de elementos do vetor)
-    1. Leia `n` números fracionários e guardá-los em um array.
+    1. Leia `n` números reais e guarde esses números em um array.
     1. Chame uma função para calcular a média do vetor.
     1. Imprima a média calculada.
 
     Seu programa deverá calcular a média usando uma função `avg` escrita por você mesmo e pode supor que `n < 100`. Para facilitar seus testes, escreva dois arquivos de entrada e use `<` para rodar o programa.
 
-    ==Atenção, em C não podemos fazer isso:==
-    ```c
-        int s;
-        scanf("%d", &s);
-        long vec[s];
-    ```
-
-    C não suporta alocar memória dinâmica para um vetor. Sugerimos
-    vocês criarem um vetor de uma tamanho maior que o usuário
-    possa querer usar. Existe uma solução, mas vamos ver mais
-    para frente (`malloc`).
+    **Atenção:** como vimos anteriormente, precisamos especificar o tamanho
+    de um vetor na declaração. No entanto, nesse caso não sabemos o tamanho
+    até o usuário digitá-lo. Sugerimos
+    vocês criarem um vetor de um tamanho maior que o usuário
+    possa querer usar. É bem comum saber esse limite em aplicações reais.
 
 !!! exercise
     Modifique seu programa acima para que ele imprima também a variância do vetor.
