@@ -12,8 +12,8 @@ Vamos começar analisando o código disponível na pasta `code/02-praticando/mai
 ~~~{.c}
     #include <stdio.h>
 
-    int main() {
-        printf("Hello World");
+    int main(int argc, char *argv[]) {
+        printf("Hello World\n");
 
         return 0;
     }
@@ -163,6 +163,8 @@ Enquanto a função `printf` usa o símbolo `%d` para indicar que quer "escrever
 inteiro", a função `scanf` usa o símbolo `%d` para indicar que quer "ler um
 inteiro".
 
+**Atenção:** geralmente não usamos `\n` no `scanf`.
+
 Note também uma diferença importantíssima entre `printf` e `scanf`: apenas no
 segundo há um `&` antes da variável. Os detalhes técnicos disso serão revelados
 na segunda aula de quarta, mas por enquanto mantenha em mente que **se você
@@ -235,7 +237,7 @@ verdade, não foi um acidente...
 Mesmo que não dê tempo de fazer esses exercícios em sala, é muito importante
 que você os faça até quarta para desenferrujar programação e praticar C.
 
-!!! exercise 
+!!! exercise
     `02-praticando/tarefa4.c`
 
     Escreva uma função que recebe um inteiro e devolve o *módulo* desse inteiro.
