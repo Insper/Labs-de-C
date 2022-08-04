@@ -1,14 +1,14 @@
-# Lab 6 - juntando tudo
+# Lab 6 - Juntando tudo
 
-| Pasta            | Arquivo  |
-|------------------|----------|
-| `code/juntando-06` | `soma.c` |
+| Pasta         |
+|---------------|
+| `code/06-pgm` |
 
 !!! info
     Este roteiro não apresenta nenhum conceito novo. Vocês podem fazê-lo apenas com o que já foi apresentado nos roteiros anteriores. Se você está precisando consultar materiais extras é um sinal de que sua solução é complicada demais.
 
-!!! warning
-    Este lab é uma continuação do que vocês já fizeram no Lab5! Façam uma cópia dele para a pasta `Lab6`
+!!! info
+    Você deve fazer tudo do zero. Não há nenhum esqueleto.
 
 !!! tip
     Valide visualmente cada exercício antes de prosseguir.
@@ -16,16 +16,35 @@
 Vamos neste roteiro revisar os conceitos dos dois roteiros anteriores fazendo modificações para tornar seu programa mais legível e organizado.
 
 !!! exercise
-    Crie uma estrurura `imagem` para guardar largura, altura e a matriz da imagem. Você pode supor que ela tem tamanho máximo $640 \times 480$.
+    Crie um struct `imagem` que representa uma imagem, como as usadas no Lab1. Esse struct deve ter:
+
+    * um número que representa a largura da imagem;
+    * um número que representa a altura da imagem;
+    * uma matriz de números que representa os valores dos pixels da imagem.
+
+    Por simplicidade, você pode supor que nenhuma imagem usada será maior que 640x480.
 
 !!! exercise
-    Modifique sua função `le_imagem` que carrega o conteúdo de uma imagem do terminal e escreve em uma estrutura `imagem`. Quais parâmetros sua função recebe?
+    Crie uma função `le_imagem` que carrega o conteúdo de uma imagem PGM, recebida pelo
+    terminal (lembre que no Lab3 vimos como simular a digitação do terminal através
+    de um arquivo), em um struct `imagem`. Abra o arquivo `cat.pgm` em um editor de
+    texto para entender o formato PGM.
+
+    **Dica:** A função deve receber um apontador para um struct `imagem` e preencher
+    esse struct. Isso significa que o struct não é criado pela própria função, mas
+    por quem *chamou* a função.
 
 !!! exercise
-    Modifique sua função `escreve_imagem` para receber um tipo `imagem`. Você deve usar apontadores nesta função?
+    Crie uma função `escreve_imagem` que recebe um apontador para um struct `imagem`
+    e imprime o conteúdo desse struct no terminal, no formato PGM
+
+    **Dica:** Para testar, lembre que no Lab3 vimos como redirecionar os prints
+    para um arquivo.
 
 !!! exercise
-    Modifique sua função `limiar` para receber um tipo `imagem`. Você deve usar apontadores nesta função?
+    Crie uma função `limiar` que *limiariza* um struct `imagem` (tarefa 3 do Lab1).
+
+    **Dica:** para testar, use `le_imagem` e `escreve_imagem`.
 
 !!! warning
     Valide sua implementação com os professores antes de seguir.
@@ -33,11 +52,10 @@ Vamos neste roteiro revisar os conceitos dos dois roteiros anteriores fazendo mo
 ## Exercícios avançados
 
 !!! exercise
-    **Crop**: crie uma função `crop` que corta uma imagem. Sua função deverá receber dois tipos `imagem`: um para a imagem original e outra para a imagem cortada. Quais parâmetros sua função deve receber? Você deve usar apontadores?
+    **Crop**: crie uma função `crop` que corta uma imagem. Sua função deverá receber dois structs `imagem`: um para a imagem original e outra para a imagem cortada.
 
 !!! exercise
-    **Borramento**: crie uma função *blur* que faz o borramento de uma imagem. Ela deverá receber dois tipos `imagem`: um contendo a imagem original e um que receberá a imagem processada. Para borrar a imagem compute, para cada ponto, a média entre seu valor e o valor de seus vizinhos (incluindo diagonais).
+    **Borramento**: crie uma função *blur* que faz o borramento de uma imagem. Ela deverá receber dois structs `imagem`: um contendo a imagem original e um que receberá a imagem processada. Para borrar a imagem compute, para cada ponto, a média entre seu valor e o valor de seus vizinhos (incluindo diagonais).
 
 !!! exercise
-    **Detector de bordas**: você pode detectar bordas em uma imagem computando, para cada ponto, a diferença entre 4 vezes seu valor e o valor dos seus vizinhos.
-
+    **Detector de bordas**: você pode detectar bordas em uma imagem computando, para cada ponto, a diferença entre 4 vezes seu valor e o valor dos seus vizinhos (sem incluir diagonais).
