@@ -2,14 +2,14 @@
 
 O mutirão C é composto de laboratórios e uma avaliação. O cronograma a ser seguido na primeira semana de aula será:
 
-| Data | Dia     | Aula          | Observações       | Atividade             | Conteúdo                  |
-| ---- | ---     | ---           | -------           | ---------             | ---                       |
-| 14/2 | Segunda | Sistema HW/SW |                   | Apresentação e `Lab1` | Conceitos básicos         |
-|      |         | Embarcados    |                   | Apresentação e `Lab2` | Lógica de programação     |
-| 15/2 | Terça   |               | Estudo individual | `Lab3`                | Compilação com GCC        |
-| 16/2 | Quarta  | Desafios      |                   | `Lab4`                | Array, strings e matrizes |
-|      |         | Embarcados    | Metade da turma   | `Lab5`                | Ponteiros e structs       |
-| 17/2 | Quinta  | Embarcados    | Metade da turma   | `Lab5`                | Ponteiros e structs       |
-|      |         | Sistema HW/SW |                   | `Lab6`                | Prática                   |
-|      |         |               | Estudo individual | `Lab7`                | Escopo de variáveis       |
-| 18/2 | Sexta   | Desafios      |                   | `Avaliação`           | Prova                     |
+| Data | Dia     | Aula       | Observações       | Atividade            | Conteúdo                   |
+| ---  | ---     | ---        | ---               | ---                  | ---                        |
+| 15/8 | Segunda | HardSoft   |                   | Apresentação e Lab 1 | Conceitos básicos          |
+|      |         | Embarcados |                   | Apresentação e Lab 2 | Lógica de programação      |
+| 16/8 | Terça   |            | Estudo individual | Lab 3                | Compilação com GCC         |
+| 17/8 | Quarta  | Desafios   |                   | Lab 4                | Arrays, strings e matrizes |
+|      |         | Embarcados | Metade da turma   | Lab 5                | Ponteiros e structs        |
+| 18/8 | Quinta  | Embarcados | Metade da turma   | Lab 5                | Ponteiros e structs        |
+|      |         | HardSoft   |                   | Lab 6                | Prática                    |
+|      |         |            | Estudo individual | Lab 7                | Escopo de variáveis        |
+| 19/8 | Sexta   | Desafios   |                   | Avaliação            | Prova                      |
