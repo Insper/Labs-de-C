@@ -2,7 +2,7 @@
 
 - http://linguagemc.com.br/funcoes-e-escopo-de-variaveis/
 
-Em C possuímos três escopos distintos chamados de: **global**, **local** ou **parâmetros formais**, o escopo define as regras de utilização das variáveis de um programa: onde elas são criadas e destruídas e como elas podem ser modificadas (escrita/leitura).
+Em C possuímos três escopos distintos: **global**, **local** e **parâmetros formais**. O escopo define as regras de utilização das variáveis de um programa: onde elas são criadas e destruídas e como elas podem ser modificadas (escrita/leitura).
 
 ## Variáveis globais
 
@@ -39,7 +39,7 @@ void dec (void) {
     }
     ```
 
-    Em qual linha do código anterior você deve declar a variável `glo` para que ela seja global?
+    Em qual linha do código anterior você deve declarar a variável `glo` para que ela seja global?
 
     - [x] Linha 2
     - [ ] Linha 4
@@ -47,7 +47,7 @@ void dec (void) {
     - [ ] Linha 9
 
     !!! answer
-        Para uma variável ser glogal ela deve ser declarada fora de funcão, ==mas atencão!!== Você deve declarar a variável antes do seu uso, se não terá erro de compilacão. O exemplo a seguir não compilaria:
+        Para uma variável ser global ela deve ser declarada fora de funcão, ==mas atencão!!== Você deve declarar a variável antes do seu uso, se não terá erro de compilacão. O exemplo a seguir não compilaria:
 
         ```c linenums="1" hl_lines="6"
         /* --- Exemplo incorreto --- */
@@ -132,7 +132,7 @@ Notem que:
 
 !!! exercise choice
     ```c
-    void get_temp (int &temp) {
+    void get_temp (int *temp) {
         _arduino_get_temp(temp);
     }
 
