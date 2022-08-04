@@ -10,10 +10,10 @@ de compilar e executar um programa ficou escondida de vocês, pois não era o ob
 Esta leitura visa familiarizá-lo com as ferramentas de compilação de código em *C* usando o compilador *gcc*. O ambiente recomendado para a atividade é o **Ubuntu 20.04 LTS**. Outras configurações são possíveis, mas não daremos suporte a elas.
 
 !!! tip
-    Memorizar os comandos usados é muito mais fácil de você digitá-los no terminal ao invés de copiar e colar.
+    Para memorizar os comandos usados, é muito mais fácil digitá-los no terminal ao invés de copiar e colar.
 
 !!! info
-    Makefile é uma ferramenta muito utilizada que automatiza a compilação de programas em C, ela é utilizada por exemplo no kernel do linux e em muitos outros programas. Por enquanto não iremos mexer com o make, mais para o final do semestre teremos algumas atividades disso.
+    Makefile é uma ferramenta muito utilizada que automatiza a compilação de programas em C, ela é utilizada por exemplo no kernel do Linux e em muitos outros programas. Por enquanto não iremos mexer com o make. Mais para o final do semestre teremos algumas atividades disso.
 
 ## Instalação local das ferramentas dos cursos
 
@@ -29,7 +29,7 @@ Verifique que tudo funcionou rodando o seguinte comando
 $ gcc --version
 ```
 
-Se você recebeu uma mensagem indicando que está usando a versão `9.3` então tudo está funcionando corretamente.
+Se você recebeu uma mensagem indicando que está usando a versão `9.x.x` ou superior, então tudo está funcionando corretamente.
 
 ```
 gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0
@@ -39,16 +39,18 @@ warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 ```
 
 !!! warning
-    Esta padronização é importante para evitar dores de cabeça com comportamentos específicos de uma certa versão. Assim como o restante do ambiente, é possível que tudo funcione igual com outras versões do `gcc`. Porém, não daremos suporte a ambientes diferentes do padronizado neste lab.
+    Esta padronização é importante para evitar dores de cabeça com comportamentos específicos de uma certa versão. Assim como o restante do ambiente, é possível que tudo funcione igual com versões mais antigas do `gcc`. Porém, não daremos suporte a ambientes diferentes do padronizado neste lab.
 
 Praticamente qualquer editor de texto ou IDE suporta colorização para *C*, porém recomendamos utilizar alguma
-ferramenta que também corrija erros de sintaxe. Editores como Visual Studio Code (com plugin para C/C++ e Make) e Eclipse CDT são boas escolhas por serem multi-plataforma e suficientemente completos. Eles também ajudarão muito no começo por indicarem erros simples de sintaxe como esquecer de um `;` ou usar `scanf` sem o `&`.
+ferramenta que também corrija erros de sintaxe. Editores como Visual Studio Code (com plugin para C/C++ e Make) e Eclipse CDT são boas escolhas por serem multi-plataforma e suficientemente completos.
 
-Após o mutirão as atividades de *Computação Embarcada* serão feitas em Windows usando Microchip Studio. Desafios de programação e Sistemas de Hardware e Software continuarão usando Ubuntu Linux.
+Eles também ajudarão muito no começo por indicarem erros simples de sintaxe como esquecer de um `;` ou usar `scanf` sem o `&`.
 
-## O quê é "compilar" um código
+Após o mutirão, as atividades de *Computação Embarcada* serão feitas em Windows usando Microchip Studio. *Desafios de Programação* e *Sistemas Hardware-Software* continuarão usando Ubuntu Linux.
 
-Diferente de Python, em que podemos rodar diretamente o script, ou Java, em que criamos um arquivo binário multi-plataforma, programas em *C* precisam ser convertidos em instruções **nativas** do processador para serem executados. Chamamos esse processo que transforma código em instruções executáveis por uma CPU (física ou virtual) de *compilação*. O resultado final da compilação de um programa em *C* é um arquivo *executável* específico para uma arquitetura de CPU e Sistema Operacional.
+## O que é "compilar" um código
+
+Diferente de Python, em que podemos rodar diretamente o script, ou Java, em que criamos um arquivo binário multi-plataforma, programas em *C* precisam ser convertidos em instruções **nativas** do processador para serem executados. Chamamos esse processo que transforma código em instruções executáveis por uma CPU (física ou virtual) de *compilação*. O resultado final da compilação de um programa em *C* é um arquivo *executável* específico para uma arquitetura de CPU e sistema operacional.
 
 Veremos mais detalhes de como essa transformação para código de máquina ocorre em Sistemas Hardware-Software.
 
@@ -62,7 +64,7 @@ $ gcc -Wall -pedantic -std=gnu99 -Og -o executavel arquivo.c
 
 * `-Wall`: habilita todos avisos do compilador. Este modo indica possíveis erros cometidos no programa.
 * `-pedantic`: modo de compilação mais estrito e mostra ainda mais avisos
-* `-std=gnu99`: versão da linguagem C usada (*C99*) mais extensões para sistemas POSIX GNU (veremos o quê isto significa mais para frente).
+* `-std=gnu99`: versão da linguagem C usada (*C99*) mais extensões para sistemas POSIX GNU (veremos o que isto significa mais para frente).
 * `-Og`: somente aplicar otimizações que não atrapalham *debuging*.
 * `-o`: output -- nome do executável gerado
 
@@ -83,7 +85,7 @@ Os programas abaixo devem ser feitos criando um arquivo vazio baseado no `printf
 
 ## Facilitando o uso da entrada e saída padrão
 
-Para interagir com nossos programas precisamos digitar valores e strings no terminal. Isto se torna chato e repetitivo bem rápido. Para facilitar podemos utilizar o recurso de redirecionamento de entrada do terminal. Veja o exemplo abaixo.
+Para interagir com nossos programas precisamos digitar valores e strings no terminal. Isto se torna chato e repetitivo bem rápido. Para facilitar, podemos utilizar o recurso de redirecionamento de entrada do terminal. Veja o exemplo abaixo.
 
 ```bash
 $ ./prog < arquivo_entrada.txt
