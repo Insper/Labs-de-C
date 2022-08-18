@@ -1,6 +1,8 @@
 # Lab 4 - Arrays, Strings e Matrizes
 
-Na última aula trabalhamos com conceitos básicos de *C* e com tipos de dados simples (inteiros e números fracionários). Hoje veremos as primeiras estruturas complexas em *C*: vetores, matrizes e strings.
+Na última aula trabalhamos com conceitos básicos de *C* e com tipos de dados
+simples (inteiros e números fracionários). Hoje veremos as primeiras estruturas
+complexas em *C*: arrays (também chamados de vetores), matrizes e strings.
 
 ## Arrays em *C*
 
@@ -20,7 +22,7 @@ O acesso a elementos também é bastante simples:
 printf("%ld\n", A[3]);
 ~~~
 
-A linha acima imprime o primeiro elemento do vetor. O uso com `scanf` segue a mesma lógica dos tipos simples:
+A linha acima imprime o quarto elemento do vetor. O uso com `scanf` segue a mesma lógica dos tipos simples:
 
 ~~~{.c}
 scanf("%ld", &vetor[0]);
