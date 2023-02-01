@@ -5,7 +5,13 @@
 
 #include <stdio.h>
 
-// TODO implemente seu programa aqui
+// TODO implemente sua função aqui
+void arvore(int n) {
+}
+
+// TODO implemente aqui um programa que chama
+// a função que você faz, passando como
+// parâmetro um inteiro que foi dado pelo usuário
 int main() {
 
     return 0;

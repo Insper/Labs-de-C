@@ -6,11 +6,11 @@
 #include <stdio.h>
 
 int main() {
-    int s = 0;
+    int s;
     int i;
 
     i = 0;
-    while(i < 10) {
+    while (i < 10) {
         s += i;
         i++;
     }

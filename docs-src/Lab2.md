@@ -20,7 +20,7 @@ Vamos começar analisando o código disponível na pasta `code/02-praticando/mai
 ~~~
 
 !!! tip
-    - Abra o arquivo  `main.c` no seu editor de códigos preferidos
+    - Abra o arquivo  `main.c` no seu editor de códigos preferido
     - Abra um terminal na pasta `code/02-praticando/`
     - Para compilar e executar o programa execute no terminal: `make`
 
