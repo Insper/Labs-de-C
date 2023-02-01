@@ -4,10 +4,14 @@
 |---------------|------------|
 | `code/03-gcc` | `printf.c` |
 
-Ontem fizemos atividades de programação em C e a parte
-de compilar e executar um programa ficou escondida de vocês, pois não era o objetivo da atividade (quando executavam no terminal o `make`).
+Ontem fizemos atividades de programação em C e a parte de compilar e executar um
+programa ficou escondida de vocês, pois não era o objetivo da atividade (quando
+executavam no terminal o `make`).
 
-Esta leitura visa familiarizá-lo com as ferramentas de compilação de código em *C* usando o compilador *gcc*. O ambiente recomendado para a atividade é o **Ubuntu 20.04 LTS**. Outras configurações são possíveis, mas não daremos suporte a elas.
+Esta leitura visa familiarizá-lo com as ferramentas de compilação de código em
+*C* usando o compilador *gcc*. O ambiente recomendado para a atividade é o
+**Ubuntu 22.04.1 LTS**. Outras configurações são possíveis, mas não daremos
+suporte a elas.
 
 !!! tip
     Para memorizar os comandos usados, é muito mais fácil digitá-los no terminal ao invés de copiar e colar.
@@ -104,7 +108,7 @@ O programa `prog` será executado como se o conteúdo do arquivo *arquivo_entrad
 
 ## Bibliotecas
 
-A tarefa 3 do lab passado usada funções trigonométricas do cabeçalho `math.h`. Somente incluir `math.h`  não é suficiente para que o programa funcione, é preciso incluir também a implementação dessas funções. Fazemos isso adicionando flags começando com `-l` **no fim de sua linha de compilação do gcc**.
+A tarefa 3 do lab passado usava funções trigonométricas do cabeçalho `math.h`. Somente incluir `math.h`  não é suficiente para que o programa funcione, é preciso incluir também a implementação dessas funções. Fazemos isso adicionando flags começando com `-l` **no fim de sua linha de compilação do gcc**.
 
 !!! exercise
     Volte no código da aula passada e compile-o usando a linha `gcc -Og -Wall tarefa3.c -o tarefa3-sem-make -lm -lsystemd`
