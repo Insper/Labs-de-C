@@ -3,7 +3,7 @@
 - **Curso:** Engenharia de Computação - Quinto Semestre
 - **Disciplinas:** Computação Embarcada/ Sistemas Hardware-Software / Desafios de Programação
 - **Professores:**
-    - Rafael Corsi/ Igor Montagner / Marcelo Hasimoto/ Maciel Vidal
+    - Rafael Corsi/ Igor Montagner / Marcelo Hasimoto/ Maciel Vidal / Rodrigo Carareto
 - **Equipe:**
     - Eduardo Marossi/ Marco Mello / Flavio Batista
 

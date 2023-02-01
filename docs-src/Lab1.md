@@ -16,7 +16,7 @@ Para começar você deve clonar o repositório `https://github.com/Insper/Labs-d
     No terminal do Linux dentro da pasta `code/01-intro` execute o comando: `make`, se tudo der certo, o programa carrega a imagem: `deepak-kumar-rX9uFci3pfY-unsplash.pgm` e gera a imagem `image-out.pgm`.
 
     Se você estiver usando dual boot ou máquina virtual, a imagem `image-out.pgm` deve abrir automaticamente. Se isso não acontecer, procure a imagem na mesma pasta do código
-    e abra ela manualmente. Se, por algum incrível azar, seu sistema reconhece imagens PGM, use [este site](http://paulcuth.me.uk/netpbm-viewer/).
+    e abra ela manualmente. Se, por algum incrível azar, seu sistema não reconhece imagens PGM, use [este site](http://paulcuth.me.uk/netpbm-viewer/).
 
     ==Verifique se a imagem foi gerada corretamente.==
 
@@ -48,6 +48,9 @@ Vamos começar com a revisão de alguns conceitos bem básicos. Dê uma olhada n
 // Por enquanto, suponha que ela está
 // aqui para acompanhar a explicação.
 
+// Também omitimos algumas linhas que
+// não são importantes para esta parte.
+
 int process_pixel(int level) {
 	int new_level;
 
@@ -70,13 +73,13 @@ int main(int argc, char *argv[]) {
 }
 ```
 
-Note que existem duas funções: `main` e `process_pixel`, a primeira é a função
-que será sempre executada primeiro, a `process_pixel` é executada para cada
+Note que existem duas funções: `main` e `process_pixel`. A primeira é a função
+que será sempre executada primeiro e a `process_pixel` é executada para cada
 pixel da imagem de entrada (o gatinho).
 
 Neste lab iremos praticar e modificar a função `process_pixel`. Essa função é trivial, mas no código já vemos vários conceitos importantes:
 
-* as instruções terminam em ponto-e-vírgula, como em Java;
+* as instruções terminam em ponto e vírgula, como em Java;
 
 * `new_level` é uma variável da função e precisa ser *declarada* para poder ser
   usada, como em Java;
@@ -159,6 +162,9 @@ Para todos os exercícios deste handout, sigam por favor as regras abaixo.
 2. Ao terminar um exercício, chame um dos professores para testemunhar o
    programa funcionando e validar o código. Não avance no guia até fazer isso,
    para termos certeza que você está passando por todo o processo.
+
+   *(se os professores estiverem muito sobrecarregados, você pode validar com
+   um colega que já foi validado)*
 
 
 !!! warning ""
