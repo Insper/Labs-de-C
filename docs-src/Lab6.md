@@ -47,7 +47,7 @@ Vamos neste roteiro revisar os conceitos dos dois roteiros anteriores fazendo mo
     **Dica:** para testar, use `le_imagem` e `escreve_imagem`.
 
 !!! warning
-    Valide sua implementação com os professores antes de seguir.
+    Valide sua implementação com os professores ou um colega validado antes de seguir.
 
 ## Exercícios avançados
 
