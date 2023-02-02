@@ -18,7 +18,8 @@
      até fazer isso, para termos certeza que você está passando por todo o
      processo.
 
-
+     *(se os professores estiverem muito sobrecarregados, você pode validar com
+     um colega que já foi validado)*
 
 ## Introdução
 
@@ -208,9 +209,6 @@ Esse código faz sentido para você? Vejamos se você está entendendo...
     !!! answer
         `p` guarda endereços, então não podemos usá-la para guardar inteiros
 
-!!! warning
-    Não continue antes de validar suas respostas com um dos professores.
-
 Agora vejam como o exemplo abaixo é interessante.
 
 ~~~{.c}
@@ -233,10 +231,6 @@ Agora vejam como o exemplo abaixo é interessante.
         "variável apontada por `p` recebe `10`". E qual é a variável apontada por `p`?
 
 
-
-!!! warning
-    Não vá para a próxima parte antes de validar suas respostas com um dos
-    professores.
 
 
 De fato, podemos usar `*p` como sinônimo de `v` ao longo do código.
@@ -338,7 +332,7 @@ em si e sim os endereços das variáveis onde eles devem ser armazenados.
         - **O printf deve ser realizado dentro na função main!**
 
 !!! warning
-    Não continue antes de validar suas respostas com um dos professores.
+    Não continue antes de validar suas respostas com um dos professores ou um colega validado.
 
 
 Endereços e apontadores são considerados conceitos particularmente difíceis de
@@ -443,7 +437,7 @@ como em objetos Java.
 
 
 !!! warning
-    Não continue antes de validar suas respostas com um dos professores.
+    Não continue  suas respostas com um dos professores.
 
 !!! progress
     Conclua os exercícios antes de continuar.
@@ -474,10 +468,6 @@ Lembre da regra de ouro.
         Porque pp é um ponteiro, e, para acessar o valor da variável para a qual um ponteiro aponta,
         temos que usar o *. A expressão pp.x significa "campo x de um endereço", o que não
         faz sentido.
-
-!!! progress
-    Não continue antes de validar suas respostas com um dos
-    professores.
 
 Felizmente, os criadores do C perceberam que a sintaxe fica meio pesada nesse
 caso e adicionaram o operador "setinha" (`->`) para ajudar. Grosso modo, esse

@@ -17,5 +17,5 @@ tarefa6: tarefa6.c
 	./tarefa6
 
 clean:
-	rm -f $(TARGET) *.a *.o *~ tarefa3 tarefa6
+	rm -f $(TARGET) *.a *.o *~ main tarefa3 tarefa6
 
