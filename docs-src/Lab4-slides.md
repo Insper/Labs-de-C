@@ -8,7 +8,7 @@ author:
 marp: true
 ---
 
-# Mutirão C 
+# Mutirão C
 
 ##### Arrays, Strings e Matrizes
 
@@ -37,12 +37,12 @@ Específico para
 
 ## Comandos para compilação
 
-**Usaremos Ubuntu 20.04 nas disciplinas Sistemas Hardware-Software e Desafios de Programação**. 
+**Usaremos Ubuntu 22.04.1 nas disciplinas Sistemas Hardware-Software e Desafios de Programação**.
 
 Utilização do `gcc` na linha de comando:
 
 
-1. `gcc -Wall -pedantic -Og -c arq1.c -o nome_executavel` (para compilar) 
+1. `gcc -Wall -pedantic -Og -c arq1.c -o nome_executavel` (para compilar)
 1. `./executavel` (para executar)
 
 ----
@@ -206,7 +206,7 @@ void soma_um(long arr[], long pos) {
 
 ## Sintaxe
 
-**Caractere:** variável do tipo `char` que contém um inteiro da tabela ASCII. 
+**Caractere:** variável do tipo `char` que contém um inteiro da tabela ASCII.
 
 > `'A' == 65`, `'0' == 48`
 
@@ -266,8 +266,8 @@ printf("hello %s\n", str);
 
 ```c
 char str[10];
-// precisamos passar o tamanho máximo + 1 da nossa string. 
-fgets(str, 10, stdin); 
+// precisamos passar o tamanho máximo + 1 da nossa string.
+fgets(str, 10, stdin);
 ```
 
 <!--
@@ -277,10 +277,10 @@ fgets(str, 10, stdin);
 #include <string.h>
 
 /* Tamanho da string */
-size_t strlen(char *s); 
+size_t strlen(char *s);
 
 /* Devolve 0 se forem iguais,
-    <0 se str1 vier antes de str2 e 
+    <0 se str1 vier antes de str2 e
     >0 se str1 vier depois de str2 */
 int strcmp(char *str1, char *str2);
 
@@ -310,7 +310,7 @@ char *strcpy(char *dest, char *src);
 
 ```c
 long mat[100][200];
-long mat2[2][3] = {{1, 2, 5}, {3, 4, 6}} ; 
+long mat2[2][3] = {{1, 2, 5}, {3, 4, 6}} ;
 ```
 
 * Acesso a elemento:
