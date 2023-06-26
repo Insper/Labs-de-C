@@ -1,30 +1,12 @@
 # Lab 1 - Conceitos Básicos
 
-| Pasta           | Arquivo  |
-|-----------------|----------|
-| `code/01-intro` | `main.c` |
-
-!!! info "Infra"
-    Realize as atividades do laboratório no repositório do Classroom:
-
-    https://classroom.github.com/a/Hm0emM94
-
-    Após o repositório ter sido criado abra o codespace:
-
-    ![](imgs/codespace.png)
-
-    Isso abrirá um VSCode (rodando na Azure) com tudo configurado para vocês! ==Mas não se acostumem com essa mordomia!==
-
-
 !!! tip "Testando"
-    No terminal dentro do vscode/codespace dentro da pasta `code/01-intro` execute o comando: `make`, se tudo der certo, o programa carrega a imagem: `deepak-kumar-rX9uFci3pfY-unsplash.pgm` e gera a imagem `image-out.pgm`.
+    Abra o terminal do VSCode (usando ``Ctrl + ` ``) dentro da pasta `atividade/01-intro` e execute o comando: `make tarefa1`, se tudo der certo, o programa carrega a imagem: `deepak-kumar-rX9uFci3pfY-unsplash.pgm` e gera a imagem `image-out.pgm`.
 
-    Você pode abrir a imagem no próprio vscode! *(mas é possível que na primeira vez demore um pouco)*
+    Para abrir as imagens basta clicar duas vezes nelas. Uma nova aba do VSCode será aberta e você pode comparar visualmente os resultados. 
 
     ==Verifique se a imagem foi gerada corretamente.==
 
-!!! progress
-    Continuar...
 
 ## Começando
 

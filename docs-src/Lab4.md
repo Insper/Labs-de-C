@@ -207,7 +207,7 @@ Perceba que toda a primeira linha é armazenada (contendo 3 `long`s) antes do in
         ```
 
 !!! warning
-    As próximas tarefas devem ser feitas a partir de um arquivo vazio e compiladas usando os conhecimentos que vocês obtiveram no [Lab 3](/Lab3).
+    As próximas tarefas devem ser feitas a partir de um arquivo vazio e compiladas usando os conhecimentos que vocês obtiveram no [Lab 3](Lab3.md).
 
 !!! exercise
     Faça, do zero, um programa que lê uma matriz 5x4 e imprime no terminal a soma de cada uma de suas colunas.

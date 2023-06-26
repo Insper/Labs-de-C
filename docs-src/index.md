@@ -1,31 +1,34 @@
 # Bem vindo aos Labs de C
 
-- **Curso:** Engenharia de Computação - Quinto Semestre
-- **Disciplinas:** Computação Embarcada / Desafios de Programação / Sistemas Hardware-Software
-- **Professores:**
-    - Rafael Corsi / Marcelo Hashimoto / Fabio Lubacheski
-- **Equipe:**
-    - Eduardo Marossi/ Marco Mello
-- **Já passou por aqui**
-    - Fábio Ayres (2018-2019) / Flavio Batista (2022) / Rodrigo Carareto (2023) / Eduardo Marossi / Igor Montagner / Maciel Vidal (2021-2023)
+- **Curso:** Ciência de Computação - Quarto Semestre 
+- **Disciplinas:** Grafos e Árvores / Sistemas Hardware-Software 
 
-**© Todos os direitos reservados**
-
-------------------
 
 ## Objetivos
 
 Capacitar os alunos na linguagem C para que eles possam usá-la nas disciplinas
 do Quinto Semestre da Engenharia de Computação Insper.
 
-## Motivação
+Iremos utilizar [um espaço no PrairieLearn](https://us.prairielearn.com/pl/course_instance/137302/assessment/2352640) para fazer essas atividades. Já aproveitem e se matriculem usando seu email Insper (login Microsoft).
 
-1. C possui uma [excelente performance](https://attractivechaos.github.io/plb/)
-1. É uma das linguagens mais utilizadas no mundo:
-    - https://githut.info/
-1. É baixo nível
 
-## Pesquisa
+## Equipe
+
+- **Professores:**
+    - Igor Montagner
+    - Carlos Menezes
+
+- **Colaborações e versões anteriores**
+    - Rafael Corsi
+    - Marcelo Hasimoto
+    - Maciel Vidal 
+    - Rodrigo Carareto
+    - Eduardo Marossi
+    - Marco Mello 
+    - Flavio Batista
+
+**© Todos os direitos reservados**
+
 
 - FERRAO, RAFAEL CORSI; DOS SANTOS MONTAGNER, IGOR ; CACEFFO, RICARDO ; AZEVEDO, RODOLFO. How much C can students learn in one week? Experiences teaching C in advanced CS courses. In: 2022 IEEE Frontiers in Education Conference (FIE), 2022, Uppsala. 2022 IEEE Frontiers in Education Conference (FIE), 2022. p. 1.
 
