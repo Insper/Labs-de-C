@@ -1,8 +1,5 @@
 # Lab 5 - Ponteiros e `structs`
 
-| Pasta                       | Arquivo  |
-|-----------------------------|----------|
-| `code/05-pointers-structs` | `main.c` |
 
 
 !!! info

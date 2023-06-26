@@ -1,4 +1,4 @@
-site_name: 5s - Labs de C - Insper Comp.
+site_name: Labs de C - Insper BCC
 
 theme:
   name: active-handout-theme
@@ -7,9 +7,10 @@ docs_dir: docs-src
 site_dir: docs
 copyright: 'Copyright &copy; 2021 / Marcelo Hashimoto, Igor Montagner, Rafael Corsi'
 site_url: https://insper.github.io/Labs-de-C/
-repo_name: 'Insper/Labs-de-C'
-repo_url: 'https://github.com/Insper/Labs-de-C/'
-edit_url: 'https://github.com/Insper/Labs-de-C/edit/master/docs-src/'
+
+repo_name: 'Insper/Labs-de-C-BCC'
+repo_url: 'https://github.com/Insper/Labs-de-C-BCC/'
+
 
 # Extensions
 extra_javascript:
@@ -51,7 +52,6 @@ nav:
 #- Sobre-Curso.md
 #- Sobre-Ferramental.md
 - 'Mutirão':
-    - 'about-mutirao.md'
     - 'Lab1.md'
     - 'Lab2.md'
     -  Quiz 1: Quiz1.md
@@ -61,8 +61,8 @@ nav:
     - 'Lab5.md'
     - Quiz 3: https://us.prairielearn.com/pl/course_instance/150202/assessment/2396809
     - 'Lab6.md'
-    - 'Lab7.md'
-#    - 'ci.md'
+    #- 'Lab7.md'
+#
 #- 'Labs extras':
 #    - labs-extras/lab7.md
 #    - labs-extras/lab8.md

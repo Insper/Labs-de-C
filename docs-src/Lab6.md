@@ -1,8 +1,5 @@
 # Lab 6 - Juntando tudo
 
-| Pasta         |
-|---------------|
-| `code/06-pgm` |
 
 !!! info
     Este roteiro não apresenta nenhum conceito novo. Vocês podem fazê-lo apenas com o que já foi apresentado nos roteiros anteriores. Se você está precisando consultar materiais extras é um sinal de que sua solução é complicada demais.

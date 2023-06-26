@@ -1,8 +1,5 @@
 # Lab 2 - Praticando
 
-| Pasta                | Arquivo  |
-|----------------------|----------|
-| `code/02-praticando` | `main.c` |
 
 Agora que praticamos um pouco no papel (de novo, habilidade fundamental para
 qualquer programador), vamos voltar ao computador.
