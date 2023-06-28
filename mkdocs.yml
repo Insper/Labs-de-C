@@ -1,23 +1,15 @@
 site_name: 5s - Labs de C - Insper Comp.
 
 theme:
-  name: active-handout
-  language: pt
-  features:
-    - navigation.tabs
-    - header.autohide
+  name: active-handout-theme
 
 docs_dir: docs-src
 site_dir: docs
-
-copyright: 'Copyright &copy; 2021 / Marcelo Hashimoto, Igor Montagner, Rafael Corsi, Eduardo Marossi'
-
+copyright: 'Copyright &copy; 2021 / Marcelo Hashimoto, Igor Montagner, Rafael Corsi'
 site_url: https://insper.github.io/Labs-de-C/
-
 repo_name: 'Insper/Labs-de-C'
 repo_url: 'https://github.com/Insper/Labs-de-C/'
 edit_url: 'https://github.com/Insper/Labs-de-C/edit/master/docs-src/'
-
 
 # Extensions
 extra_javascript:
@@ -26,59 +18,34 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
   - https://cdn.jsdelivr.net/gh/insper-education/active-handout-plugins-js@main/package/plugin-bundle.js
 
-extra:
-  ihandout_config:
-    mount-point: /DevLife/
-    calendar: /DevLife/calendar.yml
-    counter:
-      - question
-      - tip
-      - exercise
-      - example
-    report:
-      api-base: https://devlife.insper-comp.com.br/api/offerings/1/
-      url: https://devlife.insper-comp.com.br/api/offerings/1/exercises/
-
 plugins:
-  - git-revision-date-localized:
-      fallback_to_build_date: true
-  - dev-environment
-  - active-exercises:
-      offering_id: 1
-  - contributors
-  - search
-
+  - active-handout:
+      telemetry: true
+      backend_url: http://localhost:8080/api/
+      course_slug: 22b Embarcados
+      plugin_exercise_counter: false
 
 markdown_extensions:
-  - markdown.extensions.attr_list
   - markdown.extensions.admonition
-  - markdown.extensions.codehilite:
-      guess_lang: false
-  - markdown.extensions.def_list
-  - markdown.extensions.footnotes
-  - markdown.extensions.meta
-  - markdown.extensions.toc:
-      permalink: true
-  - pymdownx.arithmatex
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.superfences
+  - pymdownx.magiclink
+  - pymdownx.critic:
+      mode: view
   - pymdownx.betterem:
       smart_enable: all
   - pymdownx.caret
-  - pymdownx.critic
-  - pymdownx.details
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.smartsymbols
   - pymdownx.emoji:
       emoji_generator: !!python/name:pymdownx.emoji.to_svg
-  - pymdownx.inlinehilite
-  - pymdownx.keys
-  - pymdownx.magiclink:
-      repo_url_shorthand: true
-      user: squidfunk
-      repo: mkdocs-material
-  - pymdownx.mark
-  - pymdownx.smartsymbols
-  - pymdownx.superfences
-  - pymdownx.tasklist:
-      custom_checkbox: true
-  - pymdownx.tilde
+  - attr_list
+
 
 nav:
 - Home: index.md
