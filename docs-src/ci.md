@@ -1025,5 +1025,3 @@
     8. printf ("resultado = %d", a);
     9. }
     ```
-
-    
