@@ -818,3 +818,210 @@
     ```c
     if (d1.year > 2000)
     ```
+
+!!! exercise choice ":star: QF1"
+    Considere o seguinte programa:
+    ```c
+    1. int main () {
+    2. int a = 25, b = 10, resultado = 0;
+    3. int* p;
+    4. p = &resultado;
+    5. subtrai (a, b, p, resultado);
+    6. printf ("25 – 10 = %d", resultado);
+    7. }
+    ```
+    Uma implementação correta da função subtrai, que faria o programa acima exibir **25 – 10 = 15 é**:
+    
+    - [ ] 
+    ```c
+    1. void subtrai (int a, int b, int* p, int resultado) {
+    2. return a – b;
+    3. }
+    ```
+    - [x] 
+    ```c
+    1. void subtrai (int a, int b, int* p, int resultado) {
+    2. *p = a - b;
+    3. }    
+    ```
+    - [ ] 
+    ```c
+    1. void subtrai (int a, int b, int* p, int resultado) {
+    2. resultado = a - b;
+    3. }
+    ```
+    - [ ] 
+    ```c
+    1. void subtrai (int a, int b, int* p, int resultado) {
+    2. p = a - b;
+    3. }
+    ```
+    - [ ] 
+    ```c
+    1. void subtrai (int a, int b, int* p, int resultado) {
+    2. &p = a - b;
+    3. }
+    ```
+
+!!! exercise choice ":star: QF2"
+    O programa que exibe **a + b = 30** na tela é:
+    
+    - [ ] 
+    ```c
+    1. void somaValores (int a, int b) {
+    2. return a + b;
+    3. }
+    4.
+    5. int main () {
+    6. int a = 10, b = 20, soma = 0;
+    7. soma = somaValores (a, b);
+    8. printf ("a + b = %d", soma);
+    9. }
+    ```
+    - [ ] 
+    ```c
+    1. void somaValores (int a, int b, int soma) {
+    2. soma = a + b;
+    3. }
+    4.
+    5. int main () {
+    6. int a = 10, b = 20, soma = 0;
+    7. somaValores (a, b, soma);
+    8. printf ("a + b = %d", soma);
+    9. }
+    ```
+    - [ ] 
+    ```c
+    1. void somaValores (int a, int b, int* soma) {
+    2. soma = a + b;
+    3. }
+    4.
+    5. int main () {
+    6. int a = 10, b = 20, soma = 0;
+    7. somaValores (a, b, &soma);
+    8. printf ("a + b = %d", soma);
+    9. }
+    ```
+    - [ ] 
+    ```c
+    1. void somaValores (int a, int b, int* soma) {
+    2. &soma = a + b;
+    3. }
+    4.
+    5. int main () {
+    6. int a = 10, b = 20, soma = 0;
+    7. somaValores (a, b, &soma);
+    8. printf ("a + b = %d", soma);
+    9. }
+    ```
+    - [x] 
+    ```c
+    1. void somaValores (int a, int b, int* soma) {
+    2. *soma = a + b;
+    3. }
+    4.
+    5. int main () {
+    6. int a = 10, b = 20, soma = 0;
+    7. somaValores (a, b, &soma);
+    8. printf ("a + b = %d", soma);
+    9. }
+    ```
+
+
+!!! exercise choice ":star: QF3"
+    Considere o seguinte programa:
+    ```c
+    1. int main () {
+    2. int a = 10;
+    3. int* p;
+    4.
+    5. // Insira o código aqui
+    6.
+    7. printf (" a = %d", a);
+    8. }
+    ```
+    O código correto a ser inserido na linha 5, que faça com que o programa exiba na tela a = 20 é:
+
+    - [x] 
+    ```c
+    p = &a;
+    *p = a + 10;
+    ```
+    - [ ] 
+    ```c
+    p = &a;
+    &p = a + 10;
+    ```
+    - [ ] 
+    ```c
+    p = &a + 10; 
+    ```
+    - [ ] 
+    ```c
+    p = &a;
+    *p = p + 10;
+    ```
+
+!!! exercise choice ":star: QF4"
+    O programa que exibe **resultado = 110** é:
+
+    - [ ] 
+    ```c
+    1. void somaDez (int* p) {
+    2. *p = p + 10;
+    3. }
+    4.
+    5. int main () {
+    6. int a = 100;
+    7. somaDez (&a);
+    8. printf ("resultado = %d", a);
+    9. }
+    ```
+    - [x] 
+    ```c
+    1. void somaDez (int* p) {
+    2. *p = *p + 10;
+    3. }
+    4.
+    5. int main () {
+    6. int a = 100;
+    7. somaDez (&a);
+    8. printf ("resultado = %d", a);
+    9. }
+    ```
+    - [ ] 
+    ```c
+    1. void somaDez (int* p) {
+    2. p = *p + 10;
+    3. }
+    4.
+    5. int main () {
+    6. int a = 100;
+    7. somaDez (&a);
+    8. printf ("resultado = %d", a);
+    9. }
+    ```
+    - [ ] 
+    ```c
+    1. void somaDez (int* p) {
+    2. return *p + 10;
+    3. }
+    4.
+    5. int main () {
+    6. int a = 100;
+    7. a = somaDez (&a);
+    8. printf ("resultado = %d", a);
+    9. }
+    ```
+    - [ ] 
+    ```c
+    1. void somaDez (int p) {
+    2. p = p + 10;
+    3. }
+    4.
+    5. int main () {
+    6. int a = 100;
+    7. somaDez (a);
+    8. printf ("resultado = %d", a);
+    9. }
+    ```

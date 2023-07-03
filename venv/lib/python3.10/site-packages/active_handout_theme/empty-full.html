@@ -1,0 +1,74 @@
+{% import "partials/language.html" as lang with context %}
+<!doctype html>
+<html lang="{{ lang.t('language') }}" class="no-js">
+  <head>
+    {% block site_meta %}
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      {% if page and page.meta and page.meta.description %}
+        <meta name="description" content="{{ page.meta.description }}">
+      {% elif config.site_description %}
+        <meta name="description" content="{{ config.site_description }}">
+      {% endif %}
+      {% if page and page.meta and page.meta.author %}
+        <meta name="author" content="{{ page.meta.author }}">
+      {% elif config.site_author %}
+        <meta name="author" content="{{ config.site_author }}">
+      {% endif %}
+      {% if page.canonical_url %}
+        <link rel="canonical" href="{{ page.canonical_url }}">
+      {% endif %}
+      <link rel="icon" href="{{ config.theme.favicon | url }}">
+      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-8.1.8">
+    {% endblock %}
+    {% block htmltitle %}
+      {% if page and page.meta and page.meta.title %}
+        <title>{{ page.meta.title }} - {{ config.site_name }}</title>
+      {% elif page and page.title and not page.is_homepage %}
+        <title>{{ page.title | striptags }} - {{ config.site_name }}</title>
+      {% else %}
+        <title>{{ config.site_name }}</title>
+      {% endif %}
+    {% endblock %}
+    {% block libs %}{% endblock %}
+    {% block fonts %}
+      {% if config.theme.font != false %}
+        {% set font = config.theme.font %}
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family={{
+            font.text | replace(' ', '+') + ':300,400,400i,700%7C' +
+            font.code | replace(' ', '+')
+          }}&display=fallback">
+        <style>:root{--md-text-font:"{{ font.text }}";--md-code-font:"{{ font.code }}"}</style>
+      {% endif %}
+    {% endblock %}
+    <link rel="stylesheet" href="https://www.unpkg.com/tailwindcss@0.7.4/dist/preflight.min.css">
+    <link rel="stylesheet" href="{{ 'assets/css/empty-full.css'|url }}">
+
+    {% for path in config["extra_css"] %}
+      <link rel="stylesheet" href="{{ path | url }}">
+    {% endfor %}
+    {% include "partials/javascripts/base.html" %}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed:700|Oxygen+Mono|Source+Sans+Pro:700|Source+Serif+Pro&amp;display=swap">
+
+    {% if config.extra.ihandout_config %}
+    <script>
+        window.ihandout_config = JSON.parse(`{{ config.extra.ihandout_config|tojson|safe }}`);
+    </script>
+    {% endif %}
+    {% block extrahead %}{% endblock %}
+  </head>
+  <body>
+    <main id="ah-content">
+    {% block content %}
+      {{ page.content }}
+    {% endblock %}
+    </main>
+
+    {% block scripts %}
+      {% for path in config["extra_javascript"] %}
+        <script src="{{ path | url }}"></script>
+      {% endfor %}
+    {% endblock %}
+  </body>
+</html>

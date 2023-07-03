@@ -1,0 +1,520 @@
+{
+  "course": "22b Embarcados",
+  "exercises": {
+    "Lab1/": {
+      "choice_1": {
+        "tags": [
+          "choice-exercise"
+        ],
+        "slug": "Lab1/choice_1",
+        "answer_idx": 1
+      },
+      "exercise_1": {
+        "tags": [],
+        "slug": "Lab1/exercise_1"
+      },
+      "exercise_2": {
+        "tags": [],
+        "slug": "Lab1/exercise_2"
+      },
+      "exercise_3": {
+        "tags": [],
+        "slug": "Lab1/exercise_3"
+      },
+      "exercise_4": {
+        "tags": [],
+        "slug": "Lab1/exercise_4"
+      },
+      "exercise_5": {
+        "tags": [],
+        "slug": "Lab1/exercise_5"
+      },
+      "short_1": {
+        "tags": [
+          "text-exercise",
+          "short-text"
+        ],
+        "slug": "Lab1/short_1"
+      },
+      "short_2": {
+        "tags": [
+          "text-exercise",
+          "short-text"
+        ],
+        "slug": "Lab1/short_2"
+      }
+    },
+    "Lab2/": {
+      "exercise_1": {
+        "tags": [],
+        "slug": "Lab2/exercise_1"
+      },
+      "exercise_2": {
+        "tags": [],
+        "slug": "Lab2/exercise_2"
+      },
+      "exercise_3": {
+        "tags": [],
+        "slug": "Lab2/exercise_3"
+      },
+      "exercise_4": {
+        "tags": [],
+        "slug": "Lab2/exercise_4"
+      },
+      "exercise_5": {
+        "tags": [],
+        "slug": "Lab2/exercise_5"
+      },
+      "exercise_6": {
+        "tags": [],
+        "slug": "Lab2/exercise_6"
+      },
+      "exercise_7": {
+        "tags": [],
+        "slug": "Lab2/exercise_7"
+      }
+    },
+    "Lab3/": {
+      "exercise_1": {
+        "tags": [],
+        "slug": "Lab3/exercise_1"
+      },
+      "exercise_2": {
+        "tags": [],
+        "slug": "Lab3/exercise_2"
+      },
+      "exercise_3": {
+        "tags": [],
+        "slug": "Lab3/exercise_3"
+      },
+      "exercise_4": {
+        "tags": [],
+        "slug": "Lab3/exercise_4"
+      },
+      "exercise_5": {
+        "tags": [],
+        "slug": "Lab3/exercise_5"
+      },
+      "exercise_6": {
+        "tags": [],
+        "slug": "Lab3/exercise_6"
+      },
+      "exercise_7": {
+        "tags": [],
+        "slug": "Lab3/exercise_7"
+      }
+    },
+    "Lab4/": {
+      "exercise_1": {
+        "tags": [],
+        "slug": "Lab4/exercise_1"
+      },
+      "long_1": {
+        "tags": [
+          "text-exercise",
+          "long-text"
+        ],
+        "slug": "Lab4/long_1"
+      },
+      "exercise_2": {
+        "tags": [],
+        "slug": "Lab4/exercise_2"
+      },
+      "exercise_3": {
+        "tags": [],
+        "slug": "Lab4/exercise_3"
+      },
+      "short_2": {
+        "tags": [
+          "text-exercise",
+          "short-text"
+        ],
+        "slug": "Lab4/short_2"
+      },
+      "short_3": {
+        "tags": [
+          "text-exercise",
+          "short-text"
+        ],
+        "slug": "Lab4/short_3"
+      },
+      "short_4": {
+        "tags": [
+          "text-exercise",
+          "short-text"
+        ],
+        "slug": "Lab4/short_4"
+      },
+      "exercise_4": {
+        "tags": [],
+        "slug": "Lab4/exercise_4"
+      },
+      "exercise_5": {
+        "tags": [],
+        "slug": "Lab4/exercise_5"
+      },
+      "short_5": {
+        "tags": [
+          "text-exercise",
+          "short-text"
+        ],
+        "slug": "Lab4/short_5"
+      },
+      "exercise_6": {
+        "tags": [],
+        "slug": "Lab4/exercise_6"
+      },
+      "exercise_7": {
+        "tags": [],
+        "slug": "Lab4/exercise_7"
+      },
+      "exercise_8": {
+        "tags": [],
+        "slug": "Lab4/exercise_8"
+      },
+      "exercise_9": {
+        "tags": [],
+        "slug": "Lab4/exercise_9"
+      }
+    },
+    "Lab5/": {
+      "short_1": {
+        "tags": [
+          "text-exercise",
+          "short-text"
+        ],
+        "slug": "Lab5/short_1"
+      },
+      "choice_1": {
+        "tags": [
+          "choice-exercise"
+        ],
+        "slug": "Lab5/choice_1",
+        "answer_idx": 1
+      },
+      "choice_2": {
+        "tags": [
+          "choice-exercise"
+        ],
+        "slug": "Lab5/choice_2",
+        "answer_idx": 1
+      },
+      "choice_3": {
+        "tags": [
+          "choice-exercise"
+        ],
+        "slug": "Lab5/choice_3",
+        "answer_idx": 1
+      },
+      "choice_4": {
+        "tags": [
+          "choice-exercise"
+        ],
+        "slug": "Lab5/choice_4",
+        "answer_idx": 1
+      },
+      "choice_5": {
+        "tags": [
+          "choice-exercise"
+        ],
+        "slug": "Lab5/choice_5",
+        "answer_idx": 1
+      },
+      "choice_6": {
+        "tags": [
+          "choice-exercise"
+        ],
+        "slug": "Lab5/choice_6",
+        "answer_idx": 1
+      },
+      "short_2": {
+        "tags": [
+          "text-exercise",
+          "short-text"
+        ],
+        "slug": "Lab5/short_2"
+      },
+      "exercise_1": {
+        "tags": [],
+        "slug": "Lab5/exercise_1"
+      },
+      "exercise_2": {
+        "tags": [],
+        "slug": "Lab5/exercise_2"
+      },
+      "exercise_3": {
+        "tags": [],
+        "slug": "Lab5/exercise_3"
+      },
+      "exercise_4": {
+        "tags": [],
+        "slug": "Lab5/exercise_4"
+      },
+      "exercise_5": {
+        "tags": [],
+        "slug": "Lab5/exercise_5"
+      },
+      "short_3": {
+        "tags": [
+          "text-exercise",
+          "short-text"
+        ],
+        "slug": "Lab5/short_3"
+      },
+      "short_4": {
+        "tags": [
+          "text-exercise",
+          "short-text"
+        ],
+        "slug": "Lab5/short_4"
+      },
+      "exercise_6": {
+        "tags": [],
+        "slug": "Lab5/exercise_6"
+      }
+    },
+    "Lab6/": {
+      "exercise_1": {
+        "tags": [],
+        "slug": "Lab6/exercise_1"
+      },
+      "exercise_2": {
+        "tags": [],
+        "slug": "Lab6/exercise_2"
+      },
+      "exercise_3": {
+        "tags": [],
+        "slug": "Lab6/exercise_3"
+      },
+      "exercise_4": {
+        "tags": [],
+        "slug": "Lab6/exercise_4"
+      },
+      "exercise_5": {
+        "tags": [],
+        "slug": "Lab6/exercise_5"
+      },
+      "exercise_6": {
+        "tags": [],
+        "slug": "Lab6/exercise_6"
+      },
+      "exercise_7": {
+        "tags": [],
+        "slug": "Lab6/exercise_7"
+      }
+    },
+    "Lab7/": {
+      "choice_1": {
+        "tags": [
+          "choice-exercise"
+        ],
+        "slug": "Lab7/choice_1",
+        "answer_idx": 0
+      },
+      "short_1": {
+        "tags": [
+          "text-exercise",
+          "short-text"
+        ],
+        "slug": "Lab7/short_1"
+      },
+      "choice_2": {
+        "tags": [
+          "choice-exercise"
+        ],
+        "slug": "Lab7/choice_2",
+        "answer_idx": 0
+      },
+      "choice_3": {
+        "tags": [
+          "choice-exercise"
+        ],
+        "slug": "Lab7/choice_3",
+        "answer_idx": 2
+      },
+      "choice_4": {
+        "tags": [
+          "choice-exercise"
+        ],
+        "slug": "Lab7/choice_4",
+        "answer_idx": 0
+      },
+      "choice_5": {
+        "tags": [
+          "choice-exercise"
+        ],
+        "slug": "Lab7/choice_5",
+        "answer_idx": 4
+      },
+      "choice_6": {
+        "tags": [
+          "choice-exercise"
+        ],
+        "slug": "Lab7/choice_6",
+        "answer_idx": 1
+      },
+      "choice_7": {
+        "tags": [
+          "choice-exercise"
+        ],
+        "slug": "Lab7/choice_7",
+        "answer_idx": 2
+      }
+    },
+    "ci/": {
+      "choice_1": {
+        "tags": [
+          "choice-exercise"
+        ],
+        "slug": "ci/choice_1",
+        "answer_idx": 2
+      },
+      "choice_2": {
+        "tags": [
+          "choice-exercise"
+        ],
+        "slug": "ci/choice_2",
+        "answer_idx": 0
+      },
+      "choice_3": {
+        "tags": [
+          "choice-exercise"
+        ],
+        "slug": "ci/choice_3",
+        "answer_idx": 4
+      },
+      "choice_4": {
+        "tags": [
+          "choice-exercise"
+        ],
+        "slug": "ci/choice_4",
+        "answer_idx": 1
+      },
+      "choice_5": {
+        "tags": [
+          "choice-exercise"
+        ],
+        "slug": "ci/choice_5",
+        "answer_idx": 2
+      },
+      "choice_6": {
+        "tags": [
+          "choice-exercise"
+        ],
+        "slug": "ci/choice_6",
+        "answer_idx": 0
+      },
+      "choice_7": {
+        "tags": [
+          "choice-exercise"
+        ],
+        "slug": "ci/choice_7",
+        "answer_idx": 1
+      },
+      "choice_8": {
+        "tags": [
+          "choice-exercise"
+        ],
+        "slug": "ci/choice_8",
+        "answer_idx": 2
+      },
+      "choice_9": {
+        "tags": [
+          "choice-exercise"
+        ],
+        "slug": "ci/choice_9",
+        "answer_idx": 2
+      },
+      "choice_10": {
+        "tags": [
+          "choice-exercise"
+        ],
+        "slug": "ci/choice_10",
+        "answer_idx": 1
+      },
+      "choice_11": {
+        "tags": [
+          "choice-exercise"
+        ],
+        "slug": "ci/choice_11",
+        "answer_idx": 3
+      },
+      "choice_12": {
+        "tags": [
+          "choice-exercise"
+        ],
+        "slug": "ci/choice_12",
+        "answer_idx": 0
+      },
+      "choice_13": {
+        "tags": [
+          "choice-exercise"
+        ],
+        "slug": "ci/choice_13",
+        "answer_idx": 2
+      },
+      "choice_14": {
+        "tags": [
+          "choice-exercise"
+        ],
+        "slug": "ci/choice_14",
+        "answer_idx": 1
+      },
+      "choice_15": {
+        "tags": [
+          "choice-exercise"
+        ],
+        "slug": "ci/choice_15",
+        "answer_idx": 4
+      },
+      "choice_16": {
+        "tags": [
+          "choice-exercise"
+        ],
+        "slug": "ci/choice_16",
+        "answer_idx": 4
+      },
+      "choice_17": {
+        "tags": [
+          "choice-exercise"
+        ],
+        "slug": "ci/choice_17",
+        "answer_idx": 3
+      },
+      "choice_18": {
+        "tags": [
+          "choice-exercise"
+        ],
+        "slug": "ci/choice_18",
+        "answer_idx": 1
+      },
+      "choice_19": {
+        "tags": [
+          "choice-exercise"
+        ],
+        "slug": "ci/choice_19",
+        "answer_idx": 4
+      },
+      "choice_20": {
+        "tags": [
+          "choice-exercise"
+        ],
+        "slug": "ci/choice_20",
+        "answer_idx": 0
+      },
+      "choice_21": {
+        "tags": [
+          "choice-exercise"
+        ],
+        "slug": "ci/choice_21",
+        "answer_idx": 1
+      }
+    }
+  },
+  "tags": {
+    "text-exercise": "text-exercise",
+    "choice-exercise": "choice-exercise",
+    "short-text": "short-text",
+    "long-text": "long-text"
+  }
+}

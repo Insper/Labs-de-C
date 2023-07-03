@@ -1,0 +1,6 @@
+# Language for theme localization
+language: en
+
+# Static pages to build
+static_templates:
+  - 404.html
