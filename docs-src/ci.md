@@ -4,17 +4,16 @@
     O código a seguir apresenta uma função que adiciona cinco a um número. Essa função é chamada pelo main
     
     ```c
-    
     int somaCincoAoNum (int n) {
-        int c = 0;
-        // Insira o código aqui
-        return c;
+      int c = 0;
+      // Insira o código aqui
+      return c;
     }
     
     int main () {
-        int x = 0;
-        x = addFiveToNumber (x);
-        return 0;
+      int x = 0;
+      x = addFiveToNumber (x);
+      return 0;
     }
     ```
     
@@ -31,17 +30,17 @@
 
     ```c
     int subtrairNumeros (int b, int a) {
-       int c = 0;
-       c = b – a;
-       return c;
-     }
+      int c = 0;
+      c = b – a;
+      return c;
+    }
     
     int main () {
-       int a = 20;
-       int b = 10;
-       // Insira o código aqui
-       printf ("20 – 10 = %d", c);
-       return 0;
+      int a = 20;
+      int b = 10;
+      // Insira o código aqui
+      printf ("20 – 10 = %d", c);
+      return 0;
     }
     ```
    
@@ -283,76 +282,76 @@
 
     - [ ] 
     ```c
-    1. int func(int a, int b){
-    2. return a + b + c;
-    3. }
+    1.  int func(int a, int b){
+    2.    return a + b + c;
+    3.  }
     4.
-    5. int main(){
-    6. int a = 5, b = 7, c = 10;
-    7. int r = func (a, b);
-    8. printf ("r = %d ", r);
-    9. return 0;
+    5.  int main(){
+    6.    int a = 5, b = 7, c = 10;
+    7.    int r = func (a, b);
+    8.    printf ("r = %d ", r);
+    9.    return 0;
     10. }
     ```
     - [x] 
     ```c
-    1. int func(int a, int b, int c){
-    2. return a + b + c;
-    3. }
+    1.  int func(int a, int b, int c){
+    2.    return a + b + c;
+    3.  }
     4.
-    5. int main(){
-    6. int a = 5, b = 7, c = 10;
-    7. int r = func (a, b, c);
-    8. printf ("r = %d ", r);
-    9. return 0;
+    5.  int main(){
+    6.    int a = 5, b = 7, c = 10;
+    7.    int r = func (a, b, c);
+    8.    printf ("r = %d ", r);
+    9.    return 0;
     10. }
     ```
     - [ ] 
     ```c
-    1. int func(int a, int b, int c){
-    2. return a + b + c;
-    3. }
+    1.  int func(int a, int b, int c){
+    2.    return a + b + c;
+    3.  }
     4.
-    5. int main (){
-    6. int a = 7, b = 13, c = 2;
-    7. int r = func (a, b, b);
-    8. printf ("r = %d ", r);
-    9. return 0;
+    5.  int main (){
+    6.    int a = 7, b = 13, c = 2;
+    7.    int r = func (a, b, b);
+    8.    printf ("r = %d ", r);
+    9.    return 0;
     10. }
     ```
     - [ ] 
     ```c
-    1. int z = 0;
-    2. int func(int a, int b, int c){
-    3. z = 1;
-    4. return a + b + c;
-    5. }
+    1.  int z = 0;
+    2.  int func(int a, int b, int c){
+    3.    z = 1;
+    4.    return a + b + c;
+    5.  }
     6.
-    7. int main (){
-    8. int a = 7, b = 11, c = 4;
-    9. int r = func (a, b, c);
-    10. r = r + z;
-    11. printf ("r = %d ", r);
-    12. return 0;
+    7.  int main (){
+    8.    int a = 7, b = 11, c = 4;
+    9.    int r = func (a, b, c);
+    10.   r = r + z;
+    11.   printf ("r = %d ", r);
+    12.   return 0;
     13. }
     ```
     - [ ] 
     ```c
-    1. int z = 0;
-    2. int func(){
-    3. if (existVariable(z)) {
-    4. // z exists in this scope
-    5. return -1;
-    6. }
-    7. else {
-    8. // z does not exist in this scope
-    9. return 22;
+    1.  int z = 0;
+    2.  int func(){
+    3.    if (existVariable(z)) {
+    4.    // z exists in this scope
+    5.    return -1;
+    6.  }
+    7.  else {
+    8.    // z does not exist in this scope
+    9.    return 22;
     10. }
     11.
     12. int main (){
-    13. int r = func ();
-    14. printf ("r = %d ", r);
-    15. return 0;
+    13.   int r = func ();
+    14.   printf ("r = %d ", r);
+    15.   return 0;
     16. }
     ```
 
@@ -504,17 +503,17 @@
     ```
 
     O programa abaixo lê um número **n** e exibe se **n é primo ou não**:
-
+    
     ```c
-    1. int main() {
-    2. int n;
-    3. int i = 2;
-    4. // Insert code here
-    5. scanf ("%d", &n);
-    6. // Insert code here
-    7. foundDivisible = isDivisible(n, i);
-    8. i++;
-    9. }
+    1.  int main() {
+    2.    int n;
+    3.    int i = 2;
+    4.    // Insert code here
+    5.    scanf ("%d", &n);
+    6.    // Insert code here
+    7.    foundDivisible = isDivisible(n, i);
+    8.    i++;
+    9.  }
     10. if (!foundDivisible)
     11. printf("Number %d is prime", n);
     12. else
@@ -547,25 +546,28 @@
     4. int foundDivisible = 0;
     6. while (!foundDivisible && i < n) {
     ```
+    
 !!! exercise choice ":star: QD4"
+    - Verificar
+
     O programa a seguir foi projetado para ler dois inteiros, a e b, e imprimir todos os números entre eles. Por exemplo, se a = 5 e b = 10, o programa imprimiria 6,7,8,9, do menor para o maior. Por sua vez, se a=10 e b=5, o programa ainda imprimirá 6,7,8,9.
 
     ```c
-    1. int main() {
-    2. int a, b, i, small, large;
-    3. scanf("%d %d", &a,&b);
-    4. if (a < b) {
-    5. small = a;
-    6. large = b;
-    7. }
-    8. else {
-    9. small = b;
-    10. large = a;
-    11. }
-    12. // Insert code here
-    13. // Insert code here
-    14. printf("%d", i);
-    15. // Insert code here
+    1.  int main() {
+    2.    int a, b, i, small, large;
+    3.    scanf("%d %d", &a,&b);
+    4.    if (a < b) {
+    5.      small = a;
+    6.      large = b;
+    7.     }
+    8.     else {
+    9.       small = b;
+    10.      large = a;
+    11.    }
+    12.    // Insert code here
+    13.    // Insert code here
+    14.    printf("%d", i);
+    15.    // Insert code here
     16. }
     17. }
     ```
@@ -968,61 +970,60 @@
     - [ ] 
     ```c
     1. void somaDez (int* p) {
-    2. *p = p + 10;
+    2.   *p = p + 10;
     3. }
     4.
     5. int main () {
-    6. int a = 100;
-    7. somaDez (&a);
-    8. printf ("resultado = %d", a);
+    6.   int a = 100;
+    7.   somaDez (&a);
+    8.   printf ("resultado = %d", a);
     9. }
     ```
     - [x] 
     ```c
     1. void somaDez (int* p) {
-    2. *p = *p + 10;
+    2.   *p = *p + 10;
     3. }
     4.
     5. int main () {
-    6. int a = 100;
-    7. somaDez (&a);
-    8. printf ("resultado = %d", a);
+    6.   int a = 100;
+    7.   somaDez (&a);
+    8.   printf ("resultado = %d", a);
     9. }
     ```
     - [ ] 
     ```c
     1. void somaDez (int* p) {
-    2. p = *p + 10;
+    2.   p = *p + 10;
     3. }
     4.
     5. int main () {
-    6. int a = 100;
-    7. somaDez (&a);
-    8. printf ("resultado = %d", a);
+    6.   int a = 100;
+    7.   somaDez (&a);
+    8.   printf ("resultado = %d", a);
     9. }
     ```
     - [ ] 
     ```c
     1. void somaDez (int* p) {
-    2. return *p + 10;
+    2.   return *p + 10;
     3. }
     4.
     5. int main () {
-    6. int a = 100;
-    7. a = somaDez (&a);
-    8. printf ("resultado = %d", a);
+    6.   int a = 100;
+    7.   a = somaDez (&a);
+    8.   printf ("resultado = %d", a);
     9. }
     ```
     - [ ] 
     ```c
     1. void somaDez (int p) {
-    2. p = p + 10;
+    2.   p = p + 10;
     3. }
     4.
     5. int main () {
-    6. int a = 100;
-    7. somaDez (a);
-    8. printf ("resultado = %d", a);
+    6.   int a = 100;
+    7.   somaDez (a);
+    8.   printf ("resultado = %d", a);
     9. }
-    
     ```
