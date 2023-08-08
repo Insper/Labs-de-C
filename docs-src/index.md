@@ -3,11 +3,11 @@
 - **Curso:** Engenharia de Computação - Quinto Semestre
 - **Disciplinas:** Computação Embarcada/ Sistemas Hardware-Software / Desafios de Programação
 - **Professores:**
-    - Rafael Corsi/ Igor Montagner / Marcelo Hasimoto 
+    - Rafael Corsi / Marcelo Hasimoto / Fabio Lubacheski
 - **Equipe:**
     - Eduardo Marossi/ Marco Mello
 - **Já passou por aqui**
-    - Fábio Ayres (2018-2019) / Flavio Batista (2022) / Rodrigo Carareto (2023) / Eduardo Marossi / Maciel Vidal (2021-2023) 
+    - Fábio Ayres (2018-2019) / Flavio Batista (2022) / Rodrigo Carareto (2023) / Eduardo Marossi / Igor Montagner / Maciel Vidal (2021-2023) 
 
 **© Todos os direitos reservados**
 
