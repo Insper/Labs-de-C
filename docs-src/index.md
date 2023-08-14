@@ -1,7 +1,7 @@
 # Bem vindo aos Labs de C
 
 - **Curso:** Engenharia de Computação - Quinto Semestre
-- **Disciplinas:** Computação Embarcada/ Sistemas Hardware-Software / Desafios de Programação
+- **Disciplinas:** Computação Embarcada / Desafios de Programação / Sistemas Hardware-Software 
 - **Professores:**
     - Rafael Corsi / Marcelo Hasimoto / Fabio Lubacheski
 - **Equipe:**
