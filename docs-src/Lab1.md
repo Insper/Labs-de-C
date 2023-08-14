@@ -1,7 +1,5 @@
 # Lab 1 - Conceitos Básicos
 
-Para começar você deve clonar o repositório `https://github.com/Insper/Labs-de-C/`.
-
 | Pasta           | Arquivo  |
 |-----------------|----------|
 | `code/01-intro` | `main.c` |
@@ -11,6 +9,11 @@ Para começar você deve clonar o repositório `https://github.com/Insper/Labs-d
     no Linux, e você deve instalar os pacotes a seguir antes de começar o lab:
 
     - `sudo apt install build-essential libsystemd-dev`
+
+!!! exercise
+    Para começar você deve clonar o repositório:
+    
+    - `https://github.com/Insper/Labs-de-C/`.
 
 !!! tip "Testando"
     No terminal do Linux dentro da pasta `code/01-intro` execute o comando: `make`, se tudo der certo, o programa carrega a imagem: `deepak-kumar-rX9uFci3pfY-unsplash.pgm` e gera a imagem `image-out.pgm`.
