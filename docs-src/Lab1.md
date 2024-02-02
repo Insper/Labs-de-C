@@ -5,21 +5,21 @@
 | `code/01-intro` | `main.c` |
 
 !!! info "Infra"
-    Os laboratórios do mutirão foram planejados para funcionar
-    no Linux, e você deve instalar os pacotes a seguir antes de começar o lab:
-
-    - `sudo apt install build-essential libsystemd-dev`
-
-!!! exercise
-    Para começar você deve clonar o repositório:
+    Realize as atividades do laboratório no repositório do Classroom:
     
-    - `https://github.com/Insper/Labs-de-C/`.
+    https://classroom.github.com/a/Hm0emM94
+    
+    Após o repositório ter sido criado abra o codespace:
+    
+    ![](imgs/codespace.png)
+    
+    Isso abrirá um VSCode (rodando na Azure) com tudo configurado para vocês! ==Mas não se acostumem com essa mordomia!==
+    
 
 !!! tip "Testando"
-    No terminal do Linux dentro da pasta `code/01-intro` execute o comando: `make`, se tudo der certo, o programa carrega a imagem: `deepak-kumar-rX9uFci3pfY-unsplash.pgm` e gera a imagem `image-out.pgm`.
+    No terminal dentro do vscode/codespacd dentro da pasta `code/01-intro` execute o comando: `make`, se tudo der certo, o programa carrega a imagem: `deepak-kumar-rX9uFci3pfY-unsplash.pgm` e gera a imagem `image-out.pgm`.
 
-    Se você estiver usando dual boot ou máquina virtual, a imagem `image-out.pgm` deve abrir automaticamente. Se isso não acontecer, procure a imagem na mesma pasta do código
-    e abra ela manualmente. Se, por algum incrível azar, seu sistema não reconhece imagens PGM, use [este site](http://paulcuth.me.uk/netpbm-viewer/).
+    Você pode abrir a imagem no próprio vscode! Procure a imagem na mesma pasta do código e abra ela no vscode. Se, por algum incrível azar, seu sistema não reconhece imagens PGM, faça o download da imagem e use [esse site](http://paulcuth.me.uk/netpbm-viewer/).
 
     ==Verifique se a imagem foi gerada corretamente.==
 
