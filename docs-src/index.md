@@ -1,13 +1,13 @@
 # Bem vindo aos Labs de C
 
 - **Curso:** Engenharia de Computação - Quinto Semestre
-- **Disciplinas:** Computação Embarcada / Desafios de Programação / Sistemas Hardware-Software 
+- **Disciplinas:** Computação Embarcada / Desafios de Programação / Sistemas Hardware-Software
 - **Professores:**
-    - Rafael Corsi / Marcelo Hasimoto / Fabio Lubacheski
+    - Rafael Corsi / Marcelo Hashimoto / Fabio Lubacheski
 - **Equipe:**
     - Eduardo Marossi/ Marco Mello
 - **Já passou por aqui**
-    - Fábio Ayres (2018-2019) / Flavio Batista (2022) / Rodrigo Carareto (2023) / Eduardo Marossi / Igor Montagner / Maciel Vidal (2021-2023) 
+    - Fábio Ayres (2018-2019) / Flavio Batista (2022) / Rodrigo Carareto (2023) / Eduardo Marossi / Igor Montagner / Maciel Vidal (2021-2023)
 
 **© Todos os direitos reservados**
 
@@ -28,5 +28,5 @@ do Quinto Semestre da Engenharia de Computação Insper.
 ## Pesquisa
 
 - FERRAO, RAFAEL CORSI; DOS SANTOS MONTAGNER, IGOR ; CACEFFO, RICARDO ; AZEVEDO, RODOLFO. How much C can students learn in one week? Experiences teaching C in advanced CS courses. In: 2022 IEEE Frontiers in Education Conference (FIE), 2022, Uppsala. 2022 IEEE Frontiers in Education Conference (FIE), 2022. p. 1.
- 
+
 - MONTAGNER, I. S.; FERRAO, R. C. ; MAROSSI, E. ; AYRES, F. J. . Teaching C programming in context: a joint effort between the Computer Systems, Embedded Computing and Programming Challenges courses. In: IEEE Frontiers in Education Conference (FIE), 2019, Cincinatti. 2019 IEEE Frontiers in Education Conference (FIE) Proceedings, 2019.
