@@ -21,9 +21,8 @@ extra_javascript:
 plugins:
   - active-handout:
       telemetry: true
-      backend_url: http://localhost:8080/api/
-      course_slug: 22b Embarcados
-      plugin_exercise_counter: false
+      backend_url: https://devlife-api.insper-comp.com.br/api/
+      course_slug: mutirao-c-24-1
 
 markdown_extensions:
   - markdown.extensions.admonition
@@ -54,6 +53,7 @@ nav:
 - 'Mutirão':
     - 'about-mutirao.md'
     - 'Lab1.md'
+    -  Quiz1.md
     - 'Lab2.md'
     - 'Lab3.md'
     - 'Lab4.md'
