@@ -2,6 +2,12 @@
 
 O mutirão C é composto de laboratórios e uma avaliação. O cronograma a ser seguido na primeira semana de aula será:
 
+!!! info "Quizes"
+    - Quiz 1: Terça meia noite
+    - Quiz 2: Quarta 13h30
+    - Quiz 3: Quinta 13h30
+    - Quiz 4: Sexta 13h30
+
 | Data  | Dia     | Aula       | Observações       | Atividade            | Conteúdo                   |
 |-------|---------|------------|-------------------|----------------------|----------------------------|
 | 05/02 | Segunda | Embarcados |                   | Apresentação e Lab 1 | Conceitos básicos          |
