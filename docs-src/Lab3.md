@@ -10,7 +10,7 @@ executavam no terminal o `make`).
 
 Esta leitura visa familiarizá-lo com as ferramentas de compilação de código em
 *C* usando o compilador *gcc*. O ambiente recomendado para a atividade é o
-**Ubuntu 22.04.1 LTS**. Outras configurações são possíveis, mas não daremos
+**Ubuntu 22.04.3 LTS**. Outras configurações são possíveis, mas não daremos
 suporte a elas. Você pode usar o codespace, ou instalar o ubuntu e fazer o desenvolvimento por ele (==vamos usar em embarcados e sisHw==).
 
 !!! tip

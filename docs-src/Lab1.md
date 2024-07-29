@@ -6,20 +6,20 @@
 
 !!! info "Infra"
     Realize as atividades do laboratório no repositório do Classroom:
-    
+
     https://classroom.github.com/a/Hm0emM94
-    
+
     Após o repositório ter sido criado abra o codespace:
-    
+
     ![](imgs/codespace.png)
-    
+
     Isso abrirá um VSCode (rodando na Azure) com tudo configurado para vocês! ==Mas não se acostumem com essa mordomia!==
-    
+
 
 !!! tip "Testando"
-    No terminal dentro do vscode/codespacd dentro da pasta `code/01-intro` execute o comando: `make`, se tudo der certo, o programa carrega a imagem: `deepak-kumar-rX9uFci3pfY-unsplash.pgm` e gera a imagem `image-out.pgm`.
+    No terminal dentro do vscode/codespace dentro da pasta `code/01-intro` execute o comando: `make`, se tudo der certo, o programa carrega a imagem: `deepak-kumar-rX9uFci3pfY-unsplash.pgm` e gera a imagem `image-out.pgm`.
 
-    Você pode abrir a imagem no próprio vscode! Procure a imagem na mesma pasta do código e abra ela no vscode. Se, por algum incrível azar, seu sistema não reconhece imagens PGM, faça o download da imagem e use [esse site](http://paulcuth.me.uk/netpbm-viewer/).
+    Você pode abrir a imagem no próprio vscode! *(mas é possível que na primeira vez demore um pouco)*
 
     ==Verifique se a imagem foi gerada corretamente.==
 
@@ -33,13 +33,6 @@ lado, a sintaxe é muito parecida com Java. Por outro lado, existem diferenças
 importantes e vocês estão longe de Java há mais ou menos meio semestre...
 
 Vamos começar com a revisão de alguns conceitos bem básicos. Dê uma olhada no arquivo `main.c` (por simplicidade, omitimos algumas linhas):
-
-!!! info
-    - Você pode abrir o arquivo no editor de código que preferir, mas indicamos abrir no
-    vscode.
-
-    - Será necessário um terminal para executar o comando `make`, você pode usar o
-    terminal do próprio vscode, ou do Linux.
 
 ```c
 #define IMG_IN  "deepak-kumar-rX9uFci3pfY-unsplash.pgm"
