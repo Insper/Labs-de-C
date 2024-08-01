@@ -1,7 +1,10 @@
 # Lab 1 - Conceitos Básicos
 
+
+Todas as nossas atividades serão feitas em [um espaço no PrairieLearn](https://us.prairielearn.com/pl/course_instance/158419). Seguiremos todos os labs no item "Atividades". Todos os arquivos necessários já estão por lá e basta clicar no botão "Open Workspace" usar o VSCode como fazem normalmente. 
+
 !!! tip "Testando"
-    Abra o terminal do VSCode (usando ``Ctrl + ` ``) dentro da pasta `atividade/01-intro` e execute o comando: `make tarefa1`, se tudo der certo, o programa carrega a imagem: `deepak-kumar-rX9uFci3pfY-unsplash.pgm` e gera a imagem `image-out.pgm`.
+    Abra o terminal do VSCode dentro da pasta `01-intro` e execute o comando: `make tarefa1`, se tudo der certo, o programa carrega a imagem: `deepak-kumar-rX9uFci3pfY-unsplash.pgm` e gera a imagem `image-out.pgm`.
 
     Para abrir as imagens basta clicar duas vezes nelas. Uma nova aba do VSCode será aberta e você pode comparar visualmente os resultados. 
 

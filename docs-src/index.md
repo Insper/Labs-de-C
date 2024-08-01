@@ -9,7 +9,7 @@
 Capacitar os alunos na linguagem C para que eles possam usá-la nas disciplinas
 do Quinto Semestre da Engenharia de Computação Insper.
 
-Iremos utilizar [um espaço no PrairieLearn](https://us.prairielearn.com/pl/course_instance/137302/assessment/2352640) para fazer essas atividades. Já aproveitem e se matriculem usando seu email Insper (login Microsoft).
+Iremos utilizar [um espaço no PrairieLearn](https://us.prairielearn.com/pl/course_instance/158419) para fazer essas atividades. Já aproveitem e se matriculem usando seu email Insper (login Microsoft).
 
 
 ## Equipe

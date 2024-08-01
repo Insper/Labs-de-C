@@ -54,14 +54,15 @@ nav:
 - 'Mutirão':
     - 'Lab1.md'
     - 'Lab2.md'
-    -  Quiz 1: Quiz1.md
+    -  Quiz 1: https://us.prairielearn.com/pl/course_instance/158419/assessment/2435022
     - 'Lab3.md'
-    -  Quiz 2: https://us.prairielearn.com/pl/course_instance/150202/assessment/2396279
+    -  Quiz 2: https://us.prairielearn.com/pl/course_instance/158419/assessment/2435023
     - 'Lab4.md'
     - 'Lab5.md'
-    - Quiz 3: https://us.prairielearn.com/pl/course_instance/150202/assessment/2396809
+    - Quiz 3: https://us.prairielearn.com/pl/course_instance/158419/assessment/2435024
     - 'Lab6.md'
-    #- 'Lab7.md'
+    - 'Lab7.md'
+    - Quiz 4: https://us.prairielearn.com/pl/course_instance/158419/assessment/2435025
 #
 #- 'Labs extras':
 #    - labs-extras/lab7.md
