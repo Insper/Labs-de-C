@@ -1,4 +1,4 @@
-# Sobre
+# Sobre - ENGCOMP
 
 O mutirão C é composto de laboratórios e uma avaliação. O cronograma a ser seguido na primeira semana de aula será:
 

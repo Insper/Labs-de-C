@@ -8,7 +8,7 @@ executavam no terminal o `make`).
 Esta leitura visa familiarizá-lo com as ferramentas de compilação de código em
 *C* usando o compilador *gcc*. O ambiente recomendado para a atividade é o
 **Ubuntu 22.04.3 LTS**. Outras configurações são possíveis, mas não daremos
-suporte a elas. Você pode usar o codespace, ou instalar o ubuntu e fazer o desenvolvimento por ele (==vamos usar em embarcados e sisHw==).
+suporte a elas.
 
 !!! tip
     Para memorizar os comandos usados, é muito mais fácil digitá-los no terminal ao invés de copiar e colar.
@@ -16,9 +16,12 @@ suporte a elas. Você pode usar o codespace, ou instalar o ubuntu e fazer o dese
 !!! info
     Makefile é uma ferramenta muito utilizada que automatiza a compilação de programas em C, ela é utilizada por exemplo no kernel do Linux e em muitos outros programas. Por enquanto não iremos mexer com o make. Mais para o final do semestre teremos algumas atividades disso.
 
+
 ## Instalação local das ferramentas dos cursos
 
-As ferramentas que precisamos para o mutirão estão disponíveis nos pacotes `build-essential` e `gdb`.  Os pacotes `valgrind` e `kcachegrind` serão usados mais para a frente e já podem ser instalados também.
+As ferramentas que precisamos para o mutirão estão disponíveis no espaço do PrairieLearn, porém nem todas disciplinas continuarão utilizando ao longo do semestre. Após o mutirão, as atividades de *Computação Embarcada* serão feitas em Windows usando Microchip Studio. *Desafios de Programação* e *Sistemas Hardware-Software* continuarão usando Ubuntu Linux. *Algoritmos e Estruturas de Dados* continuará no PrairieLearn, mas em outro espaço. 
+
+O ambiente padrão é *Ubuntu Linux* e todos os pacotes necessários são instalados usando somente duas dependências: `build-essential` e `gdb`.  Os pacotes `valgrind` e `kcachegrind` serão usados mais para a frente e já podem ser instalados também. 
 
 ```bash
 $ sudo apt install build-essential gdb valgrind kcachegrind libsystemd-dev libcurl4-gnutls-dev
@@ -42,12 +45,8 @@ warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 !!! warning
     Esta padronização é importante para evitar dores de cabeça com comportamentos específicos de uma certa versão. Assim como o restante do ambiente, é possível que tudo funcione igual com versões mais antigas do `gcc`. Porém, não daremos suporte a ambientes diferentes do padronizado neste lab.
 
-Praticamente qualquer editor de texto ou IDE suporta colorização para *C*, porém recomendamos utilizar alguma
-ferramenta que também corrija erros de sintaxe. Editores como Visual Studio Code (com plugin para C/C++ e Make) e Eclipse CDT são boas escolhas por serem multi-plataforma e suficientemente completos.
+Praticamente qualquer editor de texto ou IDE suporta colorização para *C*, porém recomendamos utilizar alguma ferramenta que também corrija erros de sintaxe. Editores como Visual Studio Code (com plugin para C/C++ e Make) e Eclipse CDT são boas escolhas por serem multi-plataforma e suficientemente completos. Eles também ajudarão muito no começo por indicarem erros simples de sintaxe como esquecer de um `;` ou usar `scanf` sem o `&`. No Mutirão usamos o VSCode por ser mais conveniente em nossa plataforma.
 
-Eles também ajudarão muito no começo por indicarem erros simples de sintaxe como esquecer de um `;` ou usar `scanf` sem o `&`.
-
-Após o mutirão, as atividades de *Computação Embarcada* serão feitas em Windows usando Microchip Studio. *Desafios de Programação* e *Sistemas Hardware-Software* continuarão usando Ubuntu Linux.
 
 ## O que é "compilar" um código
 
