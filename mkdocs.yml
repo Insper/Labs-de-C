@@ -7,9 +7,8 @@ docs_dir: docs-src
 site_dir: docs
 copyright: 'Copyright &copy; 2021 / Marcelo Hashimoto, Igor Montagner, Rafael Corsi'
 site_url: https://insper.github.io/Labs-de-C/
-
-repo_name: 'Insper/Labs-de-C-BCC'
-repo_url: 'https://github.com/Insper/Labs-de-C-BCC/'
+repo_name: 'Insper/Labs-de-C'
+repo_url: 'https://github.com/Insper/Labs-de-C/'
 
 
 # Extensions
