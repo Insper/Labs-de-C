@@ -1,14 +1,17 @@
 # Lab 1 - Conceitos Básicos
 
 
-Todas as nossas atividades serão feitas no PrairieLearn. Se não entrou ainda, volte no item [Infra](/#infra) e entre no curso correto. Seguiremos todos os labs no item "Atividades". Todos os arquivos necessários já estão por lá e basta clicar no botão "Open Workspace" usar o VSCode como fazem normalmente. 
+Todas as nossas atividades serão feitas no PrairieLearn. Se não entrou ainda,
+volte no item [Infra](../#infra) e entre no curso correto. Seguiremos todos os
+labs no item "Atividades". Todos os arquivos necessários já estão por lá e basta
+clicar no botão "Open Workspace" para usar uma versão online do VSCode.
 
 ![Imagem mostrando página inicial do mutirão com o link atividades.](atividades-pl.png)
 
 !!! tip "Testando"
-    Abra o terminal do VSCode dentro da pasta `01-intro` e execute o comando: `make tarefa1`, se tudo der certo, o programa carrega a imagem: `deepak-kumar-rX9uFci3pfY-unsplash.pgm` e gera a imagem `image-out.pgm`.
+    Abra o terminal do VSCode online dentro da pasta `01-intro` (clique com o botão direito na pasta e selecione *Open in Integrated Terminal*) e execute o comando: `make tarefa1`, se tudo der certo, o programa carrega a imagem: `deepak-kumar-rX9uFci3pfY-unsplash.pgm` e gera a imagem `image-out.pgm`.
 
-    Para abrir as imagens basta clicar duas vezes nelas. Uma nova aba do VSCode será aberta e você pode comparar visualmente os resultados. 
+    Para abrir as imagens basta clicar duas vezes nelas. Uma nova aba do VSCode será aberta e você pode comparar visualmente os resultados.
 
     ==Verifique se a imagem foi gerada corretamente.==
 
