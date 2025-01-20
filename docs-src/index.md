@@ -19,11 +19,11 @@ do Quinto Semestre da Engenharia de Computação Insper e do Quarto Semestre da 
 Iremos utilizar o PrarieLearn para nossas atividades. Como cada curso tem um cronograma ligeiramente diferente, utilize os links abaixo para entrar na versão de seu curso.
 
 <center>
-[Entrar - Engenharia da computação](https://us.prairielearn.com/pl/course_instance/158848){.ah-button .ah-button--primary}
+[TODO: Entrar - Engenharia da computação](https://us.prairielearn.com/pl/course_instance/158848){.ah-button .ah-button--primary}
 </center>
 
 <center>
-[Entrar - Ciência da computação](https://us.prairielearn.com/pl/course_instance/158419){.ah-button .ah-button--primary}
+[Entrar - Ciência da computação](https://us.prairielearn.com/pl/course_instance/176140){.ah-button .ah-button--primary}
 </center>
 
 ## Equipe 
@@ -44,7 +44,6 @@ Iremos utilizar o PrarieLearn para nossas atividades. Como cada curso tem um cro
 
 
 ## Pesquisa
-
 
 - FERRAO, RAFAEL CORSI; DOS SANTOS MONTAGNER, IGOR ; CACEFFO, RICARDO ; AZEVEDO, RODOLFO. How much C can students learn in one week? Experiences teaching C in advanced CS courses. In: 2022 IEEE Frontiers in Education Conference (FIE), 2022, Uppsala. 2022 IEEE Frontiers in Education Conference (FIE), 2022. p. 1.
 
