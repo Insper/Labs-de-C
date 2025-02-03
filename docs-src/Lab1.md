@@ -199,15 +199,15 @@ Antes do próximo exercício, uma dica! A sintaxe de `if/else` em C, para variar
 é como em Java. Ou seja:
 
 ~~~{.c}
-    if(condição) {
-        instrução
-        instrução
-        ...
-    } else {
-        instrução
-        instrução
-        ...
-    }
+if(condição) {
+    instrução
+    instrução
+    ...
+} else {
+    instrução
+    instrução
+    ...
+}
 ~~~
 
 Sabendo disso...
@@ -283,14 +283,14 @@ básico sozinho, pois isso faz muita diferença na produtividade.
     `10`.
 
     ~~~{.c}
-        int s;
-        int i;
+    int s;
+    int i;
 
-        i = 0;
-        while(i < 10) {
-            s += i;
-            i++;
-        }
+    i = 0;
+    while(i < 10) {
+        s += i;
+        i++;
+    }
     ~~~
 
     Ou melhor, que *deveria* calcular a soma dos números de `1` a `10`.
@@ -320,15 +320,15 @@ básico sozinho, pois isso faz muita diferença na produtividade.
     números de `1` a `10`.
 
     ~~~{.c}
-      int s = 0;
-      int i;
+    int s = 0;
+    int i;
 
-      i = 1;
-      while(i <= 10) {
-          s += i / 2;
+    i = 1;
+    while(i <= 10) {
+        s += i / 2;
 
-          i++;
-      }
+        i++;
+    }
     ~~~
 
     1. Qual é o problema com esse código?
@@ -344,15 +344,15 @@ básico sozinho, pois isso faz muita diferença na produtividade.
         Java.
 
         ~~~{.c}
-            double s = 0;
-            int i;
+        double s = 0;
+        int i;
 
-            i = 1;
-            while(i <= 10) {
-                s += i / 2;
+        i = 1;
+        while(i <= 10) {
+            s += i / 2;
 
-                i++;
-            }
+            i++;
+        }
         ~~~
 
         Mas isso não é suficiente! Não adianta `s` poder armazenar reais se o que ela
@@ -365,15 +365,15 @@ básico sozinho, pois isso faz muita diferença na produtividade.
         mesmo sendo zero, simboliza que o número é real.
 
         ~~~{.c}
-            double s = 0;
-            int i;
+        double s = 0;
+        int i;
 
-            i = 1;
-            while(i <= 10) {
-                s += i / 2.0;
+        i = 1;
+        while(i <= 10) {
+            s += i / 2.0;
 
-                i++;
-            }
+            i++;
+        }
         ~~~
 
         O segundo é fazer um *casting* de `i` para `double` antes da divisão. Lembram do
@@ -381,15 +381,15 @@ básico sozinho, pois isso faz muita diferença na produtividade.
         como sendo de certo tipo.
 
         ~~~{.c}
-            double s = 0;
-            int i;
+        double s = 0;
+        int i;
 
-            i = 1;
-            while(i <= 10) {
-                s += (double) i / 2;
+        i = 1;
+        while(i <= 10) {
+            s += (double) i / 2;
 
-                i++;
-            }
+            i++;
+        }
         ~~~
 
         Note que um casting de `int` para `double` é praticamente inócuo, mas no casting

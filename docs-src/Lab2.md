@@ -7,13 +7,13 @@ qualquer programador), vamos voltar ao computador.
 Vamos começar analisando o código disponível na pasta `code/02-praticando/main.c`
 
 ~~~{.c}
-    #include <stdio.h>
+#include <stdio.h>
 
-    int main(int argc, char *argv[]) {
-        printf("Hello World\n");
+int main(int argc, char *argv[]) {
+    printf("Hello World\n");
 
-        return 0;
-    }
+    return 0;
+}
 ~~~
 
 !!! tip
@@ -44,31 +44,31 @@ No entanto, existe uma diferença de uso entre a `printf` do C e a
 `System.out.print` do Java. O código abaixo *não* vai funcionar.
 
 ~~~{.c}
-    #include <stdio.h>
+#include <stdio.h>
 
-    int main() {
-        int n = 1;
-        int m = 2;
+int main() {
+    int n = 1;
+    int m = 2;
 
-        printf("Hello World: " + n + ", " + m + "\n");
+    printf("Hello World: " + n + ", " + m + "\n");
 
-        return 0;
-    }
+    return 0;
+}
 ~~~
 
 A função `printf` usa um sistema de *interpolação* para exibir valores:
 
 ~~~{.c}
-    #include <stdio.h>
+#include <stdio.h>
 
-    int main() {
-        int n = 1;
-        int m = 2;
+int main() {
+    int n = 1;
+    int m = 2;
 
-        printf("Hello World: %d, %d\n", n, m);
+    printf("Hello World: %d, %d\n", n, m);
 
-        return 0;
-    }
+    return 0;
+}
 ~~~
 
 O código acima significa "substitua as duas ocorrências de `%d` pelos valores de
@@ -80,16 +80,16 @@ tipo do valor. A letra `d` (de "decimal") representa `int`, enquanto as letras
 `lf` (de "long float") representam `double`.
 
 ~~~{.c}
-    #include <stdio.h>
+#include <stdio.h>
 
-    int main() {
-        double n = 1.2;
-        double m = 2.1;
+int main() {
+    double n = 1.2;
+    double m = 2.1;
 
-        printf("Hello World: %lf, %lf", n, m);
+    printf("Hello World: %lf, %lf", n, m);
 
-        return 0;
-    }
+    return 0;
+}
 ~~~
 
 Antes de apresentar outros conceitos, vamos praticar um pouco.
@@ -142,18 +142,18 @@ Antes de apresentar outros conceitos, vamos praticar um pouco.
 Vamos agora finalmente escrever um programa com interação de usuário!
 
 ~~~{.c}
-    #include <stdio.h>
+#include <stdio.h>
 
-    int main() {
-        int n;
+int main() {
+    int n;
 
-        printf("Digite um número: ");
-        scanf("%d", &n);
+    printf("Digite um número: ");
+    scanf("%d", &n);
 
-        printf("O número digitado é: %d\n", n);
+    printf("O número digitado é: %d\n", n);
 
-        return 0;
-    }
+    return 0;
+}
 ~~~
 
 Enquanto a função `printf` usa o símbolo `%d` para indicar que quer "escrever um
@@ -176,25 +176,25 @@ Preparados para um exemplo mais avançado? O próximo mostra de uma só vez:
 * implementação e chamada de uma função própria.
 
 ~~~{.c}
-    #include <stdio.h>
-    #include <math.h>    /* <---- precisa incluir!!! */
+#include <stdio.h>
+#include <math.h>    /* <---- precisa incluir!!! */
 
-    #define PI 3.141592
+#define PI 3.141592
 
-    void print_trigo(int a) {
-        printf("seno: %lf, cosseno: %lf\n", sin(a), cos(a));
-    }
+void print_trigo(int a) {
+    printf("seno: %lf, cosseno: %lf\n", sin(a), cos(a));
+}
 
-    int main() {
-        int angle;
+int main() {
+    int angle;
 
-        printf("Digite um ângulo em graus: ");
-        scanf("%d", &angle);
+    printf("Digite um ângulo em graus: ");
+    scanf("%d", &angle);
 
-        print_trigo(angle);
+    print_trigo(angle);
 
-        return 0;
-    }
+    return 0;
+}
 ~~~
 
 Vejamos o que há de novo no código:
@@ -253,23 +253,23 @@ Assim como o `for` padrão do Java, o `for` do C não funciona como o `for` do P
 Na verdade, é apenas um "açúcar sintático" que facilita a escrita de loops:
 
 ~~~{.c}
-    for(i = 0; i < 10; i++) {
-        instrução
-        instrução
-        ...
-    }
+for(i = 0; i < 10; i++) {
+    instrução
+    instrução
+    ...
+}
 ~~~
 
 equivale a
 
 ~~~{.c}
-    i = 0;
-    while(i < 10) {
-        instrução
-        instrução
-        ...
-        i++;
-    }
+i = 0;
+while(i < 10) {
+    instrução
+    instrução
+    ...
+    i++;
+}
 ~~~
 
 Em Java existe o *enhanced for*, que é mais parecido com o `for` do Python, mas
@@ -300,22 +300,20 @@ bolo, mas temos os ingredientes para você fazer um bolo.
 
     *n = 1*
     ```
-         |
-
+    |
     ```
     *n = 2*
 
     ```
-         |
-        /|\
-
+     |
+    /|\
     ```
     *n = 3*
 
     ```
-          |
-         /|\
-        //|\\
+      |
+     /|\
+    //|\\
     ```
     e assim em diante para *n = 4, 5, 6...*.
 
