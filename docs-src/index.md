@@ -1,6 +1,6 @@
 # Bem vindo aos Labs de C
 
-Este espaço contém materiais para as atividades de aprendizado da linguagem C nos cursos de Ciência (CCOMP) e Engenharia da Computação (ENGCOMP). 
+Este espaço contém materiais para as atividades de aprendizado da linguagem C nos cursos de Ciência (CCOMP) e Engenharia da Computação (ENGCOMP).
 
 ## Objetivos
 
@@ -26,20 +26,20 @@ Iremos utilizar o PrarieLearn para nossas atividades. Como cada curso tem um cro
 [Entrar - Ciência da computação](https://us.prairielearn.com/pl/course_instance/176140){.ah-button .ah-button--primary}
 </center>
 
-## Equipe 
+## Equipe
 
 !!! done "ENGCOMP"
     - **Curso:** Engenharia de Computação - Quinto Semestre
     - **Disciplinas:** Computação Embarcada / Desafios de Programação / Sistemas Hardware-Software
     - **Professores:** Rafael Corsi / Marcelo Hashimoto / Fabio Lubacheski
     - **Equipe:**
-        - Eduardo Marossi/ Marco Mello
+        - Marco Mello
     - **Já passou por aqui**
         - Fábio Ayres (2018-2019) / Flavio Batista (2022) / Rodrigo Carareto (2023) / Eduardo Marossi / Igor Montagner / Maciel Vidal (2021-2023)
 
 !!! done "CCOMP"
-    - **Curso:** Ciência de Computação - Quarto Semestre 
-    - **Disciplinas:** Grafos e Árvores / Sistemas Hardware-Software 
+    - **Curso:** Ciência de Computação - Quarto Semestre
+    - **Disciplinas:** Grafos e Árvores / Sistemas Hardware-Software
     - **Professores:** Igor Montagner e Carlos Menezes
 
 
