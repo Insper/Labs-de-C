@@ -12,6 +12,10 @@ Criamos *arrays* **de tamanho fixo** em *C* usando a seguinte sintaxe:
 long A[100];
 ~~~
 
+*(O tipo `long` é uma alternativa ao `int`, capaz de representar um intervalo
+maior de inteiros. Escrever `int A[100]` também funcionaria, mas estamos usando
+outro tipo aqui para aumentar a variedade dos exemplos.)*
+
 Basta adicionar `[]` após o tipo e teremos um array de tamanho constante (i.e. não dependente da entrada do usuário). **Não é possível redimensionar o array**. Depois de declarado ele terá para sempre o mesmo tamanho.
 
 ![Representação de array de `long` na memória](imgs/day4-arrays/mem-array.png)

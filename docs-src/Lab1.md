@@ -22,7 +22,7 @@ Não é fácil prever o quanto a linguagem C será uma novidade para vocês. Por
 lado, a sintaxe é muito parecida com Java. Por outro lado, existem diferenças
 importantes e vocês estão longe de Java há mais ou menos meio semestre...
 
-Vamos começar com a revisão de alguns conceitos bem básicos. Dê uma olhada no arquivo `main.c` (por simplicidade, omitimos algumas linhas):
+Vamos começar com a revisão de alguns conceitos bem básicos. Dê uma olhada no arquivo `main.c`:
 
 ```c
 #define IMG_IN  "deepak-kumar-rX9uFci3pfY-unsplash.pgm"
@@ -155,7 +155,6 @@ Para todos os exercícios deste handout, sigam por favor as regras abaixo.
 
 !!! warning ""
     Lembrete: Para cada questão, validar a resposta com a imagem referência antes de continuar.
-    Se ela não abrir automaticamente, abra manualmente.
 
 !!! warning
     Os exercícios abaixo deverão ser feitos nos arquivos `tarefaX.c`.
