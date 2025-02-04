@@ -49,15 +49,15 @@ Como vimos anteriormente, os conjuntos de variáveis de duas funções diferente
 são totalmente separados. Ou seja, no exemplo abaixo,
 
 ~~~{.c}
-    void foo(int n) {
-        n++;
-    }
+void foo(int n) {
+    n++;
+}
 
-    int bar() {
-        int n = 0;
-        foo(n);
-        return n;
-    }
+int bar() {
+    int n = 0;
+    foo(n);
+    return n;
+}
 ~~~
 
 a função `bar` devolve `0`, pois a variável `n` de `foo` é diferente da variável
@@ -90,9 +90,9 @@ o valor digitado pelo usuário. Então lembre-se: **sempre que encontrar o símb
 `&`, leia como se ele fosse a expressão "endereço de"**.
 
 ~~~{.c}
-    &a         // lê-se "endereço de a"
-    &b         // lê-se "endereço de b"
-    &abobrinha // lê-se "endereço de abobrinha"
+&a         // lê-se "endereço de a"
+&b         // lê-se "endereço de b"
+&abobrinha // lê-se "endereço de abobrinha"
 ~~~
 
 Mas para podermos passar endereços para lá e para cá, precisamos de variáveis
@@ -127,7 +127,7 @@ Sem contexto essa regra parece estranha, então vamos aos exemplos!
 Vamos declarar o apontador `p` do exemplo acima.
 
 ~~~{.c}
-    int *p;
+int *p;
 ~~~
 
 Por que estamos usando `int`? Porque apontadores em C *podem saber o tipo da variável
@@ -143,11 +143,11 @@ Vamos agora armazenar o endereço de `v` em `p`, reproduzindo a situação da
 figura.
 
 ~~~{.c}
-    int v;
-    int *p;
+int v;
+int *p;
 
-    v = 5;
-    p = &v;
+v = 5;
+p = &v;
 ~~~
 
 Esse código faz sentido para você? Vejamos se você está entendendo...
@@ -209,15 +209,15 @@ Esse código faz sentido para você? Vejamos se você está entendendo...
 Agora vejam como o exemplo abaixo é interessante.
 
 ~~~{.c}
-    int v;
-    int *p;
+int v;
+int *p;
 
-    v = 5;
-    p = &v;
+v = 5;
+p = &v;
 
-    *p = 10;
+*p = 10;
 
-    printf("%d", v);
+printf("%d", v);
 ~~~
 
 !!! exercise text short
@@ -233,13 +233,13 @@ Agora vejam como o exemplo abaixo é interessante.
 De fato, podemos usar `*p` como sinônimo de `v` ao longo do código.
 
 ~~~{.c}
-    int v;
-    int *p;
+int v;
+int *p;
 
-    v = 5;
-    p = &v;
+v = 5;
+p = &v;
 
-    printf("%d", *p);
+printf("%d", *p);
 ~~~
 
 Obviamente, esse uso só é válido a partir do momento em que `p` recebe o
@@ -255,8 +255,8 @@ A única exceção à regra de ouro é a situação na qual o apontador é inici
 na declaração.
 
 ~~~{.c}
-    int v = 5;
-    int *p = &v;
+int v = 5;
+int *p = &v;
 ~~~
 
 Nesse caso, a regra é coerente com a declaração, mas não é coerente com a
@@ -278,11 +278,11 @@ calcula ao mesmo tempo a soma e a subtração de dois inteiros. Essa função es
 Python mas **não** em C. Apenas um valor pode ser devolvido em C.
 
 ~~~{.c}
-    int sum_sub(int a, int b) {
-        int sum = a + b;
-        int sub = a - b;
-        return sum, sub; // oops...
-    }
+int sum_sub(int a, int b) {
+    int sum = a + b;
+    int sub = a - b;
+    return sum, sub; // oops...
+}
 ~~~
 
 Para contornar isso, podemos fazer uma função que não devolve nada, ou seja é do
@@ -290,10 +290,10 @@ tipo `void`, mas *escreve a resposta em duas variáveis cujos endereços são
 recebidos como parâmetros*.
 
 ~~~{.c}
-    void sum_sub(int a, int b, int *psum, int *psub) {
-        *psum = a + b;
-        *psub = a - b;
-    }
+void sum_sub(int a, int b, int *psum, int *psub) {
+    *psum = a + b;
+    *psub = a - b;
+}
 ~~~
 
 Entender o uso dos símbolos `*` acima não deveria ser um problema se você
@@ -357,10 +357,10 @@ dois valores: a coordenada horizontal e a coordenada vertical. Declarar um
 struct que representa esse tipo é mais ou menos simples.
 
 ~~~{.c}
-    struct ponto {
-        int x;
-        int y;
-    };
+struct ponto {
+    int x;
+    int y;
+};
 ~~~
 
 Dizemos "mais ou menos" por causa de dois detalhes chatos: o primeiro é esse
@@ -370,7 +370,7 @@ chamado `ponto`, mas sim um tipo chamado `struct ponto`. Ou seja, para declarar
 uma variável desse tipo novo precisamos escrever
 
 ~~~{.c}
-    struct ponto p;
+struct ponto p;
 ~~~
 
 o que é um tanto quanto verborrágico.
@@ -381,31 +381,31 @@ criar "apelidos" para tipos. Assim, podemos reescrever a declaração do struct 
 seguinte forma
 
 ~~~{.c}
-    typedef struct {
-        int x;
-        int y;
-    } ponto;
+typedef struct {
+    int x;
+    int y;
+} ponto;
 ~~~
 
 que significa "struct anônimo com apelido `ponto`". Agora sim, para declarar uma
 variável desse tipo novo podemos escrever simplesmente
 
 ~~~{.c}
-    ponto p;
+ponto p;
 ~~~
 
 E como usar essa variável? Basta usar o operador `.` para acessar seus valores,
 como em objetos Java.
 
 ~~~{.c}
-    p.x = 10;
-    p.y = 20;
+p.x = 10;
+p.y = 20;
 
-    scanf("%d", &p.x);
-    scanf("%d", &p.y);
+scanf("%d", &p.x);
+scanf("%d", &p.y);
 
-    printf("%d", p.x);
-    printf("%d", p.y);
+printf("%d", p.x);
+printf("%d", p.y);
 ~~~
 
 !!! exercise
@@ -446,13 +446,13 @@ Quando misturamos os conceitos de apontador e struct, algo que também será fei
 em *Desafios de Programação*, a sintaxe vira um pesadelo críptico.
 
 ~~~{.c}
-    ponto p;
-    ponto *pp;
+ponto p;
+ponto *pp;
 
-    pp = &p;
+pp = &p;
 
-    (*pp).x = 10;
-    (*pp).y = 20;
+(*pp).x = 10;
+(*pp).y = 20;
 ~~~
 
 Pare. Respire. Não continue a ler até aceitar que o código acima faz sentido.
@@ -472,15 +472,15 @@ operador significa "operador `.`, mas em relação à variável apontada". Ou se
 o trecho
 
 ~~~{.c}
-    (*pp).x = 10;
-    (*pp).y = 20;
+(*pp).x = 10;
+(*pp).y = 20;
 ~~~
 
 pode ser substituído pelo trecho
 
 ~~~{.c}
-    pp->x = 10;
-    pp->y = 20;
+pp->x = 10;
+pp->y = 20;
 ~~~
 
 !!! progress
