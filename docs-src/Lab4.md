@@ -157,7 +157,7 @@ fgets(str, STRING_LEN, stdin); // precisamos passar o tamanho máximo
 !!! exercise
     Crie uma função que:
 
-    1. recebe uma string de tamanho máximo 100
+    1. recebe uma string de tamanho indeterminado
     1. conte o número de vezes que a letra "a" aparece
     1. retorne este valor.
 
