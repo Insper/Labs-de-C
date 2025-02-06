@@ -33,7 +33,7 @@ Vamos neste roteiro revisar os conceitos dos dois roteiros anteriores fazendo mo
 
 !!! exercise
     Crie uma função `escreve_imagem` que recebe um apontador para um struct `imagem`
-    e imprime o conteúdo desse struct no terminal, no formato PGM
+    e imprime o conteúdo desse struct no terminal, no formato PGM.
 
     **Dica:** Para testar, lembre que no Lab3 vimos como redirecionar os prints
     para um arquivo.
