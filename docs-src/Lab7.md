@@ -186,7 +186,7 @@ A saída do programa é ==2==.
 
     int main () {
         int x = 0;
-        x = addFiveToNumber (x);
+        x = somaCincoAoNum (x);
         return 0;
     }
     ```
@@ -207,7 +207,7 @@ A saída do programa é ==2==.
        int c = 0;
        c = b – a;
        return c;
-     }
+    }
 
     int main () {
        int a = 20;
