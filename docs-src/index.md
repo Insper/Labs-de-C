@@ -18,13 +18,13 @@ do Quinto Semestre da Engenharia de Computação Insper e do Quarto Semestre da 
 
 Iremos utilizar o PrarieLearn para nossas atividades. Como cada curso tem um cronograma ligeiramente diferente, utilize os links abaixo para entrar na versão de seu curso.
 
-<center>
-[Entrar - Engenharia da computação](https://us.prairielearn.com/pl/course_instance/177526){.ah-button .ah-button--primary}
-</center>
 
-<center>
-[Entrar - Ciência da computação](https://us.prairielearn.com/pl/course_instance/176140){.ah-button .ah-button--primary}
-</center>
+[Entrar - Engenharia da computação](https://us.prairielearn.com/pl/course_instance/188417){.ah-button .ah-button--primary}
+
+
+[Entrar - Ciência da computação](https://us.prairielearn.com/pl/course_instance/188416){.ah-button .ah-button--primary}
+
+
 
 ## Equipe
 
