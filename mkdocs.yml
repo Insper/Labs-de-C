@@ -45,7 +45,6 @@ markdown_extensions:
       emoji_generator: !!python/name:pymdownx.emoji.to_svg
   - attr_list
 
-
 nav:
 - Home: index.md
 - "Calendário":
@@ -55,19 +54,22 @@ nav:
     - 'Lab1.md'
     - 'Lab2.md'
     - "Quiz 1":
-      - "ENGCOMP": https://us.prairielearn.com/pl/course_instance/177526/assessment/2507722
+      - "ENGCOMP": https://us.prairielearn.com/pl/course_instance/188417
       - "CCOMP": https://us.prairielearn.com/pl/course_instance/176140/assessment/2503036
     - 'Lab3.md'
     - "Quiz 2":
-      - "ENGCOMP": https://us.prairielearn.com/pl/course_instance/177526/assessment/2507723
+      - "ENGCOMP": https://us.prairielearn.com/pl/course_instance/188417
       - "CCOMP": https://us.prairielearn.com/pl/course_instance/176140/assessment/2503037
     - 'Lab4.md'
     - 'Lab5.md'
     - "Quiz 3":
-      - "ENGCOMP": https://us.prairielearn.com/pl/course_instance/177526/assessment/2507724
+      - "ENGCOMP": https://us.prairielearn.com/pl/course_instance/188417
       - "CCOMP": https://us.prairielearn.com/pl/course_instance/176140/assessment/2503038
     - 'Lab6.md'
     - 'Lab7.md'
     - "Quiz 4":
-      - "ENGCOMP": https://us.prairielearn.com/pl/course_instance/177526/assessment/2507725
+      - "ENGCOMP": https://us.prairielearn.com/pl/course_instance/188417
       - "CCOMP": https://us.prairielearn.com/pl/course_instance/176140/assessment/2503039
+    - "Simulado":
+      - "ENGCOMP": https://us.prairielearn.com/pl/course_instance/188417/assessment/2570355
+    
