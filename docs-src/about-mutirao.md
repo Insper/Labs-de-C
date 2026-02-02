@@ -2,11 +2,11 @@
 
 O mutirão C é composto de laboratórios e uma avaliação. O cronograma a ser seguido na primeira semana de aula será:
 
-!!! info "Quizes"
-    - Quiz 1: Segunda 23h59 sem desconto, Sexta 13h30 com desconto
-    - Quiz 2: Terça 23h59 sem desconto, Sexta 13h30 com desconto
-    - Quiz 3: Quinta 23h59 sem desconto, Sexta 13h30 com desconto
-    - Quiz 4: Sexta 13h30 sem desconto, Sexta 23h59 com desconto
+!!! info "Quizzes"
+    - Quiz 1: segunda 23h59 sem desconto, sexta 13h30 com desconto
+    - Quiz 2: terça 23h59 sem desconto, sexta 13h30 com desconto
+    - Quiz 3: quinta 23h59 sem desconto, sexta 13h30 com desconto
+    - Quiz 4: sexta 13h30 sem desconto, sexta 23h59 com desconto
 
 | Data  | Dia     | Aula       | Observações       | Atividade    | Conteúdo                   |
 |-------|---------|------------|-------------------|--------------|----------------------------|
