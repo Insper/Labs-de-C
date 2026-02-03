@@ -52,23 +52,23 @@ nav:
   - "CCOMP": about-bcc.md
 - 'Mutirão':
     - 'Lab1.md'
+    - 'Lab2.md'
+    - 'Lab3.md'
     - "Quiz 1":
       - "ENGCOMP": https://us.prairielearn.com/pl/course_instance/209602/assessment/2643157/
       - "CCOMP": https://us.prairielearn.com/pl/course_instance/176140/assessment/2503036
-    - 'Lab2.md'
-    - 'Lab3.md'
+    - 'Lab4.md'
     - "Quiz 2":
       - "ENGCOMP": https://us.prairielearn.com/pl/course_instance/209602/assessment/2643158/
       - "CCOMP": https://us.prairielearn.com/pl/course_instance/176140/assessment/2503037
-    - 'Lab4.md'
     - 'Lab5.md'
     - "Quiz 3":
       - "ENGCOMP": https://us.prairielearn.com/pl/course_instance/209602/assessment/2643159/
       - "CCOMP": https://us.prairielearn.com/pl/course_instance/176140/assessment/2503039
     - 'Lab6.md'
+    - 'Lab7.md'
     - "Quiz 4":
       - "ENGCOMP": https://us.prairielearn.com/pl/course_instance/209602/assessment/2643160/
       - "CCOMP": https://us.prairielearn.com/pl/course_instance/176140/assessment/2503038
-    - 'Lab7.md'
     - "Simulado":
       - "ENGCOMP": https://us.prairielearn.com/pl/course_instance/209602/assessment/2643161/

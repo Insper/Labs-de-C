@@ -1,319 +1,122 @@
-# Lab 2 - Praticando
+# Lab 3 - Compilação usando GCC
 
 
-Agora que praticamos um pouco no papel (de novo, habilidade fundamental para
-qualquer programador), vamos voltar ao computador.
+Ontem fizemos atividades de programação em C e a parte de compilar e executar um
+programa ficou escondida de vocês, pois não era o objetivo da atividade (quando
+executavam no terminal o `make`).
 
-Vamos começar analisando o código disponível na pasta `code/02-praticando/main.c`
-
-~~~{.c}
-#include <stdio.h>
-
-int main(int argc, char *argv[]) {
-    printf("Hello World\n");
-
-    return 0;
-}
-~~~
+Esta leitura visa familiarizá-lo com as ferramentas de compilação de código em
+*C* usando o compilador *gcc*.
 
 !!! tip
-    - Abra o arquivo  `main.c` no codespace!
-    - Abra um terminal na pasta `code/02-praticando/`
-    - Para compilar e executar o programa execute no terminal: `make`
+    Para memorizar os comandos usados, é muito mais fácil digitá-los no terminal ao invés de copiar e colar.
 
-Novamente, temos um código curto mas com vários conceitos importantes:
+!!! info
+    Makefile é uma ferramenta muito utilizada que automatiza a compilação de programas em C, ela é utilizada por exemplo no kernel do Linux e em muitos outros programas. Por enquanto não iremos mexer com o make. Mais para o final do semestre teremos algumas atividades disso.
 
-* a função `main` é a função *principal*, chamada quando o programa é rodado;
 
-* essa função é `int` em vez de `void`, pois devolve um código que indica se o
-  programa foi bem-sucedido ou não;
+<!--
+!!! tip
+    Você pode executar os labs no seu pc, para isso ambiente recomendado para a atividade é o
+    **Ubuntu 22.04.3 LTS**.
 
-* por enquanto, consideraremos apenas a devolução do código `0`, que indica que
-  o programa foi, sim, bem-sucedido;
+## Instalação local das ferramentas dos cursos
 
-* `#include` equivale ao `import` em Python e Java, ou seja, amplia o conjunto
-  de funcionalidades que o programa pode usar;
+As ferramentas que precisamos para o mutirão estão disponíveis no espaço do PrairieLearn, porém nem todas disciplinas continuarão utilizando ao longo do semestre. Após o mutirão, as atividades de *Computação Embarcada* serão feitas em Windows ou Linux usando um docker. *Desafios de Programação* e *Sistemas Hardware-Software* continuarão usando Ubuntu Linux. *Algoritmos e Estruturas de Dados* continuará no PrairieLearn, mas em outro espaço.
 
-* de fato, é justamente por causa do `#include <stdio.h>` que o programa pode
-  usar a função `printf`.
+O ambiente padrão é *Ubuntu Linux* e todos os pacotes necessários são instalados usando somente duas dependências: `build-essential` e `gdb`.  Os pacotes `valgrind` e `kcachegrind` serão usados mais para a frente e já podem ser instalados também.
 
-* `printf` corresponde à `System.out.print` em Java, ou seja, é a função
-  responsável por imprimir texto no terminal.
+```bash
+$ sudo apt install build-essential gdb valgrind kcachegrind libsystemd-dev libcurl4-gnutls-dev
+```
 
-No entanto, existe uma diferença de uso entre a `printf` do C e a
-`System.out.print` do Java. O código abaixo *não* vai funcionar.
+Verifique que tudo funcionou rodando o seguinte comando
 
-~~~{.c}
-#include <stdio.h>
+```bash
+$ gcc --version
+```
 
-int main() {
-    int n = 1;
-    int m = 2;
+Se você recebeu uma mensagem indicando que está usando a versão `9.x.x` ou superior, então tudo está funcionando corretamente.
 
-    printf("Hello World: " + n + ", " + m + "\n");
-
-    return 0;
-}
-~~~
-
-A função `printf` usa um sistema de *interpolação* para exibir valores:
-
-~~~{.c}
-#include <stdio.h>
-
-int main() {
-    int n = 1;
-    int m = 2;
-
-    printf("Hello World: %d, %d\n", n, m);
-
-    return 0;
-}
-~~~
-
-O código acima significa "substitua as duas ocorrências de `%d` pelos valores de
-`n` e `m`, pela ordem". Parece complicado, mas note que na verdade é uma sintaxe
-mais limpa que a do Java, sem a necessidade de ficar somando strings.
-
-O símbolo a ser substituído é sempre `%` seguido de letras que representam o
-tipo do valor. A letra `d` (de "decimal") representa `int`, enquanto as letras
-`lf` (de "long float") representam `double`.
-
-~~~{.c}
-#include <stdio.h>
-
-int main() {
-    double n = 1.2;
-    double m = 2.1;
-
-    printf("Hello World: %lf, %lf", n, m);
-
-    return 0;
-}
-~~~
-
-Antes de apresentar outros conceitos, vamos praticar um pouco.
+```
+gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0
+Copyright (C) 2019 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+```
 
 !!! warning
-    Assim como no lab anterior, cada tarefa já tem um arquivo correspondente. Digite `make tarefaN` para compilar e rodar a tarefa `N`.
+    Esta padronização é importante para evitar dores de cabeça com comportamentos específicos de uma certa versão. Assim como o restante do ambiente, é possível que tudo funcione igual com versões mais antigas do `gcc`. Porém, não daremos suporte a ambientes diferentes do padronizado neste lab.
+
+
+
+Praticamente qualquer editor de texto ou IDE suporta colorização para *C*, porém recomendamos utilizar alguma ferramenta que também corrija erros de sintaxe. Editores como Visual Studio Code (com plugin para C/C++ e Make) e Eclipse CDT são boas escolhas por serem multi-plataforma e suficientemente completos. Eles também ajudarão muito no começo por indicarem erros simples de sintaxe como esquecer de um `;` ou usar `scanf` sem o `&`. No Mutirão usamos o VSCode por ser mais conveniente em nossa plataforma.
+!-->
+
+## O que é "compilar" um código
+
+Diferente de Python, em que podemos rodar diretamente o script, ou Java, em que criamos um arquivo binário multi-plataforma, programas em *C* precisam ser convertidos em instruções **nativas** do processador para serem executados. Chamamos esse processo que transforma código em instruções executáveis por uma CPU (física ou virtual) de *compilação*. O resultado final da compilação de um programa em *C* é um arquivo *executável* específico para uma arquitetura de CPU e sistema operacional.
+
+Veremos mais detalhes de como essa transformação para código de máquina ocorre em Sistemas Hardware-Software.
+
+## Compilação (simples) via linha de comando
+
+Usamos o comando `gcc` para compilar programas em *C*. Para diminuir a quantidade de erros nos programas podemos passar como argumento algumas flags para exibir erros comuns e para fazer somente otimizações que não atrapalhem debug (`-Og`).
+
+```bash
+$ gcc -Wall -pedantic -std=gnu99 -Og -o executavel arquivo.c
+```
+
+* `-Wall`: habilita todos avisos do compilador. Este modo indica possíveis erros cometidos no programa.
+* `-pedantic`: modo de compilação mais estrito e mostra ainda mais avisos
+* `-std=gnu99`: versão da linguagem C usada (*C99*) mais extensões para sistemas POSIX GNU (veremos o que isto significa mais para frente).
+* `-Og`: somente aplicar otimizações que não atrapalham *debuging*.
+* `-o`: output -- nome do executável gerado
+
+Usando este comando podemos compilar um programa definido em um único arquivo *.c*.
+
+![](imgs/Lab3/fluxo.svg){width=600px}
 
 !!! exercise
+    Compile o arquivo `printf.c` usando o `gcc` e nomeie o executável *exemplo0*. Rode ele e verifique que tudo continua funcionando.
 
-    `02-praticando/tarefa1.c`
-
-    ```c
-    int s;
-    int i;
-
-    i = 0;
-    while(i < 10) {
-        s += i;
-        i++;
-    }
-    ```
-
-    > Esse código **errado** já apareceu no laboratório anterior. Ele deveria
-    calcular a soma de `1` a `10`.
-
-    Rode o código corrigido e faça ele imprimir o resultado com `printf()`
+Os programas abaixo devem ser feitos criando um arquivo vazio baseado no `printf.c`.
 
 !!! exercise
-
-    `02-praticando/tarefa2.c`
-
-    ```c
-    int s = 0;
-    int i;
-    i = 1;
-    while (i <= 10) {
-      s += i / 2;
-      i++;
-    }
-    ```
-
-    > Esse código **errado** já apareceu no laboratório anterior. Ele deveria calcular a
-    *metade* da soma dos númereos de `1` a `10`
-
-    Rode o código corrigido e faça ele imprimir o resultado correto
-
-!!! progress
-    Continuar...
-
-Vamos agora finalmente escrever um programa com interação de usuário!
-
-~~~{.c}
-#include <stdio.h>
-
-int main() {
-    int n;
-
-    printf("Digite um número: ");
-    scanf("%d", &n);
-
-    printf("O número digitado é: %d\n", n);
-
-    return 0;
-}
-~~~
-
-Enquanto a função `printf` usa o símbolo `%d` para indicar que quer "escrever um
-inteiro", a função `scanf` usa o símbolo `%d` para indicar que quer "ler um
-inteiro".
-
-**Atenção:** geralmente não usamos `\n` no `scanf`.
-
-Note também uma diferença importantíssima entre `printf` e `scanf`: apenas no
-segundo há um `&` antes da variável. Os detalhes técnicos disso serão revelados
-na segunda aula de quarta, mas por enquanto mantenha em mente que **se você
-esquecer o `&`, o `scanf` não vai funcionar**.
-
-Preparados para um exemplo mais avançado? O próximo mostra de uma só vez:
-
-* inclusão de outra biblioteca além de `stdio.h`;
-
-* definição de uma constante;
-
-* implementação e chamada de uma função própria.
-
-~~~{.c}
-#include <stdio.h>
-#include <math.h>    /* <---- precisa incluir!!! */
-
-#define PI 3.141592
-
-void print_trigo(int a) {
-    printf("seno: %lf, cosseno: %lf\n", sin(a), cos(a));
-}
-
-int main() {
-    int angle;
-
-    printf("Digite um ângulo em graus: ");
-    scanf("%d", &angle);
-
-    print_trigo(angle);
-
-    return 0;
-}
-~~~
-
-Vejamos o que há de novo no código:
-
-* adicionamos `#include <math.h>` e, por causa disso, pudemos usar as funções
-  trigonométricas `sin` e `cos` para calcular seno e cosseno respectivamente;
-
-* definimos a constante `PI` como sendo o real `3.141592`;
-
-* implementamos e chamamos a função `print_trigo`, que não precisa de `return`
-  por ser do tipo `void`;
-
-A diferença entre variáveis e constantes é que, enquanto uma variável é... er...
-variável, uma constante é... er... constante, ou seja, não pode ser alterada: o
-código `PI = 5` causaria um erro.
-
-Por falar em `PI`, reparou que definimos a constante mas nunca a usamos? Na
-verdade, não foi um acidente...
+    Crie um programa (tem que criar um arquivo novo) que lê dois inteiros do terminal e determina se o primeiro é múltiplo do segundo. Se o segundo número passado for 0 seu programa deverá mostrar uma mensagem de erro.
 
 !!! exercise
-    `02-praticando/tarefa3.c`
+    Adapte seu programa acima para que ele receba vários pares de números e só pare de ser executado quando receber o par "0 0".
 
-    1. Qual é o problema no código acima?
-    1. Corrija e valida a resposta
+## Facilitando o uso da entrada e saída padrão
 
-    ??? tip
-        A dica já está dada: para ser resolvido, precisamos usar `PI`...
+Para interagir com nossos programas precisamos digitar valores e strings no terminal. Isto se torna chato e repetitivo bem rápido. Para facilitar, podemos utilizar o recurso de redirecionamento de entrada do terminal. Veja o exemplo abaixo.
 
-!!! warning ""
-    Não continue antes de validar suas respostas.
+```bash
+$ ./prog < arquivo_entrada.txt
+```
 
-!!! progress
-    Continuar...
-
-## Exercícios Avançados
-
-Mesmo que não dê tempo de fazer esses exercícios em sala, é muito importante
-que você os faça até quarta para desenferrujar programação e praticar C.
+O programa `prog` será executado como se o conteúdo do arquivo *arquivo_entrada.txt* tivesse sido digitado no terminal. Assim, podemos testar facilmente programas como o criado na Tarefa 3 acima sem precisar digitar sempre a mesma entrada.
 
 !!! exercise
-    `02-praticando/tarefa4.c`
-
-    Escreva uma função que recebe um inteiro e devolve o *módulo* desse inteiro.
+    Crie um arquivo de entrada para o programa da tarefa 3 e verifique que o resultado do programa é o mesmo que quando você digita manualmente os valores no terminal.
 
 !!! exercise
-    `02-praticando/tarefa5.c`
-
-    Escreva uma função que recebe quatro inteiros, representando as coordenadas
-    de dois pontos no plano cartesiano, e devolve a *distância de Manhattan*
-    (pesquise) entre esses pontos.
-
-!!! progress
-    Continuar...
-
-Assim como o `for` padrão do Java, o `for` do C não funciona como o `for` do Python.
-Na verdade, é apenas um "açúcar sintático" que facilita a escrita de loops:
-
-~~~{.c}
-for(i = 0; i < 10; i++) {
-    instrução
-    instrução
-    ...
-}
-~~~
-
-equivale a
-
-~~~{.c}
-i = 0;
-while(i < 10) {
-    instrução
-    instrução
-    ...
-    i++;
-}
-~~~
-
-Em Java existe o *enhanced for*, que é mais parecido com o `for` do Python, mas
-não existe uma equivalência disso em C. Bem-vindos ao baixo nível! Não temos
-bolo, mas temos os ingredientes para você fazer um bolo.
+    O mesmo vale para a saída, mas usando o caractere `>`. Capture a saída do programa da tarefa 3 para um arquivo de nome *saida3.txt*.
 
 !!! exercise
-    `02-praticando/tarefa6.c`
+    Podemos combinar o redirecionamento de entrada e saída no mesmo comando. Teste esta funcionalidade usando o programa da tarefa 3.
 
-    Escreva uma função que recebe um inteiro *n* e, para cada inteiro *i* entre
-    *1* e *n*, imprime uma string conforme a seguinte regra:
+## Bibliotecas
 
-    * "nenhum" se *i* não for múltiplo de *3* nem *5*;
-
-    * "apenas por três" se *i* for múltiplo de *3* mas não de *5*;
-
-    * "apenas por cinco" se *i* for múltiplo de *5* mas não de *3*;
-
-    * "por três e por cinco" se *i* for múltiplo de *3* e *5*.
-
-    Escreva duas versões: uma usando `while`s e outra usando `for`s.
+A tarefa 3 do lab passado usava funções trigonométricas do cabeçalho `math.h`. Somente incluir `math.h`  não é suficiente para que o programa funcione, é preciso incluir também a implementação dessas funções. Fazemos isso adicionando flags começando com `-l` **no fim de sua linha de compilação do gcc**.
 
 !!! exercise
-    `02-praticando/tarefa7.c`
+    Volte no código da aula passada e compile-o usando a linha `gcc -Og -Wall tarefa3.c -o tarefa3-sem-make -lm -lsystemd`
 
-    Escreva uma função que recebe um inteiro *n* e imprime uma "arvorezinha"
-    conforme a regra abaixo.
+    * `-lm` adiciona as funções matemáticas ao executável
+    * `-lsystemd` adiciona algumas funções específicas para o mutirão. Normalmente vocês não precisam disso.
 
-    *n = 1*
-    ```
-    |
-    ```
-    *n = 2*
+    Verifique que tudo continua funcionando.
 
-    ```
-     |
-    /|\
-    ```
-    *n = 3*
-
-    ```
-      |
-     /|\
-    //|\\
-    ```
-    e assim em diante para *n = 4, 5, 6...*.
-
+Sempre que for necessário incorporar funções disponíveis em bibliotecas externas usaremos essas flags iniciando com `-l`. Veremos isso mais em Sistemas Hardware-Software.
