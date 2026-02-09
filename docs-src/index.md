@@ -22,7 +22,7 @@ Iremos utilizar o PrarieLearn para nossas atividades. Como cada curso tem um cro
 [Entrar - Engenharia da computação](https://us.prairielearn.com/pl/course_instance/209602){.ah-button .ah-button--primary}
 
 
-[Entrar - Ciência da computação](https://us.prairielearn.com/pl/course_instance/188416){.ah-button .ah-button--primary}
+[Entrar - Ciência da computação](https://us.prairielearn.com/pl/course_instance/210361/join/EQSZ4GH2MX){.ah-button .ah-button--primary}
 
 
 
