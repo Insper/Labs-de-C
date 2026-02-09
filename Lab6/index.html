@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+      
+        <title>Lab6 - Labs de C - Insper</title>
+      
+    
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed:700|Oxygen+Mono|Source+Sans+Pro:700|Source+Serif+Pro&amp;display=swap">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <script>
+      // SETUP GLOBAL CONSTANTS
+      var base_url = '..';
+      
+      var telemetryEnabled = true;
+      var backendUrl = "https://devlife-api.insper-comp.com.br/api/";
+      var courseSlug = "mutirao-c-24-1";
+      
+      
+      var dashboardEnabled = false;
+      var tagTree = {};
+      
+
+      // SETUP PLUGIN
+      window.initialized = false;
+      if (!window.initializers) window.initializers = [];
+      window.registerInitializer = (initialize) => {
+        if (window.initialized) initialize();
+        else window.initializers.push(initialize);
+      };
+    </script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="https://unpkg.com/hyperscript.org"></script>
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    
+    
+  </head>
+  <body>
+    <div class="ah-main-container">
+      <header class="ah-header">
+        <button class="ah-menu-btn ah-button ah-button--borderless"
+                aria-label="toggle menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+</svg>
+        </button>
+        <a href=".."
+           title="Labs de C - Insper"
+           class="ah-logo"
+           aria-label="Labs de C - Insper">
+          Labs de C - Insper
+        </a>
+        <div class="ah-header--right">
+          
+          
+          
+          <button id="resetHandoutButton">
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+</svg></span>
+          </button>
+          
+
+          
+          <div id="user-menu" hx-get="https://devlife-api.insper-comp.com.br/api/user-menu" hx-trigger="load"> </div>
+          
+        </div>
+      </header>
+      <nav class="ah-navigation preload">
+        <div class="ah-nav-container">
+          <button class="ah-menu-btn ah-button ah-button--borderless close-menu"
+                  aria-label="close menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+</svg>
+          </button>
+          <ul class="ah-nav-body">
+            
+              
+  
+    <li>
+      <a href="..">Home</a>
+    </li>
+  
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Calendário</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../about-mutirao/">ENGCOMP</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../about-bcc/">CCOMP</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+            
+              
+  <li class="ah-togglable-item opened">
+    <span class="ah-togglable-handle">Mutirão</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../Lab1/">Lab1</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../Lab2/">Lab2</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../Lab3/">Lab3</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Quiz 1</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://us.prairielearn.com/pl/course_instance/209602/assessment/2643157/">ENGCOMP</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="https://us.prairielearn.com/pl/course_instance/176140/assessment/2503036">CCOMP</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../Lab4/">Lab4</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Quiz 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://us.prairielearn.com/pl/course_instance/209602/assessment/2643158/">ENGCOMP</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="https://us.prairielearn.com/pl/course_instance/176140/assessment/2503037">CCOMP</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../Lab5/">Lab5</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Quiz 3</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://us.prairielearn.com/pl/course_instance/209602/assessment/2643159/">ENGCOMP</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="https://us.prairielearn.com/pl/course_instance/176140/assessment/2503039">CCOMP</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+
+    <li class="active ah-togglable-item opened">
+      <span class="ah-togglable-handle">Lab6</span>
+      <ul>
+        
+          
+            
+            
+              <li class="ah-toc-item">
+                <a href="#exercicios-avancados">Exercícios avançados</a>
+              </li>
+            
+        
+      </ul>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../Lab7/">Lab7</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Quiz 4</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://us.prairielearn.com/pl/course_instance/209602/assessment/2643160/">ENGCOMP</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="https://us.prairielearn.com/pl/course_instance/176140/assessment/2503038">CCOMP</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Simulado</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://us.prairielearn.com/pl/course_instance/209602/assessment/2643161/">ENGCOMP</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+            
+          </ul>
+        </div>
+      </nav>
+      <main class="ah-content ah-typeset">
+        
+          <div class="ah-title-box">
+            <ul class="ah-breadcrumbs">
+              
+                
+                  
+                    <li>Mutirão</li>
+                  
+                
+                <li></li>
+            </ul>
+            
+            
+          </div>
+          
+            <section class="progress-section show">
+<h1 id="lab-6-juntando-tudo">Lab 6 - Juntando tudo</h1>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Este roteiro não apresenta nenhum conceito novo. Vocês podem fazê-lo apenas com o que já foi apresentado nos roteiros anteriores. Se você está precisando consultar materiais extras é um sinal de que sua solução é complicada demais.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Você deve fazer tudo do zero. Não há nenhum esqueleto.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip 1</p>
+<p>Valide visualmente cada exercício antes de prosseguir.</p>
+</div>
+<p>Vamos neste roteiro revisar os conceitos dos dois roteiros anteriores fazendo modificações para tornar seu programa mais legível e organizado.</p>
+<div class="admonition exercise self-progress" data-slug="Lab6/exercise_1" id="exercise_1_0">
+<p class="admonition-title">Exercise 1</p>
+<form class="exercise-form">
+<p>Crie um struct <code>imagem</code> que representa uma imagem, como as usadas no Lab1. Esse struct deve ter:</p>
+<ul>
+<li>um número que representa a largura da imagem;</li>
+<li>um número que representa a altura da imagem;</li>
+<li>uma matriz de números que representa os valores dos pixels da imagem.</li>
+</ul>
+<p>Por simplicidade, você pode supor que nenhuma imagem usada será maior que 640x480.</p>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Submit" value="Mark as done" />
+</div>
+</form>
+</div>
+<div class="admonition exercise self-progress" data-slug="Lab6/exercise_2" id="exercise_2_0">
+<p class="admonition-title">Exercise 2</p>
+<form class="exercise-form">
+<p>Crie uma função <code>le_imagem</code> que carrega o conteúdo de uma imagem PGM, recebida pelo
+terminal (lembre que no Lab3 vimos como simular a digitação do terminal através
+de um arquivo), em um struct <code>imagem</code>. Abra o arquivo <code>cat.pgm</code> em um editor de
+texto para entender o formato PGM.</p>
+<p><strong>Dica:</strong> A função deve receber um apontador para um struct <code>imagem</code> e preencher
+esse struct. Isso significa que o struct não é criado pela própria função, mas
+por quem <em>chamou</em> a função.</p>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Submit" value="Mark as done" />
+</div>
+</form>
+</div>
+<div class="admonition exercise self-progress" data-slug="Lab6/exercise_3" id="exercise_3_0">
+<p class="admonition-title">Exercise 3</p>
+<form class="exercise-form">
+<p>Crie uma função <code>escreve_imagem</code> que recebe um apontador para um struct <code>imagem</code>
+e imprime o conteúdo desse struct no terminal, no formato PGM.</p>
+<p><strong>Dica:</strong> Para testar, lembre que no Lab3 vimos como redirecionar os prints
+para um arquivo.</p>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Submit" value="Mark as done" />
+</div>
+</form>
+</div>
+<div class="admonition exercise self-progress" data-slug="Lab6/exercise_4" id="exercise_4_0">
+<p class="admonition-title">Exercise 4</p>
+<form class="exercise-form">
+<p>Crie uma função <code>limiar</code> que <em>limiariza</em> um struct <code>imagem</code> (tarefa 3 do Lab1).</p>
+<p><strong>Dica:</strong> para testar, use <code>le_imagem</code> e <code>escreve_imagem</code>.</p>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Submit" value="Mark as done" />
+</div>
+</form>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Valide sua implementação com os professores ou um colega validado antes de seguir.</p>
+</div>
+<h2 id="exercicios-avancados">Exercícios avançados</h2>
+<div class="admonition exercise self-progress" data-slug="Lab6/exercise_5" id="exercise_5_0">
+<p class="admonition-title">Exercise 5</p>
+<form class="exercise-form">
+<p><strong>Crop</strong>: crie uma função <code>crop</code> que corta uma imagem. Sua função deverá receber dois structs <code>imagem</code>: um para a imagem original e outra para a imagem cortada.</p>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Submit" value="Mark as done" />
+</div>
+</form>
+</div>
+<div class="admonition exercise self-progress" data-slug="Lab6/exercise_6" id="exercise_6_0">
+<p class="admonition-title">Exercise 6</p>
+<form class="exercise-form">
+<p><strong>Borramento</strong>: crie uma função <em>blur</em> que faz o borramento de uma imagem. Ela deverá receber dois structs <code>imagem</code>: um contendo a imagem original e um que receberá a imagem processada. Para borrar a imagem compute, para cada ponto, a média entre seu valor e o valor de seus vizinhos (incluindo diagonais).</p>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Submit" value="Mark as done" />
+</div>
+</form>
+</div>
+<div class="admonition exercise self-progress" data-slug="Lab6/exercise_7" id="exercise_7_0">
+<p class="admonition-title">Exercise 7</p>
+<form class="exercise-form">
+<p><strong>Detector de bordas</strong>: você pode detectar bordas em uma imagem computando, para cada ponto, a diferença entre 4 vezes seu valor e o valor dos seus vizinhos (sem incluir diagonais).</p>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Submit" value="Mark as done" />
+</div>
+</form>
+</div>
+
+
+</section>
+          
+        
+      </main>
+      <footer class="ah-footer ah-typeset">
+        <div class="ah-footer-nav">
+          
+            <a href="../Lab5/"
+               class="ah-prev"
+               title="Lab5">
+              <span class="nav-label">Previous</span>
+              <span class="nav-title">Lab5</span>
+            </a>
+          
+          
+            <a href="../Lab7/"
+               class="ah-next"
+               title="Lab7">
+              <span class="nav-label">Next</span>
+              <span class="nav-title">Lab7</span>
+            </a>
+          
+        </div>
+      </footer>
+    </div>
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.0.0/js-yaml.min.js"></script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script src="https://cdn.jsdelivr.net/gh/insper-education/active-handout-plugins-js@main/package/plugin-bundle.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+      
+        <title>Day1 embarcados - Labs de C - Insper</title>
+      
+    
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed:700|Oxygen+Mono|Source+Sans+Pro:700|Source+Serif+Pro&amp;display=swap">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <script>
+      // SETUP GLOBAL CONSTANTS
+      var base_url = '..';
+      
+      var telemetryEnabled = true;
+      var backendUrl = "https://devlife-api.insper-comp.com.br/api/";
+      var courseSlug = "mutirao-c-24-1";
+      
+      
+      var dashboardEnabled = false;
+      var tagTree = {};
+      
+
+      // SETUP PLUGIN
+      window.initialized = false;
+      if (!window.initializers) window.initializers = [];
+      window.registerInitializer = (initialize) => {
+        if (window.initialized) initialize();
+        else window.initializers.push(initialize);
+      };
+    </script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="https://unpkg.com/hyperscript.org"></script>
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    
+    
+  </head>
+  <body>
+    <div class="ah-main-container">
+      <header class="ah-header">
+        <button class="ah-menu-btn ah-button ah-button--borderless"
+                aria-label="toggle menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+</svg>
+        </button>
+        <a href=".."
+           title="Labs de C - Insper"
+           class="ah-logo"
+           aria-label="Labs de C - Insper">
+          Labs de C - Insper
+        </a>
+        <div class="ah-header--right">
+          
+          
+          
+          <button id="resetHandoutButton">
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+</svg></span>
+          </button>
+          
+
+          
+          <div id="user-menu" hx-get="https://devlife-api.insper-comp.com.br/api/user-menu" hx-trigger="load"> </div>
+          
+        </div>
+      </header>
+      <nav class="ah-navigation preload">
+        <div class="ah-nav-container">
+          <button class="ah-menu-btn ah-button ah-button--borderless close-menu"
+                  aria-label="close menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+</svg>
+          </button>
+          <ul class="ah-nav-body">
+            
+              
+  
+    <li>
+      <a href="..">Home</a>
+    </li>
+  
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Calendário</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../about-mutirao/">ENGCOMP</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../about-bcc/">CCOMP</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Mutirão</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../Lab1/">Lab1</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../Lab2/">Lab2</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../Lab3/">Lab3</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Quiz 1</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://us.prairielearn.com/pl/course_instance/209602/assessment/2643157/">ENGCOMP</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="https://us.prairielearn.com/pl/course_instance/176140/assessment/2503036">CCOMP</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../Lab4/">Lab4</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Quiz 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://us.prairielearn.com/pl/course_instance/209602/assessment/2643158/">ENGCOMP</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="https://us.prairielearn.com/pl/course_instance/176140/assessment/2503037">CCOMP</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../Lab5/">Lab5</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Quiz 3</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://us.prairielearn.com/pl/course_instance/209602/assessment/2643159/">ENGCOMP</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="https://us.prairielearn.com/pl/course_instance/176140/assessment/2503039">CCOMP</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../Lab6/">Lab6</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../Lab7/">Lab7</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Quiz 4</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://us.prairielearn.com/pl/course_instance/209602/assessment/2643160/">ENGCOMP</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="https://us.prairielearn.com/pl/course_instance/176140/assessment/2503038">CCOMP</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Simulado</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://us.prairielearn.com/pl/course_instance/209602/assessment/2643161/">ENGCOMP</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+            
+          </ul>
+        </div>
+      </nav>
+      <main class="ah-content ah-typeset">
+        
+          <div class="ah-title-box">
+            <ul class="ah-breadcrumbs">
+              
+                
+                <li></li>
+            </ul>
+            
+            
+          </div>
+          
+            <section class="progress-section show">
+<h1 id="embarcados-parte-1">Embarcados - Parte 1</h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Essa atividade demanda sistema operacional Windows, conforme descrito na infra de <a href="https://insper.github.io/ComputacaoEmbarcada/Sobre-Ferramental/">Computação
+Embarcada</a></p>
+</div>
+<p>Nessa aula iremos trabalhar com os conceitos básicos da linguagem C aplicados ao processamento de imagem em sistemas embarcados. Para isso utilizaremos um kit de desenvolvimento com um microcontrolador ARM cortex M7 e um LCD colorido de 480x320 px conectado a esse kit. </p>
+<p><img alt="Resultado" src="../imgs/day1-Embarcados/resultado.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Detalhe do material utilizado</p>
+<ul>
+<li>Kit : <a href="http://www.microchip.com/DevelopmentTools/ProductDetails.aspx?PartNO=ATSAME70-XPLD">SAME70-XPLD</a></li>
+<li>Microcontrolador : <a href="https://www.youtube.com/watch?v=GaV1j_5UVys">ARM Cortex M7</a></li>
+<li>LCD : <a href="http://www.microchip.com/Developmenttools/ProductDetails.aspx?PartNO=ATMXT-XPRO">maXTouch Xplained Pro</a></li>
+</ul>
+</div>
+<h2 id="parte-1">Parte 1</h2>
+<p>Nesse primeira etapa iremos executar um código exemplo no sistema embarcado, para isso será necessário:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Conectar o LCD ao kit</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Conectar o kit no computador</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Abrir e compilar o projeto no AtmelStudio</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Programar o microcontrolador</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Validar o resultado esperado</li>
+</ul>
+<p>Antes de prosseguir você deve ter o repositório <strong>Labs C</strong> já clonado no seu computador (Windows).</p>
+<h3 id="conectando-o-lcd">Conectando o LCD</h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Tome cuidado ao manusear a placa, não coloque ela sobre outros materiais.</p>
+</div>
+<p><img alt="Ligação SAME70 Explained" src="../imgs/day1-Embarcados/ligacao_1.jpg" style="width:400px" /></p>
+<p><img alt="Ligação maxTouch" src="../imgs/day1-Embarcados/ligacao_2.jpg" style="width:400px" /></p>
+<div class="admonition note">
+<p>Considerando que os <a href="https://insper.github.io/ComputacaoEmbarcada/Sobre-Ferramental/#softwares">pré requisitos</a>  para a disciplina de Computação Embarcada já foram instalados.</p>
+</div>
+<p>Conectar o USB do programador no computador:</p>
+<p><img alt="USB DEBUG" src="../imgs/day1-Embarcados/USB-DEBUG.png" width="40%" /></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip 1</p>
+<p>Note que a placa possui dois USB: <code>DEBUG USB</code>, usado para programar o uC e <code>TARGET USB</code> usado para projetos que demandam conectividade via USB.</p>
+</div>
+<h3 id="atmelstudio">AtmelStudio</h3>
+<p>Abra o projeto exemplo (<code>SAME70-MutiraoC</code>) localizado no repositório do 'Labs-de-C':</p>
+<ul>
+<li><a href="https://github.com/Insper/Labs-de-C/tree/master/day-one/SAME70-MutiraoC">https://github.com/Insper/Labs-de-C/tree/master/day-one/SAME70-MutiraoC</a></li>
+</ul>
+<p>O projeto irá abrir na IDE do AtmelStudio como imagem a seguir:</p>
+<p><img alt="Atmel Studio" src="../imgs/day1-Embarcados/atmelStudio.png" />.</p>
+<h3 id="compilar-e-programar">Compilar e programar</h3>
+<p>A etapa atual será a de embarcar o código exemplo no uC, para isso basta clicar em <strong>Start Without Debug</strong>:</p>
+<p><img alt="Embarcando" src="../imgs/day1-Embarcados/atmelStudio-play.png" width="30%" />.</p>
+<h3 id="testando">Testando</h3>
+<p>Uma vez embarcado o exemplo o LCD deverá exibir uma imagem. A primeira imagem que aparece é a imagem original sem nenhum tipo de modificação, ao apertar o botão <strong>SW0</strong> do kit de desenvolvimento uma função (<strong>imageProcess()</strong>) é chamada e a imagem orignal é processada e seu resultado exibido na tela (junto com o tempo de processamento).</p>
+<p><img alt="SAEM70-XPLD SW0" src="../imgs/day1-Embarcados/SAME70-SW0.png" width="30%" />.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip 2</p>
+<p>Se pressionar o outro botão o uC será reiniciado (reset).</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Reparou que o sistema de modo geral está muito lento? Vamos melhorar isso!</p>
+</div>
+
+
+</section>
+          
+        
+      </main>
+      <footer class="ah-footer ah-typeset">
+        <div class="ah-footer-nav">
+          
+          
+        </div>
+      </footer>
+    </div>
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.0.0/js-yaml.min.js"></script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script src="https://cdn.jsdelivr.net/gh/insper-education/active-handout-plugins-js@main/package/plugin-bundle.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+      
+        <title>Day1 embarcados parte2 - Labs de C - Insper</title>
+      
+    
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed:700|Oxygen+Mono|Source+Sans+Pro:700|Source+Serif+Pro&amp;display=swap">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <script>
+      // SETUP GLOBAL CONSTANTS
+      var base_url = '..';
+      
+      var telemetryEnabled = true;
+      var backendUrl = "https://devlife-api.insper-comp.com.br/api/";
+      var courseSlug = "mutirao-c-24-1";
+      
+      
+      var dashboardEnabled = false;
+      var tagTree = {};
+      
+
+      // SETUP PLUGIN
+      window.initialized = false;
+      if (!window.initializers) window.initializers = [];
+      window.registerInitializer = (initialize) => {
+        if (window.initialized) initialize();
+        else window.initializers.push(initialize);
+      };
+    </script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="https://unpkg.com/hyperscript.org"></script>
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    
+    
+  </head>
+  <body>
+    <div class="ah-main-container">
+      <header class="ah-header">
+        <button class="ah-menu-btn ah-button ah-button--borderless"
+                aria-label="toggle menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+</svg>
+        </button>
+        <a href=".."
+           title="Labs de C - Insper"
+           class="ah-logo"
+           aria-label="Labs de C - Insper">
+          Labs de C - Insper
+        </a>
+        <div class="ah-header--right">
+          
+          
+          
+          <button id="resetHandoutButton">
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+</svg></span>
+          </button>
+          
+
+          
+          <div id="user-menu" hx-get="https://devlife-api.insper-comp.com.br/api/user-menu" hx-trigger="load"> </div>
+          
+        </div>
+      </header>
+      <nav class="ah-navigation preload">
+        <div class="ah-nav-container">
+          <button class="ah-menu-btn ah-button ah-button--borderless close-menu"
+                  aria-label="close menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+</svg>
+          </button>
+          <ul class="ah-nav-body">
+            
+              
+  
+    <li>
+      <a href="..">Home</a>
+    </li>
+  
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Calendário</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../about-mutirao/">ENGCOMP</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../about-bcc/">CCOMP</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Mutirão</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../Lab1/">Lab1</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../Lab2/">Lab2</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../Lab3/">Lab3</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Quiz 1</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://us.prairielearn.com/pl/course_instance/209602/assessment/2643157/">ENGCOMP</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="https://us.prairielearn.com/pl/course_instance/176140/assessment/2503036">CCOMP</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../Lab4/">Lab4</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Quiz 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://us.prairielearn.com/pl/course_instance/209602/assessment/2643158/">ENGCOMP</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="https://us.prairielearn.com/pl/course_instance/176140/assessment/2503037">CCOMP</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../Lab5/">Lab5</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Quiz 3</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://us.prairielearn.com/pl/course_instance/209602/assessment/2643159/">ENGCOMP</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="https://us.prairielearn.com/pl/course_instance/176140/assessment/2503039">CCOMP</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../Lab6/">Lab6</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../Lab7/">Lab7</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Quiz 4</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://us.prairielearn.com/pl/course_instance/209602/assessment/2643160/">ENGCOMP</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="https://us.prairielearn.com/pl/course_instance/176140/assessment/2503038">CCOMP</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Simulado</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://us.prairielearn.com/pl/course_instance/209602/assessment/2643161/">ENGCOMP</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+            
+          </ul>
+        </div>
+      </nav>
+      <main class="ah-content ah-typeset">
+        
+          <div class="ah-title-box">
+            <ul class="ah-breadcrumbs">
+              
+                
+                <li></li>
+            </ul>
+            
+            
+          </div>
+          
+            <section class="progress-section show">
+<h1 id="embarcados-parte-2">Embarcados - Parte 2</h1>
+<h2 id="melhorando-o-desempenho">Melhorando o desempenho</h2>
+<p>Assim como qualquer sistema microprocessado podemos ajustar diversos parâmetros interno de funcionamento do microcontrolador. Sendo o clock (frequência de operação) um dos fatores que possui grande impacto na aplicação. </p>
+<p>É natural pensarmos que quanto maior a frequência do clock maior será o gasto energético de um sistema, lembre de camada física onde vimos que o gasto energético em sistemas digitais construídos com MOSFET é:</p>
+<p>$$
+\alpha C V_{DD}^2 f
+$$</p>
+<p>onde :</p>
+<ul>
+<li>$\alpha$: fator de chaveamento (influenciado pelo código)</li>
+<li>$C$: capacitância</li>
+<li>$V$: tensão de operação</li>
+<li>$f$: frequência de chaveamento</li>
+</ul>
+<p>Portanto quanto maior a frequência de chaveamento maior será o gasto energético do sistema, mas um detalhe deve ser levado em consideração: quanto maior a frequência do clock mais rápido uma tarefa é realizada e mais rapidamente um sistema pode entrar em modo de baixo consumo energético <em>sleep mode, suspensão, ....</em>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Recentemente o kernel do linux removeu o perfil <em>ondemand</em> de seus <a href="https://www.phoronix.com/scan.php?page=news_item&amp;px=MTM3NDQ">modos de operação</a>, esse modo alterava dinamicamente a frequência de operação do processador para alta quando uma grande carga de processamento era demandada e para mais baixa quando o processador estava em baixo uso.</p>
+<p>A ideia inicial disso era a melhoria do consumo energético já que o processador se ajustava a demanda do sistema. Porém detectou-se que isso não era verdade, já que esse modo tardava o processador de entrar no modo de <em>sleep</em> mais profundo além de demandar processamento para verificar a carga atual do processador.</p>
+</div>
+<h2 id="alterando-a-frequencia-de-operacao">Alterando a frequência de operação</h2>
+<p>O arquivo .h localizado em: <code>src/config/conf_clock.h</code> é responsável pela configuração do clock do microcontrolador. Note que no trecho de código referente ao <code>Prescaler</code> existem diversas opções que podem ser escolhidas, a atual está definda como:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ===== Processor Clock (HCLK) Prescaler Options   (Fhclk = Fsys / (SYSCLK_PRES))</span>
+<span class="c1">//#define CONFIG_SYSCLK_PRES          SYSCLK_PRES_1</span>
+<span class="c1">//#define CONFIG_SYSCLK_PRES          SYSCLK_PRES_2</span>
+<span class="c1">//#define CONFIG_SYSCLK_PRES          SYSCLK_PRES_4</span>
+<span class="c1">//#define CONFIG_SYSCLK_PRES          SYSCLK_PRES_8</span>
+<span class="c1">//#define CONFIG_SYSCLK_PRES          SYSCLK_PRES_16</span>
+<span class="c1">//#define CONFIG_SYSCLK_PRES          SYSCLK_PRES_32</span>
+<span class="cp">#define CONFIG_SYSCLK_PRES          SYSCLK_PRES_64</span>
+<span class="c1">//#define CONFIG_SYSCLK_PRES          SYSCLK_PRES_3</span>
+</code></pre></div>
+<p>Onde <code>Fsys</code> é equivalente a <strong>300Mhz</strong>. Na configuração inicial a frequência do processador é 300Mhz/64 = 4.5 MHz, altere esse trecho para a forma a seguir, selecionando a frequência do principal do uC para 300Mhz.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ===== Processor Clock (HCLK) Prescaler Options   (Fhclk = Fsys / (SYSCLK_PRES))</span>
+<span class="cp">#define CONFIG_SYSCLK_PRES          SYSCLK_PRES_1</span>
+<span class="c1">//#define CONFIG_SYSCLK_PRES          SYSCLK_PRES_2</span>
+<span class="c1">//#define CONFIG_SYSCLK_PRES          SYSCLK_PRES_4</span>
+<span class="c1">//#define CONFIG_SYSCLK_PRES          SYSCLK_PRES_8</span>
+<span class="c1">//#define CONFIG_SYSCLK_PRES          SYSCLK_PRES_16</span>
+<span class="c1">//#define CONFIG_SYSCLK_PRES          SYSCLK_PRES_32</span>
+<span class="c1">//#define CONFIG_SYSCLK_PRES          SYSCLK_PRES_64</span>
+<span class="c1">//#define CONFIG_SYSCLK_PRES          SYSCLK_PRES_3</span>
+</code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">Testando</p>
+<ul>
+<li>Compile e embarque o firmware com essa mudança.</li>
+<li>Verifique a nova taxa de atualização do LCD, melhorou?</li>
+</ul>
+</div>
+<h2 id="como-tudo-isso-funciona">Como tudo isso funciona?</h2>
+<p>Em uma visão mais geral podemos analisar o sistema como um kit de desenvolvimento e um display LCD:</p>
+<p><img alt="Diagrama simplificado" src="../imgs/day1-Embarcados/diagrama-simplificado.pdf.png" width="40%" /></p>
+<h3 id="sistema-detalhado">Sistema detalhado</h3>
+<p>Uma análise mais detalhada do projeto pode ser visto no diagrama de blocos a seguir:</p>
+<p><img alt="Diagrama detalhado" src="../imgs/day1-Embarcados/diagrama-detalhado.pdf.png" /></p>
+<p>Esse projeto é implementando em um kit de desenvolvimento para microcontroladores ARM Cortex M7 do fabricante Microchip/ATMEL (a ARM não fabrica chips, somente propriedade intelectual). Esse microcontrolador é chamado de <strong>SAME70</strong> e o kit de desenvolvimento <strong>SAME70-XPLD</strong>. O kit possui além do microcontrolador toda a infraestrutura necessária para o seu funcionamento e mais alguns periféricos que podem ser úteis no desenvolvimento de um projeto (gerenciador de energia, gravador, memória, botão, led).</p>
+<p>Pelo diagrama detalhado nota-se que a comunicação do uC com o LCD é realizado via uma interface serial (lembra da <code>UART</code> de Camada Física? aqui usa-se uma outra comunicação similar chamada de <code>SPI</code>). No módulo do LCD um chip dedicado para o controle do display (<code>ili9488</code>, da mesma família do display de elementos de sistema) recebe instruções do uC e atualiza o LCD.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Microcontroladores não necessitam geralmente de memória externa para o seu funcionamento, porém é a mesma deve sert utilizada quando a aplicação necessita de uma quantidade razoável de memória. No caso desse microcontrolador possui internamente "somente":</p>
+<ul>
+<li>384 KBytes de RAM</li>
+<li>2   MBytes de ROM</li>
+</ul>
+<p>"somente" se compararmos com a capacidade de armazenamento de um computador, mas se compararmos com outros microcontroladores esse possui <strong>muita</strong> memória.</p>
+</div>
+<p>Essa memoria interna do uC não foi suficiente para a nossa aplicação de exemplo, tivermos que recorrer a essa memória externa (SDRAM).</p>
+<h3 id="microcontrolador">microcontrolador</h3>
+<p>Podemos detalhar ainda mais o sistema se detalharmos o que está sendo usado no microcontrolador, entendendo todas as partes em uso. Pelo diagrama podemos notar os seguintes "periféricos":</p>
+<ul>
+<li>CORE M7: Unidade de processamento ARM.</li>
+<li>RAM: Unidade de memória que é usada durante execução (variáveis).</li>
+<li>ROM: Unidade de memória usada para armazenar o programa e constantes .</li>
+<li>External Memory Controller: Periférico responsável por gerenciar uma memória externa.</li>
+<li>SPI: Periférico responsável pela comunicação serial SPI e interface com o módulo LCD.</li>
+<li>PIO: Periférico responsável pela interface com entradas e saídas digitais (Parallel Input/OutPut).</li>
+</ul>
+<p><img alt="Microcontrolador detalhado" src="../imgs/day1-Embarcados/diagrama-uC.pdf.png" width="80%" />.</p>
+<h1 id="firmware">Firmware</h1>
+<p>O arquivo principal desse projeto é o <code>main.c</code> (é muito comum em C a função main() estar no arquivo main.c, mas não é necessário), esse código fonte possui a função <code>main()</code> que é a primeira a ser chamada na inicialização do sistema. Nessa função inicializa-se primeiro o sistema embarcado e seus periféricos (clock, LCD, botão, memória) via a chamada de função <code>initBoardMutirao()</code>. Após inicializado a placa chama-se a função <code>imgshow(...)</code> que possui toda a parte responsável por exibir a imagem no LCD. </p>
+<p>Trecho do arquivo <code>main.c</code></p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(){</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">time</span><span class="p">;</span><span class="w">            </span><span class="c1">// variavel para armazenar tempo de processamento</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w">  </span><span class="n">imageSelect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// variavle para selecao da imagem a ser exibida</span>
+<span class="w">                              </span><span class="c1">// quando o botao for pressionado</span>
+<span class="w">                              </span><span class="c1">// 1 = imagem processada</span>
+<span class="w">                              </span><span class="c1">// 0 = imagem orignal</span>
+
+<span class="w">    </span><span class="c1">// inicializa placa e seus perifericos</span>
+<span class="w">    </span><span class="n">initBoardMutirao</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// exibe imagem orignal, tempo de processamento suprimido.</span>
+<span class="w">    </span><span class="n">imgShow</span><span class="p">(</span><span class="n">imgRaw</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+
+<span class="w">    </span><span class="p">...</span>
+</code></pre></div>
+<p>A função <code>imgShow</code> possui dois parâmetros: a imagem <code>image[320][320]</code> a ser exibida, passada como uma matriz de tamanho já definido, e o tempo de processamento a ser exibido no LCD:</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">imgShow</span><span class="p">(</span><span class="n">ili9488_color_t</span><span class="w"> </span><span class="n">image</span><span class="p">[</span><span class="mi">320</span><span class="p">][</span><span class="mi">320</span><span class="p">],</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">time</span><span class="p">){...}</span>
+</code></pre></div>
+<p>Após essa etapa o microcontrolador entra em um loop infinito (<code>while(1){}</code>) que verifica uma variável chamada de <code>buttonFlag</code> que é alterada via uma interrupção para o valor <strong>1</strong> sempre que o botão for pressionado. </p>
+<div class="highlight"><pre><span></span><code><span class="c1">// super loop</span>
+<span class="w">    </span><span class="c1">// aplicacoes embarcadas não devem sair do while(1).</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">        </span><span class="c1">// se buttonFlag = 1 existe alteracao no estado do botao</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">buttonFlag</span><span class="p">){</span>
+</code></pre></div>
+
+
+</section>
+          
+        
+      </main>
+      <footer class="ah-footer ah-typeset">
+        <div class="ah-footer-nav">
+          
+          
+        </div>
+      </footer>
+    </div>
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.0.0/js-yaml.min.js"></script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script src="https://cdn.jsdelivr.net/gh/insper-education/active-handout-plugins-js@main/package/plugin-bundle.js"></script>
+    
+  </body>
+</html>

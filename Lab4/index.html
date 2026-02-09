@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+      
+        <title>Lab4 - Labs de C - Insper</title>
+      
+    
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed:700|Oxygen+Mono|Source+Sans+Pro:700|Source+Serif+Pro&amp;display=swap">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <script>
+      // SETUP GLOBAL CONSTANTS
+      var base_url = '..';
+      
+      var telemetryEnabled = true;
+      var backendUrl = "https://devlife-api.insper-comp.com.br/api/";
+      var courseSlug = "mutirao-c-24-1";
+      
+      
+      var dashboardEnabled = false;
+      var tagTree = {};
+      
+
+      // SETUP PLUGIN
+      window.initialized = false;
+      if (!window.initializers) window.initializers = [];
+      window.registerInitializer = (initialize) => {
+        if (window.initialized) initialize();
+        else window.initializers.push(initialize);
+      };
+    </script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="https://unpkg.com/hyperscript.org"></script>
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    
+    
+  </head>
+  <body>
+    <div class="ah-main-container">
+      <header class="ah-header">
+        <button class="ah-menu-btn ah-button ah-button--borderless"
+                aria-label="toggle menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+</svg>
+        </button>
+        <a href=".."
+           title="Labs de C - Insper"
+           class="ah-logo"
+           aria-label="Labs de C - Insper">
+          Labs de C - Insper
+        </a>
+        <div class="ah-header--right">
+          
+          
+          
+          <button id="resetHandoutButton">
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+</svg></span>
+          </button>
+          
+
+          
+          <div id="user-menu" hx-get="https://devlife-api.insper-comp.com.br/api/user-menu" hx-trigger="load"> </div>
+          
+        </div>
+      </header>
+      <nav class="ah-navigation preload">
+        <div class="ah-nav-container">
+          <button class="ah-menu-btn ah-button ah-button--borderless close-menu"
+                  aria-label="close menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+</svg>
+          </button>
+          <ul class="ah-nav-body">
+            
+              
+  
+    <li>
+      <a href="..">Home</a>
+    </li>
+  
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Calendário</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../about-mutirao/">ENGCOMP</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../about-bcc/">CCOMP</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+            
+              
+  <li class="ah-togglable-item opened">
+    <span class="ah-togglable-handle">Mutirão</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../Lab1/">Lab1</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../Lab2/">Lab2</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../Lab3/">Lab3</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Quiz 1</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://us.prairielearn.com/pl/course_instance/209602/assessment/2643157/">ENGCOMP</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="https://us.prairielearn.com/pl/course_instance/176140/assessment/2503036">CCOMP</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+
+    <li class="active ah-togglable-item opened">
+      <span class="ah-togglable-handle">Lab4</span>
+      <ul>
+        
+          
+            
+            
+              <li class="ah-toc-item">
+                <a href="#arrays-em-c">Arrays em C</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#strings">Strings</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#matrizes">Matrizes</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#exercicios">Exercícios</a>
+              </li>
+            
+        
+      </ul>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Quiz 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://us.prairielearn.com/pl/course_instance/209602/assessment/2643158/">ENGCOMP</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="https://us.prairielearn.com/pl/course_instance/176140/assessment/2503037">CCOMP</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../Lab5/">Lab5</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Quiz 3</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://us.prairielearn.com/pl/course_instance/209602/assessment/2643159/">ENGCOMP</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="https://us.prairielearn.com/pl/course_instance/176140/assessment/2503039">CCOMP</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../Lab6/">Lab6</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../Lab7/">Lab7</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Quiz 4</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://us.prairielearn.com/pl/course_instance/209602/assessment/2643160/">ENGCOMP</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="https://us.prairielearn.com/pl/course_instance/176140/assessment/2503038">CCOMP</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Simulado</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://us.prairielearn.com/pl/course_instance/209602/assessment/2643161/">ENGCOMP</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+            
+          </ul>
+        </div>
+      </nav>
+      <main class="ah-content ah-typeset">
+        
+          <div class="ah-title-box">
+            <ul class="ah-breadcrumbs">
+              
+                
+                  
+                    <li>Mutirão</li>
+                  
+                
+                <li></li>
+            </ul>
+            
+            
+          </div>
+          
+            <section class="progress-section show">
+<h1 id="lab-4-arrays-strings-e-matrizes">Lab 4 - Arrays, Strings e Matrizes</h1>
+<p>Na última aula trabalhamos com conceitos básicos de <em>C</em> e com tipos de dados
+simples (inteiros e números fracionários). Hoje veremos as primeiras estruturas
+complexas em <em>C</em>: arrays (também chamados de vetores), matrizes e strings.</p>
+<h2 id="arrays-em-c">Arrays em <em>C</em></h2>
+<p>Criamos <em>arrays</em> <strong>de tamanho fixo</strong> em <em>C</em> usando a seguinte sintaxe:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">long</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
+</code></pre></div>
+<p><em>(O tipo <code>long</code> é uma alternativa ao <code>int</code>, capaz de representar um intervalo
+maior de inteiros. Escrever <code>int A[100]</code> também funcionaria, mas estamos usando
+outro tipo aqui para aumentar a variedade dos exemplos.)</em></p>
+<p>Basta adicionar <code>[]</code> após o tipo e teremos um array de tamanho constante (i.e. não dependente da entrada do usuário). <strong>Não é possível redimensionar o array</strong>. Depois de declarado ele terá para sempre o mesmo tamanho.</p>
+<p><img alt="Representação de array de long na memória" src="../imgs/day4-arrays/mem-array.png" /></p>
+<p>O acesso a elementos também é bastante simples:</p>
+<div class="highlight"><pre><span></span><code><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%ld</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="mi">3</span><span class="p">]);</span>
+</code></pre></div>
+<p>A linha acima imprime o quarto elemento do vetor. O uso com <code>scanf</code> segue a mesma lógica dos tipos simples:</p>
+<div class="highlight"><pre><span></span><code><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%ld&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">vetor</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+</code></pre></div>
+<div class="admonition exercise self-progress" data-slug="Lab4/exercise_1" id="exercise_1_0">
+<p class="admonition-title">Exercise 1</p>
+<form class="exercise-form">
+<p>Simule o código abaixo manualmente e escreva qual você acha que será a saída dele.
+Não compile e execute ainda! No momento, estamos interessados no que você <em>acha.</em></p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="n">vetor</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">vetor</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Par! &quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;i: %d, vetor[i]: %ld</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">vetor</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Submit" value="Mark as done" />
+</div>
+</form>
+</div>
+<div class="admonition exercise text long tag-text-exercise tag-long-text editable" data-slug="Lab4/long_1" id="long_1_0">
+<p class="admonition-title">Exercise 2<button class="editable-button"></button></p>
+<form class="exercise-form">
+<p>O código acima está no arquivo <code>tarefa1.c</code>. Agora sim, compile e execute. Os resultados foram os esperados? Se não, você consegue explicar por que eles foram diferentes?</p>
+<div class="form-elements">
+<div class="grow-wrap"><textarea name="data"></textarea></div>
+
+<input class="ah-button ah-button--primary" type="submit" value="Submit"/>
+</div>
+</form>
+<div class="admonition answer no-indent">
+<p class="admonition-title">Answer</p>
+<p>Como podemos ver, o código compila, mas seu comportamento é indefinido por duas razões:</p>
+<ol>
+<li>O vetor não é inicializado com 0 quando é criado, embora seja em outras linguagens como Java.</li>
+<li>A posição <code>vetor[5]</code> não é válida e pode resultar na leitura de dados inválidos da memória.</li>
+</ol>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip 1</p>
+<p>Diferentemente de outras linguagens, <em>C</em> não verifica os índices automaticamente nem inicializa o elementos do vetor com algum valor padrão. Além disto, nem sempre é possível obter o tamanho de um vetor a partir de seu nome.</p>
+</div>
+<div class="admonition exercise self-progress" data-slug="Lab4/exercise_2" id="exercise_2_0">
+<p class="admonition-title">Exercise 3</p>
+<form class="exercise-form">
+<p>Conserte o código acima. Você deverá ler as posições do vetor usando <code>scanf</code> em um <code>for</code> e depois consertar o <code>for</code> do exemplo acima para não acessar as posições indevidas.</p>
+<p><strong>Sim, seu programa deverá ter dois <code>for</code>, um para leitura usando <code>scanf</code> que você deverá criar e o outro é o do exemplo acima, que deverá ser consertado.</strong></p>
+<p>Conserte o código acima no arquivo <code>tarefa1.c</code>. Compile e teste sua solução usando <code>make tarefa1</code>.</p>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Submit" value="Mark as done" />
+</div>
+</form>
+</div>
+<p>Um ponto importante é que o sistema de tipos não permite a conversão/passagem de vetores do mesmo tipo, mas com tamanhos diferentes. Assim, a função abaixo não aceitaria como argumento a variável <code>double arr[4]</code>, pois só aceita vetores de tamanho 3.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="w"> </span><span class="nf">soma_3doubles</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">arr</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">s</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">s</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Para fazê-la aceitar vetores de tamanho qualquer poderíamos mudar sua assinatura para não checar o tamanho do vetor e passá-lo como argumento da função.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="w"> </span><span class="nf">soma</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">arr</span><span class="p">[],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
+</code></pre></div>
+<div class="admonition exercise self-progress" data-slug="Lab4/exercise_3" id="exercise_3_0">
+<p class="admonition-title">Exercise 4</p>
+<form class="exercise-form">
+<p>Trabalharemos com o arquivo <code>tarefa2.c</code>. Abra-o e implemente, no local indicado, a função <code>soma</code> com a assinatura acima. Lembre-se que em <em>C</em> arrays não conhecem seu tamanho, então é de sua responsabilidade acessar somente elementos válidos e checar se o vetor não está vazio (ou seja, <code>n &lt; 1</code>)</p>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Submit" value="Mark as done" />
+</div>
+</form>
+</div>
+<div class="admonition exercise text short tag-text-exercise tag-short-text editable" data-slug="Lab4/short_2" id="short_2_0">
+<p class="admonition-title">Exercise 5<button class="editable-button"></button></p>
+<form class="exercise-form">
+<p>O arquivo usado acima contém vários testes na função <code>main</code>. Leia a função <code>main</code> e escreva abaixo a notação usada para inicializar um array com valores constantes. Como você inicializaria um vetor de <code>int</code> com os valores $0, 2, 3, 2, 5$?</p>
+<div class="form-elements">
+<input type="text" value="" name="data"/>
+
+<input class="ah-button ah-button--primary" type="submit" value="Submit"/>
+</div>
+</form>
+<div class="admonition answer no-indent">
+<p class="admonition-title">Answer</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">vec</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">};</span>
+</code></pre></div>
+</div>
+</div>
+<div>
+<div class="ah-progress-container"><button class="ah-button ah-button--primary progress" id="prog-0"> Progress </button></div>
+</div>
+</section>
+<section class="progress-section">
+<h2 id="strings">Strings</h2>
+<p>Como visto na expositiva, strings são arrays de caracteres sendo que o último elemento da string contém um caractere <code>'\0'</code>. Logo, uma string declarada como <code>char str[100]</code> pode guardar strings de <strong>até 99</strong> caracteres (mais 1 para o <code>'\0'</code>). Se a string tiver comprimento menor o restante das posições simplesmente não é utilizado.</p>
+<p><img alt="String é um vetor de char terminado em '\0'." src="../imgs/Lab4/mem-str.svg" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Em C podemos usar: <code>\0</code>, <code>NULL</code>, e <code>0</code> para representar a mesma coisa!</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip 2</p>
+<p>Uma <em>string</em> em <em>C</em> nada mais é do que um <em>array</em> do tipo <code>char</code> cujo último elemento é um <code>\0</code>.
+As duas linhas abaixo tem o mesmo efeito.
+<div class="highlight"><pre><span></span><code><span class="kt">char</span><span class="w"> </span><span class="n">arr</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;insper&quot;</span><span class="p">;</span>
+<span class="kt">char</span><span class="w"> </span><span class="n">arr2</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="sc">&#39;i&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;n&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;s&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;p&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;e&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;r&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;\0&#39;</span><span class="p">};</span>
+</code></pre></div>
+Claramente a primeira é muito mais conveniente ;)</p>
+</div>
+<div class="admonition exercise text short tag-text-exercise tag-short-text editable" data-slug="Lab4/short_3" id="short_3_0">
+<p class="admonition-title">Exercise 6<button class="editable-button"></button></p>
+<form class="exercise-form">
+<p>Em <em>C</em>, qual a diferença entre <code>"a"</code> e <code>'a'</code>?</p>
+<div class="form-elements">
+<input type="text" value="" name="data"/>
+
+<input class="ah-button ah-button--primary" type="submit" value="Submit"/>
+</div>
+</form>
+<div class="admonition answer no-indent">
+<p class="admonition-title">Answer</p>
+<p>Em C, aspas duplas <code>"a"</code> indicam um vetor composto por: [<code>a</code>, <code>\0</code>] e a aspas simples indicam apenas um char.</p>
+</div>
+</div>
+<p>Para imprimir uma string no terminal basta usar o código <code>%s</code> na string de formatação do printf:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">char</span><span class="w"> </span><span class="n">str</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;world!&quot;</span><span class="p">;</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;hello %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">str</span><span class="p">);</span>
+</code></pre></div>
+<p>Já a leitura de strings é feita usando a função <em>fgets</em>, que recebe um array de <code>char</code> com tamanho <code>n</code> e lê até <code>n-1</code> caracteres de um arquivo ou do terminal. <em>fgets</em> para quando encher o vetor ou quando encontrar uma quebra de linha <code>\n</code>. No exemplo abaixo, <code>stdin</code> (<em>Standard Input</em>) representa o terminal.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#define STRING_LEN 10          </span><span class="c1">// Tamanho da string 0..9</span>
+
+<span class="kt">char</span><span class="w"> </span><span class="n">str</span><span class="p">[</span><span class="n">STRING_LEN</span><span class="p">];</span>
+<span class="n">fgets</span><span class="p">(</span><span class="n">str</span><span class="p">,</span><span class="w"> </span><span class="n">STRING_LEN</span><span class="p">,</span><span class="w"> </span><span class="n">stdin</span><span class="p">);</span><span class="w"> </span><span class="c1">// precisamos passar o tamanho máximo</span>
+<span class="w">                               </span><span class="c1">// + 1 da nossa string.</span>
+</code></pre></div>
+<div class="admonition exercise text short tag-text-exercise tag-short-text editable" data-slug="Lab4/short_4" id="short_4_0">
+<p class="admonition-title">Exercise 7<button class="editable-button"></button></p>
+<form class="exercise-form">
+<p>Para iterar sobre todos os caracteres de uma string precisamos saber seu tamanho? Como podemos fazer isto? <strong>Dica</strong>: reveja a imagem e o exemplo de código do começo da seção.</p>
+<div class="form-elements">
+<input type="text" value="" name="data"/>
+
+<input class="ah-button ah-button--primary" type="submit" value="Submit"/>
+</div>
+</form>
+<div class="admonition answer no-indent">
+<p class="admonition-title">Answer</p>
+<p>O último caractere de uma string é sempre <code>'\0'</code>! Logo, podemos percorrer os caracteres até que um <code>'\0'</code> seja encontrado.</p>
+</div>
+</div>
+<div class="admonition exercise self-progress" data-slug="Lab4/exercise_4" id="exercise_4_0">
+<p class="admonition-title">Exercise 8</p>
+<form class="exercise-form">
+<p>Crie uma função que:</p>
+<ol>
+<li>recebe uma string de tamanho indeterminado</li>
+<li>conte o número de vezes que a letra "a" aparece</li>
+<li>retorne este valor.</li>
+</ol>
+<p>Implemente no arquivo <code>tarefa3.c</code> e teste com <code>make tarefa3</code></p>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Submit" value="Mark as done" />
+</div>
+</form>
+</div>
+<div class="admonition exercise self-progress" data-slug="Lab4/exercise_5" id="exercise_5_0">
+<p class="admonition-title">Exercise 9</p>
+<form class="exercise-form">
+<p>E se fosse necessário contar o número de caracteres "1"? Implemente no arquivo <code>tarefa4.c</code> e teste com <code>make tarefa4</code></p>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Submit" value="Mark as done" />
+</div>
+</form>
+</div>
+<div>
+<div class="ah-progress-container"><button class="ah-button ah-button--primary progress" id="prog-1"> Progress </button></div>
+</div>
+</section>
+<section class="progress-section">
+<h2 id="matrizes">Matrizes</h2>
+<p>Como visto na expositiva, matrizes em <em>C</em> nada mais são que "vetores de vetores", ou seja, vetores colocados um após o outro.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">long</span><span class="w"> </span><span class="n">mat</span><span class="p">[</span><span class="mi">10</span><span class="p">][</span><span class="mi">3</span><span class="p">];</span>
+
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mat</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]);</span><span class="w"> </span><span class="cm">/* acessa linha 0, coluna 3 */</span>
+
+<span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">mat</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]);</span><span class="w"> </span><span class="c1">// armazena inteiro digitado na posição 1,5</span>
+</code></pre></div>
+<p><img alt="Representação de matriz de inteiros na memória" src="../imgs/day4-arrays/mem-mat.png" /></p>
+<p>Perceba que toda a primeira linha é armazenada (contendo 3 <code>long</code>s) antes do início da segunda linha. Ou seja, a matriz é armazenada "deitada" na memória, uma linha após a outra.</p>
+<div class="admonition exercise text short tag-text-exercise tag-short-text editable" data-slug="Lab4/short_5" id="short_5_0">
+<p class="admonition-title">Exercise 10<button class="editable-button"></button></p>
+<form class="exercise-form">
+<p>Levando em conta que a matriz é guardada como na figura acima, em qual posição da memória estão armazenados os seguintes elementos? Você deve contar a partir do primeiro elemento (<code>mat[0][0]</code>).</p>
+<ul>
+<li><code>mat[0][2]</code></li>
+<li><code>mat[1][2]</code></li>
+<li><code>mat[2][0]</code></li>
+</ul>
+<div class="form-elements">
+<input type="text" value="" name="data"/>
+
+<input class="ah-button ah-button--primary" type="submit" value="Submit"/>
+</div>
+</form>
+<div class="admonition answer no-indent">
+<p class="admonition-title">Answer</p>
+<p>Respectivamente: 2, 5 e 6.</p>
+<div class="highlight"><pre><span></span><code>| offset
+v
+
+0: [0][0]
+1: [0][1]
+2: [0][2]  &lt;---
+3: [1][0]
+4: [1][1]
+5: [1][2]  &lt;---
+6: [2][0]  &lt;---
+7: [2][1]
+8: [2][2]
+</code></pre></div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>As próximas tarefas devem ser feitas a partir de um arquivo vazio e compiladas usando os conhecimentos que vocês obtiveram no <a href="../Lab3/">Lab 3</a>.</p>
+</div>
+<div class="admonition exercise self-progress" data-slug="Lab4/exercise_6" id="exercise_6_0">
+<p class="admonition-title">Exercise 11</p>
+<form class="exercise-form">
+<p>Faça, do zero, um programa que lê uma matriz 5x4 e imprime no terminal a soma de cada uma de suas colunas.</p>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Submit" value="Mark as done" />
+</div>
+</form>
+</div>
+<div class="admonition exercise self-progress" data-slug="Lab4/exercise_7" id="exercise_7_0">
+<p class="admonition-title">Exercise 12</p>
+<form class="exercise-form">
+<p>Modifique seu programa acima para, além das somas de cada coluna, imprimir também o índice da coluna de maior valor.</p>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Submit" value="Mark as done" />
+</div>
+</form>
+</div>
+<h2 id="exercicios">Exercícios</h2>
+<p>Agora que já trabalhamos um pouco com <em>arrays</em>, <em>strings</em> e matrizes está na hora de praticar com exercícios mais complexos. Estes exercícios não são opcionais: sua realização é essencial para cumprir os objetivos do Mutirão.</p>
+<div class="admonition exercise self-progress" data-slug="Lab4/exercise_8" id="exercise_8_0">
+<p class="admonition-title">Exercise 13</p>
+<form class="exercise-form">
+<p>Escreva, do zero, um programa que</p>
+<ol>
+<li>Leia um inteiro <code>n</code> do terminal (número de elementos do vetor)</li>
+<li>Leia <code>n</code> números reais e guarde esses números em um array.</li>
+<li>Chame uma função para calcular a média do vetor.</li>
+<li>Imprima a média calculada.</li>
+</ol>
+<p>Seu programa deverá calcular a média usando uma função <code>avg</code> escrita por você mesmo e pode supor que <code>n &lt; 100</code>. Para facilitar seus testes, escreva dois arquivos de entrada e use <code>&lt;</code> para rodar o programa.</p>
+<p><strong>Atenção:</strong> como vimos anteriormente, precisamos especificar o tamanho
+de um vetor na declaração. No entanto, nesse caso não sabemos o tamanho
+até o usuário digitá-lo. Sugerimos
+vocês criarem um vetor de um tamanho maior que o usuário
+possa querer usar. É bem comum saber esse limite em aplicações reais.</p>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Submit" value="Mark as done" />
+</div>
+</form>
+</div>
+<div class="admonition exercise self-progress" data-slug="Lab4/exercise_9" id="exercise_9_0">
+<p class="admonition-title">Exercise 14</p>
+<form class="exercise-form">
+<p>Modifique seu programa acima para que ele imprima também a variância do vetor.</p>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Submit" value="Mark as done" />
+</div>
+</form>
+</div>
+
+
+</section>
+          
+        
+      </main>
+      <footer class="ah-footer ah-typeset">
+        <div class="ah-footer-nav">
+          
+            <a href="../Lab3/"
+               class="ah-prev"
+               title="Lab3">
+              <span class="nav-label">Previous</span>
+              <span class="nav-title">Lab3</span>
+            </a>
+          
+          
+            <a href="../Lab5/"
+               class="ah-next"
+               title="Lab5">
+              <span class="nav-label">Next</span>
+              <span class="nav-title">Lab5</span>
+            </a>
+          
+        </div>
+      </footer>
+    </div>
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.0.0/js-yaml.min.js"></script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script src="https://cdn.jsdelivr.net/gh/insper-education/active-handout-plugins-js@main/package/plugin-bundle.js"></script>
+    
+  </body>
+</html>

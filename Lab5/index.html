@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+      
+        <title>Lab5 - Labs de C - Insper</title>
+      
+    
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed:700|Oxygen+Mono|Source+Sans+Pro:700|Source+Serif+Pro&amp;display=swap">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <script>
+      // SETUP GLOBAL CONSTANTS
+      var base_url = '..';
+      
+      var telemetryEnabled = true;
+      var backendUrl = "https://devlife-api.insper-comp.com.br/api/";
+      var courseSlug = "mutirao-c-24-1";
+      
+      
+      var dashboardEnabled = false;
+      var tagTree = {};
+      
+
+      // SETUP PLUGIN
+      window.initialized = false;
+      if (!window.initializers) window.initializers = [];
+      window.registerInitializer = (initialize) => {
+        if (window.initialized) initialize();
+        else window.initializers.push(initialize);
+      };
+    </script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="https://unpkg.com/hyperscript.org"></script>
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    
+    
+  </head>
+  <body>
+    <div class="ah-main-container">
+      <header class="ah-header">
+        <button class="ah-menu-btn ah-button ah-button--borderless"
+                aria-label="toggle menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+</svg>
+        </button>
+        <a href=".."
+           title="Labs de C - Insper"
+           class="ah-logo"
+           aria-label="Labs de C - Insper">
+          Labs de C - Insper
+        </a>
+        <div class="ah-header--right">
+          
+          
+          
+          <button id="resetHandoutButton">
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+</svg></span>
+          </button>
+          
+
+          
+          <div id="user-menu" hx-get="https://devlife-api.insper-comp.com.br/api/user-menu" hx-trigger="load"> </div>
+          
+        </div>
+      </header>
+      <nav class="ah-navigation preload">
+        <div class="ah-nav-container">
+          <button class="ah-menu-btn ah-button ah-button--borderless close-menu"
+                  aria-label="close menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+</svg>
+          </button>
+          <ul class="ah-nav-body">
+            
+              
+  
+    <li>
+      <a href="..">Home</a>
+    </li>
+  
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Calendário</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../about-mutirao/">ENGCOMP</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../about-bcc/">CCOMP</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+            
+              
+  <li class="ah-togglable-item opened">
+    <span class="ah-togglable-handle">Mutirão</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../Lab1/">Lab1</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../Lab2/">Lab2</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../Lab3/">Lab3</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Quiz 1</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://us.prairielearn.com/pl/course_instance/209602/assessment/2643157/">ENGCOMP</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="https://us.prairielearn.com/pl/course_instance/176140/assessment/2503036">CCOMP</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../Lab4/">Lab4</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Quiz 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://us.prairielearn.com/pl/course_instance/209602/assessment/2643158/">ENGCOMP</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="https://us.prairielearn.com/pl/course_instance/176140/assessment/2503037">CCOMP</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+
+    <li class="active ah-togglable-item opened">
+      <span class="ah-togglable-handle">Lab5</span>
+      <ul>
+        
+          
+            
+            
+              <li class="ah-toc-item">
+                <a href="#introducao">Introdução</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#enderecos">Endereços</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#a-regra-de-ouro">A Regra de Ouro</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#apontadores">Apontadores</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#a-unica-excecao">A Única Exceção</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#aplicacao-de-apontadores">Aplicação de Apontadores</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#structs">Structs</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#apontadores-para-structs">Apontadores para Structs</a>
+              </li>
+            
+        
+      </ul>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Quiz 3</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://us.prairielearn.com/pl/course_instance/209602/assessment/2643159/">ENGCOMP</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="https://us.prairielearn.com/pl/course_instance/176140/assessment/2503039">CCOMP</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../Lab6/">Lab6</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../Lab7/">Lab7</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Quiz 4</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://us.prairielearn.com/pl/course_instance/209602/assessment/2643160/">ENGCOMP</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="https://us.prairielearn.com/pl/course_instance/176140/assessment/2503038">CCOMP</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Simulado</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://us.prairielearn.com/pl/course_instance/209602/assessment/2643161/">ENGCOMP</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+            
+          </ul>
+        </div>
+      </nav>
+      <main class="ah-content ah-typeset">
+        
+          <div class="ah-title-box">
+            <ul class="ah-breadcrumbs">
+              
+                
+                  
+                    <li>Mutirão</li>
+                  
+                
+                <li></li>
+            </ul>
+            
+            
+          </div>
+          
+            <section class="progress-section show">
+<h1 id="lab-5-ponteiros-e-structs">Lab 5 - Ponteiros e <code>structs</code></h1>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Por favor, façam esta atividade em dupla e lembrem das regras.</p>
+<ol>
+<li>
+<p>Os enunciados de programação dizem "o que" a função/programa deve fazer,
+ mas não dizem "como" deve fazer. Não pergunte "como", pois descobrir isso é
+ justamente uma das habilidades que vocês precisam exercitar para as três
+ disciplinas.</p>
+</li>
+<li>
+<p>Ao terminar um exercício de programação, chame um dos professores para
+ testemunhar o programa funcionando e validar o código. Não avance no guia
+ até fazer isso, para termos certeza que você está passando por todo o
+ processo.</p>
+</li>
+</ol>
+<p><em>(se os professores estiverem muito sobrecarregados, você pode validar com
+ um colega que já foi validado)</em></p>
+</div>
+<h2 id="introducao">Introdução</h2>
+<p>Podemos dizer que praticamente todos os conceitos vistos até agora são
+adaptações de conceitos vistos anteriormente em <em>Python</em> e <em>Java</em>. Neste guia,
+finalmente exploramos alguns conceitos "exclusivos" de <em>C</em> e outras linguagens
+de baixo nível.</p>
+<p>Para introduzir o primeiro deles, vamos começar com uma pergunta.</p>
+<div class="admonition exercise texxt short tag-text-exercise tag-short-text editable" data-slug="Lab5/short_1" id="short_1_0">
+<p class="admonition-title">Exercise 1<button class="editable-button"></button></p>
+<form class="exercise-form">
+<p>Considerando o que vimos anteriormente sobre <code>scanf</code>, <em>passagem por valor</em> e
+<em>passagem por referência</em>, porque a chamada</p>
+<div class="highlight"><pre><span></span><code><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
+</code></pre></div>
+<p>não funcionaria sem o <code>&amp;</code>? Pode parecer estranho, mas você não precisa saber a
+definição de <code>&amp;</code> para poder responder!</p>
+<div class="form-elements">
+<input type="text" value="" name="data"/>
+
+<input class="ah-button ah-button--primary" type="submit" value="Submit"/>
+</div>
+</form>
+<div class="admonition answer no-indent">
+<p class="admonition-title">Answer</p>
+<p>Porque, sem <code>&amp;</code>, estaríamos apenas passando uma cópia do valor de <code>n</code> para
+<code>scanf</code>. Apenas com essa cópia de valor, <code>scanf</code> não tem como mudar o
+conteúdo da variável <code>n</code>.</p>
+</div>
+</div>
+<h2 id="enderecos">Endereços</h2>
+<p>Como vimos anteriormente, os conjuntos de variáveis de duas funções diferentes
+são totalmente separados. Ou seja, no exemplo abaixo,</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">foo</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">n</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">bar</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">foo</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>a função <code>bar</code> devolve <code>0</code>, pois a variável <code>n</code> de <code>foo</code> é diferente da variável
+<code>n</code> de <code>bar</code>, apesar das duas terem o mesmo nome.</p>
+<p>Cabe enfatizar que é bom que esse seja o comportamento padrão! Geralmente
+queremos evitar situações nas quais uma função altera variáveis de outra função.
+Essas situações são conhecidas como <em>efeitos colaterais</em> e costumam ser
+indesejadas por tornarem o código mais imprevisível, aumentarem a probabilidade
+de bugs e dificultarem testes.</p>
+<p>No entanto, se soubermos muito bem o que estamos fazendo, efeitos colaterais
+podem ser úteis. O <code>scanf</code> é o exemplo óbvio disso! Então vamos mostrar como
+permiti-los.</p>
+<p>O problema do exemplo anterior é que o <em>nome</em> de uma variável é um identificador
+<em>local</em>, ou seja, vale apenas dentro do escopo da função na qual a variável foi
+declarada. Mas a variável também possui um identificador <em>global</em> que é seu
+<em>endereço</em>. Se uma função sabe o endereço de uma variável, essa variável pode
+ser modificada pela função mesmo se não foi declarada dentro dela.</p>
+<p>Para entender melhor o conceito de endereço, basta pensar na memória como um
+"vetorzão" e na variável como um elemento desse "vetorzão". O endereço, nessa
+analogia, seria o índice desse elemento.</p>
+<p>E como obtemos o endereço de uma variável? Basta usar o operador unário <code>&amp;</code>.
+Isso explica o que acontece em relação ao <code>scanf</code>: o que a função recebe não é o
+valor de uma variável, e sim seu endereço. Assim, ganha o poder de escrever nela
+o valor digitado pelo usuário. Então lembre-se: <strong>sempre que encontrar o símbolo
+<code>&amp;</code>, leia como se ele fosse a expressão "endereço de"</strong>.</p>
+<div class="highlight"><pre><span></span><code><span class="o">&amp;</span><span class="n">a</span><span class="w">         </span><span class="c1">// lê-se &quot;endereço de a&quot;</span>
+<span class="o">&amp;</span><span class="n">b</span><span class="w">         </span><span class="c1">// lê-se &quot;endereço de b&quot;</span>
+<span class="o">&amp;</span><span class="n">abobrinha</span><span class="w"> </span><span class="c1">// lê-se &quot;endereço de abobrinha&quot;</span>
+</code></pre></div>
+<p>Mas para podermos passar endereços para lá e para cá, precisamos de variáveis
+especiais que guardam endereços. Essas variáveis são conhecidas como
+<em>apontadores</em> ou <em>ponteiros</em> (<em>pointers</em> em inglês) e indicadas pelo símbolo
+<code>*</code>. Antes de dar mais detalhes, vamos dar uma dica simples e valiosa em relação
+a esse símbolo.</p>
+<h2 id="a-regra-de-ouro">A Regra de Ouro</h2>
+<p>Dizemos que um apontador <code>p</code> <em>aponta</em> para uma variável <code>v</code> se o endereço de <code>v</code>
+está armazenado em <code>p</code>. Visualmente, podemos representar isso da seguinte forma:</p>
+<p><img alt="" src="../imgs/day5-pointers/apontador.png" width="300" /></p>
+<p>Esta figura é uma representação visual de <code>p</code> apontar para <code>v</code>. Nesse caso, <code>v</code> é uma variável
+inteira cujo valor é <code>5</code> e <code>p</code> é um apontador cujo valor é o endereço de
+<code>v</code>. Acostume-se com essa representação visual, aliás, pois ela será muito usada em
+<em>Desafios de Programação</em>!</p>
+<p>Mas o que realmente queremos enfatizar aqui é que, a partir dessa terminologia,
+podemos derivar uma pequena regra que ajuda muito a compreender códigos que usam
+<code>*</code> no contexto de endereços e apontadores: <strong>sempre que encontrar o símbolo
+<code>*</code>, leia como se ele fosse a expressão "variável apontada por"</strong>.</p>
+<p>Sem contexto essa regra parece estranha, então vamos aos exemplos!</p>
+<h2 id="apontadores">Apontadores</h2>
+<p>Vamos declarar o apontador <code>p</code> do exemplo acima.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">;</span>
+</code></pre></div>
+<p>Por que estamos usando <code>int</code>? Porque apontadores em C <em>podem saber o tipo da variável
+para a qual apontam</em>. Portanto, esse tipo deve estar na declaração. Assim, a
+combinação de <code>int</code> seguido por <code>*</code> representa a declaração de um apontador para
+variável inteira.</p>
+<p>Difícil lembrar? Então note que essa sintaxe é totalmente coerente com a regra
+de ouro! A declaração <code>int v</code> significa "<code>v</code> é inteira", enquanto a declaração
+<code>int *p</code> significa "variável apontada por <code>p</code> é inteira".</p>
+<p>Vamos agora armazenar o endereço de <code>v</code> em <code>p</code>, reproduzindo a situação da
+figura.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">;</span>
+
+<span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">v</span><span class="p">;</span>
+</code></pre></div>
+<p>Esse código faz sentido para você? Vejamos se você está entendendo...</p>
+<div class="admonition exercise choice two-cols tag-choice-exercise" data-answer-idx="1" data-slug="Lab5/choice_1" id="choice_1_0">
+<p class="admonition-title">Exercise 2</p>
+<form class="exercise-form">
+<p>Adicionar <code>v = &amp;5</code> ao exemplo acima seria válido?</p>
+<div class="form-elements">
+<div class="alternative-set">
+  
+<label class="alternative">
+  <div class="content">
+    <input type="radio" name="data" value="0" _="   on click    set alternative to closest .alternative    if alternative matches <:not(.selected)/> then     set selected to false    else     set selected to true    end    remove .selected from .alternative in closest .alternative-set    if selected then     remove .selected from alternative     add @disabled to <input[type='submit']/> in closest .form-elements    else     add .selected to alternative     remove @disabled from <input[type='submit']/> in closest .form-elements    end   end   ">
+    Sim
+  </div>
+</label>
+
+<label class="alternative">
+  <div class="content">
+    <input type="radio" name="data" value="1" _="   on click    set alternative to closest .alternative    if alternative matches <:not(.selected)/> then     set selected to false    else     set selected to true    end    remove .selected from .alternative in closest .alternative-set    if selected then     remove .selected from alternative     add @disabled to <input[type='submit']/> in closest .form-elements    else     add .selected to alternative     remove @disabled from <input[type='submit']/> in closest .form-elements    end   end   ">
+    Não
+  </div>
+</label>
+
+</div>
+<input class="ah-button ah-button--primary" type="submit" name="sendButton" value="Submit" disabled />
+</div>
+</form>
+<div class="admonition answer no-indent">
+<p class="admonition-title">Answer</p>
+<p><code>5</code> é um valor, não uma variável. Não faz sentido pedir "endereço de <code>5</code>".</p>
+</div>
+</div>
+<div class="admonition exercise choice two-cols tag-choice-exercise" data-answer-idx="1" data-slug="Lab5/choice_2" id="choice_2_0">
+<p class="admonition-title">Exercise 3</p>
+<form class="exercise-form">
+<p>Adicionar <code>v = p</code> ao exemplo acima seria válido?</p>
+<div class="form-elements">
+<div class="alternative-set">
+  
+<label class="alternative">
+  <div class="content">
+    <input type="radio" name="data" value="1" _="   on click    set alternative to closest .alternative    if alternative matches <:not(.selected)/> then     set selected to false    else     set selected to true    end    remove .selected from .alternative in closest .alternative-set    if selected then     remove .selected from alternative     add @disabled to <input[type='submit']/> in closest .form-elements    else     add .selected to alternative     remove @disabled from <input[type='submit']/> in closest .form-elements    end   end   ">
+    Não
+  </div>
+</label>
+
+<label class="alternative">
+  <div class="content">
+    <input type="radio" name="data" value="0" _="   on click    set alternative to closest .alternative    if alternative matches <:not(.selected)/> then     set selected to false    else     set selected to true    end    remove .selected from .alternative in closest .alternative-set    if selected then     remove .selected from alternative     add @disabled to <input[type='submit']/> in closest .form-elements    else     add .selected to alternative     remove @disabled from <input[type='submit']/> in closest .form-elements    end   end   ">
+    Sim
+  </div>
+</label>
+
+</div>
+<input class="ah-button ah-button--primary" type="submit" name="sendButton" value="Submit" disabled />
+</div>
+</form>
+<div class="admonition answer no-indent">
+<p class="admonition-title">Answer</p>
+<p><code>v</code> guarda inteiros, então não podemos usá-la para guardar endereços</p>
+</div>
+</div>
+<div class="admonition exercise choice two-cols tag-choice-exercise" data-answer-idx="1" data-slug="Lab5/choice_3" id="choice_3_0">
+<p class="admonition-title">Exercise 4</p>
+<form class="exercise-form">
+<p>Adicionar <code>v = &amp;p</code> ao exemplo acima seria válido?</p>
+<div class="form-elements">
+<div class="alternative-set">
+  
+<label class="alternative">
+  <div class="content">
+    <input type="radio" name="data" value="1" _="   on click    set alternative to closest .alternative    if alternative matches <:not(.selected)/> then     set selected to false    else     set selected to true    end    remove .selected from .alternative in closest .alternative-set    if selected then     remove .selected from alternative     add @disabled to <input[type='submit']/> in closest .form-elements    else     add .selected to alternative     remove @disabled from <input[type='submit']/> in closest .form-elements    end   end   ">
+    Não
+  </div>
+</label>
+
+<label class="alternative">
+  <div class="content">
+    <input type="radio" name="data" value="0" _="   on click    set alternative to closest .alternative    if alternative matches <:not(.selected)/> then     set selected to false    else     set selected to true    end    remove .selected from .alternative in closest .alternative-set    if selected then     remove .selected from alternative     add @disabled to <input[type='submit']/> in closest .form-elements    else     add .selected to alternative     remove @disabled from <input[type='submit']/> in closest .form-elements    end   end   ">
+    Sim
+  </div>
+</label>
+
+</div>
+<input class="ah-button ah-button--primary" type="submit" name="sendButton" value="Submit" disabled />
+</div>
+</form>
+<div class="admonition answer no-indent">
+<p class="admonition-title">Answer</p>
+<p><code>v</code> guarda inteiros, então não podemos usá-la para guardar endereços</p>
+</div>
+</div>
+<div class="admonition exercise choice two-cols tag-choice-exercise" data-answer-idx="1" data-slug="Lab5/choice_4" id="choice_4_0">
+<p class="admonition-title">Exercise 5</p>
+<form class="exercise-form">
+<p>Adicionar <code>p = 5</code> ao exemplo acima seria válido?</p>
+<div class="form-elements">
+<div class="alternative-set">
+  
+<label class="alternative">
+  <div class="content">
+    <input type="radio" name="data" value="0" _="   on click    set alternative to closest .alternative    if alternative matches <:not(.selected)/> then     set selected to false    else     set selected to true    end    remove .selected from .alternative in closest .alternative-set    if selected then     remove .selected from alternative     add @disabled to <input[type='submit']/> in closest .form-elements    else     add .selected to alternative     remove @disabled from <input[type='submit']/> in closest .form-elements    end   end   ">
+    Sim
+  </div>
+</label>
+
+<label class="alternative">
+  <div class="content">
+    <input type="radio" name="data" value="1" _="   on click    set alternative to closest .alternative    if alternative matches <:not(.selected)/> then     set selected to false    else     set selected to true    end    remove .selected from .alternative in closest .alternative-set    if selected then     remove .selected from alternative     add @disabled to <input[type='submit']/> in closest .form-elements    else     add .selected to alternative     remove @disabled from <input[type='submit']/> in closest .form-elements    end   end   ">
+    Não
+  </div>
+</label>
+
+</div>
+<input class="ah-button ah-button--primary" type="submit" name="sendButton" value="Submit" disabled />
+</div>
+</form>
+<div class="admonition answer no-indent">
+<p class="admonition-title">Answer</p>
+<p><code>p</code> guarda endereços, então não podemos usá-la para guardar inteiros</p>
+</div>
+</div>
+<div class="admonition exercise choice two-cols tag-choice-exercise" data-answer-idx="1" data-slug="Lab5/choice_5" id="choice_5_0">
+<p class="admonition-title">Exercise 6</p>
+<form class="exercise-form">
+<p>Adicionar <code>p = &amp;5</code> ao exemplo acima seria válido?</p>
+<div class="form-elements">
+<div class="alternative-set">
+  
+<label class="alternative">
+  <div class="content">
+    <input type="radio" name="data" value="0" _="   on click    set alternative to closest .alternative    if alternative matches <:not(.selected)/> then     set selected to false    else     set selected to true    end    remove .selected from .alternative in closest .alternative-set    if selected then     remove .selected from alternative     add @disabled to <input[type='submit']/> in closest .form-elements    else     add .selected to alternative     remove @disabled from <input[type='submit']/> in closest .form-elements    end   end   ">
+    Sim
+  </div>
+</label>
+
+<label class="alternative">
+  <div class="content">
+    <input type="radio" name="data" value="1" _="   on click    set alternative to closest .alternative    if alternative matches <:not(.selected)/> then     set selected to false    else     set selected to true    end    remove .selected from .alternative in closest .alternative-set    if selected then     remove .selected from alternative     add @disabled to <input[type='submit']/> in closest .form-elements    else     add .selected to alternative     remove @disabled from <input[type='submit']/> in closest .form-elements    end   end   ">
+    Não
+  </div>
+</label>
+
+</div>
+<input class="ah-button ah-button--primary" type="submit" name="sendButton" value="Submit" disabled />
+</div>
+</form>
+<div class="admonition answer no-indent">
+<p class="admonition-title">Answer</p>
+<p><code>5</code> é um valor, não uma variável. Não faz sentido pedir "endereço de <code>5</code>".</p>
+</div>
+</div>
+<div class="admonition exercise choice two-cols tag-choice-exercise" data-answer-idx="1" data-slug="Lab5/choice_6" id="choice_6_0">
+<p class="admonition-title">Exercise 7</p>
+<form class="exercise-form">
+<p>Adicionar <code>p = v</code> ao exemplo acima seria válido?</p>
+<div class="form-elements">
+<div class="alternative-set">
+  
+<label class="alternative">
+  <div class="content">
+    <input type="radio" name="data" value="0" _="   on click    set alternative to closest .alternative    if alternative matches <:not(.selected)/> then     set selected to false    else     set selected to true    end    remove .selected from .alternative in closest .alternative-set    if selected then     remove .selected from alternative     add @disabled to <input[type='submit']/> in closest .form-elements    else     add .selected to alternative     remove @disabled from <input[type='submit']/> in closest .form-elements    end   end   ">
+    Sim
+  </div>
+</label>
+
+<label class="alternative">
+  <div class="content">
+    <input type="radio" name="data" value="1" _="   on click    set alternative to closest .alternative    if alternative matches <:not(.selected)/> then     set selected to false    else     set selected to true    end    remove .selected from .alternative in closest .alternative-set    if selected then     remove .selected from alternative     add @disabled to <input[type='submit']/> in closest .form-elements    else     add .selected to alternative     remove @disabled from <input[type='submit']/> in closest .form-elements    end   end   ">
+    Não
+  </div>
+</label>
+
+</div>
+<input class="ah-button ah-button--primary" type="submit" name="sendButton" value="Submit" disabled />
+</div>
+</form>
+<div class="admonition answer no-indent">
+<p class="admonition-title">Answer</p>
+<p><code>p</code> guarda endereços, então não podemos usá-la para guardar inteiros</p>
+</div>
+</div>
+<p>Agora vejam como o exemplo abaixo é interessante.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">;</span>
+
+<span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">v</span><span class="p">;</span>
+
+<span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">);</span>
+</code></pre></div>
+<div class="admonition exercise text short tag-text-exercise tag-short-text editable" data-slug="Lab5/short_2" id="short_2_0">
+<p class="admonition-title">Exercise 8<button class="editable-button"></button></p>
+<form class="exercise-form">
+<p>Qual é a saída desse exemplo? Pense na regra de ouro.</p>
+<div class="form-elements">
+<input type="text" value="" name="data"/>
+
+<input class="ah-button ah-button--primary" type="submit" value="Submit"/>
+</div>
+</form>
+<div class="admonition answer no-indent">
+<p class="admonition-title">Answer</p>
+<p>A saída é <code>10</code>, pois a linha <code>*p = 10</code>, pela regra de ouro, pode ser lida como
+"variável apontada por <code>p</code> recebe <code>10</code>". E qual é a variável apontada por <code>p</code>?</p>
+</div>
+</div>
+<p>De fato, podemos usar <code>*p</code> como sinônimo de <code>v</code> ao longo do código.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">;</span>
+
+<span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">v</span><span class="p">;</span>
+
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">);</span>
+</code></pre></div>
+<p>Obviamente, esse uso só é válido a partir do momento em que <code>p</code> recebe o
+endereço de <code>v</code>. Antes de receber a primeira atribuição, <code>p</code> guarda lixo de
+memória, como qualquer variável.</p>
+<div>
+<div class="ah-progress-container"><button class="ah-button ah-button--primary progress" id="prog-0"> Progress </button></div>
+</div>
+</section>
+<section class="progress-section">
+<h2 id="a-unica-excecao">A Única Exceção</h2>
+<p>A única exceção à regra de ouro é a situação na qual o apontador é inicializado
+na declaração.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">v</span><span class="p">;</span>
+</code></pre></div>
+<p>Nesse caso, a regra é coerente com a declaração, mas não é coerente com a
+atribuição. Quem recebe o endereço de <code>v</code> é <code>p</code> e não a variável apontada por
+<code>p</code>. Aliás, nesse momento, nem existe uma variável apontada por <code>p</code>, já que <code>p</code>
+está com lixo de memória.</p>
+<p>Mas essa é a única exceção com a qual você precisa se preocupar!</p>
+<div>
+<div class="ah-progress-container"><button class="ah-button ah-button--primary progress" id="prog-1"> Progress </button></div>
+</div>
+</section>
+<section class="progress-section">
+<h2 id="aplicacao-de-apontadores">Aplicação de Apontadores</h2>
+<p>Uma aplicação comum de apontadores é seu uso para contornar o fato de que o
+<code>return</code> de uma função devolve um único valor. Considere a função abaixo, que
+calcula ao mesmo tempo a soma e a subtração de dois inteiros. Essa função está
+<strong>errada</strong>, pois o <code>return</code> de dois valores separados por vírgula é permitido em
+Python mas <strong>não</strong> em C. Apenas um valor pode ser devolvido em C.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">sum_sub</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">sub</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">sum</span><span class="p">,</span><span class="w"> </span><span class="n">sub</span><span class="p">;</span><span class="w"> </span><span class="c1">// oops...</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Para contornar isso, podemos fazer uma função que não devolve nada, ou seja é do
+tipo <code>void</code>, mas <em>escreve a resposta em duas variáveis cujos endereços são
+recebidos como parâmetros</em>.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">sum_sub</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">psum</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">psub</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="o">*</span><span class="n">psum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="w">    </span><span class="o">*</span><span class="n">psub</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Entender o uso dos símbolos <code>*</code> acima não deveria ser um problema se você
+absorveu bem a regra de ouro!</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Sim, é feio. Muito feio. Mas funciona.</p>
+</div>
+<p>Repare que chamamos os parâmetros de <code>psum</code> e <code>psub</code> em vez de <code>sum</code> e <code>sub</code>.
+Não faria sentido chamar de <code>sum</code> e <code>sub</code>, pois eles não armazenam os resultados
+em si e sim os endereços das variáveis onde eles devem ser armazenados.</p>
+<div class="admonition exercise self-progress" data-slug="Lab5/exercise_1" id="exercise_1_0">
+<p class="admonition-title">Exercise 9</p>
+<form class="exercise-form">
+<p>Escreva um programa completo que:</p>
+<ol>
+<li>
+<p>usa <code>scanf</code> para ler dois inteiros dados pelo usuário;</p>
+</li>
+<li>
+<p>usa <code>sum_sub</code> para calcular a soma e a subtração desses dois inteiros;</p>
+</li>
+<li>
+<p>usa <code>printf</code> para mostrar os dois resultados.</p>
+<ul>
+<li><strong>O printf deve ser realizado dentro na função main!</strong></li>
+</ul>
+</li>
+</ol>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Submit" value="Mark as done" />
+</div>
+</form>
+</div>
+<div class="admonition exercise self-progress" data-slug="Lab5/exercise_2" id="exercise_2_0">
+<p class="admonition-title">Exercise 10</p>
+<form class="exercise-form">
+<p>Escreva um programa completo que:</p>
+<ol>
+<li>
+<p>usa <code>scanf</code> para ler dois inteiros dados pelo usuário;</p>
+</li>
+<li>
+<p>supondo que os dois inteiros representam a altura e a largura de um
+ retângulo, usa uma função para calcular o perímetro e a área desse
+ retângulo;</p>
+</li>
+<li>
+<p>usa <code>printf</code> para mostrar os dois resultados.</p>
+<ul>
+<li><strong>O printf deve ser realizado dentro na função main!</strong></li>
+</ul>
+</li>
+</ol>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Submit" value="Mark as done" />
+</div>
+</form>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Não continue antes de validar suas respostas com um dos professores ou um colega validado.</p>
+</div>
+<p>Endereços e apontadores são considerados conceitos particularmente difíceis de
+entender para quem está aprendendo C pela primeira vez. Mantenha sempre a regra
+de ouro em mente para auxiliar nesse processo.</p>
+<div>
+<div class="ah-progress-container"><button class="ah-button ah-button--primary progress" id="prog-2"> Progress </button></div>
+</div>
+</section>
+<section class="progress-section">
+<h2 id="structs">Structs</h2>
+<p>Outro conceito introduzido neste guia é o de <code>struct</code>. Trata-se de um recurso
+que responde a uma das dúvidas mais antigas da humanidade: <em>como podemos
+armazenar múltiplos valores em uma única variável</em>?</p>
+<p>(meu conhecimento de história talvez seja um pouco questionável)</p>
+<p>Structs são tipos compostos que armazenam múltiplos valores. Para vocês que já
+aprenderam orientação a objetos, pode-se dizer que eles são mais ou menos como
+"objetos sem métodos, apenas atributos".</p>
+<p>Suponha por exemplo que, para um programa de geometria analítica, queremos
+definir um tipo que representa um ponto do plano cartesiano e, portanto, possui
+dois valores: a coordenada horizontal e a coordenada vertical. Declarar um
+struct que representa esse tipo é mais ou menos simples.</p>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">ponto</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>Dizemos "mais ou menos" por causa de dois detalhes chatos: o primeiro é esse
+maldito ponto e vírgula no final, que você <em>com certeza</em> vai esquecer em vários
+momentos da vida. O segundo é o fato de que essa declaração não cria um tipo
+chamado <code>ponto</code>, mas sim um tipo chamado <code>struct ponto</code>. Ou seja, para declarar
+uma variável desse tipo novo precisamos escrever</p>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">ponto</span><span class="w"> </span><span class="n">p</span><span class="p">;</span>
+</code></pre></div>
+<p>o que é um tanto quanto verborrágico.</p>
+<p>Contra o primeiro detalhe não podemos fazer muita coisa, mas contra o segundo
+existe um recurso muito útil em C que é o <code>typedef</code>. Esse recurso nos permite
+criar "apelidos" para tipos. Assim, podemos reescrever a declaração do struct da
+seguinte forma</p>
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">ponto</span><span class="p">;</span>
+</code></pre></div>
+<p>que significa "struct anônimo com apelido <code>ponto</code>". Agora sim, para declarar uma
+variável desse tipo novo podemos escrever simplesmente</p>
+<div class="highlight"><pre><span></span><code><span class="n">ponto</span><span class="w"> </span><span class="n">p</span><span class="p">;</span>
+</code></pre></div>
+<p>E como usar essa variável? Basta usar o operador <code>.</code> para acessar seus valores,
+como em objetos Java.</p>
+<div class="highlight"><pre><span></span><code><span class="n">p</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
+
+<span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">p</span><span class="p">.</span><span class="n">x</span><span class="p">);</span>
+<span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">x</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+</code></pre></div>
+<div class="admonition exercise self-progress" data-slug="Lab5/exercise_3" id="exercise_3_0">
+<p class="admonition-title">Exercise 11</p>
+<form class="exercise-form">
+<p>Reescreva a função de duas aulas atrás para calcular a <em>distância de Manhattan</em>
+entre dois pontos. Mas, agora que temos o struct acima, a função deve
+receber duas variáveis do tipo <code>ponto</code> em vez de receber quatro variáveis do
+tipo <code>int</code>.</p>
+<p>Escreva sua solução em <code>tarefa3.c</code> e teste usando <code>make tarefa3</code>.</p>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Submit" value="Mark as done" />
+</div>
+</form>
+</div>
+<div class="admonition exercise self-progress" data-slug="Lab5/exercise_4" id="exercise_4_0">
+<p class="admonition-title">Exercise 12</p>
+<form class="exercise-form">
+<p>Escreva um programa completo que:</p>
+<ol>
+<li>
+<p>usa <code>scanf</code> para ler quatro inteiros dados pelo usuário;</p>
+</li>
+<li>
+<p>supondo que esses inteiros representam as coordenadas de dois pontos
+ cartesianos, usa a função anterior para calcular a distância de Manhattan;</p>
+</li>
+<li>
+<p>usa <code>printf</code> para mostrar o resultado.</p>
+<ul>
+<li><strong>O printf deve ser realizado dentro na função main!</strong></li>
+</ul>
+</li>
+</ol>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Submit" value="Mark as done" />
+</div>
+</form>
+</div>
+<div class="admonition exercise self-progress" data-slug="Lab5/exercise_5" id="exercise_5_0">
+<p class="admonition-title">Exercise 13</p>
+<form class="exercise-form">
+<p>Refaça os dois exercícios anteriores, substituindo a distância de Manhattan
+pela distância <em>Euclidiana</em>. (pesquise)</p>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Submit" value="Mark as done" />
+</div>
+</form>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Não continue  suas respostas com um dos professores.</p>
+</div>
+<div>
+<div class="ah-progress-container"><button class="ah-button ah-button--primary progress" id="prog-3"> Progress </button></div>
+</div>
+</section>
+<section class="progress-section">
+<h2 id="apontadores-para-structs">Apontadores para Structs</h2>
+<p>Quando misturamos os conceitos de apontador e struct, algo que também será feito
+em <em>Desafios de Programação</em>, a sintaxe vira um pesadelo críptico.</p>
+<div class="highlight"><pre><span></span><code><span class="n">ponto</span><span class="w"> </span><span class="n">p</span><span class="p">;</span>
+<span class="n">ponto</span><span class="w"> </span><span class="o">*</span><span class="n">pp</span><span class="p">;</span>
+
+<span class="n">pp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">p</span><span class="p">;</span>
+
+<span class="p">(</span><span class="o">*</span><span class="n">pp</span><span class="p">).</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="p">(</span><span class="o">*</span><span class="n">pp</span><span class="p">).</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
+</code></pre></div>
+<p>Pare. Respire. Não continue a ler até aceitar que o código acima faz sentido.
+Lembre da regra de ouro.</p>
+<div class="admonition exercise text short tag-text-exercise tag-short-text editable" data-slug="Lab5/short_3" id="short_3_0">
+<p class="admonition-title">Exercise 14<button class="editable-button"></button></p>
+<form class="exercise-form">
+<p>Por que <code>pp.x</code> não faria sentido no exemplo acima?</p>
+<div class="form-elements">
+<input type="text" value="" name="data"/>
+
+<input class="ah-button ah-button--primary" type="submit" value="Submit"/>
+</div>
+</form>
+<div class="admonition answer no-indent">
+<p class="admonition-title">Answer</p>
+<p>Porque pp é um ponteiro, e, para acessar o valor da variável para a qual um ponteiro aponta,
+temos que usar o *. A expressão pp.x significa "campo x de um endereço", o que não
+faz sentido.</p>
+</div>
+</div>
+<p>Felizmente, os criadores do C perceberam que a sintaxe fica meio pesada nesse
+caso e adicionaram o operador "setinha" (<code>-&gt;</code>) para ajudar. Grosso modo, esse
+operador significa "operador <code>.</code>, mas em relação à variável apontada". Ou seja,
+o trecho</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="o">*</span><span class="n">pp</span><span class="p">).</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="p">(</span><span class="o">*</span><span class="n">pp</span><span class="p">).</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
+</code></pre></div>
+<p>pode ser substituído pelo trecho</p>
+<div class="highlight"><pre><span></span><code><span class="n">pp</span><span class="o">-&gt;</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="n">pp</span><span class="o">-&gt;</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
+</code></pre></div>
+<div>
+<div class="ah-progress-container"><button class="ah-button ah-button--primary progress" id="prog-4"> Progress </button></div>
+</div>
+</section>
+<section class="progress-section">
+<div class="admonition exercise text short tag-text-exercise tag-short-text editable" data-slug="Lab5/short_4" id="short_4_0">
+<p class="admonition-title">Exercise 15<button class="editable-button"></button></p>
+<form class="exercise-form">
+<p>Por que <code>p-&gt;x</code> não faria sentido no exemplo do início da seção?</p>
+<div class="form-elements">
+<input type="text" value="" name="data"/>
+
+<input class="ah-button ah-button--primary" type="submit" value="Submit"/>
+</div>
+</form>
+<div class="admonition answer no-indent">
+<p class="admonition-title">Answer</p>
+<p>Porque p é um ponto, não um apontador para ponto.</p>
+</div>
+</div>
+<div class="admonition exercise self-progress" data-slug="Lab5/exercise_6" id="exercise_6_0">
+<p class="admonition-title">Exercise 16</p>
+<form class="exercise-form">
+<p>Escreva uma função</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">medio</span><span class="p">(</span><span class="n">ponto</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">ponto</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">ponto</span><span class="w"> </span><span class="o">*</span><span class="n">m</span><span class="p">)</span>
+</code></pre></div>
+<p>que recebe dois pontos e o endereço de um terceiro ponto. Essa função deve
+calcular o <em>ponto médio</em> dos dois pontos e escrever o resultado desse cálculo
+no terceiro. Simples, não? Porém, há um detalhe: essa função <em>deve considerar
+inválido o caso em que os dois pontos são exatamente iguais</em>.</p>
+<p>Reparou que, apesar de devolver a resposta via apontador, a função é do tipo
+<code>int</code>? É porque ela deve devolver um código indicando se o caso foi válido ou
+não. Se os dois pontos são iguais, ela deve devolver <code>0</code> e não escrever nada
+no terceiro. Se os dois pontos são diferentes, ela deve devolver <code>1</code> e
+escrever o resultado no terceiro.</p>
+<p>Escreva sua solução em <code>tarefa6.c</code> e teste usando <code>make tarefa6</code>.</p>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Submit" value="Mark as done" />
+</div>
+</form>
+</div>
+
+
+</section>
+          
+        
+      </main>
+      <footer class="ah-footer ah-typeset">
+        <div class="ah-footer-nav">
+          
+            <a href="../Lab4/"
+               class="ah-prev"
+               title="Lab4">
+              <span class="nav-label">Previous</span>
+              <span class="nav-title">Lab4</span>
+            </a>
+          
+          
+            <a href="../Lab6/"
+               class="ah-next"
+               title="Lab6">
+              <span class="nav-label">Next</span>
+              <span class="nav-title">Lab6</span>
+            </a>
+          
+        </div>
+      </footer>
+    </div>
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.0.0/js-yaml.min.js"></script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script src="https://cdn.jsdelivr.net/gh/insper-education/active-handout-plugins-js@main/package/plugin-bundle.js"></script>
+    
+  </body>
+</html>
