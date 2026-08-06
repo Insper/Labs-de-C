@@ -22,15 +22,15 @@ Iremos utilizar o PrarieLearn para nossas atividades. Como cada curso tem um cro
 [Entrar - Engenharia da computação](https://us.prairielearn.com/pl/course_instance/224089){.ah-button .ah-button--primary}
 
 
-[Entrar - Ciência da computação](){.ah-button .ah-button--primary}
-> Atualizar para 2026-2
+[Entrar - Ciência da computação](){.ah-button .ah-button--primary} *(em construção)*
+
 
 ## Equipe
 
 !!! done "ENGCOMP"
     - **Curso:** Engenharia de Computação - Quinto Semestre
     - **Disciplinas:** Computação Embarcada / Desafios de Programação / Sistemas Hardware-Software
-    - **Professores:** Rafael Corsi / Marcelo Hashimoto / Marcel Jackowski   
+    - **Professores:** Rafael Corsi / Marcelo Hashimoto / Marcel Jackowski
     - **Já passou por aqui**
         - Fábio Ayres (2018-2019) / Flavio Batista (2022) / Rodrigo Carareto (2023) / Eduardo Marossi / Igor Montagner (2019-2026) / Maciel Vidal (2021-2023) / Fabio Lubacheski (2022-2026)
 
