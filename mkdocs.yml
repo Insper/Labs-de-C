@@ -53,10 +53,10 @@ nav:
 - 'Mutirão':
     - 'Lab1.md'
     - 'Lab2.md'
-    - 'Lab3.md'
     - "Quiz 1":
       - "ENGCOMP": https://us.prairielearn.com/pl/course_instance/224089/assessment/2713216/
       - "CCOMP": ''
+    - 'Lab3.md'
     - 'Lab4.md'
     - "Quiz 2":
       - "ENGCOMP": https://us.prairielearn.com/pl/course_instance/224089/assessment/2713217/
