@@ -173,26 +173,27 @@ void main (void) {
 
 > A saída do programa é ==2==.
 
+<!--
 !!! exercise choice two-cols ":star: QA1"
     O código a seguir apresenta uma função que adiciona cinco a um número. Essa função é chamada pelo main
-    
+
     ```c
-    
+
     int somaCincoAoNum (int n) {
         int c = 0;
         // Insira o código aqui
         return c;
     }
-    
+
     int main () {
         int x = 0;
         x = addFiveToNumber (x);
         return 0;
     }
     ```
-    
+
     O código correto a ser inserido no ==Insira o código aqui== é?
-    
+
     - [ ] `scanf (%d, &n)`
     - [ ] `n = n + 5`
     - [x] `c = n + 5`
@@ -208,7 +209,7 @@ void main (void) {
        c = b – a;
        return c;
      }
-    
+
     int main () {
        int a = 20;
        int b = 10;
@@ -217,26 +218,26 @@ void main (void) {
        return 0;
     }
     ```
-   
+
     O código correto a ser inserido na linha ==Insira o código aqui== é:
 
-    - [x] 
+    - [x]
     ```
     int c = subtrairNumeros (a, b);
     ```
-    - [ ] 
+    - [ ]
     ```
     int c = subtrairNumeros (b, a);
     ```
-    - [ ] 
+    - [ ]
     ```
     subtrairNumeros (a, b);
     ```
-    - [ ] 
+    - [ ]
     ```
     c = subtrairNumeros (a, b);
     ```
-    - [ ] 
+    - [ ]
     ```
     int c = subtrairNumeros (b-a, a);
     ```
@@ -265,28 +266,28 @@ void main (void) {
     17.   return 0;
     18. }
     ```
-        
-    - [ ] 
+
+    - [ ]
     ```c
     Linha 2: //Sem código.
     Linha 11: r = func(a, 2*b);
     ```
-    - [ ] 
+    - [ ]
     ```c
     Linha 2: //Sem código
     Linha 11: func(2*a, b);
     ```
-    - [ ] 
+    - [ ]
     ```c
     Linha 2: scanf("%d %d", &d, &e);
     Linha 11: r = func(2*a, b);
     ```
-    - [ ] 
+    - [ ]
     ```c
     Linha 2: d = 2 * a;
     Linha 11: r = func(a, b);
     ```
-    - [x] 
+    - [x]
     ```c
     Linha 2: //Sem código
     Linha 11: r = func(2*a, b);
@@ -294,7 +295,7 @@ void main (void) {
 
 !!! exercise choice two-cols ":star: QA4"
     Considere o seguinte código:
- 
+
     ```c
     1. int main(){
     2    int x = 10;
@@ -304,46 +305,46 @@ void main (void) {
     6.   return 0;
     7. }
     ```
-    
+
     Uma implementação correta da função somaDez seria:
- 
-    - [ ] 
+
+    - [ ]
     ```c
     int somaDez (int n) {
       scanf ("%d", &n);
       return n + 10;
     }
     ```
-    - [x] 
+    - [x]
     ```c
     int somaDez (int n) {
       n = n + 10;
       return n;
     }
     ```
-    - [ ] 
+    - [ ]
     ```c
     void somaDez (int n) {
       n = n + 10;
     }
     ```
-    - [ ] 
+    - [ ]
     ```c
     int somaDez (int n) {
       int nMaisDez = n;
       return nMaisDez;
     }
     ```
-    
+
 !!! exercise choice ":star: QA5"
     Um exemplo de programa que lê dois valores (`a e b`) e exibe na tela o resultado da subtração `a – b` é:
 
-    - [ ] 
+    - [ ]
     ```c
     void subtracao (int a, int b, int r) {
       r = a - b;
     }
-    
+
     int main(){
       int a, b, r;
       scanf("%d %d", &a, &b);
@@ -352,12 +353,12 @@ void main (void) {
       return 0;
     }
     ```
-    - [ ] 
+    - [ ]
     ```c
     int subtracao (int a, int b) {
       return a - b;
     }
-    
+
     int main(){
       int a, b, r;
       scanf ("%d %d", &a, &b);
@@ -366,12 +367,12 @@ void main (void) {
       return 0;
     }
     ```
-    - [x]  
+    - [x]
     ```c
     int subtracao (int n1, int n2) {
       return n1 - n2;
     }
-    
+
     int main(){
       int a, b, r;
       scanf("%d %d", &a, &b);
@@ -380,12 +381,12 @@ void main (void) {
       return 0;
     }
     ```
-    - [ ] 
+    - [ ]
     ```c
     int subtracao (int a, int b) {
       return a - b;
     }
-    
+
     int main(){
       int a, b, r;
       scanf("%d %d", &a, &b);
@@ -394,12 +395,12 @@ void main (void) {
       return 0;
     }
     ```
-    - [ ] 
+    - [ ]
     ```c
     int subtracao (int a, int b) {
       return a - b;
     }
-    
+
     int main(){
       int a, b, r;
       scanf("%d %d", &a, &b);
@@ -408,3 +409,4 @@ void main (void) {
       return 0;
     }
     ```
+-->
