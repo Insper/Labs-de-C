@@ -22,7 +22,7 @@ Iremos utilizar o PrarieLearn para nossas atividades. Como cada curso tem um cro
 [Entrar - Engenharia da computação](https://us.prairielearn.com/pl/course_instance/224089){.ah-button .ah-button--primary}
 
 
-[Entrar - Ciência da computação](){.ah-button .ah-button--primary} *(em construção)*
+[Entrar - Ciência da computação](https://us.prairielearn.com/pl/course_instance/225475/join/UZSELP2ADJ){.ah-button .ah-button--primary}
 
 
 ## Equipe
@@ -37,7 +37,7 @@ Iremos utilizar o PrarieLearn para nossas atividades. Como cada curso tem um cro
 !!! done "CCOMP"
     - **Curso:** Ciência da Computação - Quarto Semestre
     - **Disciplinas:** Grafos e Árvores / Sistemas Hardware-Software
-    - **Professores:** Igor Montagner e Carlos Menezes
+    - **Professores:** Fábio Ayres e Carlos Menezes
 
 ## Pesquisa
 
