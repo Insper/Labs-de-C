@@ -178,7 +178,7 @@ long mat[10][3];
 
 printf("%d", mat[0][2]); /* acessa linha 0, coluna 3 */
 
-scanf("%d", &mat[1][1]); // armazena inteiro digitado na posição 1,5
+scanf("%d", &mat[1][1]); // armazena inteiro digitado na posição 1,1
 ```
 
 ![Representação de matriz de inteiros na memória](imgs/day4-arrays/mem-mat.png)
