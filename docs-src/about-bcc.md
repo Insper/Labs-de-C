@@ -2,16 +2,13 @@
 
 O mutirão dura uma semana e meia na CCOMP e é composto de laboratórios e uma prova. Teremos quizzes assíncronos também. As datas que valem são as que estão no PrairieLearn.
 
-
 | Data  | Dia       | Aula       | Observações       | Atividade            | Conteúdo                   |
 |-------|---------  |------------|-------------------|----------------------|----------------------------|
-| 09/02 | Segunda   | Algoritmos |                   | Apresentação e Lab 1 | Conceitos básicos          |
-| 11/02 | Quarta    | SisHard    |                   | Apresentação e Lab 2 | Lógica de programação      |
-| 12/02 | Quinta    |            | Estudo individual | Lab 3                | Compilação com GCC         |
-| 13/02 | Sexta     | Algoritmos |                   | Lab 4                | Arrays, strings e matrizes |
-|       |           | SisHard    |                   | Lab 5                | Ponteiros e structs        |
-| 20/02 | Sexta     | Algoritmos |                   | Lab 6                | Prática                    |
+| 11/08 | Terça     | Algoritmos |                   | Apresentação e Lab 1 | Conceitos básicos          |
+| 12/08 | Quarta    | SisHard    |                   | Apresentação e Lab 2 | Lógica de programação      |
+| 13/08 | Quinta    | Algoritmos |                   | Lab 3                | Compilação com GCC         |
+| 14/08 | Sexta     | SisHard    |                   | Lab 4                | Arrays, strings e matrizes |
+|       |           |            | Estudo individual | Lab 5                | Ponteiros e structs        |
+| 18/08 | Sexta     | Algoritmos |                   | Lab 6                | Prática                    |
 |       |           |            | Estudo individual | Lab 7                | Escopo de variáveis        |
-|       |           | SisHard    |                   | Avaliação            | Prova                      |
-
-
+| 19/08 |           | SisHard    |                   | Avaliação            | Prova                      |
