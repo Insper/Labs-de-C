@@ -3,8 +3,8 @@
 !!! info "Quizzes"
     - Quiz 1: quinta 13/08 23h59 sem desconto, quarta 19/08 13h30 com desconto
     - Quiz 2: sexta 14/08 23h59 sem desconto, quarta 19/08 13h30 com desconto
-    - Quiz 3: terça 17/08 23h59 sem desconto, quarta 19/08 13h30 com desconto
-    - Quiz 4: quarta 13h30 sem desconto, quarta 19/08 23h59 com desconto
+    - Quiz 3: terça 18/08 23h59 sem desconto, quarta 19/08 13h30 com desconto
+    - Quiz 4: quarta 19/08 13h30 sem desconto, quarta 19/08 23h59 com desconto
 
 O mutirão dura uma semana e meia na CCOMP e é composto de laboratórios e uma prova. Teremos quizzes assíncronos também. As datas que valem são as que estão no PrairieLearn.
 
